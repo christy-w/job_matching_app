@@ -26,8 +26,12 @@
     "typescript": "1.8.7"
   },
   "cordovaPlugins": [
+    "cordova-plugin-app-version",
     "cordova-plugin-device",
     "cordova-plugin-console",
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-google-analytics",
+    "cordova-plugin-network-information",
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
