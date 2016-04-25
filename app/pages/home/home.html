@@ -5,12 +5,23 @@
 </ion-navbar>
 
 <ion-content class="home">
-  <ion-card>
-    <ion-card-header>
-      Card Header
-    </ion-card-header>
-    <ion-card-content>
-      Hello World
-    </ion-card-content>
-  </ion-card>
+  <ion-list>
+    <ion-item [navPush]="mDemoIntroPage">
+      Demo Intro
+    </ion-item>
+    <ion-item [navPush]="mDemoListPage">
+      Demo List
+    </ion-item>
+    <ion-item [navPush]="mDemoDetailPage">
+      Demo Detail
+    </ion-item>
+    <!--
+    <ion-item [navPush]="mDemoSidemenuPage">
+      Demo Sidemenu
+    </ion-item>
+    <ion-item [navPush]="mDemoTabPage">
+      Demo Tab
+    </ion-item>
+    -->
+  </ion-list>
 </ion-content>
