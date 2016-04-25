@@ -5,12 +5,12 @@
 <ion-content padding class="demo-list">
   
   	<h1>Virtual Scroll Demo</h1>
-	<ion-list [virtualScroll]="items">
-		<ion-item *virtualItem="#item">
+	<ion-list [virtualScroll]="mItems">
+		<ion-item *virtualItem="#item" [navPush]="mDemoDetailPage" [navParams]="{id: item.id}">
 			<ion-avatar item-left>
 				<ion-img [src]="item.avatarUrl"></ion-img>
 			</ion-avatar>
-			<h2>{{item.title}}</h2>
+			<h2>{{item.id}}. {{item.title}}</h2>
 			<p>{{item.body}}</p>
 		</ion-item>
 	</ion-list>
