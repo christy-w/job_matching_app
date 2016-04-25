@@ -1,7 +1,17 @@
 <ion-navbar *navbar>
-  <ion-title>Demo List</ion-title>
+	<ion-title>Demo List</ion-title>
 </ion-navbar>
 
 <ion-content padding class="demo-list">
   
+	<ion-list [virtualScroll]="items">
+		<ion-item *virtualItem="#item">
+			<ion-avatar item-left>
+				<ion-img [src]="item.avatarUrl"></ion-img>
+			</ion-avatar>
+			<h2>{{item.title}}</h2>
+			<p>{{item.body}}</p>
+		</ion-item>
+	</ion-list>
+
 </ion-content>
