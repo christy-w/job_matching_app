@@ -6,7 +6,7 @@
   
   	<h1>Virtual Scroll Demo</h1>
 	<ion-list [virtualScroll]="mItems">
-		<ion-item *virtualItem="#item" [navPush]="mDemoDetailPage" [navParams]="{id: item.id}">
+		<ion-item *virtualItem="#item" [navPush]="[mDemoDetailPage, {id: item.id}]">
 			<ion-avatar item-left>
 				<ion-img [src]="item.avatarUrl"></ion-img>
 			</ion-avatar>
