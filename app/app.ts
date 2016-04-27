@@ -4,12 +4,17 @@ import {StatusBar} from 'ionic-native';
 import {InitPage} from './pages/init/init';
 
 @App({
-	template: '<ion-nav [root]="rootPage"></ion-nav>',
-	config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+	template: `<ion-nav [root]="rootPage"></ion-nav>`,
+	config: {
+		// http://ionicframework.com/docs/v2/api/config/Config/
+	},
+	prodMode: false,
+	pipes: [],
+	providers: [],
 })
 export class MyApp {
 	rootPage: any = InitPage;
-
+	
 	constructor(platform: Platform) {
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.

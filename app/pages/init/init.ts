@@ -1,4 +1,5 @@
-import {Loading, Page, NavController} from 'ionic-angular';
+import {Page, Platform, ViewController, NavController} from 'ionic-angular';
+import {MyPage} from '../../base/pages/MyPage';
 import {HomePage} from '../home/home';
 
 enum UpgradeType {
@@ -12,17 +13,15 @@ enum UpgradeType {
 @Page({
     templateUrl: 'build/pages/init/init.html',
 })
-export class InitPage {
+export class InitPage extends MyPage {
 
-    mLoading: Loading;
     mUpgradeType: UpgradeType = UpgradeType.NoUpgrade;
     
-    constructor(private nav: NavController) {
+    constructor(platform: Platform, view: ViewController, nav: NavController) {
+        super(platform, view, nav);
+        
         // start loading spinner
-        this.mLoading = Loading.create({
-            content: "Loading..."
-        });
-        this.nav.present(this.mLoading);
+        this.showLoading();
         this.downloadData();
     }
     
@@ -49,10 +48,10 @@ export class InitPage {
     // TODO: check user login    
     checkAuth() {
     }
-
+    
     // close loading spinner and redirect page
-    startApp() {        
-        this.mLoading.dismiss();
-		this.nav.setRoot(HomePage);
+    startApp() {
+        this.hideLoading();
+		this.mNav.setRoot(HomePage);
     }
 }
