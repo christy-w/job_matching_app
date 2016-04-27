@@ -15,8 +15,9 @@ Colleagues should avoid changing these files so as to maintain smooth upgrade fo
 - /app/core/components/: Angular 2 Components ([official doc](https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html))
 - /app/core/directives/: Angular 2 Directives ([official doc](https://angular.io/docs/ts/latest/api/core/DirectiveMetadata-class.html))
 - /app/core/pipes/: Angular 2 Pipes ([official doc](https://angular.io/docs/ts/latest/guide/pipes.html))
-- /app/core/MyPage.ts: Base class for Ionic 2 Pages
-- /app/core/MyService.ts: Base class for Ionic 2 Services
+- /app/core/BaseApp.ts: Base class for Ionic 2 Application
+- /app/core/BasePage.ts: Base class for Ionic 2 Pages
+- /app/core/BaseService.ts: Base class for Ionic 2 Services
 
 
 ### Project Files
