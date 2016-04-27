@@ -1,6 +1,6 @@
 /**
  * Base class for all pages, with common functions and member variables for quick access
- * @Page and templates to be defined in children classes
+ * @Page and templates to be defined in child classes
  **/
 
 import {ViewChild} from 'angular2/core';
@@ -21,9 +21,9 @@ import {
 	Toast
 } from 'ionic-angular';
 
-export class MyPage {
+export class BasePage {
 
-	// member variables
+    // member variables accessible from child classes
 	@ViewChild(Content) protected mContent: Content;
 	protected mPlatform: Platform;
 	protected mView: ViewController;

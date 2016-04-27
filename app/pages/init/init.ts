@@ -1,5 +1,5 @@
 import {Page, Platform, ViewController, NavController} from 'ionic-angular';
-import {MyPage} from '../../core/MyPage';
+import {BasePage} from '../../core/BasePage';
 import {HomePage} from '../home/home';
 
 enum UpgradeType {
@@ -13,7 +13,7 @@ enum UpgradeType {
 @Page({
     templateUrl: 'build/pages/init/init.html',
 })
-export class InitPage extends MyPage {
+export class InitPage extends BasePage {
 
     mUpgradeType: UpgradeType = UpgradeType.NoUpgrade;
     

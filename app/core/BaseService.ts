@@ -3,10 +3,11 @@
 
 /**
  * Base class for services, normally linked with remote API
- * @Injectable to be defined in children classes
+ * @Injectable to be defined in child classes
  **/
-export class MyService {
-    
+export class BaseService {
+
+    // member variables accessible from child classes
     protected mApiPrefix: string;
 
     // GET request
