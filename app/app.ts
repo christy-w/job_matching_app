@@ -1,6 +1,9 @@
 import {BaseApp} from './core/BaseApp';
+import {provide} from 'angular2/core';
+import {Http} from 'angular2/http';
 import {App, Platform} from 'ionic-angular';
 import {HomePage} from './pages/home/home';
+import {TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 @App({
 	template: `<ion-nav [root]="mRootPage"></ion-nav>`,
@@ -9,14 +12,20 @@ import {HomePage} from './pages/home/home';
 	},
 	prodMode: false,
 	pipes: [],
-	providers: [],
+	providers: [
+		// https://github.com/ocombe/ng2-translate
+		provide(TranslateLoader, {
+			useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+			deps: [Http]
+		}),
+		TranslateService
+	],
 })
 export class MyApp extends BaseApp {
 
-	// override parent values
 	protected mRootPage = HomePage;
 	
-	constructor(platform: Platform) {
-		super(platform);
+	constructor(platform: Platform, translate: TranslateService) {
+		super(platform, translate);
 	}
 }

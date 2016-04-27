@@ -7,6 +7,7 @@ import {Config} from '../config';
 import {ViewChild} from 'angular2/core';
 import {
 	// System-related dependencies
+	Page,
 	Platform,
 	ViewController,
 	NavController,

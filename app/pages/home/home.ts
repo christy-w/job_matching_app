@@ -1,8 +1,10 @@
 import {Page, Platform, ViewController, NavController} from 'ionic-angular';
 import {BasePage} from '../../core/BasePage';
+import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 
 @Page({
-	templateUrl: 'build/pages/home/home.html'
+    templateUrl: 'build/pages/home/home.html',
+    pipes: [TranslatePipe]
 })
 export class HomePage extends BasePage {
 	
