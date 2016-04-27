@@ -3,6 +3,7 @@
  * @Page and templates to be defined in child classes
  **/
 
+import {Config} from '../config';
 import {ViewChild} from 'angular2/core';
 import {
 	// System-related dependencies
@@ -40,7 +41,7 @@ export class BasePage {
 		this.mParams = params;
 		
 		// setup SqlStorage (instead of LocalStorage)
-		this.mStorage = new Storage(SqlStorage, {});
+		this.mStorage = new Storage(SqlStorage, Config.SQLSTORAGE_OPTIONS);
 	}
 	
 	// Alert Message
@@ -122,9 +123,8 @@ export class BasePage {
 	onPageWillEnter() {
 	}
 	onPageDidEnter() {
-		if (this.mView.name != 'InitPage') {
-			// TODO: add Analytics code
-		}
+		// TODO: add Analytics code
+		console.log('onPageDidEnter: ' + this.mView.name);
 	}
 	onPageWillLeave() {
 	}

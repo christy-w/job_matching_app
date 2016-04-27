@@ -1,8 +1,6 @@
-import {Config} from './config';
 import {BaseApp} from './core/BaseApp';
 import {App, Platform} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {InitPage} from './pages/init/init';
+import {HomePage} from './pages/home/home';
 
 @App({
 	template: `<ion-nav [root]="mRootPage"></ion-nav>`,
@@ -16,7 +14,7 @@ import {InitPage} from './pages/init/init';
 export class MyApp extends BaseApp {
 
 	// override parent values
-	protected mRootPage: any = InitPage;
+	protected mRootPage = HomePage;
 	
 	constructor(platform: Platform) {
 		super(platform);

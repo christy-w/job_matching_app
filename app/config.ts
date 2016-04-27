@@ -12,4 +12,7 @@ export class Config {
     // Links to App Store and Play Store
     public static APP_ID_IOS: string = '';
     public static APP_ID_ANDROID: string = 'com.juicyapphk.juicylauncher2';
+
+    // Ionic SqlStorage    
+    public static SQLSTORAGE_OPTIONS: Object = {};
 }

@@ -4,13 +4,14 @@
  **/
 
 import {Config} from '../config';
-import {Platform} from 'ionic-angular';
+import {Platform, Storage, SqlStorage, Loading} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 
 export class BaseApp {
 
 	// member variables accessible from child classes
     protected mPlatform: Platform;
+	protected mStorage: Storage;
 	protected mRootPage: any;
 	
     constructor(platform: Platform) {
@@ -19,6 +20,9 @@ export class BaseApp {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
 			StatusBar.styleDefault();
+			
+			// setup SqlStorage (instead of LocalStorage)
+			this.mStorage = new Storage(SqlStorage, Config.SQLSTORAGE_OPTIONS);
 		});
 	}
 }
