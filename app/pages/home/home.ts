@@ -1,5 +1,5 @@
 import {Page, Platform, ViewController, NavController} from 'ionic-angular';
-import {MyPage} from '../../base/pages/MyPage';
+import {MyPage} from '../../core/MyPage';
 
 @Page({
 	templateUrl: 'build/pages/home/home.html'

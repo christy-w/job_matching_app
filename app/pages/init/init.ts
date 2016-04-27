@@ -1,5 +1,5 @@
 import {Page, Platform, ViewController, NavController} from 'ionic-angular';
-import {MyPage} from '../../base/pages/MyPage';
+import {MyPage} from '../../core/MyPage';
 import {HomePage} from '../home/home';
 
 enum UpgradeType {

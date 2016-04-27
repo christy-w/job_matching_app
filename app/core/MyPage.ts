@@ -1,4 +1,9 @@
-import {ViewChild} from 'angular2/core'
+/**
+ * Base class for all pages, with common functions and member variables for quick access
+ * @Page and templates to be defined in children classes
+ **/
+
+import {ViewChild} from 'angular2/core';
 import {
 	// System-related dependencies
 	Platform,
@@ -16,10 +21,6 @@ import {
 	Toast
 } from 'ionic-angular';
 
-/**
- * Base class for all pages, with common functions and member variables for quick access
- * @Page and templates to be defined in children classes
- **/
 export class MyPage {
 
 	// member variables
