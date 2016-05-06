@@ -1,5 +1,7 @@
 //import {Injectable} from 'angular2/core';
-//import {Observable} from 'rxjs/Observable';
+import {Http, Headers, RequestOptionsArgs} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 /**
  * Base class for services, normally linked with remote API
@@ -8,25 +10,77 @@
 export class BaseService {
 
     // member variables accessible from child classes
-    protected mApiPrefix: string;
-
+    protected mHttp: Http;
+    protected mApiPrefix: string = '';
+    protected mData: any = null;
+    
+    constructor(http: Http) {
+        this.mHttp = http;
+    }
+    
     // GET request
-    get(url: string) {
+    protected get(url: string, options: RequestOptionsArgs = null) {
         var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.get(url, options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
-
+    
     // POST request
-    post(url: string, data: Object = {}) {
+    protected post(url: string, body: string = '', options: RequestOptionsArgs = null) {
         var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.post(url, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
-
+    
     // PUT request
-    put(url: string) {
+    protected put(url: string, body: string = '', options: RequestOptionsArgs = null) {
         var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.put(url, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
     // DELETE request
-    delete(url: string) {
+    protected delete(url: string, body: string = '', options: RequestOptionsArgs = null) {
         var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.delete(url, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+    
+    // HEAD request
+    protected head(url: string, options: RequestOptionsArgs = null) {
+        var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.head(url, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    // PATCH request
+    protected patch(url: string, body: string = '', options: RequestOptionsArgs = null) {
+        var url = this.mApiPrefix + url;
+        options.headers = this.getHeaders();
+        return this.mHttp.patch(url, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+    
+    // error handling
+    protected handleError(error) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
+    }
+
+    protected getHeaders() {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return headers;
     }
 }
