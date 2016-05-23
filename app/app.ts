@@ -1,6 +1,6 @@
 import {BaseApp} from './core/BaseApp';
-import {provide} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {provide} from '@angular/core';
+import {Http} from '@angular/http';
 import {App, Platform} from 'ionic-angular';
 import {HomePage} from './pages/home/home';
 import {TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';

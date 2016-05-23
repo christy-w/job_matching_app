@@ -4,7 +4,7 @@
  **/
 
 import {Config} from '../config';
-import {ViewChild} from 'angular2/core';
+import {ViewChild} from '@angular/core';
 import {
 	// System-related dependencies
 	Page,
