@@ -26,23 +26,23 @@ import {
 export class BasePage {
 
     // member variables accessible from child classes
-	@ViewChild(Content) protected mContent: Content;
-	protected mPlatform: Platform;
-	protected mView: ViewController;
-	protected mNav: NavController;
-	protected mParams: NavParams;
+	@ViewChild(Content) content: Content;
+	protected language: string;
 	protected mModal: Modal;
 	protected mLoading: Loading;
-	protected mStorage: Storage;
+
+	// setup SqlStorage (instead of LocalStorage)
+	protected storage: Storage = new Storage(SqlStorage, Config.SQLSTORAGE_OPTIONS);
 	
-	constructor(platform: Platform, view: ViewController, nav: NavController, params: NavParams = null) {
-		this.mPlatform = platform;
-		this.mView = view;
-		this.mNav = nav;
-		this.mParams = params;
-		
-		// setup SqlStorage (instead of LocalStorage)
-		this.mStorage = new Storage(SqlStorage, Config.SQLSTORAGE_OPTIONS);
+	constructor(
+		protected platform: Platform,
+		protected view: ViewController,
+		protected nav: NavController,
+		protected params: NavParams = null
+	) {
+		this.storage.get(Config.STORAGE_UI_LANGUAGE).then((value) => {
+			this.language = value;
+		});
 	}
 	
 	// Alert Message
@@ -52,7 +52,7 @@ export class BasePage {
 			subTitle: subtitle,
 			buttons: [button_text]
 		});
-		this.mNav.present(alert);
+		this.nav.present(alert);
 		return alert;
 	}
 	
@@ -72,12 +72,12 @@ export class BasePage {
 				{
 					text: 'Exit',
 					handler: () => {
-						this.mPlatform.exitApp();
+						this.platform.exitApp();
 					}
 				}
 			]
 		});
-		this.mNav.present(alert);
+		this.nav.present(alert);
 		return alert;
 	}
 
@@ -86,7 +86,7 @@ export class BasePage {
 		this.mLoading = Loading.create({
 			content: content
 		});
-		this.mNav.present(this.mLoading);
+		this.nav.present(this.mLoading);
 		return this.mLoading;
 	}
 	
@@ -99,7 +99,7 @@ export class BasePage {
 	// Modal
 	showModal(component: any, data: Object = {}): Modal {
 		this.mModal = Modal.create(component, data);
-		this.mNav.present(this.mModal);
+		this.nav.present(this.mModal);
 		return this.mModal;
 	}
 	
@@ -109,13 +109,13 @@ export class BasePage {
 			message: msg,
 			duration: duration
 		});
-		this.mNav.present(toast);
+		this.nav.present(toast);
 		return toast;
 	}
 	
 	// Back to previous page, or to root page
 	goBack(toRoot: boolean = false, opts: Object = {}) {
-		(toRoot) ? this.mNav.popToRoot(opts) : this.mNav.pop(opts);
+		(toRoot) ? this.nav.popToRoot(opts) : this.nav.pop(opts);
 	}
 	
 	// Nav events: http://ionicframework.com/docs/v2/api/components/nav/NavController/
@@ -125,7 +125,7 @@ export class BasePage {
 	}
 	onPageDidEnter() {
 		// TODO: add Analytics code
-		console.log('onPageDidEnter: ' + this.mView.name);
+		console.log('onPageDidEnter: ' + this.view.name);
 	}
 	onPageWillLeave() {
 	}
