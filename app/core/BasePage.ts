@@ -3,7 +3,9 @@
  * @Page and templates to be defined in child classes
  **/
 
-import {Config} from '../config';
+import {Config} from '../providers/config';
+import {LocalData} from './providers/local-data';
+import {LanguageSelector} from './providers/language-selector';
 import {ViewChild} from '@angular/core';
 import {
 	// System-related dependencies
@@ -13,8 +15,6 @@ import {
 	NavController,
 	NavParams,
 	Content,
-	Storage,
-	SqlStorage,
 	
 	// UI-related dependencies
 	Alert,
@@ -24,15 +24,11 @@ import {
 } from 'ionic-angular';
 
 export class BasePage {
-
+	
     // member variables accessible from child classes
 	@ViewChild(Content) content: Content;
-	protected language: string;
 	protected mModal: Modal;
 	protected mLoading: Loading;
-
-	// setup SqlStorage (instead of LocalStorage)
-	protected storage: Storage = new Storage(SqlStorage, Config.SQLSTORAGE_OPTIONS);
 	
 	constructor(
 		protected platform: Platform,
@@ -40,9 +36,7 @@ export class BasePage {
 		protected nav: NavController,
 		protected params: NavParams = null
 	) {
-		this.storage.get(Config.STORAGE_UI_LANGUAGE).then((value) => {
-			this.language = value;
-		});
+		console.log('BasePage constructor');
 	}
 	
 	// Alert Message

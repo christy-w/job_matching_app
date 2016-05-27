@@ -1,6 +1,8 @@
-import {Events, Page, Platform, ViewController, NavController} from 'ionic-angular';
+import {Page, Platform, ViewController, NavController} from 'ionic-angular';
+import {TranslatePipe} from 'ng2-translate/ng2-translate';
+
 import {BasePage} from '../../core/BasePage';
-import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
+import {LanguageSelector} from '../../core/providers/language-selector';
 
 @Page({
     templateUrl: 'build/pages/home/home.html',
@@ -9,21 +11,21 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 export class HomePage extends BasePage {
 	
     constructor(
-        platform: Platform,
-        view: ViewController,
-        nav: NavController,
-        private events: Events
+        protected platform: Platform,
+        protected view: ViewController,
+        protected nav: NavController,
+        private language: LanguageSelector
     ) {
         super(platform, view, nav);
+		console.log('HomePage constructor');
     }
 
-    // update language    
+    // pass function to view
     changeLang(value) {
-        this.events.publish('language:change', value);
+        this.language.changeLang(value);
     }
     
     onPageLoaded() {
-        // TODO: check version to decide force upgrade or not
         // TODO: download initial data
     }
 }
