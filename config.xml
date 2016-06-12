@@ -31,8 +31,8 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
     <plugin name="cordova-plugin-splashscreen" spec="~3.2.2" />
     <plugin name="cordova-plugin-statusbar" spec="~2.1.3" />
-    <plugin name="ionic-plugin-keyboard" spec="~2.0.1" />
-    <preference name="xwalkVersion" value="xwalk_core_library_beta:18+" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.0" />
+    <preference name="xwalkVersion" value="18+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
     <preference name="xwalkMode" value="embedded" />
     <preference name="xwalkMultipleApk" value="true" />
