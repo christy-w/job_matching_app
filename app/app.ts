@@ -31,6 +31,7 @@ export class MyApp extends BaseApp {
 let providers = [Config, LocalData];
 
 let config = {
+	prodMode: false,
 	tabbarPlacement: 'bottom'
 };
 

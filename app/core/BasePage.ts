@@ -1,6 +1,6 @@
 /**
  * Base class for all pages, with common functions and member variables for quick access
- * @Page and templates to be defined in child classes
+ * @Component and templates to be defined in child classes
  **/
 import {Component, ViewChild} from '@angular/core';
 import {

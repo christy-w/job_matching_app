@@ -1,6 +1,6 @@
 /**
  * Base class for application, with common workflow when upon app start
- * @App to be defined in child classes
+ * @Component to be defined in child classes
  **/
 import {ViewChild} from '@angular/core';
 import {Platform, Nav} from 'ionic-angular';

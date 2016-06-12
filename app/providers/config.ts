@@ -6,7 +6,6 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class Config {
     
-    // Constants
     public DEFAULT_LANGUAGE: string = 'zh';
     public AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
     public GA_TRACKER_ID: string = '';   // UA-000000-01
