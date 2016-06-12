@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Storage, SqlStorage} from 'ionic-angular';
-import * as _ from 'lodash';
 
 /**
- * Global configuration
+ * Global app configuration
  */
 @Injectable()
 export class Config {

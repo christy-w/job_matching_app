@@ -2,14 +2,9 @@
  * Base class for all pages, with common functions and member variables for quick access
  * @Page and templates to be defined in child classes
  **/
-
-import {Config} from '../providers/config';
-import {LocalData} from './providers/local-data';
-import {LanguageSelector} from './providers/language-selector';
-import {ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {
 	// System-related dependencies
-	Page,
 	Platform,
 	ViewController,
 	NavController,
@@ -22,6 +17,9 @@ import {
 	Modal,
 	Toast
 } from 'ionic-angular';
+
+import {Config} from '../providers/config';
+import {LocalData} from './providers/local-data';
 
 export class BasePage {
 	
@@ -113,20 +111,20 @@ export class BasePage {
 	}
 	
 	// Nav events: http://ionicframework.com/docs/v2/api/components/nav/NavController/
-	onPageLoaded() {
+	ionViewLoaded() {
 	}
-	onPageWillEnter() {
+	ionViewWillEnter() {
 	}
-	onPageDidEnter() {
+	ionViewDidEnter() {
 		// TODO: add Analytics code
-		console.log('onPageDidEnter: ' + this.view.name);
+		console.log('ionViewDidEnter: ' + this.view.name);
 	}
-	onPageWillLeave() {
+	ionViewWillLeave() {
 	}
-	onPageDidLeave() {
+	ionViewDidLeave() {
 	}
-	onPageWillUnload() {
+	ionViewWillUnload() {
 	}
-	onPageDidUnload() {
+	ionViewDidUnload() {
 	}
 }

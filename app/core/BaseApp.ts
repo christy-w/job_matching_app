@@ -22,15 +22,29 @@ export class BaseApp {
 		console.log('BaseApp constructor');
 		
 		platform.ready().then(() => {
+			// Okay, so the platform is ready and our plugins are available.
+			// Here you can do any higher level native things you might need.
 			StatusBar.styleDefault();
 			Splashscreen.hide();
 
 			// TODO: check force upgrade logic
+
+			// indicate the app is successfully loaded
 			this.onAppLoaded();
 		});
 	}
-
-	// TODO: inherit this function from child class (e.g. MyApp)
+	
+	// inherit this function from child class (e.g. MyApp)
 	protected onAppLoaded() {
+		console.log('BaseApp onAppLoaded');
+	}
+	
+	// [For App with Tab / Sidemenu root only]
+	openPage(page: any) {
+		// Reset the content nav to have just this page
+		// we wouldn't want the back button to show in this scenario
+		if (this.nav && page) {
+			this.nav.setRoot(page);
+		}
 	}
 }

@@ -1,31 +1,34 @@
-import {Page, Platform, ViewController, NavController} from 'ionic-angular';
-import {TranslatePipe} from 'ng2-translate/ng2-translate';
+import {Component} from '@angular/core';
+import {Platform, ViewController, NavController} from 'ionic-angular';
 
+import {LocalData} from '../../core/providers/local-data';
 import {BasePage} from '../../core/BasePage';
-import {LanguageSelector} from '../../core/providers/language-selector';
 
-@Page({
-    templateUrl: 'build/pages/home/home.html',
-    pipes: [TranslatePipe]
+@Component({
+    templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage extends BasePage {
 	
     constructor(
+        // dependencies required by parent
         protected platform: Platform,
         protected view: ViewController,
         protected nav: NavController,
-        private language: LanguageSelector
+        
+        // additional dependencies
+        private local: LocalData
     ) {
         super(platform, view, nav);
 		console.log('HomePage constructor');
-    }
-
-    // pass function to view
-    changeLang(value) {
-        this.language.changeLang(value);
+        
+        // Sample: get value of key "test" from local storage
+        local.get('test').then(function(value) {
+            console.log('value = ' + value);
+        })
     }
     
     onPageLoaded() {
         // TODO: download initial data
+        console.log('HomePage onPageLoaded');
     }
 }
