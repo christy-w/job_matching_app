@@ -1,8 +1,9 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160701205107"
+  },
   "devDependencies": {},
-  "ambientDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
-    "lodash": "registry:dt/lodash#3.10.0+20160330154726"
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"
   }
 }
