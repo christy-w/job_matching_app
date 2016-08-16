@@ -3,6 +3,8 @@ import {Http, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import {LocalData} from './providers/local-data';
+
 /**
  * Base class for services, normally linked with remote API
  * @Injectable to be defined in child classes
@@ -12,7 +14,6 @@ export class BaseService {
     // member variables accessible from child classes
     protected mHttp: Http;
     protected mApiPrefix: string = '';
-    protected mData: any = null;
     
     constructor(http: Http) {
         this.mHttp = http;

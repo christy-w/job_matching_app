@@ -16,7 +16,7 @@ export class BaseApp {
 	// default page to display
 	protected rootPage: any;
 	
-    constructor(
+	constructor(
 		platform: Platform
 	) {
 		console.log('BaseApp constructor');
