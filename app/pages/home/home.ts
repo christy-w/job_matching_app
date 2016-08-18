@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {Platform, ViewController, NavController} from 'ionic-angular';
-
-import {LocalData} from '../../core/providers/local-data';
 import {BasePage} from '../../core/BasePage';
 
 @Component({
