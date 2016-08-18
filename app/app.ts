@@ -6,6 +6,7 @@ import {ionicBootstrap, Platform} from 'ionic-angular';
 import {Config} from './providers/config';
 import {BaseApp} from './core/BaseApp';
 import {LocalData} from './core/providers/local-data';
+import {ApiService} from './providers/api-service/api-service';
 
 // App pages
 import {HomePage} from './pages/home/home';
@@ -28,7 +29,7 @@ export class MyApp extends BaseApp {
 	}
 }
 
-let providers = [Config, LocalData];
+let providers = [Config, LocalData, ApiService];
 
 let config = {
 	prodMode: false,

@@ -1,6 +1,7 @@
 import {Http, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {Network} from 'ionic-native';
 
 /**
  * Base class for services, normally linked with remote API
@@ -14,6 +15,7 @@ export class BaseService {
     
     constructor(protected http: Http) {
         this.headers.append('Content-Type', 'application/json');
+        console.log('Network.connection: ' + Network.connection);
     }
     
     // GET request
@@ -23,10 +25,10 @@ export class BaseService {
         return new Promise(resolve => {
             this.http.get(url, options)
                 .map(res => res.json())
-                .catch(this.handleError)
-                .subscribe(data => {
-                    resolve(data);
-                })
+                .subscribe(
+                    data => resolve(data),
+                    error => this.handleError(error)
+                )
         });
     }
     
@@ -38,10 +40,10 @@ export class BaseService {
         return new Promise(resolve => {
             this.http.post(url, body, options)
                 .map(res => res.json())
-                .catch(this.handleError)
-                .subscribe(data => {
-                    resolve(data);
-                })
+                .subscribe(
+                    data => resolve(data),
+                    error => this.handleError(error)
+                )
         });
     }
     
@@ -50,14 +52,14 @@ export class BaseService {
         var url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.http.put(url, body, options)
                 .map(res => res.json())
-                .catch(this.handleError)
-                .subscribe(data => {
-                    resolve(data);
-                })
-        });
+                .subscribe(
+                    data => resolve(data),
+                    error => this.handleError(error)
+                )
+        })
     }
     
     // DELETE request
@@ -67,16 +69,15 @@ export class BaseService {
         return new Promise(resolve => {
             this.http.delete(url, options)
                 .map(res => res.json())
-                .catch(this.handleError)
-                .subscribe(data => {
-                    resolve(data);
-                })
+                .subscribe(
+                    data => resolve(data),
+                    error => this.handleError(error)
+                )
         });
     }
     
     // error handling
     protected handleError(error) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        console.error('BaseService handleError', error);
     }
 }
