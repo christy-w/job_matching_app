@@ -33,6 +33,7 @@ export class BaseService {
     // POST request
     protected post(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
         var url = this.api_prefix + url;
+        body = JSON.stringify(body);
         options.headers = this.headers;
         return new Promise(resolve => {
             this.http.post(url, body, options)
@@ -47,6 +48,7 @@ export class BaseService {
     // PUT request
     protected put(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
         var url = this.api_prefix + url;
+        body = JSON.stringify(body);
         options.headers = this.headers;
         return new Promise(resolve => {
             this.http.put(url, body, options)
