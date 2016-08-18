@@ -22,7 +22,7 @@ export class ApiService extends BaseService {
 	}
 	
 	// get versions later than current app version
-	getVersions() {
+	public getVersions() {
 		return AppVersion.getVersionCode().then(app_version => {
 			this.headers.append('X-API-KEY', this.api_key_anonymous);
 			return this.get('/versions?from=' + app_version);
@@ -30,7 +30,7 @@ export class ApiService extends BaseService {
 	}
 
 	// get App config from API	
-	getAppConfig() {
+	public getAppConfig() {
 		this.headers.append('X-API-KEY', this.api_key_anonymous);
 		return this.get('/configs');
 	}
