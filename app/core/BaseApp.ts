@@ -5,7 +5,8 @@
 import {ViewChild} from '@angular/core';
 import {Platform, Nav} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
-//import {ForceUpgradePage} from '../pages/force-upgrade/force-upgrade';
+import {Utils} from './providers/utils';
+import {ApiService} from '../providers/api-service/api-service';
 
 export class BaseApp {
 	
@@ -17,7 +18,9 @@ export class BaseApp {
 	protected rootPage: any;
 	
 	constructor(
-		platform: Platform
+		protected platform: Platform,
+		protected api: ApiService,
+		protected utils: Utils
 	) {
 		console.log('BaseApp constructor');
 		
@@ -28,6 +31,10 @@ export class BaseApp {
 			Splashscreen.hide();
 
 			// TODO: check force upgrade logic
+			this.api.getVersions().then(data => {
+				console.log('getVersions', data);
+				utils.showAlert('Debug');
+			});
 
 			// indicate the app is successfully loaded
 			this.onAppLoaded();

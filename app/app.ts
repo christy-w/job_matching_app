@@ -5,6 +5,7 @@ import {ionicBootstrap, Platform} from 'ionic-angular';
 // JuicyLauncher 2 core files & providers
 import {Config} from './providers/config';
 import {BaseApp} from './core/BaseApp';
+import {Utils} from './core/providers/utils';
 import {LocalData} from './core/providers/local-data';
 import {ApiService} from './providers/api-service/api-service';
 
@@ -16,8 +17,8 @@ import {HomePage} from './pages/home/home';
 })
 export class MyApp extends BaseApp {
 	
-	constructor(platform: Platform) {
-		super(platform);
+	constructor(platform: Platform, api: ApiService, utils: Utils) {
+		super(platform, api, utils);
 		console.log('MyApp constructor');
 	}
 	
@@ -29,11 +30,11 @@ export class MyApp extends BaseApp {
 	}
 }
 
-let providers = [Config, LocalData, ApiService];
+let providers = [Config, Utils, LocalData, ApiService];
 
 let config = {
 	prodMode: false,
-	tabbarPlacement: 'bottom'
+	tabsPlacement: 'bottom'
 };
 
 // Pass the main app component as the first argument
