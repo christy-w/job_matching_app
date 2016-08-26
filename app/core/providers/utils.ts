@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {TranslateService} from 'ng2-translate/ng2-translate';
 import {
 	ActionSheet, ActionSheetController, ActionSheetOptions,
 	Alert, AlertController, AlertOptions,
@@ -7,6 +8,10 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
+
+import * as _ from 'lodash';
+import {Config} from '../../providers/config';
+import {LocalData} from './local-data';
 
 /**
  * Class with utility functions for quick
@@ -31,7 +36,14 @@ export class Utils {
 		private popoverCtrl: PopoverController,
 
 		// http://ionicframework.com/docs/v2/api/components/toast/ToastController/
-		private toastCtrl: ToastController
+		private toastCtrl: ToastController,
+
+		// 3-party providers
+		private translate: TranslateService,
+
+		// custom providers
+        private config: Config,
+        private local: LocalData
 	) {
 	}
 
@@ -100,4 +112,40 @@ export class Utils {
 		let toast = this.createToast({message: msg, duration: duration});
 		return toast.present();
 	}
+
+	// init language setup	
+	setupLang() {
+		// get stored interface language
+        this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
+            let userLang: string;
+            this.translate.setDefaultLang(this.config.DEFAULT_LANGUAGE);
+            
+            if (value) {
+                userLang = value;
+            } else {
+                userLang = navigator.language.split('-')[0]; // use navigator lang if available
+                userLang = /(zh|en)/gi.test(userLang) ? userLang : this.config.DEFAULT_LANGUAGE;
+            }
+            this.translate.use(userLang);
+        });
+	}
+	
+	// change language
+    changeLang(value) {
+        // change language only when the target value is within "available list"
+        if (_.includes(this.config.AVAILABLE_LANGUAGES, value)) {
+			this.local.set('UI_LANGUAGE', value);
+            this.translate.use(value);
+        }
+    }
+    
+	// get localized string (async)
+    getLang(key: string | string[], params: Object = null): Promise<any> {
+        return this.translate.get(key).toPromise();
+    }
+    
+	// get localized string (sync)
+    instantLang(key: string | string[], params: Object = null): string {
+        return this.translate.instant(key, params);
+    }
 }

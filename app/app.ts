@@ -1,5 +1,7 @@
 // Angular, Ionic, third-party libraries
 import {Component} from '@angular/core';
+import {Http} from '@angular/http';
+import {TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 import {ionicBootstrap, Platform} from 'ionic-angular';
 
 // JuicyLauncher 2 core files & providers
@@ -30,15 +32,23 @@ export class MyApp extends BaseApp {
 	}
 }
 
-let providers = [Config, Utils, LocalData, ApiService];
-
-let config = {
-	prodMode: false,
-	tabsPlacement: 'bottom'
-};
-
 // Pass the main app component as the first argument
 // Pass any providers for your app in the second argument
 // Set any config for your app as the third argument:
 // http://ionicframework.com/docs/v2/api/config/Config/
-ionicBootstrap(MyApp, providers, config);
+ionicBootstrap(MyApp, [
+	// NG2-translate providers
+	{
+		provide: TranslateLoader,
+		useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+		deps: [Http]
+	},
+	TranslateService,
+
+	// Custom providers
+	Config, Utils, LocalData, ApiService
+], {
+	// App config
+	prodMode: false,
+	tabsPlacement: 'bottom'
+});
