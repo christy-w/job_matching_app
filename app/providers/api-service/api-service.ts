@@ -35,13 +35,9 @@ export class ApiService extends BaseService {
 			});
 		}).catch(error => {
 			console.error(error);
-			return {
-				curr_version: 1,
-				new_versions: 1
-			}
 		});
 	}
-
+	
 	// get App config from API	
 	public getAppConfig() {
 		this.headers.append('X-API-KEY', this.api_key_anonymous);

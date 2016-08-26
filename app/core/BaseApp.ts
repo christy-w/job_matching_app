@@ -7,6 +7,7 @@ import {Platform, Nav} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
 import {Utils} from './providers/utils';
 import {ApiService} from '../providers/api-service/api-service';
+import {NewVersionPage} from '../pages/new-version/new-version';
 
 export class BaseApp {
 	
@@ -29,15 +30,17 @@ export class BaseApp {
 			// Here you can do any higher level native things you might need.
 			StatusBar.styleDefault();
 			Splashscreen.hide();
-
-			// TODO: check force upgrade logic
+			
+			// check latest app versions
 			this.api.getVersions().then(data => {
-				console.log('getVersions', data);
-				utils.showAlert('Debug');
+				if (data && data.new_versions) {
+					// display modal when newer versions found
+					utils.showModal(NewVersionPage, data);
+				}
+				
+				// indicate the app is successfully loaded
+				this.onAppLoaded();
 			});
-
-			// indicate the app is successfully loaded
-			this.onAppLoaded();
 		});
 	}
 	

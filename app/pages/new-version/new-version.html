@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start *ngIf="!force_upgrade">
+      <button (click)="dismiss()">Skip</button>
+    </ion-buttons>
+    <ion-title>New Version Available</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Current Version: {{curr_version}}</p>
+  <ion-list>
+    <ion-list-header>New Versions</ion-list-header>
+    <ion-item *ngFor="let version of new_versions">
+      <h2>Version: {{version.code}}</h2>
+      <h4>Publish Date: {{version.publish_date}}</h4>
+      <div [innerHTML]="version.release_notes"></div>
+    </ion-item>
+  </ion-list>
+</ion-content>
