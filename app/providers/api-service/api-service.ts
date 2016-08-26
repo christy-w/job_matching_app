@@ -9,7 +9,8 @@ import {BaseService} from '../../core/BaseService';
 @Injectable()
 export class ApiService extends BaseService {
 	
-	// override API URL prefix 
+	// override API URL prefix
+	//api_prefix: string = 'http://localhost/juicylauncher2_web/api';
 	api_prefix: string = 'http://dev.juicyapphk.com/juicylauncher2_web/api';
 
 	// default API key	
@@ -41,7 +42,7 @@ export class ApiService extends BaseService {
 	// get App config from API	
 	public getAppConfig() {
 		this.headers.append('X-API-KEY', this.api_key_anonymous);
-		return this.get('/configs');
+		return this.get('/config');
 	}
     
     // override error handling from BaseService

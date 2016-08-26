@@ -1,21 +1,23 @@
 import {Component} from '@angular/core';
-import {NavParams, ViewController} from 'ionic-angular';
+import {Platform, NavParams, ViewController} from 'ionic-angular';
 
 /**
  * Modal page for display latest versions returned from API
  */
 @Component({
-  templateUrl: 'build/pages/new-version/new-version.html',
+	templateUrl: 'build/pages/new-version/new-version.html',
 })
 export class NewVersionPage {
 
 	public curr_version: string;
 	public new_versions: Version[];
 	public force_upgrade: boolean = false;
+	public download_url: string = '';
 
 	constructor(
 		public navParams: NavParams,
-		public viewCtrl: ViewController
+		public viewCtrl: ViewController,
+		public platform: Platform
 	) {
 		this.curr_version = navParams.data.curr_version;
 		this.new_versions = navParams.data.new_versions;
@@ -26,6 +28,11 @@ export class NewVersionPage {
 				this.force_upgrade = true;
 			}	
 		})
+
+		// disable hardware back button		
+		if (this.force_upgrade) {
+			platform.registerBackButtonAction(() => {});
+		}
 	}
 
 	dismiss(data) {
