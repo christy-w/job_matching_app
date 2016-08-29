@@ -10,7 +10,7 @@ import {
 } from 'ionic-angular';
 
 import * as _ from 'lodash';
-import {Config} from '../../providers/config';
+import {Config} from '../../config';
 import {LocalData} from './local-data';
 
 /**
@@ -39,8 +39,9 @@ export class Utils {
 		private toastCtrl: ToastController,
 
 		// 3-party providers
+		// https://github.com/ocombe/ng2-translate
 		private translate: TranslateService,
-
+		
 		// custom providers
         private config: Config,
         private local: LocalData

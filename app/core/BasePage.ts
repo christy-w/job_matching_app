@@ -12,7 +12,6 @@ import {
 	Content
 } from 'ionic-angular';
 
-import {Config} from '../providers/config';
 import {LocalData} from './providers/local-data';
 
 export class BasePage {
