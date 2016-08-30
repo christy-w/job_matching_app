@@ -12,8 +12,6 @@ import {
 	Content
 } from 'ionic-angular';
 
-import {LocalData} from './providers/local-data';
-
 export class BasePage {
 
 	// member variables accessible from child classes

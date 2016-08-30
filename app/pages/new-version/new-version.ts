@@ -9,18 +9,18 @@ import {Platform, NavParams, ViewController} from 'ionic-angular';
 })
 export class NewVersionPage {
 
-	public curr_version: string;
+	public curr_version_code: string;
 	public new_versions: Version[];
 	public force_upgrade: boolean = false;
 	public download_url: string = '';
 
 	constructor(
-		public navParams: NavParams,
-		public viewCtrl: ViewController,
-		public platform: Platform
+		public platform: Platform,
+		public view: ViewController,
+		public params: NavParams
 	) {
-		this.curr_version = navParams.data.curr_version;
-		this.new_versions = navParams.data.new_versions;
+		this.curr_version_code = params.data.curr_version_code;
+		this.new_versions = params.data.new_versions;
 
 		// check whether force upgrade or not		
 		this.new_versions.forEach(version => {
@@ -39,7 +39,7 @@ export class NewVersionPage {
 		if (!this.force_upgrade) {
 			// using the injected ViewController this page
 			// can "dismiss" itself and pass back data
-			this.viewCtrl.dismiss(data);
+			this.view.dismiss(data);
 		}
 	}
 }

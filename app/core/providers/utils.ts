@@ -113,11 +113,11 @@ export class Utils {
 		let toast = this.createToast({message: msg, duration: duration});
 		return toast.present();
 	}
-
-	// init language setup	
+	
+	// init language setup
 	setupLang() {
 		// get stored interface language
-        this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
+        return this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
             let userLang: string;
             this.translate.setDefaultLang(this.config.DEFAULT_LANGUAGE);
             

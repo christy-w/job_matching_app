@@ -30,7 +30,7 @@ export class ApiService extends BaseService {
 			this.headers.append('X-API-KEY', this.api_key_anonymous);
 			return this.get('/versions?from_code=' + version_code).then(data => {
 				return {
-					curr_version: version_code,
+					curr_version_code: version_code,
 					new_versions: data
 				};
 			});
