@@ -34,6 +34,7 @@ export class BaseApp {
 			// JuicyLauncher setup
 			utils.setupLang();
 			utils.setupGoogleAnalytics();
+			utils.setupOneSignal();
 			
 			// check latest app versions
 			this.api.getVersions().then(data => {

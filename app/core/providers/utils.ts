@@ -8,7 +8,7 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
-import {GoogleAnalytics} from 'ionic-native';
+import {GoogleAnalytics, OneSignal} from 'ionic-native';
 
 import * as _ from 'lodash';
 import {Config} from '../../config';
@@ -166,17 +166,44 @@ export class Utils {
 
 	// Google Analytics - Set User ID	
 	public setGoogleAnalyticsUserId(id: number | string) {
-		GoogleAnalytics.setUserId(id+'');
+		if (this.config.GA_TRACKER_ID) {
+			GoogleAnalytics.setUserId(id + '');
+		}
 	}
 	
 	// Google Analytics - Track View
 	public trackView(title: string, campaign_url?: string): Promise<any> {
 		console.log('Track View: ' + title);
-		return GoogleAnalytics.trackView(title, campaign_url);
+		if (this.config.GA_TRACKER_ID) {
+			return GoogleAnalytics.trackView(title, campaign_url);
+		} else {
+			return Promise.resolve();
+		}
 	}
 	
 	// Google Analytics - Track Event
 	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
-		return GoogleAnalytics.trackEvent(category, action, label, value);
+		if (this.config.GA_TRACKER_ID) {
+			return GoogleAnalytics.trackEvent(category, action, label, value);
+		} else {
+			return Promise.resolve();
+		}
+	}
+
+	// Setup OneSignal
+	public setupOneSignal() {
+		if (this.config.ONESIGNAL_APP_ID) {
+			console.log('Setting up OneSignal');
+			OneSignal.init(this.config.ONESIGNAL_APP_ID, {
+				autoRegister: true,
+				googleProjectNumber: this.config.ONESIGNAL_GOOGLE_PROJECT_NUMBER
+			}).subscribe(jsonData => {
+				console.log('didReceiveRemoteNotificationCallBack', jsonData);
+			}, error => {
+				console.error('Utils setupOneSignal error:', error);	
+			});
+			
+			OneSignal.enableInAppAlertNotification(true);
+		}
 	}
 }

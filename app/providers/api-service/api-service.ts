@@ -35,7 +35,7 @@ export class ApiService extends BaseService {
 				};
 			});
 		}).catch(error => {
-			console.error(error);
+			console.error('ApiService getVersions error:', error);
 		});
 	}
 	

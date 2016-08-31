@@ -42,7 +42,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": []
 }
