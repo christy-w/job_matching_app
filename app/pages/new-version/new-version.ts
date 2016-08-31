@@ -10,7 +10,7 @@ import {Platform, NavParams, ViewController} from 'ionic-angular';
 export class NewVersionPage {
 
 	public curr_version_code: string;
-	public new_versions: Version[];
+	public new_versions: Version[] = [];
 	public force_upgrade: boolean = false;
 	public download_url: string = '';
 
@@ -20,15 +20,17 @@ export class NewVersionPage {
 		public params: NavParams
 	) {
 		this.curr_version_code = params.data.curr_version_code;
-		this.new_versions = params.data.new_versions;
 
-		// check whether force upgrade or not		
-		this.new_versions.forEach(version => {
-			if (version.force_upgrade) {
-				this.force_upgrade = true;
-			}	
-		})
-
+		// check whether force upgrade or not
+		if (params.data.new_versions) {
+			this.new_versions = params.data.new_versions;
+			this.new_versions.forEach(version => {
+				if (version.force_upgrade) {
+					this.force_upgrade = true;
+				}	
+			})
+		}
+		
 		// disable hardware back button		
 		if (this.force_upgrade) {
 			platform.registerBackButtonAction(() => {});

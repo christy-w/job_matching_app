@@ -200,7 +200,7 @@ export class Utils {
 			}).subscribe(jsonData => {
 				console.log('didReceiveRemoteNotificationCallBack', jsonData);
 			}, error => {
-				console.error('Utils setupOneSignal error:', error);	
+				console.error('Utils > setupOneSignal() >', error);	
 			});
 			
 			OneSignal.enableInAppAlertNotification(true);

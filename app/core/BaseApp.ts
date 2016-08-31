@@ -38,7 +38,7 @@ export class BaseApp {
 			
 			// check latest app versions
 			this.api.getVersions().then(data => {
-				if (data && data.new_versions) {
+				if (data && data.new_versions[0]) {
 					// display modal when newer versions found
 					utils.showModal(NewVersionPage, data);
 				}

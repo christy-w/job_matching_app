@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {ToastController} from 'ionic-angular';
 import {AppVersion} from 'ionic-native';
 import {Utils} from '../../core/providers/utils';
-import {BaseService} from '../../core/BaseService';
+import {BaseService, ErrorObj} from '../../core/BaseService';
 
 @Injectable()
 export class ApiService extends BaseService {
@@ -35,7 +35,7 @@ export class ApiService extends BaseService {
 				};
 			});
 		}).catch(error => {
-			console.error('ApiService getVersions error:', error);
+			console.error('ApiService > getVersions() >', error);
 		});
 	}
 	
@@ -44,12 +44,12 @@ export class ApiService extends BaseService {
 		this.headers.append('X-API-KEY', this.api_key_anonymous);
 		return this.get('/config');
 	}
-    
-    // override error handling from BaseService
-	// e.g. display toast message with error text
-    protected handleError(error) {
-        console.error('ApiService handleError', error);
-		let msg = 'Error ' + error.status + ': ' + error.statusText;
+	
+    // (Optional) override error handling from BaseService, e.g. display toast message with error text
+    protected handleError(reject, error_obj: ErrorObj) {
+        console.error('ApiService > handleError() >', error_obj);
+		let msg = this.utils.instantLang('MSG.ERROR') + ': ' + error_obj.message;
 		this.utils.showToast(msg, 3000);
+		reject(error_obj);
     }
 }
