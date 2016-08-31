@@ -1,7 +1,6 @@
 import {Http, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {Network} from 'ionic-native';
 
 /**
  * Base class for services, normally linked with remote API
@@ -15,7 +14,6 @@ export class BaseService {
     
     constructor(protected http: Http) {
         this.headers.append('Content-Type', 'application/json');
-        console.log('Network.connection: ' + Network.connection);
     }
     
     // GET request

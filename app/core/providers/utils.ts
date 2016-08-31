@@ -115,7 +115,7 @@ export class Utils {
 	}
 	
 	// init language setup
-	setupLang() {
+	public setupLang() {
 		// get stored interface language
         return this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
             let userLang: string;
@@ -132,7 +132,7 @@ export class Utils {
 	}
 	
 	// change language
-    changeLang(value) {
+    public changeLang(value) {
         // change language only when the target value is within "available list"
         if (_.includes(this.config.AVAILABLE_LANGUAGES, value)) {
 			this.local.set('UI_LANGUAGE', value);
@@ -141,12 +141,12 @@ export class Utils {
     }
     
 	// get localized string (async)
-    getLang(key: string | string[], params: Object = null): Promise<any> {
+    public getLang(key: string | string[], params: Object = null): Promise<any> {
         return this.translate.get(key).toPromise();
     }
     
 	// get localized string (sync)
-    instantLang(key: string | string[], params: Object = null): string {
+    public instantLang(key: string | string[], params: Object = null): string {
         return this.translate.instant(key, params);
     }
 }
