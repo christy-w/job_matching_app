@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 import {Platform, ViewController, NavController} from 'ionic-angular';
-import {BasePage} from '../../core/BasePage';
+import {BasePage} from '../../core/base-page';
 import {Utils} from '../../core/providers/utils';
 
 @Component({

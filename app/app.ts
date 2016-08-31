@@ -5,7 +5,7 @@ import {TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-tran
 import {ionicBootstrap, Platform} from 'ionic-angular';
 
 // JuicyLauncher 2 core files & providers
-import {BaseApp} from './core/BaseApp';
+import {BaseApp} from './core/base-app';
 import {Utils} from './core/providers/utils';
 import {LocalData} from './core/providers/local-data';
 import {ApiService} from './providers/api-service/api-service';

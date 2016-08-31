@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {ToastController} from 'ionic-angular';
 import {AppVersion} from 'ionic-native';
 import {Utils} from '../../core/providers/utils';
-import {BaseService, ErrorObj} from '../../core/BaseService';
+import {BaseService, ErrorObj} from '../../core/base-service';
 
 @Injectable()
 export class ApiService extends BaseService {
