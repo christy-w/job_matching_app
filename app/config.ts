@@ -14,4 +14,11 @@ export class Config {
     // Push Notifications (set ONESIGNAL_APP_ID as empty to disable)
     static ONESIGNAL_APP_ID: string = 'd284b536-47d9-11e5-a647-478fe54bb917';
     static ONESIGNAL_GOOGLE_PROJECT_NUMBER: string = '606380984953';
+
+    // Turn on/off debug messages
+    static DEBUG_VERBOSE: boolean = false;				// Messages for non-critical points
+    static DEBUG_API_REQUEST: boolean = true;			// Messages before API request 
+    static DEBUG_API_REPONSE: boolean = true;			// Messages upon receiving API response
+    static DEBUG_ANALYTICS: boolean = true;				// Messages related to Analytics platform (e.g. Google Analytics)
+    static DEBUG_PUSH_NOTIFICATION: boolean = false;	// Messages related to push notifications (e.g. OneSignal) 
 }

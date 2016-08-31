@@ -1,6 +1,7 @@
 import {Http, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {Config} from '../config';
 import {Utils} from './providers/utils';
 
 /**
@@ -21,11 +22,12 @@ export class BaseService {
     protected get(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
         var url = this.api_prefix + url;
         options.headers = this.headers;
+        Config.DEBUG_API_REQUEST && console.log('API Request: [GET] ' + url);
         return new Promise((resolve, reject) => {
             this.http.get(url, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : resolve(data),
+                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                     error => this.handleHttpError(reject, error)
                 )
         });
@@ -36,11 +38,12 @@ export class BaseService {
         var url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
+        Config.DEBUG_API_REQUEST && console.log('API Request: [POST] ' + url);
         return new Promise((resolve, reject) => {
             this.http.post(url, body, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : resolve(data),
+                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                     error => this.handleHttpError(reject, error)
                 )
         });
@@ -51,11 +54,12 @@ export class BaseService {
         var url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
+        Config.DEBUG_API_REQUEST && console.log('API Request: [PUT] ' + url);
         return new Promise((resolve, reject) => {
             this.http.put(url, body, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : resolve(data),
+                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                     error => this.handleHttpError(reject, error)
                 )
         })
@@ -65,14 +69,21 @@ export class BaseService {
     protected delete(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
         var url = this.api_prefix + url;
         options.headers = this.headers;
+        Config.DEBUG_API_REQUEST && console.log('API Request: [DELETE] ' + url);
         return new Promise((resolve, reject) => {
             this.http.delete(url, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : resolve(data),
+                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                     error => this.handleHttpError(reject, error)
                 )
         });
+    }
+
+    // Common function to handle responses
+    protected handleResponse(resolve, url: string, data: any) {
+        Config.DEBUG_API_REPONSE && console.log('API Response: ' + url, data);
+        resolve(data);
     }
 
     // Common function to handle errors

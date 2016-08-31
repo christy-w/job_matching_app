@@ -153,7 +153,7 @@ export class Utils {
 	// Setup Google Analytics	
 	public setupGoogleAnalytics() {
 		if (Config.GA_TRACKER_ID) {
-			console.log('Setting up Google Analytics');
+			Config.DEBUG_ANALYTICS && console.log('Setting up Google Analytics');
 			if (Config.GA_DEBUG_MODE) {
 				GoogleAnalytics.debugMode();
 			}
@@ -172,7 +172,7 @@ export class Utils {
 	
 	// Google Analytics - Track View
 	public trackView(title: string, campaign_url?: string): Promise<any> {
-		console.log('Track View: ' + title);
+		Config.DEBUG_ANALYTICS && console.log('Track View: ' + title);
 		if (Config.GA_TRACKER_ID) {
 			return GoogleAnalytics.trackView(title, campaign_url);
 		} else {
@@ -192,12 +192,12 @@ export class Utils {
 	// Setup OneSignal
 	public setupOneSignal() {
 		if (Config.ONESIGNAL_APP_ID) {
-			console.log('Setting up OneSignal');
+			Config.DEBUG_PUSH_NOTIFICATION && console.log('Setting up OneSignal');
 			OneSignal.init(Config.ONESIGNAL_APP_ID, {
 				autoRegister: true,
 				googleProjectNumber: Config.ONESIGNAL_GOOGLE_PROJECT_NUMBER
 			}).subscribe(jsonData => {
-				console.log('didReceiveRemoteNotificationCallBack', jsonData);
+				Config.DEBUG_PUSH_NOTIFICATION && console.log('didReceiveRemoteNotificationCallBack', jsonData);
 			}, error => {
 				console.error('Utils > setupOneSignal() >', error);	
 			});

@@ -5,6 +5,7 @@
 import {ViewChild} from '@angular/core';
 import {Platform, Nav} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
+import {Config} from '../config';
 import {Utils} from './providers/utils';
 import {ApiService} from '../providers/api-service/api-service';
 import {NewVersionPage} from '../pages/new-version/new-version';
@@ -23,7 +24,7 @@ export class BaseApp {
 		protected api: ApiService,
 		protected utils: Utils
 	) {
-		console.log('BaseApp constructor');
+		Config.DEBUG_VERBOSE && console.log('BaseApp constructor');
 		
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
@@ -51,7 +52,7 @@ export class BaseApp {
 	
 	// inherit this function from child class (e.g. MyApp)
 	protected onAppLoaded() {
-		console.log('BaseApp onAppLoaded');
+		Config.DEBUG_VERBOSE && console.log('BaseApp onAppLoaded');
 	}
 	
 	// [For App with Tab / Sidemenu root only]

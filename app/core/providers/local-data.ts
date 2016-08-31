@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Storage, SqlStorage} from 'ionic-angular';
+import {Config} from '../../config';
 
 /**
  * Data stored in SqlStorage, includes:
@@ -13,7 +14,7 @@ export class LocalData {
 	private storage: Storage = new Storage(SqlStorage);
 	
 	constructor() {
-		console.log('LocalData constructor');
+		Config.DEBUG_VERBOSE && console.log('LocalData constructor');
 	}
 	
 	set(key: string, value: any): Promise<any> {

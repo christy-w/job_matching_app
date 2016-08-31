@@ -6,6 +6,7 @@ import {ionicBootstrap, Platform} from 'ionic-angular';
 
 // JuicyLauncher 2 core files & providers
 import {BaseApp} from './core/base-app';
+import {Config} from './config';
 import {Utils} from './core/providers/utils';
 import {LocalData} from './core/providers/local-data';
 import {ApiService} from './providers/api-service/api-service';
@@ -20,13 +21,13 @@ export class MyApp extends BaseApp {
 	
 	constructor(platform: Platform, api: ApiService, utils: Utils) {
 		super(platform, api, utils);
-		console.log('MyApp constructor');
+		Config.DEBUG_VERBOSE && console.log('MyApp constructor');
 	}
 	
 	// override parent
 	protected onAppLoaded() {
 		// set rootpage only when the app is ready
-		console.log('MyApp onAppLoaded');
+		Config.DEBUG_VERBOSE && console.log('MyApp onAppLoaded');
 		this.rootPage = HomePage;
 	}
 }

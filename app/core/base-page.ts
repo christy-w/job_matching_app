@@ -11,6 +11,7 @@ import {
 	NavParams,
 	Content
 } from 'ionic-angular';
+import {Config} from '../config';
 import {Utils} from './providers/utils';
 
 export class BasePage {
@@ -24,7 +25,7 @@ export class BasePage {
 		protected nav: NavController,
 		protected utils: Utils
 	) {
-		console.log('BasePage constructor');
+		Config.DEBUG_VERBOSE && console.log('BasePage constructor');
 	}
 	
 	// Back to previous page, or to root page

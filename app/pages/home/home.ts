@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 import {Platform, ViewController, NavController} from 'ionic-angular';
 import {BasePage} from '../../core/base-page';
+import {Config} from '../../config';
 import {Utils} from '../../core/providers/utils';
 
 @Component({
@@ -18,11 +19,11 @@ export class HomePage extends BasePage {
 		protected utils: Utils
 	) {
 		super(platform, view, nav, utils);
-		console.log('HomePage constructor');
+		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
 	}
 	
 	onPageLoaded() {
 		// TODO: download initial data
-		console.log('HomePage onPageLoaded');
+		Config.DEBUG_VERBOSE && console.log('HomePage onPageLoaded');
 	}
 }
