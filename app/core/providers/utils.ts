@@ -8,6 +8,7 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
+import {GoogleAnalytics} from 'ionic-native';
 
 import * as _ from 'lodash';
 import {Config} from '../../config';
@@ -114,7 +115,7 @@ export class Utils {
 		return toast.present();
 	}
 	
-	// init language setup
+	// Init language setup
 	public setupLang() {
 		// get stored interface language
         return this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
@@ -131,7 +132,7 @@ export class Utils {
         });
 	}
 	
-	// change language
+	// Change language
     public changeLang(value) {
         // change language only when the target value is within "available list"
         if (_.includes(this.config.AVAILABLE_LANGUAGES, value)) {
@@ -140,13 +141,42 @@ export class Utils {
         }
     }
     
-	// get localized string (async)
+	// Get localized string (async)
     public getLang(key: string | string[], params: Object = null): Promise<any> {
         return this.translate.get(key).toPromise();
     }
     
-	// get localized string (sync)
+	// Get localized string (sync)
     public instantLang(key: string | string[], params: Object = null): string {
         return this.translate.instant(key, params);
     }
+	
+	// Setup Google Analytics	
+	public setupGoogleAnalytics() {
+		if (this.config.GA_TRACKER_ID) {
+			console.log('Setting up Google Analytics');
+			if (this.config.GA_DEBUG_MODE) {
+				GoogleAnalytics.debugMode();
+			}
+			
+			GoogleAnalytics.startTrackerWithId(this.config.GA_TRACKER_ID);
+			GoogleAnalytics.enableUncaughtExceptionReporting(this.config.GA_DEBUG_MODE);
+		}
+	}
+
+	// Google Analytics - Set User ID	
+	public setGoogleAnalyticsUserId(id: number | string) {
+		GoogleAnalytics.setUserId(id+'');
+	}
+	
+	// Google Analytics - Track View
+	public trackView(title: string, campaign_url?: string): Promise<any> {
+		console.log('Track View: ' + title);
+		return GoogleAnalytics.trackView(title, campaign_url);
+	}
+	
+	// Google Analytics - Track Event
+	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
+		return GoogleAnalytics.trackEvent(category, action, label, value);
+	}
 }

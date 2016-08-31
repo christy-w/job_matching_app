@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 import {Platform, ViewController, NavController} from 'ionic-angular';
 import {BasePage} from '../../core/BasePage';
+import {Utils} from '../../core/providers/utils';
 
 @Component({
 	templateUrl: 'build/pages/home/home.html',
@@ -13,9 +14,10 @@ export class HomePage extends BasePage {
 		// dependencies required by parent
 		protected platform: Platform,
 		protected view: ViewController,
-		protected nav: NavController
+		protected nav: NavController,
+		protected utils: Utils
 	) {
-		super(platform, view, nav);
+		super(platform, view, nav, utils);
 		console.log('HomePage constructor');
 	}
 	

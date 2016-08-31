@@ -11,6 +11,7 @@ import {
 	NavParams,
 	Content
 } from 'ionic-angular';
+import {Utils} from './providers/utils';
 
 export class BasePage {
 
@@ -21,7 +22,7 @@ export class BasePage {
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
-		protected params: NavParams = null
+		protected utils: Utils
 	) {
 		console.log('BasePage constructor');
 	}
@@ -37,8 +38,8 @@ export class BasePage {
 	ionViewWillEnter() {
 	}
 	ionViewDidEnter() {
-		// TODO: add Analytics code
-		console.log('ionViewDidEnter: ' + this.view.name);
+		// Google Analytics track view
+		this.utils.trackView(this.view.name);
 	}
 	ionViewWillLeave() {
 	}

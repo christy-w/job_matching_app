@@ -30,9 +30,10 @@ export class BaseApp {
 			// Here you can do any higher level native things you might need.
 			StatusBar.styleDefault();
 			Splashscreen.hide();
-
-			// localization			
+			
+			// JuicyLauncher setup
 			utils.setupLang();
+			utils.setupGoogleAnalytics();
 			
 			// check latest app versions
 			this.api.getVersions().then(data => {
