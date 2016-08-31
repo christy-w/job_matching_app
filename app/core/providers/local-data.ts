@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Storage, SqlStorage} from 'ionic-angular';
 
-import * as _ from 'lodash';
-import {Config} from '../../config';
-
 /**
  * Data stored in SqlStorage, includes:
  *  - user preference

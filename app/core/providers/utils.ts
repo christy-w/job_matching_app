@@ -44,7 +44,6 @@ export class Utils {
 		private translate: TranslateService,
 		
 		// custom providers
-        private config: Config,
         private local: LocalData
 	) {
 	}
@@ -118,15 +117,15 @@ export class Utils {
 	// Init language setup
 	public setupLang() {
 		// get stored interface language
-        return this.local.get('UI_LANGUAGE', this.config.DEFAULT_LANGUAGE).then(value => {
+        return this.local.get('UI_LANGUAGE', Config.DEFAULT_LANGUAGE).then(value => {
             let userLang: string;
-            this.translate.setDefaultLang(this.config.DEFAULT_LANGUAGE);
+            this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
             
             if (value) {
                 userLang = value;
             } else {
                 userLang = navigator.language.split('-')[0]; // use navigator lang if available
-                userLang = /(zh|en)/gi.test(userLang) ? userLang : this.config.DEFAULT_LANGUAGE;
+                userLang = /(zh|en)/gi.test(userLang) ? userLang : Config.DEFAULT_LANGUAGE;
             }
             this.translate.use(userLang);
         });
@@ -135,7 +134,7 @@ export class Utils {
 	// Change language
     public changeLang(value) {
         // change language only when the target value is within "available list"
-        if (_.includes(this.config.AVAILABLE_LANGUAGES, value)) {
+        if (_.includes(Config.AVAILABLE_LANGUAGES, value)) {
 			this.local.set('UI_LANGUAGE', value);
             this.translate.use(value);
         }
@@ -153,20 +152,20 @@ export class Utils {
 	
 	// Setup Google Analytics	
 	public setupGoogleAnalytics() {
-		if (this.config.GA_TRACKER_ID) {
+		if (Config.GA_TRACKER_ID) {
 			console.log('Setting up Google Analytics');
-			if (this.config.GA_DEBUG_MODE) {
+			if (Config.GA_DEBUG_MODE) {
 				GoogleAnalytics.debugMode();
 			}
 			
-			GoogleAnalytics.startTrackerWithId(this.config.GA_TRACKER_ID);
-			GoogleAnalytics.enableUncaughtExceptionReporting(this.config.GA_DEBUG_MODE);
+			GoogleAnalytics.startTrackerWithId(Config.GA_TRACKER_ID);
+			GoogleAnalytics.enableUncaughtExceptionReporting(Config.GA_DEBUG_MODE);
 		}
 	}
 
 	// Google Analytics - Set User ID	
 	public setGoogleAnalyticsUserId(id: number | string) {
-		if (this.config.GA_TRACKER_ID) {
+		if (Config.GA_TRACKER_ID) {
 			GoogleAnalytics.setUserId(id + '');
 		}
 	}
@@ -174,7 +173,7 @@ export class Utils {
 	// Google Analytics - Track View
 	public trackView(title: string, campaign_url?: string): Promise<any> {
 		console.log('Track View: ' + title);
-		if (this.config.GA_TRACKER_ID) {
+		if (Config.GA_TRACKER_ID) {
 			return GoogleAnalytics.trackView(title, campaign_url);
 		} else {
 			return Promise.resolve();
@@ -183,7 +182,7 @@ export class Utils {
 	
 	// Google Analytics - Track Event
 	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
-		if (this.config.GA_TRACKER_ID) {
+		if (Config.GA_TRACKER_ID) {
 			return GoogleAnalytics.trackEvent(category, action, label, value);
 		} else {
 			return Promise.resolve();
@@ -192,11 +191,11 @@ export class Utils {
 
 	// Setup OneSignal
 	public setupOneSignal() {
-		if (this.config.ONESIGNAL_APP_ID) {
+		if (Config.ONESIGNAL_APP_ID) {
 			console.log('Setting up OneSignal');
-			OneSignal.init(this.config.ONESIGNAL_APP_ID, {
+			OneSignal.init(Config.ONESIGNAL_APP_ID, {
 				autoRegister: true,
-				googleProjectNumber: this.config.ONESIGNAL_GOOGLE_PROJECT_NUMBER
+				googleProjectNumber: Config.ONESIGNAL_GOOGLE_PROJECT_NUMBER
 			}).subscribe(jsonData => {
 				console.log('didReceiveRemoteNotificationCallBack', jsonData);
 			}, error => {
