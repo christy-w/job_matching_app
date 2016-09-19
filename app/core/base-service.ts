@@ -1,6 +1,8 @@
 import {Http, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {Platform} from 'ionic-angular';
+import {AppVersion} from 'ionic-native';
 import {Config} from '../config';
 import {Utils} from './providers/utils';
 
@@ -14,7 +16,10 @@ export class BaseService {
     protected api_prefix: string = '';
     protected headers: Headers = new Headers();
     
-    constructor(protected http: Http, protected utils?: Utils) {
+	// default API key	
+	protected api_key_anonymous: string = 'anonymous';
+    
+    constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.append('Content-Type', 'application/json');
     }
     
@@ -111,6 +116,45 @@ export class BaseService {
         }
         this.handleError(reject, obj);
     }
+	
+	// Get versions later than current app version
+	public getVersions() {
+		var platform_name: string = 'web';
+		if (this.platform.is('android')) {
+			platform_name = 'android';
+		} else if (this.platform.is('ios')) {
+			platform_name = 'ios';
+        }
+        console.log('BaseService > getVersions() > Platform = ' + platform_name);
+		
+		if (this.platform.is('cordova') && (platform_name == 'android' || platform_name == 'ios')) {
+		    // cordova environment: check latest version from server
+			return AppVersion.getVersionNumber().then(version_code => {
+				console.log('version_code', version_code);
+				this.headers.append('X-API-KEY', this.api_key_anonymous);
+				var url = '/versions?from_code=' + version_code + '&platform=' + platform_name;
+				return this.get(url).then(data => {
+					return {
+						curr_version_code: version_code,
+						new_versions: data
+					};
+				});
+			}).catch(error => {
+				console.error('ApiService > getVersions() >', error);
+			});
+        } else {
+            // non-cordova environment: return empty promise
+			return new Promise((resolve, reject) => {
+				return resolve();
+			});
+		}
+	}
+	
+	// Get App config
+	public getAppConfig() {
+		this.headers.append('X-API-KEY', this.api_key_anonymous);
+		return this.get('/config');
+	}
 }
 
 // Custom error object for JuicyLauncher 2

@@ -25,13 +25,14 @@ export class NewVersionPage {
 		if (params.data.new_versions) {
 			this.new_versions = params.data.new_versions;
 			this.new_versions.forEach(version => {
-				if (version.force_upgrade) {
+				if (version.force_upgrade=='1') {
 					this.force_upgrade = true;
-				}	
+				}
 			})
 		}
 		
-		// disable hardware back button		
+		// disable hardware back button
+		console.log('NewVersionPage > force_upgrade = ' + this.force_upgrade);
 		if (this.force_upgrade) {
 			platform.registerBackButtonAction(() => {});
 		}
@@ -46,11 +47,11 @@ export class NewVersionPage {
 	}
 }
 
-// struct for app version object
+// Struct for app version object
 class Version {
 	id: number;
 	code: string;
 	release_notes: string;
 	publish_date: string;
-	force_upgrade: boolean;
+	force_upgrade: string | boolean;
 }

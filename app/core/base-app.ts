@@ -46,6 +46,8 @@ export class BaseApp {
 				
 				// indicate the app is successfully loaded
 				this.onAppLoaded();
+			}).catch(error => {
+				console.error(error);
 			});
 		});
 	}
