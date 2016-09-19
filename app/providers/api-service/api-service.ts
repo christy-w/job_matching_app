@@ -11,6 +11,7 @@ export class ApiService extends BaseService {
 	//protected api_prefix: string = 'http://localhost/juicylauncher2_web/api';
 	protected api_prefix: string = 'http://dev.juicyapphk.com/juicylauncher2_web/api';
 	protected api_key_anonymous: string = 'anonymous';
+	private api_key_user: string = '';
 	
 	constructor(http: Http, platform: Platform, utils: Utils) {
 		super(http, platform, utils);

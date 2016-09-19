@@ -14,10 +14,8 @@ export class BaseService {
     
     // member variables accessible from child classes
     protected api_prefix: string = '';
-    protected headers: Headers = new Headers();
-    
-	// default API key	
 	protected api_key_anonymous: string = 'anonymous';
+    protected headers: Headers = new Headers();
     
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.append('Content-Type', 'application/json');

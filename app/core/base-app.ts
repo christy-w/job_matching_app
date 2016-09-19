@@ -49,7 +49,7 @@ export class BaseApp {
 			}).catch(error => {
 				console.error(error);
 			});
-		});
+		});		
 	}
 	
 	// inherit this function from child class (e.g. MyApp)
@@ -58,7 +58,7 @@ export class BaseApp {
 	}
 	
 	// [For App with Tab / Sidemenu root only]
-	openPage(page: any) {
+	protected openPage(page: any) {
 		// Reset the content nav to have just this page
 		// we wouldn't want the back button to show in this scenario
 		if (this.nav && page) {
