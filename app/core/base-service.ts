@@ -123,12 +123,12 @@ export class BaseService {
 		} else if (this.platform.is('ios')) {
 			platform_name = 'ios';
         }
-        console.log('BaseService > getVersions() > Platform = ' + platform_name);
+        Config.DEBUG_VERBOSE && console.log('BaseService > getVersions() > Platform = ' + platform_name);
 		
 		if (this.platform.is('cordova') && (platform_name == 'android' || platform_name == 'ios')) {
 		    // cordova environment: check latest version from server
 			return AppVersion.getVersionNumber().then(version_code => {
-				console.log('version_code', version_code);
+				Config.DEBUG_VERBOSE && console.log('version_code', version_code);
 				this.headers.append('X-API-KEY', this.api_key_anonymous);
 				var url = '/versions?from_code=' + version_code + '&platform=' + platform_name;
 				return this.get(url).then(data => {

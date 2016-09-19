@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {
+	Platform,
 	ActionSheet, ActionSheetController, ActionSheetOptions,
 	Alert, AlertController, AlertOptions,
 	Loading, LoadingController, LoadingOptions,
@@ -21,6 +22,8 @@ import {LocalData} from './local-data';
 export class Utils {
 
 	constructor(
+		private platform: Platform,
+
 		// http://ionicframework.com/docs/v2/api/components/action-sheet/ActionSheetController/
 		private actionSheetCtrl: ActionSheetController,
 
@@ -152,7 +155,7 @@ export class Utils {
 	
 	// Setup Google Analytics	
 	public setupGoogleAnalytics() {
-		if (Config.GA_TRACKER_ID) {
+		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			Config.DEBUG_ANALYTICS && console.log('Setting up Google Analytics');
 			if (Config.GA_DEBUG_MODE) {
 				GoogleAnalytics.debugMode();
@@ -165,7 +168,7 @@ export class Utils {
 
 	// Google Analytics - Set User ID	
 	public setGoogleAnalyticsUserId(id: number | string) {
-		if (Config.GA_TRACKER_ID) {
+		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			GoogleAnalytics.setUserId(id + '');
 		}
 	}
@@ -173,7 +176,7 @@ export class Utils {
 	// Google Analytics - Track View
 	public trackView(title: string, campaign_url?: string): Promise<any> {
 		Config.DEBUG_ANALYTICS && console.log('Track View: ' + title);
-		if (Config.GA_TRACKER_ID) {
+		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			return GoogleAnalytics.trackView(title, campaign_url);
 		} else {
 			return Promise.resolve();
@@ -182,7 +185,7 @@ export class Utils {
 	
 	// Google Analytics - Track Event
 	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
-		if (Config.GA_TRACKER_ID) {
+		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			return GoogleAnalytics.trackEvent(category, action, label, value);
 		} else {
 			return Promise.resolve();
@@ -191,7 +194,7 @@ export class Utils {
 
 	// Setup OneSignal
 	public setupOneSignal() {
-		if (Config.ONESIGNAL_APP_ID) {
+		if (this.platform.is('cordova') && Config.ONESIGNAL_APP_ID) {
 			Config.DEBUG_PUSH_NOTIFICATION && console.log('Setting up OneSignal');
 			OneSignal.init(Config.ONESIGNAL_APP_ID, {
 				autoRegister: true,
