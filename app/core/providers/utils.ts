@@ -141,7 +141,12 @@ export class Utils {
 			this.local.set('UI_LANGUAGE', value);
             this.translate.use(value);
         }
-    }
+	}
+	
+	// Get current app language
+	public currentLang() {
+		return this.translate.currentLang;
+	}
     
 	// Get localized string (async)
     public getLang(key: string | string[], params: Object = null): Promise<any> {

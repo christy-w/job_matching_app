@@ -18,6 +18,7 @@ export class BasePage {
 
 	// member variables accessible from child classes
 	@ViewChild(Content) content: Content;
+	language: string = Config.DEFAULT_LANGUAGE;
 	
 	constructor(
 		protected platform: Platform,
@@ -41,6 +42,13 @@ export class BasePage {
 	ionViewDidEnter() {
 		// Google Analytics track view
 		this.utils.trackView(this.view.name);
+		
+		// Temp fix for ng2-translate: cannot get current language before getting any translation
+		// Reference: https://github.com/ocombe/ng2-translate/issues/181
+		this.utils.getLang('PAGE.HOME').then(val => {
+			this.language = this.utils.currentLang();
+			console.log('this.language = ' + this.language);
+		});
 	}
 	ionViewWillLeave() {
 	}
