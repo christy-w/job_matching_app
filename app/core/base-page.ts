@@ -47,7 +47,7 @@ export class BasePage {
 		// Reference: https://github.com/ocombe/ng2-translate/issues/181
 		this.utils.getLang('PAGE.HOME').then(val => {
 			this.language = this.utils.currentLang();
-			console.log('this.language = ' + this.language);
+			Config.DEBUG_VERBOSE && console.log('this.language = ' + this.language);
 		});
 	}
 	ionViewWillLeave() {

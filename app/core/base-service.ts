@@ -18,7 +18,7 @@ export class BaseService {
     protected headers: Headers = new Headers();
     
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
-        this.headers.append('Content-Type', 'application/json');
+        this.headers.set('Content-Type', 'application/json');
     }
     
     // GET request
@@ -129,7 +129,7 @@ export class BaseService {
 		    // cordova environment: check latest version from server
 			return AppVersion.getVersionNumber().then(version_code => {
 				Config.DEBUG_VERBOSE && console.log('version_code', version_code);
-				this.headers.append('X-API-KEY', this.api_key_anonymous);
+				this.headers.set('X-API-KEY', this.api_key_anonymous);
 				var url = '/versions?from_code=' + version_code + '&platform=' + platform_name;
 				return this.get(url).then(data => {
 					return {
@@ -150,7 +150,7 @@ export class BaseService {
 	
 	// Get App config
 	public getAppConfig() {
-		this.headers.append('X-API-KEY', this.api_key_anonymous);
+		this.headers.set('X-API-KEY', this.api_key_anonymous);
 		return this.get('/config');
 	}
 }
