@@ -1,7 +1,7 @@
 // Angular, Ionic, third-party libraries
-import {Component} from '@angular/core';
+import {Component, provide, PLATFORM_DIRECTIVES, PLATFORM_PIPES} from '@angular/core';
 import {Http} from '@angular/http';
-import {TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
+import {TranslateService, TranslateLoader, TranslatePipe, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 import {ionicBootstrap, Platform} from 'ionic-angular';
 
 // JuicyLauncher 2 core files & providers
@@ -13,6 +13,7 @@ import {ApiService} from './providers/api-service/api-service';
 
 // App pages
 import {HomePage} from './pages/home/home';
+import {MyNavbar} from './components/my-navbar/my-navbar';
 
 @Component({
 	templateUrl: 'build/app.html'
@@ -45,8 +46,14 @@ ionicBootstrap(MyApp, [
 	},
 	TranslateService,
 
-	// Custom providers
-	Utils, LocalData, ApiService
+	// Common providers
+	Utils, LocalData, ApiService,
+
+	// Common pipes	
+	provide(PLATFORM_PIPES, {useValue: [TranslatePipe], multi: true}),
+	
+	// Common directives
+	provide(PLATFORM_DIRECTIVES, {useValue: [MyNavbar], multi: true})
 ], {
 	// App config
 	prodMode: false,

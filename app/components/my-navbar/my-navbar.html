@@ -1,0 +1,9 @@
+<ion-navbar class="my-navbar">
+
+	<ion-title class="logo" *ngIf="logo_url">
+		<img [src]="logo_url" />
+	</ion-title>
+
+	<ion-title *ngIf="title">{{title}}</ion-title>
+	
+</ion-navbar>
