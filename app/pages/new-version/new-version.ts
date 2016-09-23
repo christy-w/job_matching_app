@@ -50,8 +50,9 @@ export class NewVersionPage {
 // Struct for app version object
 class Version {
 	id: number;
+	platform: string;
 	code: string;
 	release_notes: string;
-	publish_date: string;
 	force_upgrade: string | boolean;
+	publish_date: string;
 }

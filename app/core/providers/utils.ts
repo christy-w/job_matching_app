@@ -9,7 +9,7 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
-import {GoogleAnalytics, OneSignal} from 'ionic-native';
+import {AppVersion, GoogleAnalytics, OneSignal} from 'ionic-native';
 
 import * as _ from 'lodash';
 import {Config} from '../../config';
@@ -116,6 +116,16 @@ export class Utils {
 		let toast = this.createToast({message: msg, duration: duration});
 		return toast.present();
 	}
+    
+    // Get current platform name     
+    public currentOS(): string {
+        if (this.platform.is('android'))
+            return 'android';
+        else if (this.platform.is('ios'))
+            return 'ios';
+        else
+            return '';
+    }
 	
 	// Init language setup
 	public setupLang() {
@@ -156,7 +166,17 @@ export class Utils {
 	// Get localized string (sync)
     public instantLang(key: string | string[], params: Object = null): string {
         return this.translate.instant(key, params);
-    }
+	}
+
+	// Check whether supports cordova or not	
+	public isCordova(): boolean {
+		return this.platform.is('cordova');
+	}
+	
+	// Get version number
+	public currentVersion(): Promise<any> {
+		return AppVersion.getVersionNumber();
+	}
 	
 	// Setup Google Analytics	
 	public setupGoogleAnalytics() {

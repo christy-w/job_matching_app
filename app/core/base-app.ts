@@ -37,19 +37,26 @@ export class BaseApp {
 			utils.setupGoogleAnalytics();
 			utils.setupOneSignal();
 			
-			// check latest app versions
-			this.api.getVersions().then(data => {
-				if (data && data.new_versions[0]) {
-					// display modal when newer versions found
-					utils.showModal(NewVersionPage, data);
-				}
-				
-				// indicate the app is successfully loaded
+			// Version checking			
+			var os: string = utils.currentOS();
+			if (utils.isCordova() && (os == 'android' || os == 'ios'))
+			{
+				utils.currentVersion().then(version => {
+					this.api.getVersions(version, os).then(data => {
+						// display modal when newer versions found
+						utils.showModal(NewVersionPage, data);
+
+						// indicate the app is successfully loaded
+						this.onAppLoaded();
+					});
+				}).catch(error => {
+					console.error(error);
+				});
+			} else {
+				// non-mobile environment
 				this.onAppLoaded();
-			}).catch(error => {
-				console.error(error);
-			});
-		});		
+			}
+		});
 	}
 	
 	// inherit this function from child class (e.g. MyApp)
