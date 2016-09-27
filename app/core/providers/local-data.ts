@@ -26,12 +26,26 @@ export class LocalData {
 			return data || default_value;
 		});
 	}
+	
+	setJson(key: string, value: any): Promise<any> {
+		return this.storage.setJson(key, value);
+	}
+	
+	getJson(key: string, default_value?: any): Promise<any> {
+		return this.storage.getJson(key).then(data => {
+			return data || default_value;
+		});
+	}
 
-	remove(key: string, default_value?: any): Promise<any> {
+	remove(key: string): Promise<any> {
 		return this.storage.remove(key);
 	}
 	
 	clear(): Promise<any> {
 		return this.storage.clear();
+	}
+	
+	query(query: string, params?: any): Promise<any> {
+		return this.storage.query(query, params);
 	}
 }
