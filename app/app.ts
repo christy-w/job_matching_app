@@ -8,7 +8,6 @@ import {ionicBootstrap, Platform} from 'ionic-angular';
 import {BaseApp} from './core/base-app';
 import {Config} from './config';
 import {Utils} from './core/providers/utils';
-import {LocalData} from './core/providers/local-data';
 import {ApiService} from './providers/api-service/api-service';
 
 // App pages
@@ -47,7 +46,7 @@ ionicBootstrap(MyApp, [
 	TranslateService,
 
 	// Common providers
-	Utils, LocalData, ApiService,
+	Utils, ApiService,
 
 	// Common pipes	
 	provide(PLATFORM_PIPES, {useValue: [TranslatePipe], multi: true}),

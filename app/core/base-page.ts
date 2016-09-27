@@ -2,7 +2,7 @@
  * Base class for all pages, with common functions and member variables for quick access
  * @Component and templates to be defined in child classes
  **/
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
 	// System-related dependencies
 	Platform,
@@ -11,8 +11,8 @@ import {
 	NavParams,
 	Content
 } from 'ionic-angular';
-import {Config} from '../config';
-import {Utils} from './providers/utils';
+import { Config } from '../config';
+import { Utils } from './providers/utils';
 
 export class BasePage {
 

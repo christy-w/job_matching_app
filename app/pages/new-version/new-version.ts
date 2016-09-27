@@ -18,11 +18,11 @@ export class NewVersionPage {
 	public download_url: string;
 
 	constructor(
-		public platform: Platform,
-		public view: ViewController,
-		public params: NavParams,
-		public api: ApiService,
-		public utils: Utils
+		private platform: Platform,
+		private view: ViewController,
+		private params: NavParams,
+		private api: ApiService,
+		private utils: Utils
 	) {
 		this.force_upgrade = params.data.force_upgrade;
 		this.curr_version_code = params.data.curr_version_code;
@@ -46,9 +46,11 @@ export class NewVersionPage {
 	
 	dismiss(data) {
 		if (!this.force_upgrade) {
-			// using the injected ViewController this page
-			// can "dismiss" itself and pass back data
-			this.view.dismiss(data);
+			let key: string = 'VERSION_CHECK_FROM_' + this.curr_version_code;
+			this.utils.setLocal(key, true).then(() => {
+				console.log('Finish setting to key: ' + key);
+				this.view.dismiss(data);
+			});
 		}
 	}
 }

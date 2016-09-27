@@ -23,7 +23,7 @@ export class BaseService {
     
     // GET request
     protected get(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
-        var url = this.api_prefix + url;
+        url = this.api_prefix + url;
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [GET] ' + url);
         return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ export class BaseService {
     
     // POST request
     protected post(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
-        var url = this.api_prefix + url;
+        url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [POST] ' + url);
@@ -54,7 +54,7 @@ export class BaseService {
     
     // PUT request
     protected put(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
-        var url = this.api_prefix + url;
+        url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [PUT] ' + url);
@@ -70,7 +70,7 @@ export class BaseService {
     
     // DELETE request
     protected delete(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
-        var url = this.api_prefix + url;
+        url = this.api_prefix + url;
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [DELETE] ' + url);
         return new Promise((resolve, reject) => {
@@ -118,7 +118,7 @@ export class BaseService {
 	// Get versions later than current app version
     public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
         this.headers.set('X-API-KEY', this.api_key_anonymous);
-        var url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
+        let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
 		return this.get(url);
 	}
 	

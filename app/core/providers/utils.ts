@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {
 	Platform,
+	Storage, SqlStorage,
 	ActionSheet, ActionSheetController, ActionSheetOptions,
 	Alert, AlertController, AlertOptions,
 	Loading, LoadingController, LoadingOptions,
@@ -13,13 +14,14 @@ import {AppVersion, GoogleAnalytics, OneSignal} from 'ionic-native';
 
 import * as _ from 'lodash';
 import {Config} from '../../config';
-import {LocalData} from './local-data';
 
 /**
  * Class with utility functions
  */
 @Injectable()
 export class Utils {
+	
+	private storage: Storage = new Storage(SqlStorage);
 
 	constructor(
 		private platform: Platform,
@@ -44,10 +46,7 @@ export class Utils {
 
 		// 3-party providers
 		// https://github.com/ocombe/ng2-translate
-		private translate: TranslateService,
-		
-		// custom providers
-        private local: LocalData
+		private translate: TranslateService
 	) {
 	}
 
@@ -127,10 +126,43 @@ export class Utils {
             return '';
     }
 	
+	// Set local data
+	public setLocal(key: string, value: any, is_json: boolean = false): Promise<any> {
+		return (is_json) ? this.storage.setJson(key, value) : this.storage.set(key, value);
+	}
+	
+	// Get local data
+	public getLocal(key: string, default_value?: any, is_json: boolean = false): Promise<any> {
+		if (is_json) {
+			return this.storage.getJson(key).then(data => {
+				return data || default_value;
+			});	
+		} else {
+			return this.storage.get(key).then(data => {
+				return data || default_value;
+			});
+		}
+	}
+
+	// Remove local data by key
+	public removeLocal(key: string): Promise<any> {
+		return this.storage.remove(key);
+	}
+	
+	// Remove all local data
+	public clearLocal(): Promise<any> {
+		return this.storage.clear();
+	}
+	
+	// Execute query from storage engine
+	public queryLocal(query: string, params?: any): Promise<any> {
+		return this.storage.query(query, params);
+	}
+	
 	// Init language setup
 	public setupLang() {
 		// get stored interface language
-        return this.local.get('UI_LANGUAGE', Config.DEFAULT_LANGUAGE).then(value => {
+        return this.getLocal('UI_LANGUAGE', Config.DEFAULT_LANGUAGE).then(value => {
             let userLang: string;
             this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
             
@@ -148,7 +180,7 @@ export class Utils {
     public changeLang(value) {
         // change language only when the target value is within "available list"
         if (_.includes(Config.AVAILABLE_LANGUAGES, value)) {
-			this.local.set('UI_LANGUAGE', value);
+			this.setLocal('UI_LANGUAGE', value);
             this.translate.use(value);
         }
 	}

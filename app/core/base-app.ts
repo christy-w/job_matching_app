@@ -2,12 +2,12 @@
  * Base class for application, with common workflow when upon app start
  * @Component to be defined in child classes
  **/
-import {ViewChild} from '@angular/core';
-import {Platform, Nav} from 'ionic-angular';
-import {StatusBar, Splashscreen} from 'ionic-native';
-import {Config} from '../config';
-import {Utils} from './providers/utils';
-import {ApiService} from '../providers/api-service/api-service';
+import { ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
+import { Config } from '../config';
+import { Utils } from './providers/utils';
+import { ApiService } from '../providers/api-service/api-service';
 import { NewVersionPage } from '../pages/new-version/new-version';
 import { AppVersion } from '../models/app-version';
 
@@ -63,8 +63,14 @@ export class BaseApp {
 						if (force_upgrade) {
 							utils.showModal(NewVersionPage, view_data);
 						} else {
-							// TODO: change to "popup" which display on page center
-							utils.showModal(NewVersionPage, view_data);
+							// check whether user has dismissed version upgrade notice before
+							let key: string = 'VERSION_CHECK_FROM_' + curr_version_code;
+							this.utils.getLocal(key, false).then(skipped => {
+								if (!skipped) {
+									// TODO: change to "popup" which display on page center
+									utils.showModal(NewVersionPage, view_data);
+								}
+							})
 						}
 					}
 					
