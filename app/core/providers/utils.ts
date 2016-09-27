@@ -16,7 +16,7 @@ import {Config} from '../../config';
 import {LocalData} from './local-data';
 
 /**
- * Class with utility functions for quick
+ * Class with utility functions
  */
 @Injectable()
 export class Utils {
@@ -85,23 +85,23 @@ export class Utils {
 	}
 	
 	// Create Modal object (without presenting to view)
-	public createModal(component: any, data: any = null, opts: ModalOptions): Modal {
+	public createModal(component: any, data?: any, opts?: ModalOptions): Modal {
 		return this.modalCtrl.create(component, data, opts);
 	}
 	
 	// Display Modal page
-	public showModal(component: any, data: any = null, opts: ModalOptions = {}): Promise<any> {
+	public showModal(component: any, data?: any, opts?: ModalOptions): Promise<any> {
 		let modal = this.createModal(component, data, opts);
 		return modal.present();
 	}
 	
 	// Create Popover object (without presenting to view)
-	public createPopover(component: any, data: any = null, opts: PopoverOptions): Popover {
+	public createPopover(component: any, data?: any, opts?: PopoverOptions): Popover {
 		return this.popoverCtrl.create(component, data, opts);
 	}
 	
 	// Display Popover page
-	public showPopover(component: any, data: any = null, opts: PopoverOptions = {}): Promise<any> {
+	public showPopover(component: any, data?: any, opts?: PopoverOptions): Promise<any> {
 		let popover = this.createPopover(component, data, opts);
 		return popover.present();
 	}
@@ -159,12 +159,12 @@ export class Utils {
 	}
     
 	// Get localized string (async)
-    public getLang(key: string | string[], params: Object = null): Promise<any> {
+    public getLang(key: string | string[], params?: Object): Promise<any> {
         return this.translate.get(key).toPromise();
     }
     
 	// Get localized string (sync)
-    public instantLang(key: string | string[], params: Object = null): string {
+    public instantLang(key: string | string[], params?: Object): string {
         return this.translate.instant(key, params);
 	}
 
