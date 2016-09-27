@@ -175,7 +175,7 @@ export class Utils {
 	
 	// Get version number
 	public currentVersion(): Promise<any> {
-		return AppVersion.getVersionNumber();
+		return this.isCordova() ? AppVersion.getVersionNumber() : Promise.resolve(Config.APP_VERSION);
 	}
 	
 	// Setup Google Analytics	

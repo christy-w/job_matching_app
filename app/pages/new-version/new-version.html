@@ -9,7 +9,11 @@
 
 <ion-content padding>
   <p>Current Version: {{curr_version_code}}</p>
-  <a href="{{download_url}}" target="_blank"><button light>Download latest version</button></a>
+  
+  <a *ngIf="download_url" href="{{download_url}}" target="_blank">
+    <button light>Download latest version</button>
+  </a>
+
   <ion-list>
     <ion-list-header>New Versions</ion-list-header>
     <ion-item *ngFor="let version of new_versions">

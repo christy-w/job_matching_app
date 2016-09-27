@@ -1,9 +1,10 @@
-import {Http, Headers, RequestOptionsArgs} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {Platform} from 'ionic-angular';
-import {Config} from '../config';
-import {Utils} from './providers/utils';
+import { Platform } from 'ionic-angular';
+import { Config } from '../config';
+import { Utils } from './providers/utils';
+import { AppVersion } from '../models/app-version';
 
 /**
  * Base class for services, normally linked with remote API
@@ -115,36 +116,10 @@ export class BaseService {
     }
     
 	// Get versions later than current app version
-    public getVersions(from_code: string, platform: string) {
+    public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
         this.headers.set('X-API-KEY', this.api_key_anonymous);
         var url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
 		return this.get(url);
-
-        /*
-        var os_name: string = this.utils.currentOS();
-        Config.DEBUG_VERBOSE && console.log('BaseService > getVersions() > Platform = ' + os_name);
-		
-		if (this.platform.is('cordova') && (os_name == 'android' || os_name == 'ios')) {
-		    // cordova environment: check latest version from server
-			return AppVersion.getVersionNumber().then(version_code => {
-				Config.DEBUG_VERBOSE && console.log('version_code', version_code);
-				this.headers.set('X-API-KEY', this.api_key_anonymous);
-				var url = '/versions?from_code=' + version_code + '&platform=' + os_name;
-				return this.get(url).then(data => {
-					return {
-						curr_version_code: version_code,
-						new_versions: data
-					};
-				});
-			}).catch(error => {
-				console.error('ApiService > getVersions() >', error);
-			});
-        } else {
-            // non-cordova environment: return empty promise
-			return new Promise((resolve, reject) => {
-				return resolve();
-			});
-		}*/
 	}
 	
 	// Get App config

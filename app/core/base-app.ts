@@ -8,7 +8,8 @@ import {StatusBar, Splashscreen} from 'ionic-native';
 import {Config} from '../config';
 import {Utils} from './providers/utils';
 import {ApiService} from '../providers/api-service/api-service';
-import {NewVersionPage} from '../pages/new-version/new-version';
+import { NewVersionPage } from '../pages/new-version/new-version';
+import { AppVersion } from '../models/app-version';
 
 export class BaseApp {
 	
@@ -37,25 +38,42 @@ export class BaseApp {
 			utils.setupGoogleAnalytics();
 			utils.setupOneSignal();
 			
-			// Version checking			
-			var os: string = utils.currentOS();
-			if (utils.isCordova() && (os == 'android' || os == 'ios'))
-			{
-				utils.currentVersion().then(version => {
-					this.api.getVersions(version, os).then(data => {
-						// display modal when newer versions found
-						utils.showModal(NewVersionPage, data);
+			// Version checking
+			utils.currentVersion().then(curr_version_code => {
+				let os: string = utils.currentOS();
+				this.api.getVersions(curr_version_code, os).then(new_versions => {
 
-						// indicate the app is successfully loaded
-						this.onAppLoaded();
-					});
-				}).catch(error => {
-					console.error(error);
+					// New versions found
+					if (new_versions.length > 0) {
+
+						// Force upgrade checking
+						let force_upgrade: boolean = false;
+						new_versions.forEach(version => {
+							if (version.force_upgrade && version.force_upgrade == '1') {
+								force_upgrade = true;
+							}
+						})
+						
+						// Prepare modal or popover, based on whether need to force upgrade						
+						let view_data = {
+							force_upgrade: force_upgrade,
+							curr_version_code: curr_version_code,
+							new_versions: new_versions
+						};
+						if (force_upgrade) {
+							utils.showModal(NewVersionPage, view_data);
+						} else {
+							// TODO: change to "popup" which display on page center
+							utils.showModal(NewVersionPage, view_data);
+						}
+					}
+					
+					// indicate the app is successfully loaded
+					this.onAppLoaded();
 				});
-			} else {
-				// non-mobile environment
-				this.onAppLoaded();
-			}
+			}).catch(error => {
+				console.error(error);
+			});
 		});
 	}
 	
