@@ -46,8 +46,8 @@ export class NewVersionPage {
 			}
 		});
 	}
-
-	// Toggle release note	
+	
+	// Toggle release notes	
 	onClickReleaseNotes() {
 		this.show_release_notes = !this.show_release_notes;
 		this.show_release_notes_icon = this.show_release_notes ? 'arrow-dropup-circle' : 'arrow-dropdown-circle';

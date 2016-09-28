@@ -73,7 +73,7 @@ export class Utils {
 	}
 	
 	// Create Loading object (without presenting to view)
-	public createLoading(opts: LoadingOptions): Loading {
+	public createLoading(opts?: LoadingOptions): Loading {
 		return this.loadingCtrl.create(opts);
 	}
 	

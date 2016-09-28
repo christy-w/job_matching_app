@@ -42,7 +42,7 @@ export class BaseApp {
 			utils.currentVersion().then(curr_version_code => {
 				let os: string = utils.currentOS();
 				this.api.getVersions(curr_version_code, os).then(new_versions => {
-
+					
 					// New versions found
 					if (new_versions.length > 0) {
 

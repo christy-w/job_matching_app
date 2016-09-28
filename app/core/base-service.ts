@@ -1,7 +1,7 @@
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { Platform } from 'ionic-angular';
+import { Platform, Loading, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
 import { AppVersion } from '../models/app-version';
@@ -20,6 +20,33 @@ export class BaseService {
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.set('Content-Type', 'application/json');
     }
+    
+    // Start calling list of promises, with loading spinner in between
+    public startQueue(promises: Promise<any>[], loading_opts?: LoadingOptions): Promise<any> {
+        let loading = this.utils.createLoading();
+        return loading.present().then(() => {
+            return Promise.all(promises).then(data => {
+                loading.dismiss();
+                return data;
+            }).catch(err => {
+                loading.dismiss();
+                return err;
+            });
+        });
+    }
+    
+	// Get versions later than current app version
+    public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
+        this.headers.set('X-API-KEY', this.api_key_anonymous);
+        let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
+		return this.get(url);
+	}
+	
+	// Get App config
+	public getAppConfig() {
+		this.headers.set('X-API-KEY', this.api_key_anonymous);
+		return this.get('/config');
+	}
     
     // GET request
     protected get(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
@@ -114,19 +141,6 @@ export class BaseService {
         }
         this.handleError(reject, obj);
     }
-    
-	// Get versions later than current app version
-    public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
-        this.headers.set('X-API-KEY', this.api_key_anonymous);
-        let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
-		return this.get(url);
-	}
-	
-	// Get App config
-	public getAppConfig() {
-		this.headers.set('X-API-KEY', this.api_key_anonymous);
-		return this.get('/config');
-	}
 }
 
 // Custom error object for JuicyLauncher 2
