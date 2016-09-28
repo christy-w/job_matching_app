@@ -1,6 +1,6 @@
 <ion-content padding>
 
-  <!-- add logo here -->
+  <!-- logo -->
 
   <!-- description -->
   <h5>There is a newer version available for download.</h5>
@@ -21,12 +21,14 @@
     </div>
   </ion-list>
 
+  <!-- force upgrade -->
   <div *ngIf="force_upgrade">
     <a *ngIf="download_url" href="{{ download_url }}" target="_blank">
       <button full dark>Update to {{ new_versions[0].code }}</button>
     </a>
   </div>
   
+  <!-- soft upgrade -->
   <div *ngIf="!force_upgrade">
     <ion-row>
       <ion-col width-50>
