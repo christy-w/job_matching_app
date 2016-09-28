@@ -1,25 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons start *ngIf="!force_upgrade">
-      <button (click)="dismiss()">Skip</button>
-    </ion-buttons>
-    <ion-title>New Version Available</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-  <p>Current Version: {{curr_version_code}}</p>
-  
-  <a *ngIf="download_url" href="{{download_url}}" target="_blank">
-    <button light>Download latest version</button>
-  </a>
 
-  <ion-list>
-    <ion-list-header>New Versions</ion-list-header>
-    <ion-item *ngFor="let version of new_versions">
-      <h2>Version: {{version.code}}</h2>
-      <h4>Publish Date: {{version.publish_date}}</h4>
-      <div [innerHTML]="version.release_notes"></div>
-    </ion-item>
+  <!-- add logo here -->
+
+  <!-- description -->
+  <h5>There is a newer version available for download.</h5>
+  <p>Current Version: <strong>{{curr_version_code}}</strong></p>
+  <p *ngIf="new_versions">Latest Version: <strong>{{new_versions[0].code}}</strong></p>
+
+  <!-- release notes -->
+  <ion-list *ngIf="new_versions">
+    <ion-list-header (click)="onClickReleaseNotes()">
+      Release Notes <ion-icon item-right name="{{ show_release_notes_icon }}"></ion-icon>
+    </ion-list-header>
+    <div *ngIf="show_release_notes">
+      <ion-item *ngFor="let version of new_versions">
+        <h2>Version: {{version.code}} ({{version.publish_date}})</h2>
+        <br/>
+        <div [innerHTML]="version.release_notes"></div>
+      </ion-item>
+    </div>
   </ion-list>
+
+  <div *ngIf="force_upgrade">
+    <a *ngIf="download_url" href="{{ download_url }}" target="_blank">
+      <button full dark>Update to {{ new_versions[0].code }}</button>
+    </a>
+  </div>
+  
+  <div *ngIf="!force_upgrade">
+    <ion-row>
+      <ion-col width-50>
+        <a *ngIf="download_url" href="{{ download_url }}" target="_blank">
+          <button full dark>Update to {{ new_versions[0].code }}</button>
+        </a>
+      </ion-col>
+      <ion-col width-50>
+        <button (click)="dismiss()" full light>Skip</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
 </ion-content>

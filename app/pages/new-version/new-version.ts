@@ -12,11 +12,14 @@ import { AppVersion } from '../../models/app-version';
 })
 export class NewVersionPage {
 
-	public force_upgrade: boolean = false;
-	public curr_version_code: string;
-	public new_versions: AppVersion[] = [];
-	public download_url: string;
+	force_upgrade: boolean = false;
+	curr_version_code: string;
+	new_versions: AppVersion[] = [];
+	download_url: string;
 
+	show_release_notes: boolean = false;
+	show_release_notes_icon: string = 'arrow-dropdown-circle';
+	
 	constructor(
 		private platform: Platform,
 		private view: ViewController,
@@ -43,7 +46,14 @@ export class NewVersionPage {
 			}
 		});
 	}
+
+	// Toggle release note	
+	onClickReleaseNotes() {
+		this.show_release_notes = !this.show_release_notes;
+		this.show_release_notes_icon = this.show_release_notes ? 'arrow-dropup-circle' : 'arrow-dropdown-circle';
+	}
 	
+	// Dismiss this modal / popup
 	dismiss(data) {
 		if (!this.force_upgrade) {
 			let key: string = 'VERSION_CHECK_FROM_' + this.curr_version_code;
