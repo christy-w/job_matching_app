@@ -70,7 +70,7 @@ export class BaseApp {
 									// TODO: change to "popup" which display on page center
 									utils.showModal(NewVersionPage, view_data);
 								}
-							})
+							});
 						}
 					}
 					

@@ -16,6 +16,7 @@ export class BaseService {
     protected api_prefix: string = '';
 	protected api_key_anonymous: string = 'anonymous';
     protected headers: Headers = new Headers();
+    protected local_key_prefix: string = 'API ';
     
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.set('Content-Type', 'application/json');
@@ -39,27 +40,52 @@ export class BaseService {
     public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
         this.headers.set('X-API-KEY', this.api_key_anonymous);
         let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
-		return this.get(url);
+        return this.get(url);
 	}
 	
 	// Get App config
 	public getAppConfig() {
 		this.headers.set('X-API-KEY', this.api_key_anonymous);
 		return this.get('/config');
-	}
+    }
     
-    // GET request
-    protected get(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
+    // GET request (with local data checking logic)
+    protected get(url: string, check_local: boolean = false, options: RequestOptionsArgs = {}): Promise<{}> {
+        if (!check_local) {
+            // skip local data checking, directly call API
+            return this.getRemote(url, options);
+        } else {
+            // check local data first
+            let key: string = this.local_key_prefix + url;
+            return this.utils.getLocal(key, null, true).then(data => {
+                // return local data, or call API if not found
+                return (data) ? data : this.getRemote(url, options);
+            }).catch(err => {
+                // call API if error occurs
+                return this.getRemote(url, options);
+            });
+        }
+    }
+    
+    // GET request (from remote API)
+    protected getRemote(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
+        let key: string = this.local_key_prefix + url;
         url = this.api_prefix + url;
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [GET] ' + url);
         return new Promise((resolve, reject) => {
             this.http.get(url, options)
                 .map(res => res.json())
-                .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
-                    error => this.handleHttpError(reject, error)
-                )
+                .subscribe(data => {
+                    if (data.error) {
+                        this.handleCustomError(reject, data);
+                    } else {
+                        // save to local data for offline use
+                        this.utils.setLocal(key, data, true).then(() => {
+                            this.handleResponse(resolve, url, data);
+                        });
+                    }
+                }, error => this.handleHttpError(reject, error));
         });
     }
     
