@@ -10,7 +10,12 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
-import {AppVersion, GoogleAnalytics, OneSignal} from 'ionic-native';
+import {
+	AppVersion,
+	GoogleAnalytics, 
+	Network, 
+	OneSignal
+} from 'ionic-native';
 
 import * as _ from 'lodash';
 import {Config} from '../../config';
@@ -212,6 +217,17 @@ export class Utils {
 	// Check whether supports cordova or not	
 	public isCordova(): boolean {
 		return this.platform.is('cordova');
+	}
+	
+	// Check whether the device is online	
+	public isOnline(): boolean {
+		if (this.isCordova()) {
+			// Network.connection types: unknown, ethernet, wifi, 2g, 3g, 4g, cellular, none
+			Config.DEBUG_VERBOSE && console.log('Network.connection', Network.connection);
+			return (Network.connection != 'none');
+		} else {
+			return true;
+		}
 	}
 	
 	// Get version number

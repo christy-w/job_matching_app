@@ -5,6 +5,7 @@ import { Platform, Loading, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
 import { AppVersion } from '../models/app-version';
+import * as moment from 'moment';
 
 /**
  * Base class for services, normally linked with remote API
@@ -51,20 +52,46 @@ export class BaseService {
     
     // GET request (with local data checking logic)
     protected get(url: string, check_local: boolean = false, options: RequestOptionsArgs = {}): Promise<{}> {
-        if (!check_local) {
-            // skip local data checking, directly call API
-            return this.getRemote(url, options);
+        
+        if (!this.utils.isOnline()) {
+            // device no connection > get local data
+            return this.getLocal(url, false);
         } else {
-            // check local data first
-            let key: string = this.local_key_prefix + url;
-            return this.utils.getLocal(key, null, true).then(data => {
-                // return local data, or call API if not found
-                return (data) ? data : this.getRemote(url, options);
-            }).catch(err => {
-                // call API if error occurs
+            // device has connection
+            if (check_local) {
+                // check local data first
+                return this.getLocal(url, true).then(data => {
+                    return (data) ? data : this.getRemote(url, options);
+                });
+            } else {
+                // skip local data checking, directly call API
                 return this.getRemote(url, options);
-            });
+            }
         }
+    }
+    
+    // GET request (from local data)
+    protected getLocal(url: string, check_expiry: boolean = true): Promise<{}> {
+        let key: string = this.local_key_prefix + url;
+        return this.utils.getLocal(key, null, true).then(value => {
+            if (!check_expiry) {
+                // ignore expiry > return data directly
+                return value.data;
+            } else if (value.last_update) {
+                // check expiry > return null if data has expired
+                let expiry = moment(value.last_update).valueOf() + Config.LOCAL_DATA_EXPIRY * 1000;
+                let now = moment().valueOf();
+                Config.DEBUG_VERBOSE && console.log('last_update', value.last_update);
+                Config.DEBUG_VERBOSE && console.log('expiry', expiry);
+                Config.DEBUG_VERBOSE && console.log('now', now);
+                Config.DEBUG_VERBOSE && console.log('expired?', (expiry < now));
+                return (expiry < now) ? null : value.data;
+            } else {
+                return null;
+            }
+        }).catch(err => {
+            return null;
+        });
     }
     
     // GET request (from remote API)
@@ -81,7 +108,11 @@ export class BaseService {
                         this.handleCustomError(reject, data);
                     } else {
                         // save to local data for offline use
-                        this.utils.setLocal(key, data, true).then(() => {
+                        let value = {
+                            data: data,
+                            last_update: moment().valueOf()
+                        }
+                        this.utils.setLocal(key, value, true).then(() => {
                             this.handleResponse(resolve, url, data);
                         });
                     }
