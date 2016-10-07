@@ -1,0 +1,47 @@
+{
+    "PAGE": {
+        "HOME": "Home",
+        "NEWS": "News",
+        "ABOUT": "About",
+        "CONTACT": "Contact Us"
+    },
+
+    "ACTION": {
+        "OK": "Ok",
+        "CONFIRM": "Confirm",
+        "CANCEL": "Cancel",
+        "SUBMIT": "Submit",
+        "RESET": "Reset",
+        
+        "LOGIN": "Login",
+        "SIGN_UP": "Sign Up",
+        "FORGOT_PASSWORD": "Forgot Password",
+        "RESET_PASSWORD": "Reset Password",
+
+        "LOADING": "Loading...",
+        "PREVIOUS": "Previous",
+        "NEXT": "Next",
+        "PREVIOUS_PAGE": "Previous Page",
+        "NEXT_PAGE": "Next Page",
+        "FIRST_PAGE": "First Page",
+        "LAST_PAGE": "Last Page",
+        "PREVIOUS_STEP": "Previous Step",
+        "NEXT_STEP": "Next Step",
+        "PULL_TO_REFRESH": "Pull to Refresh"
+    },
+
+    "MSG": {
+        "ERROR": "Error",
+        "SUCCESS": "Success"
+    },
+    
+    "ERROR": {
+        "400": "400 Bad Request",
+        "403": "403 Unauthorized",
+        "404": "404 Not Found",
+        "500": "500 Server Error",
+        "NO_NETWORK_CONNECTION": "Please check network connection",
+        "INVALID_VERSION": "Invalid App Version",
+        "INVALID_LOGIN": "Invalid Login"
+    }
+}
