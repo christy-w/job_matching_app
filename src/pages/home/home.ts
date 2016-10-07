@@ -19,9 +19,4 @@ export class HomePage extends BasePage {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
 	}
-	
-	onPageLoaded() {
-		// TODO: download initial data
-		Config.DEBUG_VERBOSE && console.log('HomePage onPageLoaded');
-	}
 }

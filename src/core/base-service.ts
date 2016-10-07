@@ -183,7 +183,7 @@ export class BaseService {
         console.error('BaseService handleCustomError', data);
         let obj: ErrorObj = {
             code: 200,
-            message: ''//this.utils.instantLang('ERROR.' + data.error.toUpperCase())
+            message: this.utils.instantLang('ERROR.' + data.error.toUpperCase())
         }
         this.handleError(reject, obj);
     }
@@ -193,7 +193,7 @@ export class BaseService {
         console.error('BaseService handleHttpError', error);
         let obj: ErrorObj = {
             code: error.status,
-            message: ''//this.utils.instantLang('ERROR.' + error.status)
+            message: this.utils.instantLang('ERROR.' + error.status)
         }
         this.handleError(reject, obj);
     }

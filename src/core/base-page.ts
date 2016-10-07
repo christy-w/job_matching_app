@@ -26,6 +26,7 @@ export class BasePage {
 		protected utils: Utils
 	) {
 		Config.DEBUG_VERBOSE && console.log('BasePage constructor');
+		this.language = this.utils.currentLang();
 	}
 	
 	// Back to previous page, or to root page
@@ -41,14 +42,6 @@ export class BasePage {
 	ionViewDidEnter() {
 		// Google Analytics track view
 		this.utils.trackView(this.view.name);
-		
-		/*
-		// Temp fix for ng2-translate: cannot get current language before getting any translation
-		// Reference: https://github.com/ocombe/ng2-translate/issues/181
-		this.utils.getLang('PAGE.HOME').then(val => {
-			this.language = this.utils.currentLang();
-			Config.DEBUG_VERBOSE && console.log('this.language = ' + this.language);
-		});*/
 	}
 	ionViewWillLeave() {
 	}

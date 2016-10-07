@@ -1,5 +1,3 @@
-
-// Angular, Ionic, third-party libraries
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { BaseApp } from '../core/base-app';

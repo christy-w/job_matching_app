@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-//import {TranslateService} from 'ng2-translate/ng2-translate';
+import {TranslateService} from 'ng2-translate/ng2-translate';
 import {
 	Platform,
 	ActionSheet, ActionSheetController, ActionSheetOptions,
@@ -13,7 +13,7 @@ import {
 import {
 	AppVersion,
 	GoogleAnalytics, 
-	Network, 
+	Network,
 	OneSignal
 } from 'ionic-native';
 import {Config} from '../../config';
@@ -45,11 +45,11 @@ export class Utils {
 		private popoverCtrl: PopoverController,
 
 		// http://ionicframework.com/docs/v2/api/components/toast/ToastController/
-		private toastCtrl: ToastController
+		private toastCtrl: ToastController,
 
 		// 3-party providers
 		// https://github.com/ocombe/ng2-translate
-		//private translate: TranslateService
+		private translate: TranslateService
 	) {
 	}
 
@@ -132,11 +132,9 @@ export class Utils {
 	// Set local data
 	public setLocal(key: string, value: any, is_json: boolean = false): Promise<any> {
 		Config.DEBUG_LOCAL_DATA && console.log('Local Set (key = ' + key + ')', value);
-
 		if (is_json) {
 			value = JSON.stringify(value);
 		}
-
 		return this.storage.set(key, value);
 	}
 	
@@ -164,7 +162,6 @@ export class Utils {
 		return this.storage.clear();
 	}
 	
-	/*
 	// Init language setup
 	public setupLang() {
 		// get stored interface language
@@ -204,7 +201,7 @@ export class Utils {
 	// Get localized string (sync)
     public instantLang(key: string | string[], params?: Object): string {
         return this.translate.instant(key, params);
-	}*/
+	}
 
 	// Check whether supports cordova or not	
 	public isCordova(): boolean {

@@ -18,8 +18,8 @@ export class Config {
     static GA_DEBUG_MODE: boolean = true;
     
     // Push Notifications (set ONESIGNAL_APP_ID as empty to disable)
-    static ONESIGNAL_APP_ID: string = 'd284b536-47d9-11e5-a647-478fe54bb917';
-    static ONESIGNAL_GOOGLE_PROJECT_NUMBER: string = '606380984953';
+    static ONESIGNAL_APP_ID: string = '';
+    static ONESIGNAL_GOOGLE_PROJECT_NUMBER: string = '';
 
     // Turn on/off debug messages
     static DEBUG_VERBOSE: boolean = false;				// Messages for non-critical points

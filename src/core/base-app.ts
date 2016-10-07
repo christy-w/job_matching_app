@@ -17,7 +17,7 @@ export class BaseApp {
 	@ViewChild(Nav) nav: Nav;
 	
 	// default page to display
-	protected rootPage: any;
+	public rootPage: any;
 	
 	constructor(
 		protected platform: Platform,
@@ -32,7 +32,7 @@ export class BaseApp {
 			StatusBar.styleDefault();
 			
 			// JuicyLauncher setup
-			//utils.setupLang();
+			utils.setupLang();
 			utils.setupGoogleAnalytics();
 			utils.setupOneSignal();
 			
