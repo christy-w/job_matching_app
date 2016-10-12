@@ -9,7 +9,7 @@ import { Utils } from '../../core/providers/utils';
 	templateUrl: 'home.html'
 })
 export class HomePage extends BasePage {
-	
+
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
