@@ -2,10 +2,23 @@ page-new-version {
     
     .container {
         padding-top: 20%;
+        text-align: center;
     }
 
+    ion-button {
+        width: 200px !important;
+    }
+    
     .download-btn {
         background: black;
         color: white;
+        width: 150px;
+    }
+    
+    .skip-btn {
+        margin-top: 20px;
+        width: 150px;
+        //background: black;
+        //color: white;
     }
 }

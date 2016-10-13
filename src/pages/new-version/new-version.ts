@@ -55,7 +55,7 @@ export class NewVersionPage {
 	}
 	
 	// Dismiss this modal / popup
-	dismiss(data) {
+	onClickSkipBtn(data) {
 		if (!this.force_upgrade) {
 			let key: string = 'VERSION_CHECK_FROM_' + this.curr_version_code;
 			this.utils.setLocal(key, true).then(() => {

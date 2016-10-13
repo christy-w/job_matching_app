@@ -6,7 +6,8 @@
 		<!--<img src="assets/img/logo.png" />-->
 
 		<!-- description -->
-		<h5>There is a newer version available for download.</h5>
+		<h5>New Version Available</h5>
+		<p>There is a newer version available for download.<br/>Please update the app to continue.</p>
 		<p>Current Version: <strong>{{curr_version_code}}</strong></p>
 		<p *ngIf="new_versions">Latest Version: <strong>{{new_versions[0].code}}</strong></p>
 
@@ -27,23 +28,14 @@
 
 		<!-- force upgrade -->
 		<div *ngIf="force_upgrade">
-			<a *ngIf="download_url" href="{{ download_url }}" target="_blank">
-				<button ion-button full color="dark">Update to {{ new_versions[0].code }}</button>
-			</a>
+			<a class="download-btn" ion-button href="{{ download_url }}" target="_blank" round>Update</a>
 		</div>
-
+		
 		<!-- soft upgrade -->
 		<div *ngIf="!force_upgrade">
-			<ion-row>
-				<ion-col width-50>
-					<a class="download-btn" ion-button *ngIf="download_url" href="{{ download_url }}" target="_blank" dark full>
-						Update to {{ new_versions[0].code }}
-					</a>
-				</ion-col>
-				<ion-col width-50>
-					<button ion-button (click)="dismiss()" full color="light">Skip</button>
-				</ion-col>
-			</ion-row>
+			<a class="download-btn" ion-button *ngIf="download_url" href="{{ download_url }}" target="_blank" round>Update</a>
+			<br/>
+			<button ion-button class="skip-btn" (click)="onClickSkipBtn()" round color="light">Skip</button>
 		</div>
 
 	</div>
