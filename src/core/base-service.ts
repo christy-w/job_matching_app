@@ -11,17 +11,17 @@ import moment from 'moment';
  * @Injectable to be defined in child classes
  **/
 export class BaseService {
-    
+
     // member variables accessible from child classes
     protected api_prefix: string = '';
-	protected api_key_anonymous: string = 'anonymous';
+    protected api_key_anonymous: string = 'anonymous';
     protected headers: Headers = new Headers();
     protected local_key_prefix: string = 'API ';
-    
+
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.set('Content-Type', 'application/json');
     }
-    
+
     // Start calling list of promises, with loading spinner in between
     public startQueue(promises: Promise<any>[], loading_opts?: LoadingOptions): Promise<any> {
         let loading = this.utils.createLoading();
@@ -35,23 +35,27 @@ export class BaseService {
             });
         });
     }
-    
-	// Get versions later than current app version
+
+    // Get versions later than current app version
     public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
-        this.headers.set('X-API-KEY', this.api_key_anonymous);
-        let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
-        return this.get(url);
-	}
-	
-	// Get App config
-	public getAppConfig() {
-		this.headers.set('X-API-KEY', this.api_key_anonymous);
-		return this.get('/config');
+        if (!platform) {
+            return Promise.resolve([]);
+        } else {
+            this.headers.set('X-API-KEY', this.api_key_anonymous);
+            let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
+            return this.get(url);
+        }
     }
-    
+
+    // Get App config
+    public getAppConfig() {
+        this.headers.set('X-API-KEY', this.api_key_anonymous);
+        return this.get('/config');
+    }
+
     // GET request (with local data checking logic)
     protected get(url: string, check_local: boolean = false, options: RequestOptionsArgs = {}): Promise<{}> {
-        
+
         if (!this.utils.isOnline()) {
             // device no connection > get local data
             return this.getLocal(url, false);
@@ -68,7 +72,7 @@ export class BaseService {
             }
         }
     }
-    
+
     // GET request (from local data)
     protected getLocal(url: string, check_expiry: boolean = true): Promise<{}> {
         let key: string = this.local_key_prefix + url;
@@ -92,7 +96,7 @@ export class BaseService {
             return null;
         });
     }
-    
+
     // GET request (from remote API)
     protected getRemote(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
         let key: string = this.local_key_prefix + url;
@@ -118,7 +122,7 @@ export class BaseService {
                 }, error => this.handleHttpError(reject, error));
         });
     }
-    
+
     // POST request
     protected post(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
         url = this.api_prefix + url;
@@ -129,12 +133,12 @@ export class BaseService {
             this.http.post(url, body, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
-                    error => this.handleHttpError(reject, error)
+                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                error => this.handleHttpError(reject, error)
                 )
         });
     }
-    
+
     // PUT request
     protected put(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
         url = this.api_prefix + url;
@@ -145,12 +149,12 @@ export class BaseService {
             this.http.put(url, body, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
-                    error => this.handleHttpError(reject, error)
+                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                error => this.handleHttpError(reject, error)
                 )
         })
     }
-    
+
     // DELETE request
     protected delete(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
         url = this.api_prefix + url;
@@ -160,8 +164,8 @@ export class BaseService {
             this.http.delete(url, options)
                 .map(res => res.json())
                 .subscribe(
-                    data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
-                    error => this.handleHttpError(reject, error)
+                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                error => this.handleHttpError(reject, error)
                 )
         });
     }
@@ -177,7 +181,7 @@ export class BaseService {
         console.error('BaseService handleError', error_obj);
         reject(error_obj);
     }
-    
+
     // Handle error from API (based on CI Bootstrap 3)
     protected handleCustomError(reject, data) {
         console.error('BaseService handleCustomError', data);
@@ -187,7 +191,7 @@ export class BaseService {
         }
         this.handleError(reject, obj);
     }
-    
+
     // Handle error from Http module
     protected handleHttpError(reject, error) {
         console.error('BaseService handleHttpError', error);
