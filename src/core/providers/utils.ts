@@ -270,9 +270,9 @@ export class Utils {
 		if (this.platform.is('cordova') && Config.ONESIGNAL_APP_ID) {
 			Config.DEBUG_PUSH_NOTIFICATION && console.log('Setting up OneSignal');
 			OneSignal.startInit(Config.ONESIGNAL_APP_ID, Config.ONESIGNAL_GOOGLE_PROJECT_NUMBER);
-
+			
 			/*
-			OneSignal.enableInAppAlertNotification(true);
+			OneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
 			OneSignal.handleNotificationReceived().subscribe(() => {
 				// do something when notification is received
 			});
