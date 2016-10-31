@@ -75,6 +75,26 @@ export class Utils {
 		let alert = this.createAlert({ title: title, subTitle: subtitle, buttons: buttons });
 		return alert.present();
 	}
+	
+	// Display Confirmation Alert
+	public showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null): Promise<any> {
+		let options: AlertOptions = {
+			title: title,
+			message: msg,
+			buttons: [
+				{
+					text: this.translate.instant('ACTION.CANCEL'),
+					handler: cancel_handler
+				},
+				{
+					text: this.translate.instant('ACTION.CONFIRM'),
+					handler: confirm_handler
+				}
+			]
+		};
+		let alert = this.createAlert(options);
+		return alert.present();
+	}
 
 	// Create Loading object (without presenting to view)
 	public createLoading(opts?: LoadingOptions): Loading {
