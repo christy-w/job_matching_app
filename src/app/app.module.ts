@@ -1,7 +1,7 @@
 // Ionic / Angular / 3rd-party dependencies
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { Http } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -52,7 +52,8 @@ export function createTranslateLoader(http: Http) {
 			provide: TranslateLoader,
 			useFactory: (createTranslateLoader),
 			deps: [Http]
-		})
+		}),
+		FormsModule
 	],
 	exports: [TranslateModule],
 	bootstrap: [IonicApp],
