@@ -66,7 +66,8 @@ export class BaseApp {
 						this.utils.showModal(NewVersionPage, view_data);
 					} else {
 						// check whether user has dismissed version upgrade notice before
-						let key: string = 'VERSION_CHECK_FROM_' + curr_version_code;
+						let latest_version_code: string = new_versions[0].code;
+						let key: string = 'VERSION_CHECK_FROM_' + curr_version_code + '_TO_' + latest_version_code;
 						this.utils.getLocal(key, false).then(skipped => {
 							if (!skipped) {
 								// TODO: change to "popup" which display on page center
