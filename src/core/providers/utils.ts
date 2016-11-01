@@ -18,6 +18,7 @@ import {
 	ThemeableBrowser
 } from 'ionic-native';
 import { Config } from '../../config';
+import _ from 'lodash';
 
 /**
  * Class with utility functions
