@@ -313,7 +313,6 @@ export class Utils {
 
 	// Themeable In-App Browser
 	// http://ionicframework.com/docs/v2/native/themeablebrowser/
-	// TODO: use "wwwImage"" instead of "image" to show button properly
 	public showBrowser(url: string, target: string = '_blank', options = null): ThemeableBrowser {
 		if (options === null) {
 			// use default options from config
@@ -329,20 +328,23 @@ export class Utils {
 					color: Config.BROWSER_TITLE_COLOR,
 					showPageTitle: true
 				},
-				backButton: {
-					image: 'back',
-					imagePressed: 'back_pressed',
+				closeButton: {
+					wwwImage: 'assets/icon/cross.png',
+					wwwImagePressed: 'assets/icon/cross.png',
+					wwwImageDensity: 2,
 					align: 'left'
+				},
+				backButton: {
+					wwwImage: 'assets/icon/left_active.png',
+					wwwImagePressed: 'assets/icon/left_inactive.png',
+					wwwImageDensity: 2,
+					align: 'right'
 				},
 				forwardButton: {
-					image: 'forward',
-					imagePressed: 'forward_pressed',
-					align: 'left'
-				},
-				closeButton: {
-					image: 'close',
-					imagePressed: 'close_pressed',
-					align: 'left'
+					wwwImage: 'assets/icon/right_active.png',
+					wwwImagePressed: 'assets/icon/right_active.png',
+					wwwImageDensity: 2,
+					align: 'right'
 				},
 				backButtonCanClose: true
 			};

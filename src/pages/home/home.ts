@@ -18,5 +18,7 @@ export class HomePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
+
+		this.utils.showBrowser('http://juicyapphk.com');
 	}
 }
