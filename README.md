@@ -23,7 +23,7 @@ JuicyLauncher 2 provides codebase from Ionic 2 app, plus core files to extends f
 - Utils class to provide shortcut functions which allow avoidance of repeated dependencies from pages/components
 - Preload third-party libraries:
     - [Lodash](https://lodash.com/) for utility functions
-    - [Moment.js](http://momentjs.com/)) for date/time manipulation and formatting
+    - [Moment.js](http://momentjs.com/) for date/time manipulation and formatting
 - Preload plugins from [Ionic Native](https://ionicframework.com/docs/v2/native/):
     - [App Version](https://ionicframework.com/docs/v2/native/app-version/) for version checking logic
     - [Google Analytics](https://ionicframework.com/docs/v2/native/google-analytics/) for tracking views
@@ -41,35 +41,35 @@ These files will be updated from [JuicyLauncher 2 Repo](https://gitlab.com/juicy
 
 Developers should avoid changing these files so as to maintain smooth upgrade for each project.
 
-- /scripts/: Sample scripts to generate signed Android APK for publishing
-- /src/core/
-    - components/: Angular 2 Components
-    - pipes/: Angular 2 Pipes
-    - providers/: Angular 2 Directives
-        - utils.ts: Utils class for shortcut functions
-    - base-app.ts: Base class for MyApp
-    - base-page.ts: Base class for page components
-    - base-service.ts: Base class for service classes which require API calls
+- **/scripts/**: Sample scripts to generate signed Android APK for publishing
+- **/src/core/**
+    - **components/**: Angular 2 Components
+    - **pipes/**: Angular 2 Pipes
+    - **providers/**: Angular 2 Directives
+        - **utils.ts**: Utils class for shortcut functions
+    - **base-app.ts**: Base class for MyApp
+    - **base-page.ts**: Base class for page components
+    - **base-service.ts**: Base class for service classes which require API calls
 
 
 ### Project Files
 
 These files should be changed according to project requirements. 
 
-- /src/app/: Ionic 2 App files
-    - app.html: Basic App HTML structure
-    - app.scss: Global styles
-    - app.component.ts: MyApp class (extends from BaseApp)
-    - app.module.ts: Define dependencies of the App
-- /src/assets/: App asset files
-    - i18n/: Localization files
-- /src/components/: Ionic 2 components
-- /src/models/: customly defined classes
-- /src/pages/: Ionic 2 page components
-- /src/providers/: Ionic 2 providers
-    - api-service/: ApiService class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
-- /src/theme/: Theme files which contains common variables, override Ionic 2 styles, etc. 
-- /src/config.ts: Global constants and configuration values
+- **/src/app/**: Ionic 2 App files
+    - **app.html**: Basic App HTML structure
+    - **app.scss**: Global styles
+    - **app.component.ts**: MyApp class (extends from BaseApp)
+    - **app.module.ts**: Define dependencies of the App
+- **/src/assets/**: App asset files
+    - **i18n/**: Localization files
+- **/src/components/**: Ionic 2 components
+- **/src/models/**: customly defined classes
+- **/src/pages/**: Ionic 2 page components
+- **/src/providers/**: Ionic 2 providers
+    - **api-service/**: ApiService class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
+- **/src/theme/**: Theme files which contains common variables, override Ionic 2 styles, etc. 
+- **/src/config.ts**: Global constants and configuration values
 
 **Do NOT** update the /www/ folder directly, since it will update everytime when the project is bundles by Ionic Cli. 
 
@@ -85,7 +85,6 @@ Before app development on top of JuicyLauncher 2, developers may need to check t
 5. By default, JuicyLauncher 2 includes version checking logic which requires endpoints from **JuicyLauncher 2 Web**, so please make sure the ApiService class has linked to the correct website accordingly
 6. Try **ionic serve** and see if the app works well
 7. If everything is fine, use **ionic run android** or **ionic build ios** to test on real devices
-
 
 At the time of writing, JuicyLauncher 2 works well under below environment:
 
