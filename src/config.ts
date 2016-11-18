@@ -2,7 +2,9 @@
  * Global constants and configuration values
  */
 export class Config {
-
+    
+    static JUICYLAUNCHER_VERSION: string = 'build 20161118';
+    
     // For development purpose at non-cordova environment    
     static APP_VERSION: string = '1.0.0';
 
