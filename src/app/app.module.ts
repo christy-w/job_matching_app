@@ -1,8 +1,8 @@
 // Ionic / Angular / 3rd-party dependencies
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // Custom dependencies
@@ -62,7 +62,11 @@ export function createTranslateLoader(http: Http) {
 		...myComponents
 	],
 	providers: [
-		...myProviders
+		...myProviders,
+	
+		// Here we tell the Angular ErrorHandling class
+		// that it should be using the IonicErrorHandler class for any errors
+		{ provide: ErrorHandler, useClass: IonicErrorHandler }
 	]
 })
 export class AppModule { }
