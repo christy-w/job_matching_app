@@ -233,9 +233,9 @@ export class Utils {
 	// Check whether the device is online	
 	public isOnline(): boolean {
 		if (this.isCordova()) {
-			// Network.connection types: unknown, ethernet, wifi, 2g, 3g, 4g, cellular, none
-			Config.DEBUG_VERBOSE && console.log('Network.connection', Network.connection);
-			return (Network.connection != 'none');
+			// Network types: unknown, ethernet, wifi, 2g, 3g, 4g, cellular, none
+			Config.DEBUG_VERBOSE && console.log('Network.type = ' + Network.type);
+			return (Network.type != 'none');
 		} else {
 			return true;
 		}
