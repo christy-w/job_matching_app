@@ -1,5 +1,5 @@
 
-Last Updated: 6 Nov 2016 by Michael Chan
+Last Updated: 30 Jan 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
@@ -79,27 +79,28 @@ These files should be changed according to project requirements.
 Before app development on top of JuicyLauncher 2, developers may need to check the follow setup procedure first:
 
 1. Setup Node.js (prefer using [Node Version Manager](https://github.com/creationix/nvm))
-2. Use npm to install **cordova**, **ionic**, **typescript** (for iOS development - require **ios-deploy**)
+2. Install core node programs globally: **npm install -g cordova ionic typescript** (for iOS development - require **ios-deploy**)
 3. Git clone this repo
-4. Run **npm install** and **ionic state restore** inside the repo folder
+4. Run **npm install** inside the repo folder (Note: we **don't** need to execute ionic state restore since the default plugins have fixed version in config.xml)
 5. By default, JuicyLauncher 2 includes version checking logic which requires endpoints from **JuicyLauncher 2 Web**, so please make sure the ApiService class has linked to the correct website accordingly
 6. Try **ionic serve** and see if the app works well
 7. If everything is fine, use **ionic run android** or **ionic build ios** to test on real devices
+8. For production builds, use **ionic run android --prod** or **ionic build ios --prod** instead
 
 At the time of writing, JuicyLauncher 2 works well under below environment:
 
-- Node.js: 6.9.1 LTS
-- Cordova Cli: 6.3.1 (6.4.0 will have issues building APK)
-- Ionic Cli: 2.1.12
+- Node.js: 6.9.4 LTS
+- Cordova Cli: 6.5.0
+- Ionic Cli: 2.2.1
 - Typescript: 2.0.9
 - Node Modules:
-    - ionic-angular: 2.0.0-rc.4
-    - ionic-native: 2.2.13
+    - ionic-angular: 2.0.0
+    - ionic-native: 2.4.1
     - ionicons: 3.0.0
-    - lodash: 4.16.5
-    - moment: 2.15.2
+    - lodash: 4.17.4
+    - moment: 2.17.1
     - ng2-translate: 5.0.0
-    - @ionic/app-scripts: 0.0.48
+    - @ionic/app-scripts: 1.0.0
     - typescript: 2.0.9
 
 
