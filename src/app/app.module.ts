@@ -1,7 +1,6 @@
 // Ionic / Angular / 3rd-party dependencies
 import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -16,39 +15,55 @@ import { NewVersionPage } from '../pages/new-version/new-version';
 import { Utils } from '../core/providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
 
-export const myComponents = [
-	// pages
+/**
+ * The Pages array lists all of the pages we want to use in our app.
+ * We then take these pages and inject them into our NgModule so Angular
+ * can find them. As you add and remove pages, make sure to keep this list up to date.
+ */
+let pages = [
+	MyApp,
 	HomePage,
-	NewVersionPage,
-	// components
+	NewVersionPage
+];
+
+let components = [
 	MyNavbar 
 ];
 
-export const myDirectives = [
+let directives = [
 ];
 
-export const myPipes = [
+let pipes = [
 ];
-
-export const myProviders = [
-	Utils,
-	ApiService
-]
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+export function declarations() {
+	return [pages, ...components, ...directives, ...pipes];
+}
+
+export function entryComponents() {
+	return [pages, ...components];
+}
+
+export function providers() {
+	return [
+		Storage,
+
+		ApiService,
+		Utils,
+		
+		// Here we tell the Angular ErrorHandling class
+		// that it should be using the IonicErrorHandler class for any errors
+		{ provide: ErrorHandler, useClass: IonicErrorHandler }
+	];
+}
+
 @NgModule({
-	declarations: [
-		MyApp,
-		...myComponents,
-		...myDirectives,
-		...myPipes
-	],
+	declarations: declarations(),
 	imports: [
-		BrowserModule,
-		HttpModule,
 		FormsModule,
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
@@ -62,19 +77,8 @@ export function createTranslateLoader(http: Http) {
 			}
 		})
 	],
-	exports: [TranslateModule],
 	bootstrap: [IonicApp],
-	entryComponents: [
-		MyApp,
-		...myComponents
-	],
-	providers: [
-		Storage,
-		...myProviders,
-	
-		// Here we tell the Angular ErrorHandling class
-		// that it should be using the IonicErrorHandler class for any errors
-		{ provide: ErrorHandler, useClass: IonicErrorHandler }
-	]
+	entryComponents: entryComponents(),
+	providers: providers()
 })
 export class AppModule { }

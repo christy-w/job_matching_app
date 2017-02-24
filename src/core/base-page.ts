@@ -9,6 +9,7 @@ import { Utils } from './providers/utils';
 export class BasePage {
 
 	// member variables accessible from child classes
+	name: string;
 	content: Content;
 	language: string = Config.DEFAULT_LANGUAGE;
 
@@ -21,7 +22,7 @@ export class BasePage {
 		Config.DEBUG_VERBOSE && console.log('BasePage constructor');
 		this.language = this.utils.currentLang();
 	}
-
+	
 	// Back to previous page, or to root page
 	goBack(toRoot: boolean = false, opts: NavOptions = {}) {
 		(toRoot) ? this.nav.popToRoot(opts) : this.nav.pop(opts);
@@ -35,7 +36,9 @@ export class BasePage {
 	}
 	ionViewDidEnter() {
 		// Google Analytics track view
-		this.utils.trackView(this.view.name);
+		if (this.name) {
+			this.utils.trackView(this.name);
+		}
 	}
 	ionViewWillLeave() {
 	}

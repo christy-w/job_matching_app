@@ -10,6 +10,8 @@ import { Utils } from '../../core/providers/utils';
 })
 export class HomePage extends BasePage {
 
+	name: string = 'HomePage';
+	
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
