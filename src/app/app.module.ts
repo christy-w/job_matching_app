@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 
 // Custom dependencies
 import { MyApp } from './app.component';
@@ -35,6 +35,13 @@ let directives = [
 
 let pipes = [
 ];
+
+// http://ionicframework.com/docs/v2/api/navigation/DeepLinker/
+let deeplink_config: DeepLinkConfig = {
+	links: [
+		{ component: HomePage, name: 'Home', segment: 'home' },
+	]
+};
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -68,7 +75,7 @@ export function providers() {
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
 			tabsPlacement: 'bottom'
-		}),
+		}, deeplink_config),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
