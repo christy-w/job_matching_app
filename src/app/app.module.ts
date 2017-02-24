@@ -1,9 +1,12 @@
 // Ionic / Angular / 3rd-party dependencies
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Http } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Storage } from '@ionic/storage';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 // Custom dependencies
 import { MyApp } from './app.component';
@@ -33,7 +36,7 @@ export const myProviders = [
 ]
 
 export function createTranslateLoader(http: Http) {
-	return new TranslateStaticLoader(http, './assets/i18n', '.json');
+	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -44,16 +47,20 @@ export function createTranslateLoader(http: Http) {
 		...myPipes
 	],
 	imports: [
+		BrowserModule,
+		HttpModule,
+		FormsModule,
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
 			tabsPlacement: 'bottom'
 		}),
 		TranslateModule.forRoot({
-			provide: TranslateLoader,
-			useFactory: (createTranslateLoader),
-			deps: [Http]
-		}),
-		FormsModule
+			loader: {
+				provide: TranslateLoader,
+				useFactory: (createTranslateLoader),
+				deps: [Http]
+			}
+		})
 	],
 	exports: [TranslateModule],
 	bootstrap: [IonicApp],
@@ -62,6 +69,7 @@ export function createTranslateLoader(http: Http) {
 		...myComponents
 	],
 	providers: [
+		Storage,
 		...myProviders,
 	
 		// Here we tell the Angular ErrorHandling class

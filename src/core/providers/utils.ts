@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { TranslateService } from 'ng2-translate/ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import {
 	Platform,
 	ActionSheet, ActionSheetController, ActionSheetOptions,
@@ -25,9 +25,7 @@ import _ from 'lodash';
  */
 @Injectable()
 export class Utils {
-
-	private storage: Storage = new Storage();
-
+	
 	constructor(
 		private platform: Platform,
 
@@ -49,8 +47,11 @@ export class Utils {
 		// http://ionicframework.com/docs/v2/api/components/toast/ToastController/
 		private toastCtrl: ToastController,
 
+		// https://github.com/driftyco/ionic-storage
+		private storage: Storage,
+
 		// 3-party providers
-		// https://github.com/ocombe/ng2-translate
+		// https://github.com/ngx-translate/core
 		private translate: TranslateService
 	) {
 	}
@@ -159,7 +160,7 @@ export class Utils {
 		}
 		return this.storage.set(key, value);
 	}
-
+	
 	// Get local data
 	public getLocal(key: string, default_value: any = null, is_json: boolean = false): Promise<any> {
 		return this.storage.get(key).then(data => {
@@ -189,14 +190,18 @@ export class Utils {
 		// get stored interface language
 		return this.getLocal('UI_LANGUAGE', Config.DEFAULT_LANGUAGE).then(value => {
 			let userLang: string;
+			
+			// this language will be used as a fallback when a translation isn't found in the current language
 			this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
-
+			
 			if (value) {
 				userLang = value;
 			} else {
 				userLang = navigator.language.split('-')[0]; // use navigator lang if available
 				userLang = /(zh|en)/gi.test(userLang) ? userLang : Config.DEFAULT_LANGUAGE;
 			}
+			
+			// the lang to use, if the lang isn't available, it will use the current loader to get them
 			this.translate.use(userLang);
 		});
 	}

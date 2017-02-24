@@ -1,5 +1,5 @@
 
-Last Updated: 30 Jan 2017 by Michael Chan
+Last Updated: 24 Feb 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
@@ -18,7 +18,7 @@ JuicyLauncher 2 provides codebase from Ionic 2 app, plus core files to extends f
 - BaseApp class (to be inherited from MyApp)
 - BasePage class (to be inherited from page components)
 - BaseService class (to be inherited from service classes which require API calls)
-- Localization setup for multilingual App (using [ng2-translate](https://github.com/ocombe/ng2-translate))
+- Localization setup for multilingual App (using [ngx-translate](https://github.com/ngx-translate/core))
 - Config class to store values for quick app configuration
 - Utils class to provide shortcut functions which allow avoidance of repeated dependencies from pages/components
 - Preload third-party libraries:
@@ -94,13 +94,14 @@ At the time of writing, JuicyLauncher 2 works well under below environment:
 - Ionic Cli: 2.2.1
 - Typescript: 2.0.9
 - Node Modules:
-    - ionic-angular: 2.0.0
-    - ionic-native: 2.4.1
+    - ionic-angular: 2.1.0
+    - ionic-native: 2.5.1
     - ionicons: 3.0.0
     - lodash: 4.17.4
     - moment: 2.17.1
-    - ng2-translate: 5.0.0
-    - @ionic/app-scripts: 1.0.0
+    - ngx-translate: 6.0.0
+    - ngx-translate/http-loader: 0.0.3
+    - @ionic/app-scripts: 1.1.4
     - typescript: 2.0.9
 
 
