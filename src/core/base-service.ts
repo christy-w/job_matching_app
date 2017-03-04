@@ -54,35 +54,32 @@ export class BaseService {
     }
 
     // GET request (with local data checking logic)
-    protected get(url: string, check_local: boolean = false, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected get(url: string, local_expiry: number = Config.DEFAULT_LOCAL_EXPIRY, options: RequestOptionsArgs = {}): Promise<{}> {
 
         if (!this.utils.isOnline()) {
             // device no connection > get local data
-            return this.getLocal(url, false);
+            return this.getLocal(url, 0);
+        } else if (local_expiry > 0) {
+            // device has connection > check local data first
+            return this.getLocal(url, local_expiry).then(data => {
+                return (data) ? data : this.getRemote(url, options);
+            });
         } else {
-            // device has connection
-            if (check_local) {
-                // check local data first
-                return this.getLocal(url, true).then(data => {
-                    return (data) ? data : this.getRemote(url, options);
-                });
-            } else {
-                // skip local data checking, directly call API
-                return this.getRemote(url, options);
-            }
+            // device has connection > skip local data checking, directly call API
+            return this.getRemote(url, options);
         }
     }
-
+    
     // GET request (from local data)
-    protected getLocal(url: string, check_expiry: boolean = true): Promise<{}> {
+    protected getLocal(url: string, local_expiry: number = 0): Promise<{}> {
         let key: string = this.local_key_prefix + url;
         return this.utils.getLocal(key, null, true).then(value => {
-            if (!check_expiry) {
+            if (local_expiry==0) {
                 // ignore expiry > return data directly
-                return value.data;
+                return (value.data) ? value.data : value;
             } else if (value.last_update) {
                 // check expiry > return null if data has expired
-                let expiry = moment(value.last_update).valueOf() + Config.LOCAL_DATA_EXPIRY * 1000;
+                let expiry = moment(value.last_update).valueOf() + local_expiry * 1000;
                 let now = moment().valueOf();
                 Config.DEBUG_VERBOSE && console.log('last_update', value.last_update);
                 Config.DEBUG_VERBOSE && console.log('expiry', expiry);

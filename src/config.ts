@@ -13,7 +13,7 @@ export class Config {
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
     
     // Local data
-    static LOCAL_DATA_EXPIRY: number = 3600; // unit: seconds
+    static DEFAULT_LOCAL_EXPIRY: number = 3600; // unit: seconds
     
     // Google Analytics (set GA_TRACKER_ID as empty to disable)
     static GA_TRACKER_ID: string = '';   // UA-000000-01
