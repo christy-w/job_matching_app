@@ -11,13 +11,12 @@ import moment from 'moment';
  * @Injectable to be defined in child classes
  **/
 export class BaseService {
-
+    
     // member variables accessible from child classes
     protected api_prefix: string = '';
-    protected api_key_anonymous: string = 'anonymous';
     protected headers: Headers = new Headers();
     protected local_key_prefix: string = 'API ';
-
+    
     constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
         this.headers.set('Content-Type', 'application/json');
     }
@@ -41,7 +40,6 @@ export class BaseService {
         if (!platform) {
             return Promise.resolve([]);
         } else {
-            this.headers.set('X-API-KEY', this.api_key_anonymous);
             let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
             return this.get(url);
         }
@@ -49,10 +47,9 @@ export class BaseService {
 
     // Get App config
     public getAppConfig() {
-        this.headers.set('X-API-KEY', this.api_key_anonymous);
         return this.get('/config');
     }
-
+    
     // GET request (with local data checking logic)
     protected get(url: string, local_expiry: number = Config.DEFAULT_LOCAL_EXPIRY, options: RequestOptionsArgs = {}): Promise<{}> {
 
