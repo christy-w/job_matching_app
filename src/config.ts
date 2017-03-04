@@ -3,18 +3,18 @@
  */
 export class Config {
     
-    static JUICYLAUNCHER_VERSION: string = 'build 20161118';
+    // For development purpose
+    static JUICYLAUNCHER_VERSION: string = 'build 20170304';
+    static DEBUG_MODE: boolean = true;
+    static APP_VERSION: string = '1.0.0';   // only for non-cordova environment
     
-    // For development purpose at non-cordova environment    
-    static APP_VERSION: string = '1.0.0';
-
     // Localization
     static DEFAULT_LANGUAGE: string = 'zh';
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
-
+    
     // Local data
     static LOCAL_DATA_EXPIRY: number = 3600; // unit: seconds
-
+    
     // Google Analytics (set GA_TRACKER_ID as empty to disable)
     static GA_TRACKER_ID: string = '';   // UA-000000-01
     static GA_DEBUG_MODE: boolean = true;

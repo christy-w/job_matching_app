@@ -2,7 +2,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
@@ -57,8 +57,6 @@ export function entryComponents() {
 
 export function providers() {
 	return [
-		Storage,
-
 		ApiService,
 		Utils,
 		
@@ -76,6 +74,7 @@ export function providers() {
 			prodMode: false,
 			tabsPlacement: 'bottom'
 		}, deeplink_config),
+		IonicStorageModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
