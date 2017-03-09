@@ -4,7 +4,7 @@
 export class Config {
     
     // For development purpose
-    static JUICYLAUNCHER_VERSION: string = 'build 20170304';
+    static JUICYLAUNCHER_VERSION: string = 'build 20170309';
     static DEBUG_MODE: boolean = true;
     static APP_VERSION: string = '1.0.0';   // only for non-cordova environment
     

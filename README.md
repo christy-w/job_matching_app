@@ -1,5 +1,5 @@
 
-Last Updated: 24 Feb 2017 by Michael Chan
+Last Updated: 9 Mar 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
@@ -94,8 +94,8 @@ At the time of writing, JuicyLauncher 2 works well under below environment:
 - Ionic Cli: 2.2.1
 - Typescript: 2.0.9
 - Node Modules:
-    - ionic-angular: 2.1.0
-    - ionic-native: 2.5.1
+    - ionic-angular: 2.2.0
+    - ionic-native: 2.8.0
     - ionicons: 3.0.0
     - lodash: 4.17.4
     - moment: 2.17.1
