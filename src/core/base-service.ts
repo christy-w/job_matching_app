@@ -71,7 +71,7 @@ export class BaseService {
     // GET request (from local data)
     protected getLocal(url: string, local_expiry: number = 0): Promise<{}> {
         let key: string = this.local_key_prefix + url;
-        return this.utils.getLocal(key, null, true).then(value => {
+        return this.utils.getLocal(key, null).then(value => {
             if (local_expiry==0) {
                 // ignore expiry > return data directly
                 return (value.data) ? value.data : value;
@@ -110,7 +110,7 @@ export class BaseService {
                             data: data,
                             last_update: moment().valueOf()
                         }
-                        this.utils.setLocal(key, value, true).then(() => {
+                        this.utils.setLocal(key, value).then(() => {
                             this.handleResponse(resolve, url, data);
                         });
                     }

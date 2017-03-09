@@ -153,20 +153,14 @@ export class Utils {
 	}
 
 	// Set local data
-	public setLocal(key: string, value: any, is_json: boolean = false): Promise<any> {
+	public setLocal(key: string, value: any): Promise<any> {
 		Config.DEBUG_LOCAL_DATA && console.log('Local Set (key = ' + key + ')', value);
-		if (is_json) {
-			value = JSON.stringify(value);
-		}
 		return this.storage.set(key, value);
 	}
 	
 	// Get local data
-	public getLocal(key: string, default_value: any = null, is_json: boolean = false): Promise<any> {
+	public getLocal(key: string, default_value: any = null): Promise<any> {
 		return this.storage.get(key).then(data => {
-			if (is_json && data) {
-				data = JSON.parse(data);
-			}
 			Config.DEBUG_LOCAL_DATA && console.log('Local Get (key = ' + key + ')', data);
 			return (typeof data == 'undefined' || data == null) ? default_value : data;
 		}).catch(err => {
