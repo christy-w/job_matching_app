@@ -9,7 +9,8 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 
 // Custom dependencies
 import { MyApp } from './app.component';
-import { MyNavbar } from '../core/components/my-navbar/my-navbar';
+import { CommonHeader } from '../components/common-header/common-header';
+import { CommonFooter } from '../components/common-footer/common-footer';
 import { HomePage } from '../pages/home/home';
 import { NewVersionPage } from '../core/components/new-version/new-version';
 import { Utils } from '../core/providers/utils';
@@ -29,7 +30,8 @@ let pages = [
 ];
 
 let components = [
-	MyNavbar
+	CommonHeader,
+	CommonFooter
 ];
 
 let directives = [

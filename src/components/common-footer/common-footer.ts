@@ -1,26 +1,23 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
 /**
- * Common navbar across pages 
+ * Common footer across pages 
  *
  * Usage:
- *	<my-navbar [title]="'PAGE.HOME' | translate" [enable-menu]="true" [enable-back]="true"></my-navbar>
+ *	<common-footer [title]="'My Footer'"></common-footer>
  */
 @Component({
-	selector: 'my-navbar',
-	templateUrl: 'my-navbar.html'
+	selector: 'common-footer',
+	templateUrl: 'common-footer.html'
 })
-export class MyNavbar {
-
+export class CommonFooter {
+	
 	@Input() title: string;
-	@Input('logo-url') logo_url: string;
-	@Input('enable-menu') enable_menu: boolean = false;
-	@Input('enable-back') enable_back: boolean = false;
-
+	
 	constructor(private el: ElementRef) {
 	}
-
-	// To remove unnecessary <my-navbar></my-navbar> tag
+	
+	// To remove unnecessary <common-footer></common-footer> tag
 	// Reference: http://stackoverflow.com/questions/34280475/remove-the-host-html-element-selectors-created-by-angular-component
 	ngOnInit() {
 		var nativeElement: HTMLElement = this.el.nativeElement,
