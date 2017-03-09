@@ -4,7 +4,7 @@ import { Component, Input, ElementRef } from '@angular/core';
  * Common navbar across pages 
  *
  * Usage:
- *	<my-navbar [title]="'PAGE.HOME' | translate" [enable_music]="true" [enable_back]="true"></my-navbar>
+ *	<my-navbar [title]="'PAGE.HOME' | translate" [enable-menu]="true" [enable-back]="true"></my-navbar>
  */
 @Component({
 	selector: 'my-navbar',
@@ -13,9 +13,9 @@ import { Component, Input, ElementRef } from '@angular/core';
 export class MyNavbar {
 
 	@Input() title: string;
-	@Input() logo_url: string;
-	@Input() enable_menu: boolean = false;
-	@Input() enable_back: boolean = false;
+	@Input('logo-url') logo_url: string;
+	@Input('enable-menu') enable_menu: boolean = false;
+	@Input('enable-back') enable_back: boolean = false;
 
 	constructor(private el: ElementRef) {
 	}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
-import { Utils } from '../../core/providers/utils';
-import { ApiService } from '../../providers/api-service/api-service';
+import { Utils } from '../../providers/utils';
+import { BaseService } from '../../base-service';
 import { AppVersion } from '../../models/app-version';
 
 /**
@@ -25,7 +25,7 @@ export class NewVersionPage {
 		private platform: Platform,
 		private view: ViewController,
 		private params: NavParams,
-		private api: ApiService,
+		private api: BaseService,
 		private utils: Utils
 	) {
 		this.force_upgrade = params.data.force_upgrade;

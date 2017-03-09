@@ -3,7 +3,8 @@ import 'rxjs/Rx';
 import { Platform, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
-import { AppVersion } from '../models/app-version';
+import { AppVersion } from './models/app-version';
+import { ErrorObj } from './models/error-obj';
 import moment from 'moment';
 
 /**
@@ -195,10 +196,4 @@ export class BaseService {
         }
         this.handleError(reject, obj);
     }
-}
-
-// Custom error object for JuicyLauncher 2
-export class ErrorObj {
-    public code: number;
-    public message: string;
 }

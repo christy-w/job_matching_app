@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Platform } from 'ionic-angular';
 import { Utils } from '../../core/providers/utils';
-import { BaseService, ErrorObj } from '../../core/base-service';
+import { BaseService } from '../../core/base-service';
+import { ErrorObj } from '../../core/models/error-obj';
 
 @Injectable()
 export class ApiService extends BaseService {
@@ -10,8 +11,6 @@ export class ApiService extends BaseService {
 	// override API URL prefix and anonymous API key
 	//protected api_prefix: string = 'http://localhost/juicylauncher2_web/api';
 	protected api_prefix: string = 'http://dev.juicyapphk.com/juicylauncher2_web/api';
-	protected api_key_anonymous: string = 'anonymous';
-	protected api_key_user: string = '';
 	
 	constructor(http: Http, platform: Platform, utils: Utils) {
 		super(http, platform, utils);

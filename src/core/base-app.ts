@@ -8,7 +8,7 @@ import { StatusBar } from 'ionic-native';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
-import { NewVersionPage } from '../pages/new-version/new-version';
+import { NewVersionPage } from './components/new-version/new-version';
 
 export class BaseApp {
 
@@ -18,7 +18,7 @@ export class BaseApp {
 
 	// default page to display
 	public rootPage: any;
-
+	
 	constructor(
 		protected platform: Platform,
 		protected api: ApiService,

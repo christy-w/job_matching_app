@@ -9,14 +9,14 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 
 // Custom dependencies
 import { MyApp } from './app.component';
-import { MyNavbar } from '../components/my-navbar/my-navbar';
+import { MyNavbar } from '../core/components/my-navbar/my-navbar';
 import { HomePage } from '../pages/home/home';
-import { NewVersionPage } from '../pages/new-version/new-version';
+import { NewVersionPage } from '../core/components/new-version/new-version';
 import { Utils } from '../core/providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
+import { EscapeHtml } from '../core/pipes/escape-html';
+import { InappHref } from '../core/components/inapp-href/inapp-href';
 
-import { CustomSafe } from '../pipes/custom-safe';
-import { CustomHref } from '../components/custom-href/custom-href';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -29,15 +29,15 @@ let pages = [
 ];
 
 let components = [
-	MyNavbar 
+	MyNavbar
 ];
 
 let directives = [
-	CustomHref
+	InappHref
 ];
 
 let pipes = [
-	CustomSafe
+	EscapeHtml
 ];
 
 // http://ionicframework.com/docs/v2/api/navigation/DeepLinker/
