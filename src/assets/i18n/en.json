@@ -32,7 +32,8 @@
 
     "MSG": {
         "ERROR": "Error",
-        "SUCCESS": "Success"
+        "SUCCESS": "Success",
+        "CONFIRM_EXIT_APP": "Confirm to exit App?"
     },
     
     "ERROR": {

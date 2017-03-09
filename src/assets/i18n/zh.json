@@ -32,7 +32,8 @@
 
     "MSG": {
         "ERROR": "錯誤",
-        "SUCCESS": "成功"
+        "SUCCESS": "成功",
+        "CONFIRM_EXIT_APP": "確認離開?"
     },
 
     "ERROR": {

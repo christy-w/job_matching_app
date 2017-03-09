@@ -34,7 +34,7 @@ export class BaseApp {
 			let page = <BasePage>this.nav.root;
 			if (!this.nav.canGoBack() && page.name == Config.ROOT_PAGE_NAME) {
 				// show Exit App confirmation box
-				this.utils.showConfirm('Exit App', 'Confirm to exit?', () => {
+				this.utils.showConfirm('', this.utils.instantLang('MSG.CONFIRM_EXIT_APP'), () => {
 					this.platform.exitApp();
 				});
 			} else {
@@ -42,7 +42,7 @@ export class BaseApp {
 				this.nav.pop();
 			}
 		});
-
+		
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
