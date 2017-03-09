@@ -188,21 +188,22 @@ export class Utils {
 	// Init language setup
 	public setupLang() {
 		// get stored interface language
-		return this.getLocal('UI_LANGUAGE', Config.DEFAULT_LANGUAGE).then(value => {
-			let userLang: string;
+		return this.getLocal('UI_LANGUAGE').then(saved_lang => {
 			
 			// this language will be used as a fallback when a translation isn't found in the current language
 			this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
 			
-			if (value) {
-				userLang = value;
+			if (saved_lang) {
+				// use language saved to local
+				console.log('Use saved language: ' + saved_lang);
+				this.translate.use(saved_lang);
 			} else {
-				userLang = navigator.language.split('-')[0]; // use navigator lang if available
-				userLang = /(zh|en)/gi.test(userLang) ? userLang : Config.DEFAULT_LANGUAGE;
+				// detect device language (get only first 2 characters, e.g. en-US > en)
+				let lang = this.translate.getBrowserCultureLang().split('-')[0];
+				lang = /(zh|en)/gi.test(lang) ? lang : Config.DEFAULT_LANGUAGE;
+				console.log('Detect user language: ' + lang);
+				this.translate.use(lang);
 			}
-			
-			// the lang to use, if the lang isn't available, it will use the current loader to get them
-			this.translate.use(userLang);
 		});
 	}
 
