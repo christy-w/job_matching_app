@@ -7,24 +7,41 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
+import { BasePage } from './base-page';
 import { ApiService } from '../providers/api-service/api-service';
 import { NewVersionPage } from './components/new-version/new-version';
 
 export class BaseApp {
-
+	
 	// the root nav is a child of the root app component
 	// @ViewChild(Nav) gets a reference to the app's root nav
 	@ViewChild(Nav) nav: Nav;
 
 	// default page to display
 	public rootPage: any;
-	
+
 	constructor(
 		protected platform: Platform,
 		protected api: ApiService,
 		protected utils: Utils
 	) {
 		Config.DEBUG_VERBOSE && console.log('BaseApp constructor');
+		
+		// override Android hardware back button
+		platform.registerBackButtonAction(() => {
+			
+			// check current page name
+			let page = <BasePage>this.nav.root;
+			if (!this.nav.canGoBack() && page.name == Config.ROOT_PAGE_NAME) {
+				// show Exit App confirmation box
+				this.utils.showConfirm('Exit App', 'Confirm to exit?', () => {
+					this.platform.exitApp();
+				});
+			} else {
+				// normal go back navigation
+				this.nav.pop();
+			}
+		});
 
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.

@@ -4,13 +4,12 @@ import { BaseApp } from '../core/base-app';
 import { Config } from '../config';
 import { Utils } from '../core/providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
-import { HomePage } from '../pages/home/home';
 
 @Component({
 	templateUrl: 'app.html'
 })
 export class MyApp extends BaseApp {
-  
+	
 	constructor(platform: Platform, api: ApiService, utils: Utils) {
 		super(platform, api, utils);
 		Config.DEBUG_VERBOSE && console.log('MyApp constructor');
@@ -20,6 +19,6 @@ export class MyApp extends BaseApp {
 	protected onAppLoaded() {
 		// set rootpage only when the app is ready
 		Config.DEBUG_VERBOSE && console.log('MyApp onAppLoaded');
-		this.rootPage = HomePage;
+		this.rootPage = Config.START_PAGE;
 	}
 }

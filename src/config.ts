@@ -1,3 +1,5 @@
+import { HomePage } from './pages/home/home';
+
 /**
  * Global constants and configuration values
  */
@@ -11,6 +13,12 @@ export class Config {
     // Localization
     static DEFAULT_LANGUAGE: string = 'zh';
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
+    
+    // First page to enter when the App is started
+    static START_PAGE: any = HomePage;
+
+    // For checking root page which shows Exit App confirmation box
+    static ROOT_PAGE_NAME: string = 'HomePage';
     
     // Local data
     static DEFAULT_LOCAL_EXPIRY: number = 3600; // unit: seconds
