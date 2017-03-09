@@ -15,6 +15,8 @@ import { NewVersionPage } from '../pages/new-version/new-version';
 import { Utils } from '../core/providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
 
+import { CustomSafe } from '../pipes/custom-safe';
+import { CustomHref } from '../components/custom-href/custom-href';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -31,9 +33,11 @@ let components = [
 ];
 
 let directives = [
+	CustomHref
 ];
 
 let pipes = [
+	CustomSafe
 ];
 
 // http://ionicframework.com/docs/v2/api/navigation/DeepLinker/
