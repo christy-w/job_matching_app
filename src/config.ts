@@ -9,6 +9,9 @@ export class Config {
     static JUICYLAUNCHER_VERSION: string = 'build 20170309';
     static DEBUG_MODE: boolean = true;
     static APP_VERSION: string = '1.0.0';   // only for non-cordova environment
+
+    // Native config
+    static STATUSBAR_COLOR: string = '#000';
     
     // Localization
     static DEFAULT_LANGUAGE: string = 'zh';
@@ -16,7 +19,7 @@ export class Config {
     
     // First page to enter when the App is started
     static START_PAGE: any = HomePage;
-
+    
     // For checking root page which shows Exit App confirmation box
     static ROOT_PAGE_NAME: string = 'HomePage';
     
