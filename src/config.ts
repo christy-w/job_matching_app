@@ -21,7 +21,7 @@ export class Config {
     static ROOT_PAGE_NAME: string = 'HomePage';
     
     // Local data
-    static DEFAULT_LOCAL_EXPIRY: number = 3600; // unit: seconds
+    static DEFAULT_LOCAL_EXPIRY: number = 300; // unit: seconds
     
     // Google Analytics (set GA_TRACKER_ID as empty to disable)
     static GA_TRACKER_ID: string = '';   // UA-000000-01
@@ -39,8 +39,8 @@ export class Config {
     // Turn on/off debug messages
     static DEBUG_VERBOSE: boolean = false;				// Messages for non-critical points
     static DEBUG_API_REQUEST: boolean = true;			// Messages before API requests
-    static DEBUG_API_REPONSE: boolean = true;			// Messages upon receiving API responses
-    static DEBUG_LOCAL_DATA: boolean = true;            // Messages related to local data & storage
-    static DEBUG_ANALYTICS: boolean = true;				// Messages related to Analytics platform (e.g. Google Analytics)
-    static DEBUG_PUSH_NOTIFICATION: boolean = false;	// Messages related to push notifications (e.g. OneSignal) 
+    static DEBUG_API_REPONSE: boolean = true;           // Messages upon receiving API responses
+    static DEBUG_LOCAL_DATA: boolean = false;           // Messages related to local data & storage
+    static DEBUG_ANALYTICS: boolean = false;            // Messages related to Analytics platform (e.g. Google Analytics)
+    static DEBUG_PUSH_NOTIFICATION: boolean = false;    // Messages related to push notifications (e.g. OneSignal) 
 }

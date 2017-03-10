@@ -3,7 +3,7 @@ import 'rxjs/Rx';
 import { Platform, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
-import { AppVersion } from './models/app-version';
+import { NewVersionList } from './models/new-version';
 import { ErrorObj } from './models/error-obj';
 import moment from 'moment';
 
@@ -37,9 +37,9 @@ export class BaseService {
     }
 
     // Get versions later than current app version
-    public getVersions(from_code: string, platform: string): Promise<AppVersion[]> {
+    public getVersions(from_code: string, platform: string): Promise<NewVersionList> {
         if (!platform) {
-            return Promise.resolve([]);
+            return Promise.resolve(null);
         } else {
             let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
             return this.get(url);

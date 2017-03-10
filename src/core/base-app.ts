@@ -60,40 +60,26 @@ export class BaseApp {
 	protected checkVersion() {
 		this.utils.currentVersion().then(curr_version_code => {
 			let os: string = this.utils.currentOS();
-			this.api.getVersions(curr_version_code, os).then(new_versions => {
+			this.api.getVersions(curr_version_code, os).then(new_version_list => {
 
-				// New versions found
-				if (new_versions.length > 0) {
-
-					// Force upgrade checking
-					let force_upgrade: boolean = false;
-					new_versions.forEach(version => {
-						if (version.force_upgrade && version.force_upgrade == '1') {
-							force_upgrade = true;
+				// Prepare modal or popover, based on whether need to force upgrade						
+				let view_data = {
+					curr_version_code: curr_version_code,
+					new_version_list: new_version_list
+				};
+				if (new_version_list.force_upgrade) {
+					this.utils.showModal(NewVersionPage, view_data);
+				} else {
+					// check whether user has dismissed version upgrade notice before
+					let latest_version_code: string = new_version_list.latest_version;
+					let key: string = 'VERSION_CHECK_FROM_' + curr_version_code + '_TO_' + latest_version_code;
+					this.utils.getLocal(key, false).then(skipped => {
+						if (!skipped) {
+							this.utils.showModal(NewVersionPage, view_data);
 						}
-					})
-
-					// Prepare modal or popover, based on whether need to force upgrade						
-					let view_data = {
-						force_upgrade: force_upgrade,
-						curr_version_code: curr_version_code,
-						new_versions: new_versions
-					};
-					if (force_upgrade) {
-						this.utils.showModal(NewVersionPage, view_data);
-					} else {
-						// check whether user has dismissed version upgrade notice before
-						let latest_version_code: string = new_versions[0].code;
-						let key: string = 'VERSION_CHECK_FROM_' + curr_version_code + '_TO_' + latest_version_code;
-						this.utils.getLocal(key, false).then(skipped => {
-							if (!skipped) {
-								// TODO: change to "popup" which display on page center
-								this.utils.showModal(NewVersionPage, view_data);
-							}
-						});
-					}
+					});
 				}
-
+				
 				// indicate the app is successfully loaded
 				this.onAppLoaded();
 			}).catch(error => {

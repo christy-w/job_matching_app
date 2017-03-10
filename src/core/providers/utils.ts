@@ -189,13 +189,13 @@ export class Utils {
 			
 			if (saved_lang) {
 				// use language saved to local
-				console.log('Use saved language: ' + saved_lang);
+				Config.DEBUG_VERBOSE && console.log('Use saved language: ' + saved_lang);
 				this.translate.use(saved_lang);
 			} else {
 				// detect device language (get only first 2 characters, e.g. en-US > en)
 				let lang = this.translate.getBrowserCultureLang().split('-')[0];
 				lang = /(zh|en)/gi.test(lang) ? lang : Config.DEFAULT_LANGUAGE;
-				console.log('Detect user language: ' + lang);
+				Config.DEBUG_VERBOSE && console.log('Detect user language: ' + lang);
 				this.translate.use(lang);
 			}
 		});

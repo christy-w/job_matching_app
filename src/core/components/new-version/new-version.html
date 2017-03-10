@@ -8,8 +8,9 @@
 		<!-- description -->
 		<h5>New Version Available</h5>
 		<p>There is a newer version available for download.<br/>Please update the app to continue.</p>
+		<p>Latest Version: <strong>{{new_version_list.latest_version}}</strong></p>
 		<p>Current Version: <strong>{{curr_version_code}}</strong></p>
-		<p *ngIf="new_versions">Latest Version: <strong>{{new_versions[0].code}}</strong></p>
+		<p *ngIf="new_versions">Latest Version: <strong>{{new_version_list.latest_version}}</strong></p>
 
 		<!-- release notes -->
 		<ion-list *ngIf="new_versions">
@@ -18,7 +19,7 @@
 				<ion-icon item-right name="{{ show_release_notes_icon }}"></ion-icon>
 			</ion-list-header>
 			<div *ngIf="show_release_notes">
-				<ion-item *ngFor="let version of new_versions">
+				<ion-item *ngFor="let version of new_version_list.new_versions">
 					<h2>Version: {{version.code}} ({{version.publish_date}})</h2>
 					<br/>
 					<div [innerHTML]="version.release_notes"></div>
