@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { AppVersion } from '@ionic-native/app-version';
+import { OneSignal } from '@ionic-native/onesignal';
+import { Network } from '@ionic-native/network';
+import { ThemeableBrowser, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { TranslateService } from '@ngx-translate/core';
 import {
 	Platform,
@@ -10,13 +15,6 @@ import {
 	Popover, PopoverController, PopoverOptions,
 	Toast, ToastController, ToastOptions
 } from 'ionic-angular';
-import {
-	AppVersion,
-	GoogleAnalytics,
-	Network,
-	OneSignal,
-	ThemeableBrowser
-} from 'ionic-native';
 import { Config } from '../../config';
 import _ from 'lodash';
 
@@ -49,6 +47,13 @@ export class Utils {
 
 		// https://github.com/driftyco/ionic-storage
 		private storage: Storage,
+
+		// Ionic Native
+		private appVersion: AppVersion,
+		private network: Network,
+		private onesignal: OneSignal,
+		private ga: GoogleAnalytics,
+		private themeableBrowser: ThemeableBrowser,
 
 		// 3-party providers
 		// https://github.com/ngx-translate/core
@@ -200,7 +205,7 @@ export class Utils {
 			}
 		});
 	}
-
+	
 	// Change language
 	public changeLang(value) {
 		// change language only when the target value is within "available list"
@@ -234,8 +239,8 @@ export class Utils {
 	public isOnline(): boolean {
 		if (this.isCordova()) {
 			// Network types: unknown, ethernet, wifi, 2g, 3g, 4g, cellular, none
-			Config.DEBUG_VERBOSE && console.log('Network.type = ' + Network.type);
-			return (Network.type != 'none');
+			Config.DEBUG_VERBOSE && console.log('Network.type = ' + this.network.type);
+			return (this.network.type != 'none');
 		} else {
 			return true;
 		}
@@ -243,7 +248,7 @@ export class Utils {
 
 	// Get version number
 	public currentVersion(): Promise<any> {
-		return this.isCordova() ? AppVersion.getVersionNumber() : Promise.resolve(Config.APP_VERSION);
+		return this.isCordova() ? this.appVersion.getVersionNumber() : Promise.resolve(Config.APP_VERSION);
 	}
 
 	// Setup Google Analytics	
@@ -251,18 +256,18 @@ export class Utils {
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			Config.DEBUG_ANALYTICS && console.log('Setting up Google Analytics');
 			if (Config.GA_DEBUG_MODE) {
-				GoogleAnalytics.debugMode();
+				this.ga.debugMode();
 			}
 
-			GoogleAnalytics.startTrackerWithId(Config.GA_TRACKER_ID);
-			GoogleAnalytics.enableUncaughtExceptionReporting(Config.GA_DEBUG_MODE);
+			this.ga.startTrackerWithId(Config.GA_TRACKER_ID);
+			this.ga.enableUncaughtExceptionReporting(Config.GA_DEBUG_MODE);
 		}
 	}
 
 	// Google Analytics - Set User ID	
 	public setGoogleAnalyticsUserId(id: number | string) {
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
-			GoogleAnalytics.setUserId(id + '');
+			this.ga.setUserId(id + '');
 		}
 	}
 
@@ -270,7 +275,7 @@ export class Utils {
 	public trackView(title: string, campaign_url?: string): Promise<any> {
 		Config.DEBUG_ANALYTICS && console.log('Track View: ' + title);
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
-			return GoogleAnalytics.trackView(title, campaign_url);
+			return this.ga.trackView(title, campaign_url);
 		} else {
 			return Promise.resolve();
 		}
@@ -279,7 +284,7 @@ export class Utils {
 	// Google Analytics - Track Event
 	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
-			return GoogleAnalytics.trackEvent(category, action, label, value);
+			return this.ga.trackEvent(category, action, label, value);
 		} else {
 			return Promise.resolve();
 		}
@@ -290,22 +295,22 @@ export class Utils {
 	public setupOneSignal(end_init: boolean = true): OneSignal {
 		if (this.platform.is('cordova') && Config.ONESIGNAL_APP_ID) {
 			Config.DEBUG_PUSH_NOTIFICATION && console.log('Setting up OneSignal');
-			OneSignal.startInit(Config.ONESIGNAL_APP_ID, Config.ONESIGNAL_GOOGLE_PROJECT_NUMBER);
+			this.onesignal.startInit(Config.ONESIGNAL_APP_ID, Config.ONESIGNAL_GOOGLE_PROJECT_NUMBER);
 			
 			/*
-			OneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
-			OneSignal.handleNotificationReceived().subscribe(() => {
+			this.onesignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
+			this.onesignal.handleNotificationReceived().subscribe(() => {
 				// do something when notification is received
 			});
-			OneSignal.handleNotificationOpened().subscribe(() => {
+			this.onesignal.handleNotificationOpened().subscribe(() => {
 				// do something when a notification is opened
 			});
 			*/
 
 			if (end_init)
-				OneSignal.endInit();
+				this.onesignal.endInit();
 
-			return OneSignal;
+			return this.onesignal;
 		} else {
 			return null;
 		}
@@ -313,7 +318,7 @@ export class Utils {
 
 	// Themeable In-App Browser
 	// http://ionicframework.com/docs/v2/native/themeablebrowser/
-	public showBrowser(url: string, target: string = '_blank', options = null): ThemeableBrowser {
+	public showBrowser(url: string, target: string = '_blank', options = null): ThemeableBrowserObject {
 		if (options === null) {
 			// use default options from config
 			options = {
@@ -349,6 +354,7 @@ export class Utils {
 				backButtonCanClose: true
 			};
 		}
-		return new ThemeableBrowser(url, target, options);
+
+		return this.themeableBrowser.create(url, target, options);
 	}
 }

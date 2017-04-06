@@ -4,7 +4,7 @@
  **/
 import { ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+//import { StatusBar } from '@ionic-native/status-bar';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
 import { BasePage } from './base-page';
@@ -23,7 +23,8 @@ export class BaseApp {
 	constructor(
 		protected platform: Platform,
 		protected api: ApiService,
-		protected utils: Utils
+		protected utils: Utils,
+		//private statusbar: StatusBar
 	) {
 		Config.DEBUG_VERBOSE && console.log('BaseApp constructor');
 		
@@ -46,7 +47,7 @@ export class BaseApp {
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
-			StatusBar.backgroundColorByHexString(Config.STATUSBAR_COLOR);
+			//this.statusbar.backgroundColorByHexString(Config.STATUSBAR_COLOR);
 			
 			// JuicyLauncher setup
 			utils.setupLang();

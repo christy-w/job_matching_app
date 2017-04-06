@@ -1,11 +1,21 @@
 // Ionic / Angular / 3rd-party dependencies
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule, Http } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
+
+// Ionic Native
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppVersion } from '@ionic-native/app-version';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { Network } from '@ionic-native/network';
+import { ThemeableBrowser } from '@ionic-native/themeable-browser';
+import { OneSignal } from '@ionic-native/onesignal';
 
 // Core dependencies
 import { MyApp } from './app.component';
@@ -65,9 +75,19 @@ export function entryComponents() {
 
 export function providers() {
 	return [
+		// Ionic Native
+		StatusBar,
+		SplashScreen,
+		AppVersion,
+		GoogleAnalytics,
+		Network,
+		ThemeableBrowser,
+		OneSignal,
+
+		// Custom
 		ApiService,
 		Utils,
-		
+
 		// Here we tell the Angular ErrorHandling class
 		// that it should be using the IonicErrorHandler class for any errors
 		{ provide: ErrorHandler, useClass: IonicErrorHandler }
@@ -77,7 +97,9 @@ export function providers() {
 @NgModule({
 	declarations: declarations(),
 	imports: [
+		BrowserModule,
 		FormsModule,
+		HttpModule,
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
 			tabsPlacement: 'bottom'
