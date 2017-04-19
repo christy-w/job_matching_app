@@ -5,7 +5,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Ionic Native
@@ -83,6 +83,9 @@ export function providers() {
 		Network,
 		ThemeableBrowser,
 		OneSignal,
+
+		// ngx-translate
+		TranslateService,
 
 		// Custom
 		ApiService,

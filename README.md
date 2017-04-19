@@ -1,19 +1,19 @@
 
-Last Updated: 9 Mar 2017 by Michael Chan
+Last Updated: 19 Apr 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
 
-Base project setup on top of [Ionic 2](http://ionicframework.com/docs/v2/) written in [TypeScript](http://www.typescriptlang.org/) language. 
+Base project setup on top of [Ionic 3](http://ionicframework.com/docs/) written in [TypeScript](http://www.typescriptlang.org/) language. 
 
 This repo aims for internal use within Juicyapp Limited at this moment, and integrate well with [JuicyLauncher 2 Web](https://gitlab.com/juicyapp/juicylauncher2_web) to provide common features for different app projects. 
 
-After Ionic 2 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher 2 Demo](https://gitlab.com/juicyapp/juicylauncher2_app_demo).
+After Ionic 3 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher 2 Demo](https://gitlab.com/juicyapp/juicylauncher2_app_demo).
 
 
 ### Features
 
-JuicyLauncher 2 provides codebase from Ionic 2 app, plus core files to extends features include:
+JuicyLauncher 2 provides codebase from Ionic 3 app, plus core files to extends features include:
 
 - BaseApp class (to be inherited from MyApp)
 - BasePage class (to be inherited from page components)
@@ -24,12 +24,12 @@ JuicyLauncher 2 provides codebase from Ionic 2 app, plus core files to extends f
 - Preload third-party libraries:
     - [Lodash](https://lodash.com/) for utility functions
     - [Moment.js](http://momentjs.com/) for date/time manipulation and formatting
-- Preload plugins from [Ionic Native](https://ionicframework.com/docs/v2/native/):
-    - [App Version](https://ionicframework.com/docs/v2/native/app-version/) for version checking logic
-    - [Google Analytics](https://ionicframework.com/docs/v2/native/google-analytics/) for tracking views
-    - [Network](https://ionicframework.com/docs/v2/native/network/) for checking connection
-    - [OneSignal](https://ionicframework.com/docs/v2/native/onesignal/) for push notifications
-    - [ThemeableBrowser](https://ionicframework.com/docs/v2/native/themeablebrowser/) for customizable in-app browser
+- Preload plugins from [Ionic Native](https://ionicframework.com/docs/native/):
+    - [App Version](https://ionicframework.com/docs/native/app-version/) for version checking logic
+    - [Google Analytics](https://ionicframework.com/docs/native/google-analytics/) for tracking views
+    - [Network](https://ionicframework.com/docs/native/network/) for checking connection
+    - [OneSignal](https://ionicframework.com/docs/native/onesignal/) for push notifications
+    - [ThemeableBrowser](https://ionicframework.com/docs/native/themeablebrowser/) for customizable in-app browser
 - Sample scripts to build Android Signed APK before publishing
 
 More features will be developed in future for better code reuse, productivity and ease of maintenance. 
@@ -43,9 +43,9 @@ Developers should avoid changing these files so as to maintain smooth upgrade fo
 
 - **/scripts/**: Sample scripts to generate signed Android APK for publishing
 - **/src/core/**
-    - **components/**: Angular 2 Components
-    - **pipes/**: Angular 2 Pipes
-    - **providers/**: Angular 2 Directives
+    - **components/**: Angular 4 Components
+    - **pipes/**: Angular 4 Pipes
+    - **providers/**: Angular 4 Directives
         - **utils.ts**: Utils class for shortcut functions
     - **base-app.ts**: Base class for MyApp
     - **base-page.ts**: Base class for page components
@@ -56,19 +56,19 @@ Developers should avoid changing these files so as to maintain smooth upgrade fo
 
 These files should be changed according to project requirements. 
 
-- **/src/app/**: Ionic 2 App files
+- **/src/app/**: Ionic 3 App files
     - **app.html**: Basic App HTML structure
     - **app.scss**: Global styles
     - **app.component.ts**: MyApp class (extends from BaseApp)
     - **app.module.ts**: Define dependencies of the App
 - **/src/assets/**: App asset files
     - **i18n/**: Localization files
-- **/src/components/**: Ionic 2 components
+- **/src/components/**: Ionic 3 components
 - **/src/models/**: customly defined classes
-- **/src/pages/**: Ionic 2 page components
-- **/src/providers/**: Ionic 2 providers
+- **/src/pages/**: Ionic 3 page components
+- **/src/providers/**: Ionic 3 providers
     - **api-service/**: ApiService class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
-- **/src/theme/**: Theme files which contains common variables, override Ionic 2 styles, etc. 
+- **/src/theme/**: Theme files which contains common variables, override Ionic 3 styles, etc. 
 - **/src/config.ts**: Global constants and configuration values
 
 **Do NOT** update the /www/ folder directly, since it will update everytime when the project is bundles by Ionic Cli. 
@@ -89,25 +89,24 @@ Before app development on top of JuicyLauncher 2, developers may need to check t
 
 At the time of writing, JuicyLauncher 2 works well under below environment:
 
-- Node.js: 6.9.4 LTS
+- Node.js: 6.10.2 LTS
 - Cordova Cli: 6.5.0
-- Ionic Cli: 2.2.1
-- Typescript: 2.0.9
+- Ionic Cli: 2.2.2
 - Node Modules:
-    - ionic-angular: 2.2.0
-    - ionic-native: 2.8.0
+    - ionic-angular: 3.0.1
+    - ionic-native: 3.4.2
     - ionicons: 3.0.0
     - lodash: 4.17.4
     - moment: 2.17.1
-    - ngx-translate: 6.0.0
+    - ngx-translate: 6.0.1
     - ngx-translate/http-loader: 0.0.3
-    - @ionic/app-scripts: 1.1.4
-    - typescript: 2.0.9
+    - @ionic/app-scripts: 1.3.4
+    - typescript: 2.2.1
 
 
 ### Resources & Tutorials
 
-- Ionic 2 Documentation: http://ionicframework.com/docs/v2/
+- Ionic 3 Documentation: http://ionicframework.com/docs/
 - Ionic Native: https://github.com/driftyco/ionic-native/
 - TypeScript: http://www.typescriptlang.org/
 - Awesome Ionic 2: https://github.com/candelibas/awesome-ionic2

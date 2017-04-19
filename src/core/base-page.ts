@@ -20,19 +20,19 @@ export class BasePage {
 		protected utils: Utils
 	) {
 		Config.DEBUG_VERBOSE && console.log('BasePage constructor');
-		this.language = this.utils.currentLang();
 	}
 	
 	// Back to previous page, or to root page
 	goBack(toRoot: boolean = false, opts: NavOptions = {}) {
 		(toRoot) ? this.nav.popToRoot(opts) : this.nav.pop(opts);
 	}
-
+	
 	// Nav events: http://ionicframework.com/docs/v2/api/navigation/NavController/
 	ionViewDidLoad() {
 		this.content = this.view.getContent();
 	}
 	ionViewWillEnter() {
+		this.language = this.utils.currentLang();
 	}
 	ionViewDidEnter() {
 		// Google Analytics track view

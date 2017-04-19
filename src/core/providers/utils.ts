@@ -214,12 +214,12 @@ export class Utils {
 			this.translate.use(value);
 		}
 	}
-
+	
 	// Get current app language
 	public currentLang() {
 		return this.translate.currentLang;
 	}
-
+	
 	// Get localized string (async)
 	public getLang(key: string | string[], params?: Object): Promise<any> {
 		return this.translate.get(key, params).toPromise();
