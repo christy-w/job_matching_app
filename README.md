@@ -1,5 +1,5 @@
 
-Last Updated: 19 Apr 2017 by Michael Chan
+Last Updated: 15 May 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
@@ -89,18 +89,18 @@ Before app development on top of JuicyLauncher 2, developers may need to check t
 
 At the time of writing, JuicyLauncher 2 works well under below environment:
 
-- Node.js: 6.10.2 LTS
-- Cordova Cli: 6.5.0
-- Ionic Cli: 2.2.2
+- Node.js: 6.10.3 LTS
+- Cordova Cli: 7.0.1
+- Ionic Cli: 3.0.0
 - Node Modules:
-    - ionic-angular: 3.0.1
-    - ionic-native: 3.4.2
+    - ionic-angular: 3.2.1
+    - ionic-native: 3.6.1
     - ionicons: 3.0.0
     - lodash: 4.17.4
-    - moment: 2.17.1
+    - moment: 2.18.1
     - ngx-translate: 6.0.1
     - ngx-translate/http-loader: 0.0.3
-    - @ionic/app-scripts: 1.3.4
+    - @ionic/app-scripts: 1.3.7
     - typescript: 2.2.1
 
 

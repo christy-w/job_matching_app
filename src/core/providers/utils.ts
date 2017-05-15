@@ -85,7 +85,7 @@ export class Utils {
 	
 	// Display Confirmation Alert
 	public showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null): Promise<any> {
-		let options: AlertOptions = {
+		let options: any = {
 			title: title,
 			message: msg,
 			buttons: [

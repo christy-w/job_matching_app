@@ -1,5 +1,3 @@
-import { HomePage } from './pages/home/home';
-
 /**
  * Global constants and configuration values
  */
@@ -18,7 +16,7 @@ export class Config {
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
     
     // First page to enter when the App is started
-    static START_PAGE: any = HomePage;
+    static START_PAGE: any = 'HomePage';
     
     // For checking root page which shows Exit App confirmation box
     static ROOT_PAGE_NAME: string = 'HomePage';

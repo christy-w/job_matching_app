@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,16 +19,11 @@ import { OneSignal } from '@ionic-native/onesignal';
 
 // Core dependencies
 import { MyApp } from './app.component';
-import { CommonHeader } from '../components/common-header/common-header';
-import { CommonFooter } from '../components/common-footer/common-footer';
 import { NewVersionPage } from '../core/components/new-version/new-version';
 import { Utils } from '../core/providers/utils';
 import { ApiService } from '../providers/api-service/api-service';
 import { EscapeHtml } from '../core/pipes/escape-html';
 import { InappHref } from '../core/components/inapp-href/inapp-href';
-
-// Pages
-import { HomePage } from '../pages/home/home';
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -36,13 +31,10 @@ import { HomePage } from '../pages/home/home';
  * can find them. As you add and remove pages, make sure to keep this list up to date.
  */
 let pages = [
-	MyApp,
-	HomePage
+	MyApp
 ];
 
 let components = [
-	CommonHeader,
-	CommonFooter,
 	NewVersionPage
 ];
 
@@ -53,13 +45,6 @@ let directives = [
 let pipes = [
 	EscapeHtml
 ];
-
-// http://ionicframework.com/docs/v2/api/navigation/DeepLinker/
-let deeplink_config: DeepLinkConfig = {
-	links: [
-		{ component: HomePage, name: 'Home', segment: 'home' },
-	]
-};
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -106,7 +91,7 @@ export function providers() {
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
 			tabsPlacement: 'bottom'
-		}, deeplink_config),
+		}),
 		IonicStorageModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {
