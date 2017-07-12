@@ -1,5 +1,5 @@
 
-Last Updated: 15 May 2017 by Michael Chan
+Last Updated: 12 July 2017 by Michael Chan
 
 
 ## JuicyLauncher 2
@@ -67,7 +67,7 @@ These files should be changed according to project requirements.
 - **/src/models/**: customly defined classes
 - **/src/pages/**: Ionic 3 page components
 - **/src/providers/**: Ionic 3 providers
-    - **api-service/**: ApiService class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
+    - **api**: Api class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
 - **/src/theme/**: Theme files which contains common variables, override Ionic 3 styles, etc. 
 - **/src/config.ts**: Global constants and configuration values
 
@@ -89,19 +89,19 @@ Before app development on top of JuicyLauncher 2, developers may need to check t
 
 At the time of writing, JuicyLauncher 2 works well under below environment:
 
-- Node.js: 6.10.3 LTS
+- Node.js: 6.11.0 LTS
 - Cordova Cli: 7.0.1
-- Ionic Cli: 3.0.0
+- Ionic Cli: 3.5.0
 - Node Modules:
-    - ionic-angular: 3.2.1
-    - ionic-native: 3.6.1
+    - ionic-angular: 3.5.0
+    - ionic-native: 3.12.1
     - ionicons: 3.0.0
     - lodash: 4.17.4
     - moment: 2.18.1
     - ngx-translate: 6.0.1
     - ngx-translate/http-loader: 0.0.3
-    - @ionic/app-scripts: 1.3.7
-    - typescript: 2.2.1
+    - @ionic/app-scripts: 2.0.1
+    - typescript: 2.3.4
 
 
 ### Resources & Tutorials

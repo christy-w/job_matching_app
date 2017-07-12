@@ -1,11 +1,11 @@
 // Ionic / Angular / 3rd-party dependencies
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
-import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Ionic Native
@@ -21,7 +21,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { MyApp } from './app.component';
 import { NewVersionPage } from '../core/components/new-version/new-version';
 import { Utils } from '../core/providers/utils';
-import { ApiService } from '../providers/api-service/api-service';
+import { Api } from '../providers';
 import { EscapeHtml } from '../core/pipes/escape-html';
 import { InappHref } from '../core/components/inapp-href/inapp-href';
 
@@ -46,7 +46,9 @@ let pipes = [
 	EscapeHtml
 ];
 
-export function createTranslateLoader(http: Http) {
+// The translate loader needs to know where to load i18n files
+// in Ionic's static asset pipeline.
+export function HttpLoaderFactory(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -69,11 +71,8 @@ export function providers() {
 		ThemeableBrowser,
 		OneSignal,
 
-		// ngx-translate
-		TranslateService,
-
 		// Custom
-		ApiService,
+		Api,
 		Utils,
 
 		// Here we tell the Angular ErrorHandling class
@@ -96,7 +95,7 @@ export function providers() {
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
-				useFactory: (createTranslateLoader),
+				useFactory: HttpLoaderFactory,
 				deps: [Http]
 			}
 		})

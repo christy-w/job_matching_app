@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { Utils } from '../../providers/utils';
-import { ApiService } from '../../../providers/api-service/api-service';
+import { Api } from '../../../providers';
 import { NewVersionList } from '../../models/new-version';
 
 /**
@@ -25,7 +25,7 @@ export class NewVersionPage {
 		private platform: Platform,
 		private view: ViewController,
 		private params: NavParams,
-		private api: ApiService,
+		private api: Api,
 		private utils: Utils
 	) {
 		console.log('NewVersionPage > params', params.data);

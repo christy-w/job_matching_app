@@ -3,14 +3,14 @@ import { Platform } from 'ionic-angular';
 import { BaseApp } from '../core/base-app';
 import { Config } from '../config';
 import { Utils } from '../core/providers/utils';
-import { ApiService } from '../providers/api-service/api-service';
+import { Api } from '../providers';
 
 @Component({
 	templateUrl: 'app.html'
 })
 export class MyApp extends BaseApp {
 	
-	constructor(platform: Platform, api: ApiService, utils: Utils) {
+	constructor(platform: Platform, api: Api, utils: Utils) {
 		super(platform, api, utils);
 		Config.DEBUG_VERBOSE && console.log('MyApp constructor');
 	}

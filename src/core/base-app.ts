@@ -8,7 +8,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
 import { BasePage } from './base-page';
-import { ApiService } from '../providers/api-service/api-service';
+import { Api } from '../providers';
 import { NewVersionPage } from './components/new-version/new-version';
 
 export class BaseApp {
@@ -22,7 +22,7 @@ export class BaseApp {
 
 	constructor(
 		protected platform: Platform,
-		protected api: ApiService,
+		protected api: Api,
 		protected utils: Utils,
 		//private statusbar: StatusBar
 	) {

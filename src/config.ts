@@ -6,7 +6,7 @@ export class Config {
     // For development purpose
     static JUICYLAUNCHER_VERSION: string = 'build 20170309';
     static DEBUG_MODE: boolean = true;
-    static APP_VERSION: string = '1.0.0';   // only for non-cordova environment
+    static APP_VERSION: string = '0.0.1';   // only for non-cordova environment
 
     // Native config
     static STATUSBAR_COLOR: string = '#000';
