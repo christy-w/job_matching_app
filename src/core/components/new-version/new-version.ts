@@ -31,7 +31,7 @@ export class NewVersionPage {
 		console.log('NewVersionPage > params', params.data);
 		this.curr_version_code = params.data.curr_version_code;
 		this.new_version_list = params.data.new_version_list || null;
-		this.force_upgrade = !!this.new_version_list.force_upgrade;
+		this.force_upgrade = (this.new_version_list) ? !!this.new_version_list.force_upgrade : false;
 		
 		// disable hardware back button when force upgrade
 		console.log('NewVersionPage > force_upgrade = ' + this.force_upgrade);

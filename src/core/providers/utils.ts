@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage';
 import { AppVersion } from '@ionic-native/app-version';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
+import { StatusBar } from '@ionic-native/status-bar';
 import { ThemeableBrowser, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { TranslateService } from '@ngx-translate/core';
@@ -53,6 +54,7 @@ export class Utils {
 		private network: Network,
 		private onesignal: OneSignal,
 		private ga: GoogleAnalytics,
+		private statusbar: StatusBar,
 		private themeableBrowser: ThemeableBrowser,
 
 		// 3-party providers
@@ -287,6 +289,13 @@ export class Utils {
 			return this.ga.trackEvent(category, action, label, value);
 		} else {
 			return Promise.resolve();
+		}
+	}
+	
+	// Statusbar
+	public setupStatusbar() {
+		if (this.isCordova()) {
+			this.statusbar.backgroundColorByHexString(Config.STATUSBAR_COLOR);
 		}
 	}
 
