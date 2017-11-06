@@ -102,7 +102,9 @@ At the time of writing, JuicyLauncher 2 works well under below environment:
     - ngx-translate/http-loader: 2.0.0
     - @ionic/app-scripts: 3.0.1
     - typescript: 2.3.4
-
+- Android build:
+    - cordova-android: 6.3.0
+    - Android SDK Platform 26
 
 ### Resources & Tutorials
 
