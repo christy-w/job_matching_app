@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { AppVersion } from '@ionic-native/app-version';
 import { OneSignal } from '@ionic-native/onesignal';

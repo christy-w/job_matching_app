@@ -1,7 +1,7 @@
 // Ionic / Angular / 3rd-party dependencies
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
@@ -48,7 +48,7 @@ let pipes = [
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
-export function HttpLoaderFactory(http: Http) {
+export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -86,7 +86,7 @@ export function providers() {
 	imports: [
 		BrowserModule,
 		FormsModule,
-		HttpModule,
+		HttpClientModule,
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
 			tabsPlacement: 'bottom'
@@ -96,7 +96,7 @@ export function providers() {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [Http]
+				deps: [HttpClient]
 			}
 		})
 	],

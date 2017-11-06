@@ -1,5 +1,4 @@
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
-import 'rxjs/Rx';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Platform, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
@@ -15,10 +14,10 @@ export class BaseService {
     
     // member variables accessible from child classes
     protected api_prefix: string = '';
-    protected headers: Headers = new Headers();
+    protected headers: HttpHeaders = new HttpHeaders();
     protected local_key_prefix: string = 'API ';
     
-    constructor(protected http: Http, protected platform: Platform, protected utils: Utils) {
+    constructor(protected http: HttpClient, protected platform: Platform, protected utils: Utils) {
         this.headers.set('Content-Type', 'application/json');
     }
 
@@ -52,7 +51,7 @@ export class BaseService {
     }
     
     // GET request (with local data checking logic)
-    protected get(url: string, local_expiry: number = Config.DEFAULT_LOCAL_EXPIRY, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected get(url: string, local_expiry: number = Config.DEFAULT_LOCAL_EXPIRY, options: any = {}): Promise<{}> {
 
         if (!this.utils.isOnline()) {
             // device no connection > get local data
@@ -93,16 +92,15 @@ export class BaseService {
     }
 
     // GET request (from remote API)
-    protected getRemote(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected getRemote(url: string, options: any = {}): Promise<{}> {
         let key: string = this.local_key_prefix + url;
         url = this.api_prefix + url;
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [GET] ' + url);
         return new Promise((resolve, reject) => {
             this.http.get(url, options)
-                .map(res => res.json())
                 .subscribe(data => {
-                    if (data.error) {
+                    if (data['error']) {
                         this.handleCustomError(reject, data);
                     } else {
                         // save to local data for offline use
@@ -119,47 +117,44 @@ export class BaseService {
     }
 
     // POST request
-    protected post(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected post(url: string, body: any = {}, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [POST] ' + url);
         return new Promise((resolve, reject) => {
             this.http.post(url, body, options)
-                .map(res => res.json())
                 .subscribe(
-                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                data => (data['error']) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                 error => this.handleHttpError(reject, error)
                 )
         });
     }
 
     // PUT request
-    protected put(url: string, body: any = {}, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected put(url: string, body: any = {}, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
         body = JSON.stringify(body);
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [PUT] ' + url);
         return new Promise((resolve, reject) => {
             this.http.put(url, body, options)
-                .map(res => res.json())
                 .subscribe(
-                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                data => (data['error']) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                 error => this.handleHttpError(reject, error)
                 )
         })
     }
 
     // DELETE request
-    protected delete(url: string, options: RequestOptionsArgs = {}): Promise<{}> {
+    protected delete(url: string, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
         options.headers = this.headers;
         Config.DEBUG_API_REQUEST && console.log('API Request: [DELETE] ' + url);
         return new Promise((resolve, reject) => {
             this.http.delete(url, options)
-                .map(res => res.json())
                 .subscribe(
-                data => (data.error) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
+                data => (data['error']) ? this.handleCustomError(reject, data) : this.handleResponse(resolve, url, data),
                 error => this.handleHttpError(reject, error)
                 )
         });

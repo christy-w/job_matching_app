@@ -28,15 +28,15 @@ export class NewVersionPage {
 		private api: Api,
 		private utils: Utils
 	) {
-		console.log('NewVersionPage > params', params.data);
-		this.curr_version_code = params.data.curr_version_code;
-		this.new_version_list = params.data.new_version_list || null;
+		console.log('NewVersionPage > params', this.params.data);
+		this.curr_version_code = this.params.data.curr_version_code;
+		this.new_version_list = this.params.data.new_version_list || null;
 		this.force_upgrade = (this.new_version_list) ? !!this.new_version_list.force_upgrade : false;
 		
 		// disable hardware back button when force upgrade
 		console.log('NewVersionPage > force_upgrade = ' + this.force_upgrade);
 		if (this.force_upgrade) {
-			platform.registerBackButtonAction(() => {});
+			this.platform.registerBackButtonAction(() => {});
 		}
 		
 		// get App download URL from API
