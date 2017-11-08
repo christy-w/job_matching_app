@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { Utils } from '../../providers/utils';
 import { Api } from '../../../providers';
-import { NewVersionList } from '../../models/new-version';
+import { GetVersionResponse } from '../../models/new-version';
 
 /**
  * Modal page for display latest versions returned from API
@@ -13,8 +13,7 @@ import { NewVersionList } from '../../models/new-version';
 })
 export class NewVersionPage {
 	
-	curr_version_code: string;
-	new_version_list: NewVersionList = null;
+	version_response: GetVersionResponse = null;
 	force_upgrade: boolean = false;
 	download_url: string;
 	
@@ -29,9 +28,8 @@ export class NewVersionPage {
 		private utils: Utils
 	) {
 		console.log('NewVersionPage > params', this.params.data);
-		this.curr_version_code = this.params.data.curr_version_code;
-		this.new_version_list = this.params.data.new_version_list || null;
-		this.force_upgrade = (this.new_version_list) ? !!this.new_version_list.force_upgrade : false;
+		this.version_response = this.params.data.version_response;
+		this.force_upgrade = (this.version_response.force_upgrade) ? !!this.version_response.force_upgrade : false;
 		
 		// disable hardware back button when force upgrade
 		console.log('NewVersionPage > force_upgrade = ' + this.force_upgrade);
@@ -58,8 +56,7 @@ export class NewVersionPage {
 	// Dismiss this modal / popup
 	onClickSkipBtn(data) {
 		if (!this.force_upgrade) {
-			let latest_version_code: string = this.new_version_list.latest_version;
-			let key: string = 'VERSION_CHECK_FROM_' + this.curr_version_code + '_TO_' + latest_version_code;
+			let key: string = 'VERSION_CHECK_FROM_' + this.version_response.curr_version + '_TO_' + this.version_response.latest_version;
 			this.utils.setLocal(key, true).then(() => {
 				console.log('Finish setting to key: ' + key);
 				this.view.dismiss(data);

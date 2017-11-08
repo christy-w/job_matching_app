@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Platform, LoadingOptions } from 'ionic-angular';
 import { Config } from '../config';
 import { Utils } from './providers/utils';
-import { NewVersionList } from './models/new-version';
+import { GetVersionResponse } from '../core/models/new-version';
 import { ErrorObj } from './models/error-obj';
 import moment from 'moment';
 
@@ -11,19 +11,19 @@ import moment from 'moment';
  * @Injectable to be defined in child classes
  **/
 export class BaseService {
-    
+
     // member variables accessible from child classes
     protected api_prefix: string = '';
-    protected headers: HttpHeaders = new HttpHeaders();
+    protected headers: any = {};
     protected local_key_prefix: string = 'API ';
-    
+
     constructor(protected http: HttpClient, protected platform: Platform, protected utils: Utils) {
-        this.headers.set('Content-Type', 'application/json');
+        this.headers['Content-Type'] = 'application/json';
     }
 
     // Start calling list of promises, with loading spinner in between
     public startQueue(promises: Promise<any>[], loading_opts?: LoadingOptions): Promise<any> {
-        let loading = this.utils.createLoading();
+        let loading = this.utils.createLoading(loading_opts);
         return loading.present().then(() => {
             return Promise.all(promises).then(data => {
                 loading.dismiss();
@@ -36,20 +36,25 @@ export class BaseService {
     }
 
     // Get versions later than current app version
-    public getVersions(from_code: string, platform: string): Promise<NewVersionList> {
-        if (!platform) {
-            return Promise.resolve(null);
-        } else {
-            let url: string = '/versions?from_code=' + from_code + '&platform=' + platform;
-            return this.get(url);
-        }
+    public getVersions(): Promise<GetVersionResponse> {
+        return this.utils.currentVersion().then(curr_version_code => {
+            let os: string = this.utils.currentOS();
+            let url: string = '/versions?from_code=' + curr_version_code + '&platform=' + os;
+            return this.get(url).then((data: GetVersionResponse) => {
+                data.curr_version = curr_version_code;
+                data.os = os;
+                return Promise.resolve(data);
+            });
+        }).catch(err => {
+            return Promise.reject('cannot_get_curr_version');
+        });
     }
 
     // Get App config
     public getAppConfig() {
         return this.get('/config');
     }
-    
+
     // GET request (with local data checking logic)
     protected get(url: string, local_expiry: number = Config.DEFAULT_LOCAL_EXPIRY, options: any = {}): Promise<{}> {
 
@@ -66,12 +71,12 @@ export class BaseService {
             return this.getRemote(url, options);
         }
     }
-    
+
     // GET request (from local data)
     protected getLocal(url: string, local_expiry: number = 0): Promise<{}> {
         let key: string = this.local_key_prefix + url;
         return this.utils.getLocal(key, null).then(value => {
-            if (local_expiry==0) {
+            if (local_expiry == 0) {
                 // ignore expiry > return data directly
                 return (value.data) ? value.data : value;
             } else if (value.last_update) {
@@ -95,7 +100,7 @@ export class BaseService {
     protected getRemote(url: string, options: any = {}): Promise<{}> {
         let key: string = this.local_key_prefix + url;
         url = this.api_prefix + url;
-        options.headers = this.headers;
+        options.headers = new HttpHeaders(this.headers);
         Config.DEBUG_API_REQUEST && console.log('API Request: [GET] ' + url);
         return new Promise((resolve, reject) => {
             this.http.get(url, options)
@@ -120,7 +125,7 @@ export class BaseService {
     protected post(url: string, body: any = {}, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
         body = JSON.stringify(body);
-        options.headers = this.headers;
+        options.headers = new HttpHeaders(this.headers);
         Config.DEBUG_API_REQUEST && console.log('API Request: [POST] ' + url);
         return new Promise((resolve, reject) => {
             this.http.post(url, body, options)
@@ -135,7 +140,7 @@ export class BaseService {
     protected put(url: string, body: any = {}, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
         body = JSON.stringify(body);
-        options.headers = this.headers;
+        options.headers = new HttpHeaders(this.headers);
         Config.DEBUG_API_REQUEST && console.log('API Request: [PUT] ' + url);
         return new Promise((resolve, reject) => {
             this.http.put(url, body, options)
@@ -149,7 +154,7 @@ export class BaseService {
     // DELETE request
     protected delete(url: string, options: any = {}): Promise<{}> {
         url = this.api_prefix + url;
-        options.headers = this.headers;
+        options.headers = new HttpHeaders(this.headers);
         Config.DEBUG_API_REQUEST && console.log('API Request: [DELETE] ' + url);
         return new Promise((resolve, reject) => {
             this.http.delete(url, options)

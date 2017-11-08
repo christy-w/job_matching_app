@@ -51,48 +51,41 @@ export class BaseApp {
 			utils.setupLang();
 			utils.setupGoogleAnalytics();
 			utils.setupOneSignal();
+			
+			// check force or soft update
 			this.checkVersion();
 		});
 	}
-
+	
 	// Version checking	
 	protected checkVersion() {
-		this.utils.currentVersion().then(curr_version_code => {
-			let os: string = this.utils.currentOS();
-			this.api.getVersions(curr_version_code, os).then(new_version_list => {
 
-				// Prepare modal or popover, based on whether need to force upgrade
-				if (new_version_list) {
-					let view_data = {
-						curr_version_code: curr_version_code,
-						new_version_list: new_version_list
-					};
-					if (new_version_list.force_upgrade) {
-						this.utils.showModal(NewVersionPage, view_data);
-					} else {
-						// check whether user has dismissed version upgrade notice before
-						let latest_version_code: string = new_version_list.latest_version;
-						let key: string = 'VERSION_CHECK_FROM_' + curr_version_code + '_TO_' + latest_version_code;
-						this.utils.getLocal(key, false).then(skipped => {
-							if (!skipped) {
-								this.utils.showModal(NewVersionPage, view_data);
-							}
-						});
-					}
+		this.api.getVersions().then(data => {
+			// Prepare modal or popover, based on whether need to force upgrade
+			if (data) {
+				if (data.force_upgrade) {
+					this.utils.showModal(NewVersionPage, { version_response: data });
+				} else {
+					// check whether user has dismissed version upgrade notice before
+					let latest_version_code: string = data.latest_version;
+					let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
+					this.utils.getLocal(key, false).then(skipped => {
+						if (!skipped) {
+							this.utils.showModal(NewVersionPage, { version_response: data });
+						}
+					});
 				}
-				
-				// indicate the app is successfully loaded
-				this.onAppLoaded();
-			}).catch(error => {
-				// version cannot be found from server, but still proceed to init the app
-				console.error('BaseApp', error);
-				this.onAppLoaded();
-			});
-		}).catch(error => {
-			console.error(error);
+			}
+			
+			// indicate the app is successfully loaded
+			this.onAppLoaded();
+		}).catch(err => {
+			// version cannot be found from server, but still proceed to init the app
+			console.error('BaseApp > checkVersion > error', err);
+			this.onAppLoaded();
 		});
 	}
-
+	
 	// inherit this function from child class (e.g. MyApp)
 	protected onAppLoaded() {
 		Config.DEBUG_VERBOSE && console.log('BaseApp onAppLoaded');
