@@ -250,7 +250,7 @@ export class Utils {
 	}
 
 	// Get version number
-	public currentVersion(): Promise<any> {
+	public currentVersion(): Promise<string> {
 		return this.isCordova() ? this.appVersion.getVersionNumber() : Promise.resolve(Config.APP_VERSION);
 	}
 
