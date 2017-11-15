@@ -8,7 +8,7 @@ Base project setup on top of [Ionic 3](http://ionicframework.com/docs/) written 
 
 This repo aims for internal use within Juicyapp Limited at this moment, and integrate well with [JuicyCore](https://git.juicyapphk.com/juicyapp/juicycore) to provide common features for different app projects. 
 
-After Ionic 3 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher Demo]https://git.juicyapphk.com/juicyapp/juicylauncher_demo).
+After Ionic 3 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher Demo](https://git.juicyapphk.com/juicyapp/juicylauncher_demo).
 
 
 ### Features
