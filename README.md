@@ -1,19 +1,19 @@
 
-Last Updated: 6 Nov 2017 by Michael Chan
+Last Updated: 16 Nov 2017 by Michael Chan
 
 
-## JuicyLauncher 2
+## JuicyLauncher
 
 Base project setup on top of [Ionic 3](http://ionicframework.com/docs/) written in [TypeScript](http://www.typescriptlang.org/) language. 
 
-This repo aims for internal use within Juicyapp Limited at this moment, and integrate well with [JuicyLauncher 2 Web](https://gitlab.com/juicyapp/juicylauncher2_web) to provide common features for different app projects. 
+This repo aims for internal use within Juicyapp Limited at this moment, and integrate well with [JuicyCore](https://git.juicyapphk.com/juicyapp/juicycore) to provide common features for different app projects. 
 
-After Ionic 3 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher 2 Demo](https://gitlab.com/juicyapp/juicylauncher2_app_demo).
+After Ionic 3 stable version is launched, more sample code will be implemented in a separate repo - [JuicyLauncher Demo]https://git.juicyapphk.com/juicyapp/juicylauncher_demo).
 
 
 ### Features
 
-JuicyLauncher 2 provides codebase from Ionic 3 app, plus core files to extends features include:
+JuicyLauncher provides codebase from Ionic 3 app, plus core files to extends features include:
 
 - BaseApp class (to be inherited from MyApp)
 - BasePage class (to be inherited from page components)
@@ -37,7 +37,7 @@ More features will be developed in future for better code reuse, productivity an
 
 ### Core Files
 
-These files will be updated from [JuicyLauncher 2 Repo](https://gitlab.com/juicyapp/juicylauncher2_app), which aims at reusable code and reduce common implementation. 
+These files will be updated from [JuicyLauncher Repo](https://git.juicyapphk.com/juicyapp/juicylauncher), which aims at reusable code and reduce common implementation. 
 
 Developers should avoid changing these files so as to maintain smooth upgrade for each project.
 
@@ -67,7 +67,7 @@ These files should be changed according to project requirements.
 - **/src/models/**: customly defined classes
 - **/src/pages/**: Ionic 3 page components
 - **/src/providers/**: Ionic 3 providers
-    - **api**: Api class (extends from BaseService) which should link to endpoints from JuicyLauncher 2 Web
+    - **api**: Api class (extends from BaseService) which should link to endpoints from JuicyCore
 - **/src/theme/**: Theme files which contains common variables, override Ionic 3 styles, etc. 
 - **/src/config.ts**: Global constants and configuration values
 
@@ -76,35 +76,36 @@ These files should be changed according to project requirements.
 
 ### Setup
 
-Before app development on top of JuicyLauncher 2, developers may need to check the follow setup procedure first:
+Before app development on top of JuicyLauncher, developers may need to check the follow setup procedure first:
 
 1. Setup Node.js (prefer using [Node Version Manager](https://github.com/creationix/nvm))
 2. Install core node programs globally: **npm install -g cordova ionic typescript** (for iOS development - require **ios-deploy**)
 3. Git clone this repo
 4. Run **npm install** inside the repo folder (Note: we **don't** need to execute ionic state restore since the default plugins have fixed version in config.xml)
-5. By default, JuicyLauncher 2 includes version checking logic which requires endpoints from **JuicyLauncher 2 Web**, so please make sure the ApiService class has linked to the correct website accordingly
+5. By default, JuicyLauncher includes version checking logic which requires endpoints from **JuicyCore**, so please make sure the ApiService class has linked to the correct website accordingly
 6. Try **ionic serve** and see if the app works well
 7. If everything is fine, use **ionic run android** or **ionic build ios** to test on real devices
 8. For production builds, use **ionic run android --prod** or **ionic build ios --prod** instead
 
-At the time of writing, JuicyLauncher 2 works well under below environment:
+At the time of writing, JuicyLauncher works well under below environment:
 
-- Node.js: 6.11.5 LTS
+- Node.js: 8.9.0 LTS
+- npm: 5.5.1
 - Cordova Cli: 6.5.0
-- Ionic Cli: 3.17.0
-- Node Modules:
-    - ionic-angular: 3.8.0
-    - ionic-native: 4.3.3
+- Ionic Cli: 3.18.0
+- Node modules:
+    - ionic-angular: 3.9.2
+    - ionic-native: 4.4.0
     - ionicons: 3.0.0
     - lodash: 4.17.4
     - moment: 2.19.1
     - ngx-translate: 8.0.0
     - ngx-translate/http-loader: 2.0.0
-    - @ionic/app-scripts: 3.0.1
-    - typescript: 2.3.4
-- Android build:
-    - cordova-android: 6.3.0
-    - Android SDK Platform 26
+    - @ionic/app-scripts: 3.1.2
+    - typescript: 2.4.2
+- Android build setup:
+    - cordova-android: 6.4.0
+    - Android SDK Tools: 26.1.1
 
 ### Resources & Tutorials
 
