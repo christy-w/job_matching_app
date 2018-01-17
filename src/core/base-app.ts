@@ -81,7 +81,6 @@ export class BaseApp {
 			this.onAppLoaded();
 		}).catch(err => {
 			// version cannot be found from server, but still proceed to init the app
-			console.error('BaseApp > checkVersion > error', err);
 			this.onAppLoaded();
 		});
 	}
