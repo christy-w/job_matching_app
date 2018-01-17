@@ -1,5 +1,5 @@
 
-Last Updated: 16 Nov 2017 by Michael Chan
+Last Updated: 17 Jan 2018 by Michael Chan
 
 
 ## JuicyLauncher
@@ -43,9 +43,9 @@ Developers should avoid changing these files so as to maintain smooth upgrade fo
 
 - **/scripts/**: Sample scripts to generate signed Android APK for publishing
 - **/src/core/**
-    - **components/**: Angular 4 Components
-    - **pipes/**: Angular 4 Pipes
-    - **providers/**: Angular 4 Directives
+    - **components/**: Angular Components
+    - **pipes/**: Angular Pipes
+    - **providers/**: Angular Directives
         - **utils.ts**: Utils class for shortcut functions
     - **base-app.ts**: Base class for MyApp
     - **base-page.ts**: Base class for page components
@@ -92,16 +92,16 @@ At the time of writing, JuicyLauncher works well under below environment:
 - Node.js: 8.9.0 LTS
 - npm: 5.5.1
 - Cordova Cli: 6.5.0
-- Ionic Cli: 3.18.0
+- Ionic Cli: 3.19.0
 - Node modules:
     - ionic-angular: 3.9.2
     - ionic-native: 4.4.0
     - ionicons: 3.0.0
     - lodash: 4.17.4
-    - moment: 2.19.1
-    - ngx-translate: 8.0.0
-    - ngx-translate/http-loader: 2.0.0
-    - @ionic/app-scripts: 3.1.2
+    - moment: 2.20.1
+    - ngx-translate: 9.1.1
+    - ngx-translate/http-loader: 2.0.1
+    - @ionic/app-scripts: 3.1.6
     - typescript: 2.4.2
 - Android build setup:
     - cordova-android: 6.4.0
