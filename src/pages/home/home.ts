@@ -7,6 +7,7 @@ import { Utils } from '../../core/providers/utils';
 
 @IonicPage()
 @Component({
+  selector: 'page-home',
 	templateUrl: 'home.html'
 })
 export class HomePage extends BasePage {
