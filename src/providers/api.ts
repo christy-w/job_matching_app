@@ -7,8 +7,8 @@ import { BaseService } from '../core/base-service';
 export class Api extends BaseService {
 	
 	// override API URL prefix and anonymous API key
-	//protected api_prefix: string = 'http://localhost/juicylauncher2_web/api';
-	protected api_prefix: string = 'https://dev.juicyapphk.com/juicylauncher2_web/api';
+	//protected api_prefix: string = 'http://localhost/juicycore/api';
+	protected api_prefix: string = 'https://dev.juicyapphk.com/juicycore/api';
 	
 	constructor(platform: Platform, utils: Utils) {
 		super(platform, utils);

@@ -8,17 +8,17 @@
 		<!-- description -->
 		<h5>New Version Available</h5>
 		<p>There is a newer version available for download.<br/>Please update the app to continue.</p>
-		<p>Latest Version: <strong>{{version_response.latest_version}}</strong></p>
-		<p>Current Version: <strong>{{version_response.curr_version}}</strong></p>
+		<p>Latest Version: <strong>{{init_model.latest_version}}</strong></p>
+		<p>Current Version: <strong>{{init_model.curr_version}}</strong></p>
 		
 		<!-- release notes -->
-		<ion-list *ngIf="version_response.new_versions">
+		<ion-list *ngIf="init_model.new_versions">
 			<ion-list-header (click)="onClickReleaseNotes()">
 				Release Notes
 				<ion-icon item-right name="{{ show_release_notes_icon }}"></ion-icon>
 			</ion-list-header>
 			<div *ngIf="show_release_notes">
-				<ion-item *ngFor="let version of version_response.new_versions">
+				<ion-item *ngFor="let version of init_model.new_versions">
 					<h2>Version: {{version.code}} ({{version.publish_date}})</h2>
 					<br/>
 					<div [innerHTML]="version.release_notes"></div>
@@ -27,12 +27,12 @@
 		</ion-list>
 
 		<!-- force upgrade -->
-		<div *ngIf="force_upgrade">
+		<div *ngIf="force_update">
 			<a class="download-btn" ion-button href="{{ download_url }}" target="_blank" round>Update</a>
 		</div>
 		
 		<!-- soft upgrade -->
-		<div *ngIf="!force_upgrade">
+		<div *ngIf="!force_update">
 			<a class="download-btn" ion-button *ngIf="download_url" href="{{ download_url }}" target="_blank" round>Update</a>
 			<br/>
 			<button ion-button class="skip-btn" (click)="onClickSkipBtn()" round color="light">Skip</button>

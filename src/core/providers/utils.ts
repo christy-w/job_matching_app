@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { AppVersion } from '@ionic-native/app-version';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ThemeableBrowser, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
@@ -56,6 +57,7 @@ export class Utils {
 		private onesignal: OneSignal,
 		private ga: GoogleAnalytics,
 		private statusbar: StatusBar,
+		private splashScreen: SplashScreen,
 		private themeableBrowser: ThemeableBrowser,
 
 		// 3-party providers
@@ -70,7 +72,7 @@ export class Utils {
 	}
 
 	// Display ActionSheet
-	public showActionSheet(opts: ActionSheetOptions): Promise<any> {
+	public async showActionSheet(opts: ActionSheetOptions): Promise<any> {
 		let actionsheet = this.createActionSheet(opts);
 		return actionsheet.present();
 	}
@@ -81,13 +83,13 @@ export class Utils {
 	}
 
 	// Display Basic Alert
-	public showAlert(title: string, subtitle: string = '', buttons: string[] = ['OK']): Promise<any> {
+	public async showAlert(title: string, subtitle: string = '', buttons: string[] = ['OK']): Promise<any> {
 		let alert = this.createAlert({ title: title, subTitle: subtitle, buttons: buttons });
 		return alert.present();
 	}
 	
 	// Display Confirmation Alert
-	public showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null): Promise<any> {
+	public async showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null): Promise<any> {
 		let options: any = {
 			title: title,
 			message: msg,
@@ -112,7 +114,7 @@ export class Utils {
 	}
 
 	// Display Loading component
-	public showLoading(content: string, duration: number = 3000): Promise<any> {
+	public async showLoading(content: string, duration: number = 3000): Promise<any> {
 		let loading = this.createLoading({ content: content, duration: duration });
 		return loading.present();
 	}
@@ -123,7 +125,7 @@ export class Utils {
 	}
 
 	// Display Modal page
-	public showModal(component: any, data?: any, opts?: ModalOptions): Promise<any> {
+	public async showModal(component: any, data?: any, opts?: ModalOptions): Promise<any> {
 		let modal = this.createModal(component, data, opts);
 		return modal.present();
 	}
@@ -134,7 +136,7 @@ export class Utils {
 	}
 
 	// Display Popover page
-	public showPopover(component: any, data?: any, opts?: PopoverOptions): Promise<any> {
+	public async showPopover(component: any, data?: any, opts?: PopoverOptions): Promise<any> {
 		let popover = this.createPopover(component, data, opts);
 		return popover.present();
 	}
@@ -145,7 +147,7 @@ export class Utils {
 	}
 
 	// Display Basic Toast
-	public showToast(msg: string, duration: number = 3000): Promise<any> {
+	public async showToast(msg: string, duration: number = 3000): Promise<any> {
 		let toast = this.createToast({ message: msg, duration: duration });
 		return toast.present();
 	}
@@ -161,13 +163,13 @@ export class Utils {
 	}
 
 	// Set local data
-	public setLocal(key: string, value: any): Promise<any> {
+	public async setLocal(key: string, value: any): Promise<any> {
 		Config.DEBUG_LOCAL_DATA && console.log('Local Set (key = ' + key + ')', value);
 		return this.storage.set(key, value);
 	}
 	
 	// Get local data
-	public getLocal(key: string, default_value: any = null): Promise<any> {
+	public async getLocal(key: string, default_value: any = null): Promise<any> {
 		return this.storage.get(key).then(data => {
 			Config.DEBUG_LOCAL_DATA && console.log('Local Get (key = ' + key + ')', data);
 			return (typeof data == 'undefined' || data == null) ? default_value : data;
@@ -178,35 +180,36 @@ export class Utils {
 	}
 
 	// Remove local data by key
-	public removeLocal(key: string): Promise<any> {
+	public async removeLocal(key: string): Promise<any> {
 		return this.storage.remove(key);
 	}
 
 	// Remove all local data
-	public clearLocal(): Promise<any> {
+	public async clearLocal(): Promise<any> {
 		return this.storage.clear();
 	}
 
 	// Init language setup
-	public setupLang() {
+	public async setupLang(): Promise<string> {
 		// get stored interface language
-		return this.getLocal('UI_LANGUAGE').then(saved_lang => {
-			
-			// this language will be used as a fallback when a translation isn't found in the current language
-			this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
-			
-			if (saved_lang) {
-				// use language saved to local
-				Config.DEBUG_VERBOSE && console.log('Use saved language: ' + saved_lang);
-				this.translate.use(saved_lang);
-			} else {
-				// detect device language (get only first 2 characters, e.g. en-US > en)
-				let lang = this.translate.getBrowserCultureLang().split('-')[0];
-				lang = /(zh|en)/gi.test(lang) ? lang : Config.DEFAULT_LANGUAGE;
-				Config.DEBUG_VERBOSE && console.log('Detect user language: ' + lang);
-				this.translate.use(lang);
-			}
-		});
+		let saved_lang: string = await this.getLocal('UI_LANGUAGE');
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		this.translate.setDefaultLang(Config.DEFAULT_LANGUAGE);
+		
+		if (saved_lang) {
+			// use language saved to local
+			Config.DEBUG_VERBOSE && console.log('Use saved language: ' + saved_lang);
+			await this.translate.use(saved_lang);
+			return Promise.resolve(saved_lang);
+		} else {
+			// detect device language (get only first 2 characters, e.g. en-US > en)
+			let lang = this.translate.getBrowserCultureLang().split('-')[0];
+			lang = /(zh|en)/gi.test(lang) ? lang : Config.DEFAULT_LANGUAGE;
+			Config.DEBUG_VERBOSE && console.log('Detect user language: ' + lang);
+			await this.translate.use(lang);
+			return Promise.resolve(lang);
+		}
 	}
 	
 	// Change language
@@ -224,7 +227,7 @@ export class Utils {
 	}
 	
 	// Get localized string (async)
-	public getLang(key: string | string[], params?: Object): Promise<any> {
+	public async getLang(key: string | string[], params?: Object): Promise<any> {
 		return this.translate.get(key, params).toPromise();
 	}
 
@@ -250,7 +253,7 @@ export class Utils {
 	}
 
 	// Get version number
-	public currentVersion(): Promise<string> {
+	public async currentVersion(): Promise<string> {
 		return this.isCordova() ? this.appVersion.getVersionNumber() : Promise.resolve(Config.APP_VERSION);
 	}
 
@@ -275,7 +278,7 @@ export class Utils {
 	}
 
 	// Google Analytics - Track View
-	public trackView(title: string, campaign_url?: string): Promise<any> {
+	public async trackView(title: string, campaign_url?: string): Promise<any> {
 		Config.DEBUG_ANALYTICS && console.log('Track View: ' + title);
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			return this.ga.trackView(title, campaign_url);
@@ -285,7 +288,7 @@ export class Utils {
 	}
 
 	// Google Analytics - Track Event
-	public trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
+	public async trackEvent(category: string, action: string, label: string, value?: number): Promise<any> {
 		if (this.platform.is('cordova') && Config.GA_TRACKER_ID) {
 			return this.ga.trackEvent(category, action, label, value);
 		} else {
@@ -297,6 +300,18 @@ export class Utils {
 	public setupStatusbar() {
 		if (this.isCordova()) {
 			this.statusbar.backgroundColorByHexString(Config.STATUSBAR_COLOR);
+		}
+	}
+
+	// Splash Screen
+	public showSplashScreen() {
+		if (this.isCordova()) {
+			this.splashScreen.show();
+		}
+	}
+	public hideSplashScreen() {
+		if (this.isCordova()) {
+			this.splashScreen.hide();
 		}
 	}
 

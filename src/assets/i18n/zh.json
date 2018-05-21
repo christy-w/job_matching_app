@@ -43,6 +43,6 @@
         "500": "500 錯誤",
         "NO_NETWORK_CONNECTION": "請檢查連線狀態",
         "INVALID_VERSION": "App 版本錯誤",
-        "INVALID_LOGIN": "登入"
+        "INVALID_LOGIN": "登入失敗"
     }
 }

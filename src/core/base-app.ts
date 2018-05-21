@@ -48,30 +48,31 @@ export class BaseApp {
 			this.utils.setupStatusbar();
 			
 			// JuicyLauncher setup
-			utils.setupLang();
-			utils.setupGoogleAnalytics();
-			utils.setupOneSignal();
-			
-			// check force or soft update
-			this.checkVersion();
+			this.utils.setupLang().then(() => {
+				this.utils.setupGoogleAnalytics();
+				this.utils.setupOneSignal();
+				
+				// check force or soft update
+				this.checkVersion();
+			});
 		});
 	}
 	
 	// Version checking	
 	protected checkVersion() {
 
-		this.api.getVersions().then(data => {
+		this.api.init().then(data => {
 			// Prepare modal or popover, based on whether need to force upgrade
 			if (data) {
-				if (data.force_upgrade) {
-					this.utils.showModal(NewVersionPage, { version_response: data });
+				if (data.force_update) {
+					this.utils.showModal(NewVersionPage, { init_model: data });
 				} else {
 					// check whether user has dismissed version upgrade notice before
 					let latest_version_code: string = data.latest_version;
 					let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
 					this.utils.getLocal(key, false).then(skipped => {
 						if (!skipped) {
-							this.utils.showModal(NewVersionPage, { version_response: data });
+							this.utils.showModal(NewVersionPage, { init_model: data });
 						}
 					});
 				}
@@ -88,8 +89,9 @@ export class BaseApp {
 	// inherit this function from child class (e.g. MyApp)
 	protected onAppLoaded() {
 		Config.DEBUG_VERBOSE && console.log('BaseApp onAppLoaded');
+		this.utils.hideSplashScreen();
 	}
-
+	
 	// [For App with Tab / Sidemenu root only]
 	protected openPage(page: any) {
 		// Reset the content nav to have just this page
