@@ -190,7 +190,7 @@ export class BaseService {
                 Config.DEBUG_API_REQUEST && console.error('[' + err_code + '] ' + err_msg);
                 let toast_msg = err_msg + ' [Code: ' + err_code + '] ';
                 this.utils.showToast(toast_msg, 3000);
-                return Promise.resolve();
+                return Promise.resolve(data);
             }
             
             // API Response

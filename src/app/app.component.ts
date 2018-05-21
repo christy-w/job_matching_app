@@ -19,6 +19,10 @@ export class MyApp extends BaseApp {
 	protected onAppLoaded() {
 		// set rootpage only when the app is ready
 		Config.DEBUG_VERBOSE && console.log('MyApp onAppLoaded');
-		this.rootPage = Config.START_PAGE;
+		
+		// load default page
+		if (typeof this.nav.getActive() == 'undefined') {
+			this.rootPage = Config.START_PAGE;
+		}
 	}
 }

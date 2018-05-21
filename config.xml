@@ -3,7 +3,7 @@
     <name>JuicyLauncher</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="info@juicyapphk.com" href="https://juicyapp.hk/">JuicyApp Limited</author>
-    <content original-src="index.html" src="http://192.168.1.46:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
