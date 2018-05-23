@@ -62,34 +62,45 @@ export class BaseApp {
 	protected checkVersion() {
 
 		this.api.init().then(data => {
+			console.log('init response', data);
 			// Prepare modal or popover, based on whether need to force upgrade
 			if (data) {
 				if (data.force_update) {
+					// display force update model
 					this.utils.showModal(NewVersionPage, { init_model: data });
-				} else {
-					// check whether user has dismissed version upgrade notice before
+					this.utils.hideSplashScreen();
+					return;
+				} else if (data.latest_version && data.latest_version != '') {
 					let latest_version_code: string = data.latest_version;
-					let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
-					this.utils.getLocal(key, false).then(skipped => {
-						if (!skipped) {
-							this.utils.showModal(NewVersionPage, { init_model: data });
-						}
-					});
+					if (data.curr_version != latest_version_code) {
+						// check whether user has dismissed version upgrade notice before
+						let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
+						this.utils.getLocal(key, false).then(skipped => {
+							// display recommended update model
+							if (!skipped) {
+								this.utils.showModal(NewVersionPage, { init_model: data });
+								this.utils.hideSplashScreen();
+								return;
+							}
+						});
+					}
 				}
 			}
 			
 			// indicate the app is successfully loaded
 			this.onAppLoaded();
+			this.utils.hideSplashScreen();
 		}).catch(err => {
 			// version cannot be found from server, but still proceed to init the app
+			console.log('init error', err);
 			this.onAppLoaded();
+			this.utils.hideSplashScreen();
 		});
 	}
 	
 	// inherit this function from child class (e.g. MyApp)
 	protected onAppLoaded() {
 		Config.DEBUG_VERBOSE && console.log('BaseApp onAppLoaded');
-		this.utils.hideSplashScreen();
 	}
 	
 	// [For App with Tab / Sidemenu root only]

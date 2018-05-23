@@ -91,7 +91,10 @@ export function providers() {
 			prodMode: false,
 			tabsPlacement: 'bottom'
 		}),
-		IonicStorageModule.forRoot(),
+		IonicStorageModule.forRoot({
+			name: '__mydb',
+			driverOrder: ['sqlite', 'websql', 'indexeddb']
+		}),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
