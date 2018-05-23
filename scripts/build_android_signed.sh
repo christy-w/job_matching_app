@@ -1,6 +1,7 @@
 #!/bin/sh
 NAME="juicylauncher"
 PW="juicylauncher"
+VERSION="0.0.1"
 
 # Reference link: 
 # http://ionicframework.com/docs/guide/publishing.html
@@ -12,15 +13,15 @@ PW="juicylauncher"
 cd ../
 
 # build release APK
-ionic cordova build --release android
-mv ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ./$NAME-release-unsigned.apk
+ionic cordova build android --prod --release
+mv ./platforms/android/build/outputs/apk/release/android-release-unsigned.apk ./$NAME-release-unsigned.apk
 
 # sign the release APK
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $NAME.keystore -storepass $PW $NAME-release-unsigned.apk $NAME
 
 # ensure last APK is removed
-rm $NAME-signed.apk
+rm $NAME-$VERSION-signed.apk
 
 # optimize the signed APK, and removed unsigned release APK
-zipalign -v 4 $NAME-release-unsigned.apk $NAME-signed.apk
+zipalign -v 4 $NAME-release-unsigned.apk $NAME-$VERSION-signed.apk
 rm $NAME-release-unsigned.apk

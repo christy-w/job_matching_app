@@ -36,5 +36,6 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-# signed Android APK
+# built Android APK
+*-debug.apk
 *-signed.apk
