@@ -70,20 +70,18 @@ export class BaseApp {
 					this.utils.showModal(NewVersionPage, { init_model: data });
 					this.utils.hideSplashScreen();
 					return;
-				} else if (data.latest_version && data.latest_version != '') {
+				} else if (data.latest_version && data.latest_version != '' && data.latest_version != data.curr_version) {
+					// check whether user has dismissed version upgrade notice before
 					let latest_version_code: string = data.latest_version;
-					if (data.curr_version != latest_version_code) {
-						// check whether user has dismissed version upgrade notice before
-						let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
-						this.utils.getLocal(key, false).then(skipped => {
-							// display recommended update model
-							if (!skipped) {
-								this.utils.showModal(NewVersionPage, { init_model: data });
-								this.utils.hideSplashScreen();
-								return;
-							}
-						});
-					}
+					let key: string = 'VERSION_CHECK_FROM_' + data.curr_version + '_TO_' + latest_version_code;
+					this.utils.getLocal(key, false).then(skipped => {
+						// display recommended update model
+						if (!skipped) {
+							this.utils.showModal(NewVersionPage, { init_model: data });
+							this.utils.hideSplashScreen();
+							return;
+						}
+					});
 				}
 			}
 			
