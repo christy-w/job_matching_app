@@ -13,4 +13,4 @@ cd ../
 
 # build debug APK
 ionic cordova build android --prod
-cp ./platforms/android/build/outputs/apk/release/android-debug.apk ./$NAME-$VERSION-debug.apk
+cp ./platforms/android/build/outputs/apk/debug/android-debug.apk ./$NAME-$VERSION-debug.apk
