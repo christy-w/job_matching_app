@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.juicyapp.juicylauncher" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>JuicyLauncher</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="info@juicyapphk.com" href="https://juicyapp.hk/">JuicyApp Limited</author>
+    <name>FYP</name>
+    <description>A hybrid job matching app</description>
+    <author email="christywong0218@gmail.com">Christy Wong</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

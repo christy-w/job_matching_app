@@ -1,5 +1,101 @@
 <common-header [title]="'PAGE.HOME' | translate"></common-header>
 
-<ion-content padding>
-	<h2>Welcome to JuicyLauncher!</h2>
+<ion-content>
+	<div class="noti-bar">
+		<div class="noti-text">您有 1 項新的工作推薦！</div>
+		<ion-icon name="close" item-end></ion-icon>
+	</div>
+
+	<div padding>
+		<ion-segment [(ngModel)]="jobsQueued">
+			<ion-segment-button value="allJobs">
+				所有工作	
+			</ion-segment-button>
+			<ion-segment-button value="processingJobs">
+				待批工作
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	
+	<div [ngSwitch]="jobsQueued">
+		<ion-list *ngSwitchCase="'allJobs'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/sample/d_park.png">
+				</ion-thumbnail>
+				<div class="job-detail">
+					<div class="title">夜更保安員</div>
+					<div class="company">愉景新城</div>
+					<div class="salary">月薪HKD 14,000</div>
+					<button ion-button outline>每月額外獎金</button>
+				</div>
+				<div item-end class="job-detail-right">
+					<div class="publish-date">1日前</div>
+					<div class="favourite-btn">
+						<ion-icon name="heart-outline"></ion-icon>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/sample/d_park.png">
+				</ion-thumbnail>
+				<div class="job-detail">
+					<div class="title">夜更保安員</div>
+					<div class="company">愉景新城</div>
+					<div class="salary">月薪HKD 14,000</div>
+					<button ion-button outline>每月額外獎金</button>
+				</div>
+				<div item-end class="job-detail-right">
+					<div class="publish-date">1日前</div>
+					<div class="favourite-btn">
+						<ion-icon name="heart-outline"></ion-icon>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/sample/d_park.png">
+				</ion-thumbnail>
+				<div class="job-detail">
+					<div class="title">夜更保安員</div>
+					<div class="company">愉景新城</div>
+					<div class="salary">月薪HKD 14,000</div>
+					<button ion-button outline>每月額外獎金</button>
+				</div>
+				<div item-end class="job-detail-right">
+					<div class="publish-date">1日前</div>
+					<div class="favourite-btn">
+						<ion-icon name="heart-outline"></ion-icon>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/sample/d_park.png">
+				</ion-thumbnail>
+				<div class="job-detail">
+					<div class="title">夜更保安員</div>
+					<div class="company">愉景新城</div>
+					<div class="salary">月薪HKD 14,000</div>
+					<button ion-button outline>每月額外獎金</button>
+				</div>
+				<div item-end class="job-detail-right">
+					<div class="publish-date">1日前</div>
+					<div class="favourite-btn">
+						<ion-icon name="heart-outline"></ion-icon>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+		
+		<ion-list *ngSwitchCase="'processingJobs'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/sample/island_pacific.jpg">
+				</ion-thumbnail>
+				<h2>Luna</h2>
+			</ion-item>
+		</ion-list>
+	</div>
 </ion-content>

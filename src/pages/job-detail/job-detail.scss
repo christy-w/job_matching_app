@@ -1,0 +1,58 @@
+page-job-detail {
+    .job-detail {
+        .title {
+            font-size: 18px;
+        }
+        .company {
+            font-size: 12px;
+            color: #9f9f9f;
+        }
+        .salary {
+            padding-top: 5px;
+            font-size: 14px;
+        }
+    }
+    .job-detail-right {
+        height: 80%;
+        text-align: right;
+        .publish-date {
+            font-size: 12px;
+            color: #9f9f9f;
+        }
+        .favourite-btn {
+            position: absolute;
+            font-size: 20px;
+            bottom: 15px;
+            right: 20px;
+        }
+    }
+    .job-timeslots {
+        .timeslot-status {
+            padding-top: 5px;
+        }
+        .available-timeslot {
+            background-color: #488aff;
+            padding: 8px;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .full-timeslot {
+            background-color: #9f9f9f;
+            padding: 8px;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .nearly-full-timeslot {
+            background-color: #f53d3d;
+            padding: 8px;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+}

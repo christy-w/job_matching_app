@@ -1,9 +1,9 @@
 {
-  "name": "juicylauncher",
+  "name": "FYP",
   "version": "0.0.1",
-  "author": "Juicyapp Limited",
-  "description": "An Ionic project",
-  "homepage": "https://juicyapp.hk/",
+  "author": "Christy Wong",
+  "description": "A hybrid job matching app",
+  "homepage": "",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

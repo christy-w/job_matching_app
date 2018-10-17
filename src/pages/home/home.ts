@@ -13,6 +13,7 @@ import { Utils } from '../../core/providers/utils';
 export class HomePage extends BasePage {
 
 	name: string = 'HomePage';
+	jobsQueued: string = 'allJobs';
 	
 	constructor(
 		protected platform: Platform,
