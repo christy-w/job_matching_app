@@ -14,3 +14,11 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-content, .fixed-content, .scroll-content{
+    background-color: $bg-white !important;
+    margin: 0 !important;
+}
+ion-header, ion-navbar, .toolbar-background {
+    background: transparent !important;
+    border: none !important;
+}

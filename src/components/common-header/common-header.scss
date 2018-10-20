@@ -1,5 +1,13 @@
 .my-header {
-    
+    ion-navbar {
+        height: 80px;
+    }
+    ion-buttons, button {
+        color: $font-yellow !important;
+    }
+    .toolbar {
+        padding: 5px 15px;
+    }
     .logo {
         text-align: center;
         img {

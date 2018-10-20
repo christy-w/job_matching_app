@@ -1,0 +1,32 @@
+page-applicant-home {
+    .upper-section {
+        position: relative;
+        width: 100vw;
+        height: 20vh;
+        .search-btn {
+            position: absolute;
+            top: 0;
+            color: $font-yellow;
+            background: transparent !important;
+            font-size: 30px;
+        }
+        .page-title {
+            padding-top: 80px;
+            color: $dark-grey;
+            font-weight: 800;
+        }
+    }
+    .list-section {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        .list-all-jobs {
+            width: 100vw;
+            .job-post {
+                padding: 5px 15px;
+                background-color: #fff;
+                border-radius: 5px;
+            }
+        }
+    }
+}

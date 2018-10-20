@@ -7,12 +7,12 @@ import { Utils } from '../../core/providers/utils';
 
 @IonicPage()
 @Component({
-	selector: 'page-home',
-	templateUrl: 'home.html'
+	selector: 'page-applicant-home',
+	templateUrl: 'applicant-home.html'
 })
-export class HomePage extends BasePage {
+export class ApplicantHomePage extends BasePage {
 
-	name: string = 'HomePage';
+	name: string = 'ApplicantHomePage';
 	jobsQueued: string = 'allJobs';
 	
 	constructor(
