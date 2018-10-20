@@ -1,0 +1,13 @@
+<!-- Footer Tab -->
+<ion-nav [root]="menuPage" #fs_nav swipeBackEnabled="false"></ion-nav>
+
+<div class="hot-keys">
+	<ion-row nowrap style="height:100%;">
+		<button class="key" *ngFor="let key of hotkeys" (click)="onClickHotKey(key)" [ngClass]="{active: key.tab == config.ACTIVE_TAB}" [disabled]="key.tab == config.ACTIVE_TAB">
+			<div class="key_wrapper">
+				<img class="key_icon" [src]="'assets/icon/tabs/'+ key.icon + '.png'" [hidden]="key.tab == config.ACTIVE_TAB" />
+				<img class="key_icon" [src]="'assets/icon/tabs/'+ key.icon + '_active.png'" [hidden]="key.tab != config.ACTIVE_TAB" />
+			</div>
+		</button>
+	</ion-row>
+</div>

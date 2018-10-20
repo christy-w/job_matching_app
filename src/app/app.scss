@@ -16,9 +16,23 @@
 // automatically applied to the <body> element in the app.
 ion-content, .fixed-content, .scroll-content{
     background-color: $bg-white !important;
-    margin: 0 !important;
+    margin-bottom: $tabbar-height;
+    ::-webkit-scrollbar {
+		display: none !important; 
+	}
 }
+
 ion-header, ion-navbar, .toolbar-background {
     background: transparent !important;
     border: none !important;
+}
+
+ion-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    .bar-button {
+        color: $font-yellow !important;
+    }
 }

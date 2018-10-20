@@ -17,6 +17,7 @@ export class Config {
     
     // First page to enter when the App is started
     static START_PAGE: any = 'ApplicantHomePage';
+    static ACTIVE_TAB: any = '';
     
     // For checking root page which shows Exit App confirmation box
     static ROOT_PAGE_NAME: string = 'ApplicantHomePage';

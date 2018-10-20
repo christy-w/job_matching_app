@@ -6,6 +6,13 @@
         "CONTACT": "聯絡我們"
     },
 
+    "HOTKEY": {
+        "HOME": "所有工作",
+        "RECOMMENDATION": "推薦工作",
+        "RECORD": "申請紀錄",
+        "PROFILE": "我的資料"
+    },
+
     "ACTION": {
         "OK": "確認",
         "CONFIRM": "確認",

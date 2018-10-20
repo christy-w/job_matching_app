@@ -41,6 +41,10 @@ $colors: (
   dark:       #222
 );
 
+// Global variables
+$tabbar-height: 55px;
+$tabbar-height-inset:  calc(env(safe-area-inset-bottom) + #{$tabbar-height});
+
 $bg-white: #fafafa;
 $font-white: #ffffff;
 $light-grey: #d9d7d7;
@@ -49,7 +53,6 @@ $dark-grey: #494949;
 $font-yellow: #fab712;
 $gradient-yellow: #ffd200;
 $gradient-orange: #f7a41e;
-
 
 // App iOS Variables
 // --------------------------------------------------

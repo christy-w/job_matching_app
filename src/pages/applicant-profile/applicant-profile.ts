@@ -7,13 +7,12 @@ import { Utils } from '../../core/providers/utils';
 
 @IonicPage()
 @Component({
-	selector: 'page-applicant-home',
-	templateUrl: 'applicant-home.html'
+	selector: 'page-applicant-profile',
+	templateUrl: 'applicant-profile.html'
 })
-export class ApplicantHomePage extends BasePage {
+export class ApplicantProfilePage extends BasePage {
 
-	name: string = 'ApplicantHomePage';
-	jobsQueued: string = 'allJobs';
+	name: string = 'ApplicantProfilePage';
 	
 	constructor(
 		protected platform: Platform,
@@ -22,10 +21,10 @@ export class ApplicantHomePage extends BasePage {
 		protected utils: Utils
 	) {
 		super(platform, view, nav, utils);
-		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
+		Config.DEBUG_VERBOSE && console.log('ApplicantProfilePage constructor');
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'home';
+		Config.ACTIVE_TAB = 'profile';
 	}
 }

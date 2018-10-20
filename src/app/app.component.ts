@@ -5,6 +5,8 @@ import { Config } from '../config';
 import { Utils } from '../core/providers/utils';
 import { Api } from '../providers';
 
+import { MenuComponent } from '../components/menu/menu';
+
 @Component({
 	templateUrl: 'app.html'
 })
@@ -22,7 +24,7 @@ export class MyApp extends BaseApp {
 		
 		// load default page
 		if (typeof this.nav.getActive() == 'undefined') {
-			this.rootPage = Config.START_PAGE;
+			this.rootPage = MenuComponent;
 		}
 	}
 }

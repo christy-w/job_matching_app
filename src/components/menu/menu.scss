@@ -1,0 +1,47 @@
+menu-component {
+
+	color: #272727;
+	padding-bottom:20px;
+
+	.menu_footer {
+		text-align:center;
+		margin-bottom:80px;
+		img {
+			width:50%;
+		}
+	}
+
+	/*---------------------------------------------
+	* Hot Keys (Bottom Tabs)
+	*---------------------------------------------*/
+	.hot-keys {
+		position: absolute;
+		bottom: 0;
+		z-index: 9999;
+		background: #fff;
+		width: 100%;
+		height: $tabbar-height;
+		.key {
+			background: #fff;
+			text-align: center;
+			width:25%;
+			&.active {
+				border-bottom: 2px solid $font-yellow;
+				opacity: 1 !important;
+			}
+			.key_wrapper {
+				top:0;
+				bottom:0;
+				padding:0;
+				margin:auto;
+			}
+			.key_icon {
+				width:25px;
+				margin-bottom:3px;	
+			}
+			.key_active {
+				width:33px;
+			}
+		}
+	}
+}

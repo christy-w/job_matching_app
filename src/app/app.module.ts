@@ -25,6 +25,8 @@ import { Api } from '../providers';
 import { EscapeHtml } from '../core/pipes/escape-html';
 import { InappHref } from '../core/components/inapp-href/inapp-href';
 
+// Components
+import { MenuComponent } from '../components/menu/menu';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -35,7 +37,8 @@ let pages = [
 ];
 
 let components = [
-	NewVersionPage
+	NewVersionPage,
+	MenuComponent
 ];
 
 let directives = [

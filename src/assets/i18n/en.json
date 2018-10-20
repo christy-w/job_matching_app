@@ -6,6 +6,13 @@
         "CONTACT": "Contact Us"
     },
 
+    "HOTKEY": {
+        "HOME": "All jobs",
+        "RECOMMENDATION": "Recommendations",
+        "RECORD": "Records",
+        "PROFILE": "My profile"
+    },
+
     "ACTION": {
         "OK": "Ok",
         "CONFIRM": "Confirm",
