@@ -18,6 +18,7 @@
 // Global variables
 $tabbar-height: 55px;
 $tabbar-height-inset:  calc(env(safe-area-inset-bottom) + #{$tabbar-height});
+$upper-fixed-height: 18vh;
 
 // Theme color
 $bg-white: #fafafa;
@@ -82,4 +83,14 @@ ion-navbar {
     .bar-button {
         color: $font-yellow !important;
     }
+}
+
+[ion-fixed] {
+  position: relative;
+  width: 100vw;
+  height: $upper-fixed-height;
+  display: block;
+}
+.scroll-content {
+  margin-top: $upper-fixed-height;
 }
