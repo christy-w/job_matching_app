@@ -14,6 +14,53 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// Global variables
+$tabbar-height: 55px;
+$tabbar-height-inset:  calc(env(safe-area-inset-bottom) + #{$tabbar-height});
+
+// Theme color
+$bg-white: #fafafa;
+$font-white: #ffffff;
+$light-grey: #d9d7d7;
+$medium-grey: #a5a4a4;
+$dark-grey: #494949;
+$font-yellow: #fab712;
+$gradient-yellow: #ffd200;
+$gradient-orange: #f7a41e;
+
+$red: #f05050;
+$green: #4ebc4e;
+$item-shadow: 0px 1px 3px rgba(170,170,170,0.3);
+$thumbnail-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+
+$font-bold: 'Roboto-bold';
+$font-medium: 'Roboto-medium';
+$font-regular: 'Roboto-regular';
+$font-light: 'Roboto-light';
+$font-thin: 'Roboto-thin';
+
+@font-face {
+  font-family: $font-bold;
+  src: url('../assets/fonts/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: $font-medium;
+  src: url('../assets/fonts/Roboto-Medium.ttf');
+}
+@font-face {
+  font-family: $font-regular;
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: $font-light;
+  src: url('../assets/fonts/Roboto-Light.ttf');
+}
+@font-face {
+  font-family: $font-thin;
+  src: url('../assets/fonts/Roboto-Thin.ttf');
+}
+
 ion-content, .fixed-content, .scroll-content{
     background-color: $bg-white !important;
     margin-bottom: $tabbar-height;

@@ -40,22 +40,6 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
-
-// Global variables
-$tabbar-height: 55px;
-$tabbar-height-inset:  calc(env(safe-area-inset-bottom) + #{$tabbar-height});
-
-$bg-white: #fafafa;
-$font-white: #ffffff;
-$light-grey: #d9d7d7;
-$medium-grey: #a5a4a4;
-$dark-grey: #494949;
-$font-yellow: #fab712;
-$gradient-yellow: #ffd200;
-$gradient-orange: #f7a41e;
-
-$item-shadow: 0px 1px 3px rgba(170,170,170,0.3);
-
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
