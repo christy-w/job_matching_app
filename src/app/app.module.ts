@@ -94,7 +94,9 @@ export function providers() {
 		HttpClientModule,
 		IonicModule.forRoot(MyApp, {
 			prodMode: false,
-			tabsPlacement: 'bottom'
+			tabsPlacement: 'bottom',
+			backButtonIcon: '',
+			backButtonText: ''
 		}),
 		IonicStorageModule.forRoot({
 			name: '__mydb',

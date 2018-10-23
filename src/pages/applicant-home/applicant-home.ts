@@ -38,4 +38,8 @@ export class ApplicantHomePage extends BasePage {
 		});
 	    searchFilter.present();
 	}
+
+	openJobPage() {
+		this.nav.push('ApplicantJobPage');
+	}
 }

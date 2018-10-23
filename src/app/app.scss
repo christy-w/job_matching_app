@@ -19,6 +19,7 @@
 $tabbar-height: 55px;
 $tabbar-height-inset:  calc(env(safe-area-inset-bottom) + #{$tabbar-height});
 $upper-fixed-height: 18vh;
+$header-height: 80px;
 
 // Theme color
 $bg-white: #fafafa;
@@ -80,9 +81,17 @@ ion-navbar {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+	right: 0;
+	height: $header-height;
+	.back-button {
+		display: none !important;
+	}
     .bar-button {
-        color: $font-yellow !important;
+      color: $font-yellow !important;
+	  img {
+		  width: 25px;
+		  height: 25px;
+	  }
     }
 }
 
