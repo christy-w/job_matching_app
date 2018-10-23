@@ -85,6 +85,7 @@ page-applicant-home {
                             background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                             background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
                             border-radius: 5px;
+                            box-shadow: $highlight-btn-shadow;
                         }
                     }
                 }

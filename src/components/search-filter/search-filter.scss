@@ -1,0 +1,91 @@
+search-filter {
+    .search-filter-container {
+        background-color: #fff;
+    }
+    .search-field {
+        position: relative;
+        display: block;
+        border-bottom: 1px solid $light-grey;
+        ion-icon {
+            position: absolute;
+            color: $medium-grey;
+            top: 4px;
+            left: 10px;
+            font-size: 1em;
+            z-index: 5;
+        }
+        ion-input {
+            position: relative;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            margin-bottom: 10px;
+            .text-input {
+                margin: 5px 5px 5px 25px;
+                color: $medium-grey;
+                font-size: 0.8em;
+                font-family: 'Roboto-thin';
+            }
+        }
+    }
+    .filter-options {
+        .filter-option {
+            padding: 10px 0px;
+            .name {
+                color: $dark-grey;
+                font-family: 'Roboto-medium';
+                font-size: 1.2em;
+            }
+            .selections {
+                padding: 5px 0px;
+                overflow: hidden;
+                .sub-selection {
+                    padding: 5px 0px;
+                    .name {
+                        color: $dark-grey;
+                        font-size: 0.8em;
+                        font-family: 'Roboto-thin';
+                    }
+                    .selection {
+                        display: inline-block;
+                        text-align: center;
+                        padding: 2px 10px 2px 10px;
+                        margin: 2px 0px;
+                        color: #fff;
+                        font-size: 0.9em;
+                        font-family: 'Roboto-bold';
+                        background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                        background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        border-radius: 5px;
+                        box-shadow: $highlight-btn-shadow;
+                    }
+                }
+            }
+        }
+    }
+    .operation-buttons {
+        display: block;
+        .operation-button {
+            display: inline-block;
+            width: 47%;
+            padding: 8px;
+            font-size: 1em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            margin: 2px;
+            &.dull-btn {
+                background-color: #f7f7f7;
+                color: $dark-grey;
+                box-shadow: $item-shadow;
+            }
+            &.highlight-btn {
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $highlight-btn-shadow;
+            }
+        }
+        
+    }
+}
