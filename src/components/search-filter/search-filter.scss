@@ -36,7 +36,6 @@ search-filter {
                 font-size: 1.2em;
             }
             .selections {
-                padding: 5px 0px;
                 overflow: hidden;
                 .sub-selection {
                     padding: 5px 0px;
@@ -86,6 +85,5 @@ search-filter {
                 box-shadow: $highlight-btn-shadow;
             }
         }
-        
     }
 }

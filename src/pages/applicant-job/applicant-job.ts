@@ -4,6 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
+import { DatetimePicker } from '../../components/datetime-picker/datetime-picker';
 
 @IonicPage()
 @Component({
@@ -26,5 +27,14 @@ export class ApplicantJobPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'job';
+	}
+
+	openDatetimePicker() {
+		let datetimePicker = this.utils.createPopover(DatetimePicker, {}, {cssClass:'datetime-picker'});
+		datetimePicker.onDidDismiss(data => {
+			// (data) ? this.saveFilter(data) : this.cancelFilter();
+			// this.filterShown = false;
+		});
+	    datetimePicker.present();
 	}
 }

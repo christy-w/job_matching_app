@@ -126,3 +126,17 @@ ion-navbar {
     border-radius: 5px;
   }
 }
+
+.datetime-picker {
+	.popover-content{ 
+	  width: 80vw; 
+	  height: auto;
+	  padding: 20px;
+	  border-radius: 5px;
+	}
+	ion-content, .scroll-content{
+		background-color: #fff !important;
+		margin: 0;
+		height: auto;
+	}
+  }

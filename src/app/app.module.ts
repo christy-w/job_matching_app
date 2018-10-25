@@ -28,6 +28,7 @@ import { InappHref } from '../core/components/inapp-href/inapp-href';
 // Components
 import { MenuComponent } from '../components/menu/menu';
 import { SearchFilter } from '../components/search-filter/search-filter';
+import { DatetimePicker } from '../components/datetime-picker/datetime-picker';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -40,7 +41,8 @@ let pages = [
 let components = [
 	NewVersionPage,
 	MenuComponent,
-	SearchFilter
+	SearchFilter,
+	DatetimePicker
 ];
 
 let directives = [
