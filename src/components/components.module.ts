@@ -4,18 +4,21 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { CommonHeader } from './common-header/common-header';
 import { CommonFooter } from './common-footer/common-footer';
+import { CardSlider } from './card-slider/card-slider';
 
 @NgModule({
     declarations: [
         CommonHeader,
-        CommonFooter
+        CommonFooter,
+        CardSlider
     ],
     imports: [
         IonicModule
     ],
     exports: [
         CommonHeader,
-        CommonFooter
+        CommonFooter,
+        CardSlider
     ]
 })
 export class ComponentsModule { }

@@ -3,5 +3,7 @@
 <ion-content>
     <div class="page-title">所有工作</div>
     <div class="page-desp">有 3 項與你極符合的工作</div>
-    <div class="recommendation-sliders"></div>
+    <div class="recommendation-slider">
+        <card-slider [slidesInfo]="recommendations" delay="0"></card-slider>
+    </div>
 </ion-content>

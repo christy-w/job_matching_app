@@ -1,0 +1,10 @@
+<div class="card-slider">
+    <ion-slides #cardSlider class="slide-list" *ngIf="slidesInfo && slidesInfo.length > 0" loop=true pager=true>
+        <ion-slide class="slide-item" *ngFor="let slide of slidesInfo"  tappable>
+            <div class="slide-text" tappable>
+                <div class="title">Title</div>
+                <div class="desp">Desp</div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+</div>

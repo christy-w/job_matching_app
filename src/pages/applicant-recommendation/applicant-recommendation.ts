@@ -13,7 +13,7 @@ import { Utils } from '../../core/providers/utils';
 export class ApplicantRecommendationPage extends BasePage {
 
 	name: string = 'ApplicantRecommendationPage';
-	
+	recommendations: any = [];
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -22,9 +22,54 @@ export class ApplicantRecommendationPage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantRecommendationPage constructor');
+
+		this.recommendations = [
+			{
+				name: "臨時保安員",
+				job_type: "臨時工作",
+				employer_name: "太平洋酒店",
+				salary: "$55/小時",
+				tags: ["即日出糧","優秀僱主"],
+				publish_date: "1日前",
+				thumbnail_url: "",
+				match_marks: "8/10",
+				match_item: [
+					{}
+				]
+			},
+			{
+				name: "臨時保安員",
+				job_type: "臨時工作",
+				employer_name: "太平洋酒店",
+				salary: "$55/小時",
+				tags: ["即日出糧","優秀僱主"],
+				publish_date: "1日前",
+				thumbnail_url: "",
+				match_marks: "8/10",
+				match_item: [
+					{}
+				]
+			},
+			{
+				name: "臨時保安員",
+				job_type: "臨時工作",
+				employer_name: "太平洋酒店",
+				salary: "$55/小時",
+				tags: ["即日出糧","優秀僱主"],
+				publish_date: "1日前",
+				thumbnail_url: "",
+				match_marks: "8/10",
+				match_item: [
+					{}
+				]
+			},
+
+		];
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'recommendation';
 	}
+
+	
 }

@@ -1,3 +1,20 @@
 page-applicant-recommendation {
-
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+    .page-title {
+        padding: 80px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .page-desp {
+        padding: 0px 20px;
+        color: $medium-grey;
+        font-size: 0.9em;
+        font-family: 'Roboto-medium';
+    }
+    .recommendation-slider {
+        margin-top: 20px;
+    }
 }

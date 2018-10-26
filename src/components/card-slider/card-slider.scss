@@ -1,0 +1,39 @@
+card-slider {
+    // Override default style
+    .swiper-container {
+        overflow: visible;
+    }
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+        left: 0;
+        bottom: -20px;
+        width: 100%;
+    }
+    .swiper-pagination-bullet {
+        border-radius: none;
+        width: 8px;
+        height: 2px;
+        background: $light-grey;
+        opacity: 1;
+        margin: 0 3px !important;
+        &.swiper-pagination-bullet-active {
+            background: $font-yellow;
+        }
+    }
+    .swiper-slide {
+        opacity: 0.7;
+        height: 385px;
+        margin-top: 20px;
+        transition: all 0.2s;
+        &.swiper-slide-active {
+            opacity: 1;
+            height: 425px;
+            margin-top: 0px;
+        }
+    }
+    // Card content style
+    .slide-item {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+    }
+}
