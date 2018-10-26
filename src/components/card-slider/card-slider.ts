@@ -24,7 +24,6 @@ export class CardSlider {
 	}
 
 	ngAfterViewInit() {
-		console.log(this.slides);
 		if(this.slides)
 		{
 			this.slides.slidesPerView = '1.2';
@@ -33,5 +32,9 @@ export class CardSlider {
 			this.slides.speed = parseInt(this.speed_millisecond);
 			this.slides.loop = false;
 		}
+	}
+
+	flip(slide) {
+		slide.flipped = !slide.flipped;
 	}
 }
