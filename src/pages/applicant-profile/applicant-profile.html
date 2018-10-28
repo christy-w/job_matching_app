@@ -16,13 +16,11 @@
             </div>
         </ion-col>
     </ion-row>
-    <div class="list-card my-profile">
+    <div class="list-card my-profile" *ngIf="profile_fields">
         <div class="list-title">我的資料</div>
-        <button ion-item class="list-item">個人資料</button>
-        <button ion-item class="list-item">工作經驗</button>
-        <button ion-item class="list-item">技能及資格</button>
-        <button ion-item class="list-item">證明文件</button>
-        <button ion-item class="list-item">要求及喜好</button>
+        <div class="my-profile-wrapper">
+            <button ion-item class="list-item" *ngFor="let profile_field of profile_fields" (click)="openProfileDetailPage(profile_field)">{{ profile_field.name_zh }}</button>
+        </div>
     </div>
     <div class="list-card my-record">
         <div class="list-title">我的紀錄</div>

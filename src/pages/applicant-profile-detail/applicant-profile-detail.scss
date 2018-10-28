@@ -1,0 +1,37 @@
+page-applicant-profile-detail {
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+    .page-title {
+        padding: 80px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .list-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        .item-wrapper {
+            .item-inner {
+                border-bottom: 1px solid $light-grey;
+            }
+            &:last-child {
+                .item-inner {
+                    border: none;
+                }
+            }
+            .list-item {
+                font-family: $font-medium;
+                color: $dark-grey;
+                font-size: 1.2em;
+                .text-input, .select-text, .datetime-text {
+                    text-align: right;
+                    color: $font-yellow;
+                }
+            }
+        }
+    }
+}

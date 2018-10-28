@@ -85,6 +85,9 @@ page-applicant-profile {
                     border: none;
                 }
             }
+            &.logout-btn {
+                color: $red;
+            }
         }
     }
 }

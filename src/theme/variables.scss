@@ -41,7 +41,11 @@ $colors: (
   dark:       #222
 );
 
+// Override
 $item-ios-detail-push-color: #fab712;
+$text-input-placeholder-color: #d9d7d7;
+$text-input-highlight-color-valid: #fab712;
+$text-input-highlight-color-invalid: #f05050;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
