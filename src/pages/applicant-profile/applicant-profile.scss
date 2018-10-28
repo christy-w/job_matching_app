@@ -1,3 +1,90 @@
 page-applicant-profile {
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+    .page-title {
+        padding: 80px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
 
+    // Page styling
+    .profile-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        height: 110px;
+        .thumbnail {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            text-align: center;
+            margin: auto;
+            background-image: url('../../assets/img/sample/sample-icon.jpg');
+            background-size: contain;
+            background-position: 50%;
+            box-shadow: $thumbnail-shadow;
+        }
+        .profile-info-wrapper {
+            position: relative;
+            .profile-info {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+                height: fit-content;
+                .name {
+                    color: $dark-grey;
+                    font-family: $font-bold;
+                    font-size: 1.2em;
+                }
+                .ratings {
+                    .stars {
+                        display: inline-block;
+                    }
+                    .review-counts {
+                        display: inline-block;
+                        color: $medium-grey;
+                        font-size: 0.6em;
+                        font-family: $font-bold;
+                    }
+                }
+            }
+        }
+    }
+    .list-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        .list-title {
+            padding-left: 15px;
+            padding-top: 10px;
+            font-family: $font-regular;
+            color: $medium-grey;
+            font-size: 1em;
+        }
+        .list-item {
+            font-family: $font-medium;
+            color: $dark-grey;
+            font-size: 1.2em;
+            .item-inner {
+                border-bottom: 1px solid $light-grey;
+            }
+            &:last-child {
+                .item-inner {
+                    border: none;
+                }
+            }
+        }
+    }
 }
