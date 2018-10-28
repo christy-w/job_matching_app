@@ -32,9 +32,42 @@ export class ApplicantRecommendationPage extends BasePage {
 				tags: ["即日出糧","優秀僱主"],
 				publish_date: "1日前",
 				thumbnail_url: "",
-				match_marks: "8/10",
-				match_item: [
-					{}
+				match_mark: "5",
+				total_mark: "8",
+				match_level: "極符合",
+				match_items: [
+					{
+						name: "工作類別",
+						content: "臨時工作"
+					},
+					{
+						name: "工作地點",
+						content: "油尖旺區"
+					},
+					{
+						name: "最低薪酬",
+						content: "$65/小時"
+					},
+					{
+						name: "工作時間",
+						content: "早上"
+					},
+					{
+						name: "工作日期",
+						content: "星期六"
+					},
+					{
+						name: "出糧方式",
+						content: "現金出糧"
+					},
+					{
+						name: "出糧日期",
+						content: "即日"
+					},
+					{
+						name: "僱主評分",
+						content: "4.6分"
+					},
 				]
 			},
 			{
@@ -45,9 +78,22 @@ export class ApplicantRecommendationPage extends BasePage {
 				tags: ["即日出糧","優秀僱主"],
 				publish_date: "1日前",
 				thumbnail_url: "",
-				match_marks: "8/10",
-				match_item: [
-					{}
+				match_mark: "3",
+				total_mark: "8",
+				match_level: "符合",
+				match_items: [
+					{
+						name: "工作類別",
+						content: "臨時工作"
+					},
+					{
+						name: "工作地點",
+						content: "油尖旺區"
+					},
+					{
+						name: "最低薪酬",
+						content: "$65/小時"
+					},
 				]
 			},
 			{
@@ -58,9 +104,26 @@ export class ApplicantRecommendationPage extends BasePage {
 				tags: ["即日出糧","優秀僱主"],
 				publish_date: "1日前",
 				thumbnail_url: "",
-				match_marks: "8/10",
-				match_item: [
-					{}
+				match_mark: "4",
+				total_mark: "8",
+				match_level: "符合",
+				match_items: [
+					{
+						name: "工作類別",
+						content: "臨時工作"
+					},
+					{
+						name: "工作地點",
+						content: "油尖旺區"
+					},
+					{
+						name: "最低薪酬",
+						content: "$65/小時"
+					},
+					{
+						name: "工作時間",
+						content: "早上"
+					},
 				]
 			},
 

@@ -1,27 +1,27 @@
 <div class="card-slider">
     <ion-slides #cardSlider class="slide-list" *ngIf="slidesInfo && slidesInfo.length > 0" loop=true pager=true>
-        <ion-slide class="slide-item" *ngFor="let slide of slidesInfo" [class.flipped]="slide.flipped">
+        <ion-slide class="slide-item" *ngFor="let job of slidesInfo" [class.flipped]="job.flipped">
 			<div class="card-flipper">
 				<div class="card-front">
 					<div class="upper-section">
 						<div class="fav-btn">
 							<ion-icon name="heart"></ion-icon>
 						</div>
-						<div class="publish-date">1日前</div>
+						<div class="publish-date">{{ job.publish_date }}</div>
 						<div class="thumbnail"></div>
-						<div class="job-title">臨時保安員</div>
+						<div class="job-title">{{ job.name }}</div>
 						<div class="job-type">
 							<div class="dot"></div>
-							臨時工作
+							{{ job.job_type }}
 						</div>
-						<div class="employer">太平洋酒店</div>
+						<div class="employer">{{ job.employer_name }}</div>
 					</div>
 					<div class="lower-section">
-						<div class="match-status">此項工作<span>極符合</span>你的喜好</div>
-						<div class="mark">8</div>
-						<div class="total">/ 10 個喜好</div>
+						<div class="match-status">此項工作<span>{{ job.match_level }}</span>你的喜好</div>
+						<div class="mark">{{ job.match_mark }}</div>
+						<div class="total">/ {{ job.total_mark }} 個喜好</div>
 						<div class="operation-buttons">
-							<button class="highlight-btn operation-button" (click)="flip(slide)">查看詳情</button>
+							<button class="highlight-btn operation-button" (click)="flip(job)">查看詳情</button>
 						</div>
 					</div>
 				</div>
@@ -31,56 +31,37 @@
 							<ion-col col-3>
 								<div class="thumbnail"></div>
 							</ion-col>
-							<ion-col col-7 class="job-info">
-								<div class="title">夜更保安員</div>
+							<ion-col col-9 class="job-info">
+								<div class="title">{{ job.name }}</div>
 								<span class="job-type">
 									<div class="dot"></div>
-									臨時工作
+									{{ job.job_type }}
 								</span>
-								<div class="employer">太平洋酒店</div>
-								<div class="salary">$55/小時</div>
+								<div class="employer">{{ job.employer_name }}</div>
+								<div class="salary">{{ job.salary }}</div>
 								<div class="tags">
-									<div class="tag">即日出糧</div>
-									<div class="tag">即日出糧</div>
-								</div>
-							</ion-col>
-							<ion-col col-2>
-								<div class="publish-date">1日前</div>
-								<div class="fav-btn">
-									<ion-icon name="heart"></ion-icon>
+									<div class="tag" *ngFor="let tag of job.tags">{{ tag }}</div>
 								</div>
 							</ion-col>
 						</ion-row>
 					</div>
 					<div class="lower-section">
-						<div class="match-status">此項工作<span>極符合</span>你的喜好</div>
+						<div class="match-status">此項工作<span>{{ job.match_level }}</span>你的喜好</div>
 						<div class="match-mark">
-							<div class="mark">8</div>
-							<div class="total">/ 10</div>
+							<div class="mark">{{ job.match_mark }}</div>
+							<div class="total">/ {{ job.total_mark }}</div>
 						</div>
 						<div class="match-list">
-							<ion-row class="match-item">
-								<ion-col col-7 class="match-name">工作類別 - 臨時工作</ion-col>
-								<ion-col col-5 class="match-content">臨時工作
-									<img class="check-icon" src="../../assets/icon/tick.png"/>
-								</ion-col>
-							</ion-row>
-							<ion-row class="match-item">
-								<ion-col col-7 class="match-name">工作類別 - 臨時工作</ion-col>
-								<ion-col col-5 class="match-content">臨時工作
-									<img class="check-icon" src="../../assets/icon/tick.png"/>
-								</ion-col>
-							</ion-row>
-							<ion-row class="match-item">
-								<ion-col col-7 class="match-name">工作類別 - 臨時工作</ion-col>
-								<ion-col col-5 class="match-content">臨時工作
+							<ion-row class="match-item" *ngFor="let match_item of job.match_items">
+								<ion-col col-7 class="match-name">{{ match_item.name }}</ion-col>
+								<ion-col col-5 class="match-content">{{ match_item.content }}
 									<img class="check-icon" src="../../assets/icon/tick.png"/>
 								</ion-col>
 							</ion-row>
 						</div>
 					</div>
 					<div class="operation-buttons">
-						<button class="highlight-btn operation-button" (click)="flip(slide)">申請工作</button>
+						<button class="highlight-btn operation-button" (click)="flip(job)">申請此工作</button>
 					</div>
 				</div>
 			</div>

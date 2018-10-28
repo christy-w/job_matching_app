@@ -10,7 +10,6 @@ export class CardSlider {
 
 	@ViewChild('cardSlider') slides: Slides;
 	@Input() slidesInfo: any;
-	@Input('delay') delay: any;
 
   	language: string;
 	autoplay_millisecond: any = 2300;
@@ -24,6 +23,7 @@ export class CardSlider {
 	}
 
 	ngAfterViewInit() {
+		console.log('this.slidesInfo', this.slidesInfo);
 		if(this.slides)
 		{
 			this.slides.slidesPerView = '1.2';
