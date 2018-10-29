@@ -1,0 +1,72 @@
+timeline {
+    .timeline {
+        margin: 10px 0 0 0;
+        padding: 0;
+        position: relative;
+        &:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background: $light-grey;
+			left: 20%;
+        }
+        timeline-item {
+			position: relative;
+			display: inline-block;
+            margin: 10px 0px;
+			timeline-time {
+				display: block;
+				width: 20%;
+				position: absolute;
+				span {
+					display: block;
+					text-align: center;
+					&:last-child {
+						font-size: 0.9em;
+						color: $medium-grey;
+						font-family: $font-bold;
+					}
+				}
+          	}
+			/* Right content */
+			.experience-wrapper {
+				margin-left: 25% !important;
+				width: 75% !important;
+				position: relative;
+				.job-title {
+					color: $font-yellow;
+					font-family: $font-bold;
+					font-size: 1.2em;
+				}
+				.company {
+					color: $medium-grey;
+					font-family: $font-regular;
+					font-size: 1em;
+				}
+				.desp {
+					color: $dark-grey;
+					font-family: $font-medium;
+					font-size: 1em;
+				}
+			}
+			.timeline-dot {
+				width: 7px;
+				height: 7px;
+				background: $font-yellow;
+				border-radius: 50%;
+				position: absolute;
+				left: 20%;
+				margin-left: -3px;
+				top: 20px;
+			}
+			&:last-child{
+				width: 100%;
+				.timeline-dot{
+					background: transparent;
+				}
+			}
+        }
+      }
+}

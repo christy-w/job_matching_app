@@ -139,4 +139,17 @@ ion-navbar {
 		margin: 0;
 		height: auto;
 	}
-  }
+}
+.alert-ios .alert-wrapper {
+  border-radius: 5px;
+  color: $dark-grey;
+}
+.alert-ios [aria-checked=true] .alert-radio-label {
+  color: $font-yellow;
+}
+.alert-ios [aria-checked=true] .alert-radio-inner {
+  border-color: $font-yellow;
+}
+.alert-button .button-inner {
+  color: $font-yellow;
+}

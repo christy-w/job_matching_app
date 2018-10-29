@@ -29,5 +29,24 @@
 				<!-- </div> -->
             </div>
         </div>
-    </div>
+	</div>
+	<div class="list-card" *ngIf="detail.type == 'work_experiences'">
+		<div class="list-title">我的工作經驗</div>
+		<div class="add-btn">
+			<ion-icon name="md-add"></ion-icon>
+		</div>
+		<div class="experience-list-wrapper">
+			<timeline>
+				<timeline-item *ngFor="let experience of experiences">
+					<timeline-time [time]="experience.time"></timeline-time>
+					<div class="timeline-dot"></div>
+					<div class="experience-wrapper">
+						<div class="job-title">{{experience.job_title}}</div>
+						<div class="company">{{experience.company}}</div>
+						<div class="desp">{{experience.description}}</div>
+					</div>
+				</timeline-item>
+			</timeline>
+		</div>
+	</div>
 </ion-content>

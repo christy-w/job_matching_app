@@ -28,6 +28,7 @@ export class ApplicantProfilePage extends BasePage {
 			{
 				name_zh: "個人資料",
 				name_en: "Personal Details",
+				type: "personal_details",
 				fields: [
 					{
 						name: "中文姓名",
@@ -82,11 +83,35 @@ export class ApplicantProfilePage extends BasePage {
 			},
 			{
 				name_zh: "工作經驗",
-				name_en: "Work Experiences"
+				name_en: "Work Experiences",
+				type: "work_experiences",
+				fields: [
+					{
+						name: "教育程度",
+						required: true,
+						field_type: "select", // input/select/multi_select/date/
+						selection: '',
+						options: ['小學或以下', '中學或以下', '副學士或高級文憑', '大學或以上']
+					},
+					{
+						name: "職業狀況",
+						required: true,
+						field_type: "select", // input/select/multi_select/date/
+						selection: '',
+						options: ['全職', '兼職', '自僱', '待業', '主婦', '學生']
+					},
+					{
+						name: "工作經驗",
+						required: true,
+						field_type: "select", // input/select/multi_select/date/
+						selection: '',
+						options: ['沒有經驗', '半年或以內', '半年至1年', '1年至3年', '3年以上']
+					},
+				]
 			},
 			{
 				name_zh: "技能及資格",
-				name_en: "Skills and Certificates"
+				name_en: "Skills and Qualifications"
 			},
 			{
 				name_zh: "證明文件",

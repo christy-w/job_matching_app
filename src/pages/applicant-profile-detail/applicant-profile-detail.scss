@@ -33,5 +33,18 @@ page-applicant-profile-detail {
                 }
             }
         }
+        .list-title {
+            padding: 10px 15px;
+            font-family: $font-regular;
+            color: $medium-grey;
+            font-size: 1em;
+        }
+        .add-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: $font-yellow;
+            font-size: 1.8em;
+        }
     }
 }
