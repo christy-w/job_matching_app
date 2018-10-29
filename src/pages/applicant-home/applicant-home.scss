@@ -1,4 +1,13 @@
 page-applicant-home {
+    [ion-fixed] {
+        position: relative;
+        width: 100vw;
+        height: $upper-fixed-height;
+        display: block;
+    }
+    .scroll-content {
+          margin-top: $upper-fixed-height;
+    }
     .upper-section {
         .search-btn {
             position: absolute;

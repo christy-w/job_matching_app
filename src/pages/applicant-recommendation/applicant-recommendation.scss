@@ -1,6 +1,8 @@
 page-applicant-recommendation {
     .scroll-content {
         margin-top: 0 !important;
+        overflow-y: hidden;
+        overflow-x: hidden;
     }
     .page-title {
         padding: 80px 20px 0px 20px;

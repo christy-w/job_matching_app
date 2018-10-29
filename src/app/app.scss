@@ -87,22 +87,12 @@ ion-navbar {
 		display: none !important;
 	}
     .bar-button {
-      color: $font-yellow !important;
-	  img {
-		  width: 25px;
-		  height: 25px;
-	  }
+		color: $font-yellow !important;
+		img {
+			width: 25px;
+			height: 25px;
+		}
     }
-}
-
-[ion-fixed] {
-  position: relative;
-  width: 100vw;
-  height: $upper-fixed-height;
-  display: block;
-}
-.scroll-content {
-  margin-top: $upper-fixed-height;
 }
 
 // Popover content
@@ -115,16 +105,16 @@ ion-navbar {
 // }
 
 .search-filter {
-  // ion-backdrop {
-  //   background-color: #fff;
-  //   opacity: 0.5 !important;
-  // }
-  .popover-content{ 
-    width: 80vw; 
-    height: auto;
-    padding: 20px;
-    border-radius: 5px;
-  }
+	// ion-backdrop {
+	//   background-color: #fff;
+	//   opacity: 0.5 !important;
+	// }
+	.popover-content{ 
+		width: 80vw; 
+		height: auto;
+		padding: 20px;
+		border-radius: 5px;
+	}
 }
 
 .datetime-picker {
@@ -140,16 +130,17 @@ ion-navbar {
 		height: auto;
 	}
 }
-.alert-ios .alert-wrapper {
-  border-radius: 5px;
-  color: $dark-grey;
+
+ion-alert .alert-wrapper {
+	border-radius: 5px !important;
+	color: $dark-grey !important;
 }
-.alert-ios [aria-checked=true] .alert-radio-label {
-  color: $font-yellow;
+ion-alert [aria-checked=true] .alert-radio-label {
+ 	color: $font-yellow !important;
 }
-.alert-ios [aria-checked=true] .alert-radio-inner {
-  border-color: $font-yellow;
+ion-alert [aria-checked=true] .alert-radio-inner {
+  	border-color: $font-yellow !important;
 }
 .alert-button .button-inner {
-  color: $font-yellow;
+  	color: $font-yellow;
 }

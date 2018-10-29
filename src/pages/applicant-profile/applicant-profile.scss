@@ -1,12 +1,20 @@
 page-applicant-profile {
-    .scroll-content {
-        margin-top: 0 !important;
+    [ion-fixed] {
+        position: relative;
+        width: 100vw;
+        height: $upper-fixed-height;
+        display: block;
     }
-    .page-title {
-        padding: 80px 20px 0px 20px;
-        color: $dark-grey;
-        font-family: 'Roboto-bold';
-        font-size: 2em;
+    .scroll-content {
+          margin-top: $upper-fixed-height;
+    }
+    .upper-section {
+        .page-title {
+            padding: 80px 20px 0px 20px;
+            color: $dark-grey;
+            font-family: 'Roboto-bold';
+            font-size: 2em;
+        }
     }
 
     // Page styling

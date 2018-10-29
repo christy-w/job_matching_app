@@ -1,18 +1,27 @@
 page-applicant-record {
+    [ion-fixed] {
+        position: relative;
+        width: 100vw;
+        height: $upper-fixed-height;
+        display: block;
+    }
     .scroll-content {
-        margin-top: 0 !important;
+          margin-top: $upper-fixed-height;
     }
-    .page-title {
-        padding: 80px 20px 0px 20px;
-        color: $dark-grey;
-        font-family: 'Roboto-bold';
-        font-size: 2em;
-    }
-    .page-desp {
-        padding: 0px 20px;
-        color: $medium-grey;
-        font-size: 0.9em;
-        font-family: 'Roboto-medium';
+    .upper-section {
+        .page-title {
+            padding: 80px 20px 0px 20px;
+            color: $dark-grey;
+            font-family: 'Roboto-bold';
+            font-size: 2em;
+            margin-top: -20px;
+        }
+        .page-desp {
+            padding: 0px 20px;
+            color: $medium-grey;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+        }
     }
     .records-wrapper {
         .record-card {
