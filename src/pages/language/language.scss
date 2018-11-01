@@ -1,0 +1,39 @@
+page-language {
+    ion-content, .scroll-content{
+        background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+        background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+        background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+        width: 100vw;
+        height: 100vh;
+    }
+    .content-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        height: 250px;
+        width: 80vw;
+        .language-title {
+            text-align: center;
+            color: #fff;
+            font-family: $font-medium;
+            font-size: 1.4em;
+        }
+        .language-btn {
+            position: relative;
+            width: 80vw;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: $font-medium;
+            font-size: 1.4em;
+            color: $font-yellow;
+            background-color: #fff;
+            margin: 10px auto;
+        }
+    }
+
+}

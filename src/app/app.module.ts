@@ -25,6 +25,7 @@ import { Api } from '../providers';
 import { EscapeHtml } from '../core/pipes/escape-html';
 import { InappHref } from '../core/components/inapp-href/inapp-href';
 
+import { LanguagePage } from '../pages/language/language';
 // Components
 import { MenuComponent } from '../components/menu/menu';
 import { SearchFilter } from '../components/search-filter/search-filter';
@@ -35,7 +36,8 @@ import { DatetimePicker } from '../components/datetime-picker/datetime-picker';
  * can find them. As you add and remove pages, make sure to keep this list up to date.
  */
 let pages = [
-	MyApp
+	MyApp,
+	LanguagePage
 ];
 
 let components = [
