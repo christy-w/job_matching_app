@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #fab712,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -42,10 +42,11 @@ $colors: (
 );
 
 // Override
-$item-ios-detail-push-color: #fab712;
 $text-input-placeholder-color: #d9d7d7;
-$text-input-highlight-color-valid: #fab712;
 $text-input-highlight-color-invalid: #f05050;
+$toggle-ios-background-color-off: #d9d7d7;
+$toggle-ios-background-color-on: #fab712;
+$toggle-ios-handle-background-color: #fff;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

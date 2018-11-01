@@ -141,6 +141,25 @@ ion-alert [aria-checked=true] .alert-radio-label {
 ion-alert [aria-checked=true] .alert-radio-inner {
   	border-color: $font-yellow !important;
 }
+.alert-md [aria-checked=true] .alert-radio-icon {
+    border-color: $font-yellow;
+}
+.alert-md .alert-radio-inner {
+	background-color: $font-yellow;
+}
+.input-has-focus.item-input-has-focus {
+	border: none;
+}
 .alert-button .button-inner {
   	color: $font-yellow;
+}
+.picker-button .button-inner {
+	color: $font-yellow;
+}
+.alert-ios [aria-checked=true] .alert-checkbox-icon {
+	background-color: $font-yellow;
+	border-color: $font-yellow;
+}
+.alert-md [aria-checked=true] .alert-checkbox-inner {
+	border-color: #fff;
 }

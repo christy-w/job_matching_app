@@ -101,7 +101,7 @@ export class ApplicantProfilePage extends BasePage {
 						options: ['全職', '兼職', '自僱', '待業', '主婦', '學生']
 					},
 					{
-						name: "工作經驗",
+						name: "相關工作經驗",
 						required: true,
 						field_type: "select", // input/select/multi_select/date/
 						selection: '',
@@ -111,16 +111,44 @@ export class ApplicantProfilePage extends BasePage {
 			},
 			{
 				name_zh: "技能及資格",
-				name_en: "Skills and Qualifications"
+				name_en: "Skills and Certificates",
+				type: "skills_certificates",
+				fields: [
+					{
+						name: "語言能力",
+						required: false,
+						field_type: "multi_select", // input/select/multi_select/date/
+						selection: '',
+						options: ['廣東話', '普通普通話', '流利普通話', '普通英語', '流利英語']
+					},
+					{
+						name: "電腦技能",
+						required: false,
+						field_type: "multi_select", // input/select/multi_select/date/
+						selection: '',
+						options: ['Microsoft Word', 'Microsoft Excel', 'Microsoft Powerpoint', 'Adobe Photoshop', 'Adobe Illustrator', 'Adobe Indesign', 'AutoCAD']
+					},
+					{
+						name: "保安資格",
+						required: false,
+						field_type: "multi_select", // input/select/multi_select/date/
+						selection: '',
+						options: ['QAS 優質保安證書', '保安人員許可證(A)', '保安人員許可證(B)', '保安人員許可證(C)', '保安人員許可證(D)']
+					},
+					{
+						name: "受培訓經驗",
+						required: false,
+						field_type: "multi_select", // input/select/multi_select/date/
+						selection: '',
+						options: ['香港僱員培訓局', '香港人才培訓中心', '勞工署培訓課程']
+					},
+				]
 			},
 			{
 				name_zh: "證明文件",
-				name_en: "Identification Documents"
-			},
-			{
-				name_zh: "要求及喜好",
-				name_en: "Requirements and Preferences"
-			},
+				name_en: "Identification Documents",
+
+			}
 		];
 	}
 
@@ -131,5 +159,9 @@ export class ApplicantProfilePage extends BasePage {
 	openProfileDetailPage(detail) {
 		let params = { content: detail };
 		this.nav.push('ApplicantProfileDetailPage', params);
+	}
+
+	openPreferencePage() {
+		this.nav.push('ApplicantPreferencePage');
 	}
 }

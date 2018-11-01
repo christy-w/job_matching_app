@@ -1,7 +1,7 @@
 <common-header [enable-back]="true"></common-header>
 
 <ion-content>
-    <div class="page-title" *ngIf="detail">{{ detail.name_zh }}</div>
+	<div class="page-title" *ngIf="detail">{{ detail.name_zh }}</div>
     <div class="list-card" *ngIf="detail.fields">
         <div class="card-wrapper">
             <div class="item-wrapper" *ngFor="let field of detail.fields" [ngSwitch]="field.field_type">

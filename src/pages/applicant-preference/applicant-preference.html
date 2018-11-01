@@ -1,0 +1,56 @@
+<common-header [enable-back]="true"></common-header>
+
+<ion-content>
+	<div class="page-title">設定及喜好</div>
+	<div class="page-desp">系統會根據你填寫的設定及喜好，為你尋找合心意的工作。</div>
+	<div class="section-wrapper" *ngIf="setting_fields">
+		<div ion-item class='list-title-item'>
+			<ion-label>
+				<div class="list-title">我的設定</div>
+				<div class="list-desp">設置後，不符合的搜尋結果會被篩選並隱藏。</div>
+			</ion-label>
+            <ion-toggle item-end [(ngModel)]="settingToggle"></ion-toggle>
+		</div>
+		<div class="list-card">
+			<div class="card-wrapper">
+				<div class="item-wrapper" *ngFor="let setting of setting_fields" [ngSwitch]="setting.field_type">
+					<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
+						<ion-label>{{ setting.name }}</ion-label>
+						<ion-select [(ngModel)]="setting.selection" multiple="true" ionChange="onChange(setting)">
+							<ion-option [value]="option" *ngFor="let option of setting.options">{{ option }}</ion-option>
+						</ion-select>
+					</div>
+					<div ion-item class="list-item" *ngSwitchCase="'date'">
+						<ion-label>{{ setting.name }}</ion-label>
+						<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="setting.selection"></ion-datetime>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section-wrapper" *ngIf="preference_fields">
+		<div ion-item class='list-title-item'>
+			<ion-label>
+				<div class="list-title">我的喜好</div>
+				<div class="list-desp">設置後，符合你喜好的搜尋結果會按符合程度順序列出，不符合的搜尋結果會排在較後的位置。</div>
+			</ion-label>
+			<ion-toggle item-end [(ngModel)]="preferenceToggle"></ion-toggle>
+		</div>
+		<div class="list-card">
+			<div class="card-wrapper">
+				<div class="item-wrapper" *ngFor="let preference of preference_fields" [ngSwitch]="preference.field_type">
+					<div ion-item class="list-item" *ngSwitchCase="'input'">
+						<ion-label>{{ preference.name }}</ion-label>
+						<ion-input item-end placeholder="">$</ion-input>
+					</div>
+					<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
+						<ion-label>{{ preference.name }}</ion-label>
+						<ion-select [(ngModel)]="preference.selection" multiple="true" ionChange="onChange(preference)">
+							<ion-option [value]="option" *ngFor="let option of preference.options">{{ option }}</ion-option>
+						</ion-select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>

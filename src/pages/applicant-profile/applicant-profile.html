@@ -22,6 +22,7 @@
         <div class="list-title">我的資料</div>
         <div class="my-profile-wrapper">
             <button ion-item class="list-item" *ngFor="let profile_field of profile_fields" (click)="openProfileDetailPage(profile_field)">{{ profile_field.name_zh }}</button>
+            <button ion-item class="list-item" (click)="openPreferencePage()">要求及喜好</button>
         </div>
     </div>
     <div class="list-card my-record">

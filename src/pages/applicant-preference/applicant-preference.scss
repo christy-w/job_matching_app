@@ -1,0 +1,66 @@
+page-applicant-preference {
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+    .page-title {
+        padding: 80px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .page-desp {
+        padding: 0px 20px;
+        color: $medium-grey;
+        font-size: 0.9em;
+        font-family: 'Roboto-medium';
+    }
+
+    .section-wrapper {
+        position: relative;
+        margin: 20px 0;
+        .list-title-item {
+            padding-left: 20px !important;
+            background: transparent !important;
+            .item-inner {
+                border: none !important;
+            }
+        }
+        .list-title {
+            color: $font-yellow;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+        }
+        .list-desp {
+            color: $medium-grey;
+            font-size: 0.7em;
+            font-family: 'Roboto-medium';
+            white-space: normal;
+        }
+        .list-card {
+            position: relative;
+            margin: 0px 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: $item-shadow;
+            .item-wrapper {
+                .item-inner {
+                    border-bottom: 1px solid $light-grey;
+                }
+                &:last-child {
+                    .item-inner {
+                        border: none;
+                    }
+                }
+                .list-item {
+                    font-family: $font-medium;
+                    color: $dark-grey;
+                    font-size: 1em;
+                    .text-input, .select-text, .datetime-text {
+                        text-align: right;
+                        color: $font-yellow;
+                    }
+                }
+            }
+        }
+    }
+}

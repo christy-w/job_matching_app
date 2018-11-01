@@ -13,19 +13,20 @@ import { Utils } from '../../core/providers/utils';
 export class ApplicantProfileDetailPage extends BasePage {
 
 	name: string = 'ApplicantProfileDetailPage';
-  detail: any;
-  experiences: any;
+	detail: any;
+	experiences: any;
+
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
-    protected utils: Utils,
-    private params: NavParams
+		protected utils: Utils,
+		private params: NavParams
 	) {
 		super(platform, view, nav, utils);
-    Config.DEBUG_VERBOSE && console.log('ApplicantProfileDetailPage constructor');
-    
-    this.detail = this.params.get('content');
+		Config.DEBUG_VERBOSE && console.log('ApplicantProfileDetailPage constructor');
+		
+		this.detail = this.params.get('content');
 		console.log('detail', this.detail);
 		
 		this.experiences = [
