@@ -163,3 +163,11 @@ ion-alert [aria-checked=true] .alert-radio-inner {
 .alert-md [aria-checked=true] .alert-checkbox-inner {
 	border-color: #fff;
 }
+ion-select {
+	.select-text {
+		color: $font-yellow;
+	}
+	.select-icon {
+		display: none;
+	}
+}

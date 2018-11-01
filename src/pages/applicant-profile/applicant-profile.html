@@ -32,7 +32,13 @@
     </div>
     <div class="list-card my-settings">
         <div class="list-title">我的設定</div>
-        <button ion-item class="list-item">語言 Language</button>
+        <button ion-item class="list-item" detail-none>
+            <ion-label>語言 Language</ion-label>
+            <ion-select [(ngModel)]="language">
+                <ion-option value="zh">繁體中文</ion-option>
+                <ion-option value="en">英文</ion-option>
+            </ion-select>
+        </button>
         <div ion-item class="list-item">
             <ion-label>訊息通知開關</ion-label>
             <ion-toggle item-end [(ngModel)]="notiToggle"></ion-toggle>
