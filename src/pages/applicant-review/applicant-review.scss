@@ -1,0 +1,63 @@
+page-applicant-review {
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+    .page-title {
+        display: inline-block;
+        padding: 80px 0px 0px 20px;
+        color: $dark-grey;
+        font-family: $font-bold;
+        font-size: 2em;
+    }
+    .review-count {
+        display: inline-block;
+        color: $medium-grey;
+        font-family: $font-bold;
+        font-size: 0.8em;
+    }
+    .review-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        padding: 15px;
+        .upper-section {
+            position: relative;
+            border-bottom: 1px solid $light-grey;
+            .reviewer-name {
+                color: $font-yellow;
+                font-size: 1em;
+                font-family: $font-bold;
+            }
+            .date {
+                padding: 5px 0px;
+                color: $medium-grey;
+                font-size: 0.9em;
+                font-family: $font-regular;
+            }
+            .rating {
+                position: absolute;
+                top: 0;
+                right: 0;
+                .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] {
+                    margin: 0.1rem;
+                    width: 15px;
+                    height: 15px;
+                }
+                .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] ion-icon[_ngcontent-c0] {
+                    font-size: 20px;
+                }
+            }
+        }
+        .lower-section {
+            position: relative;
+            margin-top: 8px;
+            .review-content {
+                color: $dark-grey;
+                font-size: 1em;
+                font-family: $font-medium;
+            }
+        }
+    }
+}

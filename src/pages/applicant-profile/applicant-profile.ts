@@ -161,7 +161,15 @@ export class ApplicantProfilePage extends BasePage {
 		this.nav.push('ApplicantProfileDetailPage', params);
 	}
 
-	openPreferencePage() {
+	openApplicantPreferencePage() {
 		this.nav.push('ApplicantPreferencePage');
+	}
+
+	openApplicantRecordPage() {
+		this.nav.push('ApplicantRecordPage');
+	}
+
+	openApplicantReviewPage() {
+		this.nav.push('ApplicantReviewPage');
 	}
 }

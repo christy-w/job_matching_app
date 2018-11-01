@@ -22,13 +22,13 @@
         <div class="list-title">我的資料</div>
         <div class="my-profile-wrapper">
             <button ion-item class="list-item" *ngFor="let profile_field of profile_fields" (click)="openProfileDetailPage(profile_field)">{{ profile_field.name_zh }}</button>
-            <button ion-item class="list-item" (click)="openPreferencePage()">要求及喜好</button>
+            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
         </div>
     </div>
     <div class="list-card my-record">
         <div class="list-title">我的紀錄</div>
-        <button ion-item class="list-item">申請紀錄</button>
-        <button ion-item class="list-item">受僱評價</button>
+        <button ion-item class="list-item" (click)="openApplicantRecordPage()">申請紀錄</button>
+        <button ion-item class="list-item" (click)="openApplicantReviewPage()">受僱評價</button>
     </div>
     <div class="list-card my-settings">
         <div class="list-title">我的設定</div>

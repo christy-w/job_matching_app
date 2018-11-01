@@ -1,0 +1,27 @@
+<common-header [enable-back]="true"></common-header>
+
+<ion-content>
+    <div class="page-title">受僱評價</div>
+	<div class="review-count" *ngIf="review_count">({{ review_count }})</div>
+	<div class="review-card" *ngFor="let review of reviews">
+		<div class="upper-section">
+			<div class="reviewer-name">{{ review.name }}</div>
+			<div class="date">{{ review.publish_date }}</div>
+			<div class="rating">
+				<ionic3-star-rating 
+					activeIcon = "md-star"
+					defaultIcon = "md-star-outline"
+					activeColor = "#fab712" 
+					defaultColor = "#d9d7d7"
+					readonly="true"
+					[rating]="review.rating">
+				</ionic3-star-rating>
+			</div>
+		</div>
+		<div class="lower-section">
+			<div class="review-content">
+				{{ review.feedback }}
+			</div>
+		</div>
+	</div>
+</ion-content>
