@@ -12,7 +12,14 @@
             <div class="profile-info">
                 <div class="name">陳小珍</div>
                 <div class="ratings">
-                    <div class="stars">4/5</div>
+                    <ionic3-star-rating 
+                        activeIcon = "md-star"
+                        defaultIcon = "md-star-outline"
+                        activeColor = "#fab712" 
+                        defaultColor = "#d9d7d7"
+                        readonly="true"
+                        [rating]="4">
+                    </ionic3-star-rating>
                     <div class="review-counts">(10)</div>
                 </div>
             </div>

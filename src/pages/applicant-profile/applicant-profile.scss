@@ -55,8 +55,13 @@ page-applicant-profile {
                     font-size: 1.2em;
                 }
                 .ratings {
-                    .stars {
-                        display: inline-block;
+                    .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] {
+                        margin: 0.1rem;
+                        width: 15px;
+                        height: 15px;
+                    }
+                    .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] ion-icon[_ngcontent-c0] {
+                        font-size: 20px;
                     }
                     .review-counts {
                         display: inline-block;
