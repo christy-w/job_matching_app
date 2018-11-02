@@ -5,6 +5,8 @@ import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 
+import { MenuComponent } from '../../components/menu/menu';
+
 @IonicPage()
 @Component({
 	selector: 'page-login',
@@ -22,5 +24,13 @@ export class LoginPage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
     	Config.DEBUG_VERBOSE && console.log('LoginPage constructor');
+	}
+
+	openSignUpPage() {
+		this.nav.setRoot('SignUpPage');
+	}
+
+	openHomePage() {
+		this.nav.setRoot(MenuComponent);
 	}
 }

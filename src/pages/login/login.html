@@ -1,4 +1,15 @@
 <ion-content>
-    Login
+    <div class="color-overlay"></div>
+    <div class="black-overlay"></div>
+    <div class="content-wrapper">
+        <div class="page-title">申請/登入</div>
+        <ion-input class="login-input mobile-input" placeholder="手機號碼(+852)"></ion-input>
+        <ion-input class="login-input password-input" type="password" placeholder="密碼"></ion-input>
+        <button ion-button class="forget-password-btn">忘記密碼</button>
+    </div>
+    <div class="operation-buttons">
+        <button class="dull-btn operation-button" (click)="openSignUpPage()">申請僱員帳戶</button>
+        <button class="highlight-btn operation-button" (click)="openHomePage()">登入</button>
+    </div>
 </ion-content>
   
