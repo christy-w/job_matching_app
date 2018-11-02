@@ -23,4 +23,8 @@ export class WelcomePage extends BasePage {
 		super(platform, view, nav, utils);
     	Config.DEBUG_VERBOSE && console.log('WelcomePage constructor');
 	}
+
+	openLoginPage() {
+		this.nav.setRoot('LoginPage');
+	}
 }

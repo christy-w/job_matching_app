@@ -1,3 +1,112 @@
 page-welcome {
-
+    ion-content, .scroll-content {
+        margin: 0;
+    }
+    ion-slides {
+        .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+            bottom: 20px;
+        }
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            opacity: 0.5;
+        }
+        .swiper-pagination-bullet-active {
+            background: #fff;
+            opacity: 1;
+        }
+    }
+    ion-slide {
+        position: relative;
+        .color-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+            background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+            background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+            opacity: 0.5;
+        }
+        .black-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            opacity: 0.15;
+        }
+        .content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 420px;
+            margin: auto;
+            .icon-img{
+                position: relative;
+                top: 0;
+                display: inline-block;
+                width: 60px;
+                height: 60px;
+            }
+            .text {
+                position: relative;
+                top: 0;
+                display: inline-block;
+                height: 80px;
+                text-align: left;
+                color: #fff;
+                font-family: $font-bold;
+                font-size: 1.5em;
+                line-height: 40px;
+                padding-left: 10px;
+            }
+        }
+    }
+    .welcome-1 {
+        background-image: url('../../assets/img/welcome/welcome_1.jpeg');
+        background-position: 30%;
+        background-size: cover;
+        .icon-img {
+            width: 80px !important;
+            height: 80px !important;
+        }
+        .text {
+            top: -10px !important;
+        }
+    }
+    .welcome-2 {
+        background-image: url('../../assets/img/welcome/welcome_2.jpeg');
+        background-position: 38%;
+        background-size: cover;
+    }
+    .welcome-3 {
+        background-image: url('../../assets/img/welcome/welcome_3.jpeg');
+        background-position: 52%;
+        background-size: cover;
+        .start-btn {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 80%;
+            height: 45px;
+            background-color: #fff;
+            border-radius: 5px;
+            color: $font-yellow;
+            font-family: $font-bold;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 45px;
+            box-shadow: $item-shadow;
+        }
+    }
 }
