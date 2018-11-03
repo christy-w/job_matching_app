@@ -1,0 +1,29 @@
+<ion-content>
+    <div class="color-overlay"></div>
+	<div class="black-overlay"></div>
+	<div class="page-title">申請僱員帳戶</div>
+	<div class="page-desp">暫時僱主帳戶的申請並不對外公開，給欲申請，請聯絡我們。</div>
+    <ion-slides pager paginationType="progress" class="signup-form" #signUpSlides>
+		<ion-slide class="signup-step-1">
+			<ion-input class="login-input mobile-input" placeholder="手機號碼(+852)"></ion-input>
+			<ion-input class="login-input password-input" type="password" placeholder="密碼"></ion-input>
+			<ion-input class="login-input password-confirm-input" type="password" placeholder="密碼（再次輸入）"></ion-input>
+			<div class="operation-buttons">
+				<button class="dull-btn operation-button" (click)="openLoginPage()">返回</button>
+				<button class="highlight-btn operation-button" (click)="goNextSlide()">確認並發送認證碼</button>
+			</div>
+		</ion-slide>
+		<ion-slide class="signup-step-2">
+			<div class="desp">SMS認證</div>
+			<div class="input-wrapper">
+				<ion-input class="login-input code-input" placeholder="認證碼(4位數字)"></ion-input>
+				<button class="resend-btn" (click)="resendVerifyCode()">重新發送</button>
+			</div>
+			<div class="operation-buttons">
+				<button class="dull-btn operation-button" (click)="goPrevSlide()">上一步</button>
+				<button class="highlight-btn operation-button" (click)="confirmCode()">提交</button>
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+  

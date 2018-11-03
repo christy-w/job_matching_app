@@ -27,7 +27,7 @@ export class LoginPage extends BasePage {
 	}
 
 	openSignUpPage() {
-		this.nav.setRoot('SignUpPage');
+		this.nav.push('SignUpPage');
 	}
 
 	openHomePage() {
