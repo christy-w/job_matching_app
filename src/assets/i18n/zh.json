@@ -51,5 +51,12 @@
         "NO_NETWORK_CONNECTION": "請檢查連線狀態",
         "INVALID_VERSION": "App 版本錯誤",
         "INVALID_LOGIN": "登入失敗"
+    },
+
+    "LOGIN": {
+        "INVALID_USER": "用戶不存在",
+        "INCORRECT_LOGIN": "您輸入的資料不正確，請重新輸入。",
+        "INACTIVATED_USER": " 帳戶未驗證，要進行驗證嗎？",
+        "MISSING_INFO": "請填寫所有資料並重新嘗試。"
     }
 }

@@ -6,8 +6,6 @@ import { Utils } from '../core/providers/utils';
 import { Api } from '../providers';
 
 import { MenuComponent } from '../components/menu/menu';
-import { LanguagePage } from '../pages/language/language';
-import { WelcomePage } from '../pages/welcome/welcome';
 
 @Component({
 	templateUrl: 'app.html'
@@ -41,12 +39,12 @@ export class MyApp extends BaseApp {
 					if (auth) {
 						this.rootPage = MenuComponent;
 					} else {
-						this.rootPage = WelcomePage;
+						this.rootPage = 'WelcomePage';
 					}
 				})
 			} else {
 				// Ask user to select language
-				this.rootPage = LanguagePage;
+				this.rootPage = 'LanguagePage';
 			}
 		})
 	}

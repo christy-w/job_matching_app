@@ -52,7 +52,8 @@ export class LoginPage extends BasePage {
 			});
 		} else {
 			// Show alert box for missing information
-			this.utils.showAlert('Missing Information');
+			console.log(this.utils.currentLang());
+			this.utils.showAlert('', this.utils.instantLang('LOGIN.MISSING_INFO'));
 		}
 	}
 

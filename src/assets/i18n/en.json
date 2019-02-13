@@ -51,5 +51,12 @@
         "NO_NETWORK_CONNECTION": "Please check network connection",
         "INVALID_VERSION": "Invalid App Version",
         "INVALID_LOGIN": "Invalid Login"
+    },
+
+    "LOGIN": {
+        "INVALID_USER": "Invalid User",
+        "INCORRECT_LOGIN": "Incorrect Login! Please try again.",
+        "INACTIVATED_USER": "Account has not been activated, confirm to activate now?",
+        "MISSING_INFO": "Missing required information"
     }
 }
