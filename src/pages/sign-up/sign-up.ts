@@ -15,7 +15,7 @@ export class SignUpPage extends BasePage {
 	@ViewChild('signUpSlides') slides: Slides;
 
 	name: string = 'SignUpPage';
-
+ 
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,

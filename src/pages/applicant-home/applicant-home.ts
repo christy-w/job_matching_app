@@ -15,7 +15,7 @@ export class ApplicantHomePage extends BasePage {
 
 	name: string = 'ApplicantHomePage';
 	jobsQueued: string = 'allJobs';
-	
+
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -24,6 +24,7 @@ export class ApplicantHomePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
+
 	}
 
 	ionViewWillEnter() {

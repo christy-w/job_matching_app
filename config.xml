@@ -91,4 +91,5 @@
     <plugin name="cordova-plugin-console" spec="1.1.0" />
     <engine name="android" spec="6.4.0" />
     <allow-navigation href="http://192.168.1.46:8100" />
+    <engine name="ios" spec="~4.5.5" />
 </widget>

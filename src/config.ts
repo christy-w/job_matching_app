@@ -14,6 +14,9 @@ export class Config {
     // Localization
     static DEFAULT_LANGUAGE: string = 'zh';
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
+
+    // Membership
+    static USER_TYPE: string = '';  // 'applicant' OR 'employer'
     
     // First page to enter when the App is started
     static START_PAGE: any = 'ApplicantHomePage';

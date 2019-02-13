@@ -34,12 +34,24 @@ export class MenuComponent {
 		this.language = this.utils.currentLang();
 		this.config = Config;
 
-		this.hotkeys = [
-			{ tab: 'home', title: 'HOTKEY.HOME', component: 'ApplicantHomePage', icon: 'home', index: '' },
-			{ tab: 'recommendation', title: 'HOTKEY.RECOMMENDATION', component: 'ApplicantRecommendationPage', icon: 'thumb', index: '' },
-			{ tab: 'record', title: 'HOTKEY.RECORD', component: 'ApplicantRecordPage', icon: 'record', index: '' },
-			{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'ApplicantProfilePage', icon: 'profile', index: '' },
-		];
+		switch (this.config.USER_TYPE) {
+			case 'applicant':
+				this.hotkeys = [
+					{ tab: 'home', title: 'HOTKEY.HOME', component: 'ApplicantHomePage', icon: 'home', index: '' },
+					{ tab: 'recommendation', title: 'HOTKEY.RECOMMENDATION', component: 'ApplicantRecommendationPage', icon: 'thumb', index: '' },
+					{ tab: 'record', title: 'HOTKEY.RECORD', component: 'ApplicantRecordPage', icon: 'record', index: '' },
+					{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'ApplicantProfilePage', icon: 'profile', index: '' },
+				];
+				break;
+			case 'employer':
+				this.hotkeys = [
+					{ tab: 'home', title: 'HOTKEY.HOME', component: 'EmployerHomePage', icon: 'home', index: '' },
+					{ tab: 'record', title: 'HOTKEY.RECORD', component: 'EmployerRecordPage', icon: 'record', index: '' },
+					{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'EmployerProfilePage', icon: 'profile', index: '' },
+				];
+				break;
+		}
+		
 	}
 
 	onClickHotKey(key) {

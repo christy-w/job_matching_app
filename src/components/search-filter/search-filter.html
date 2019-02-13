@@ -4,56 +4,13 @@
 		<ion-icon name="search"></ion-icon>
 		<ion-input placeholder="職位/公司名稱"></ion-input>
 	</div>
-	<div class="filter-options">
-		<div class="filter-option">
-			<div class="name">工作類別</div>
+	<div class="filter-options" *ngIf="filters">
+		<div class="filter-option" *ngFor="let filter of filters">
+			<div class="name">{{ filter.name }}</div>
 			<div class="selections">
-				<div class="sub-selection">
-					<div class="name"></div>
-					<div class="selection">兼職</div>
-					<div class="selection">全職</div>
-					<div class="selection">臨時工作</div>
-				</div>
-			</div>
-		</div>
-		<div class="filter-option">
-			<div class="name">地區</div>
-			<div class="selections">
-				<div class="sub-selection">
-					<div class="name">香港島</div>
-					<div class="selection">中西區</div>
-					<div class="selection">灣仔區</div>
-					<div class="selection">東區</div>
-					<div class="selection">南區</div>
-				</div>
-				<div class="sub-selection">
-					<div class="name">九龍</div>
-					<div class="selection">九龍城區</div>
-					<div class="selection">觀塘區</div>
-					<div class="selection">黃大仙區</div>
-					<div class="selection">油尖旺區</div>
-					<div class="selection">深水埗區</div>
-				</div>
-				<div class="sub-selection">
-					<div class="name">新界</div>
-					<div class="selection">葵青區</div>
-					<div class="selection">荃灣區</div>
-					<div class="selection">西貢區</div>
-					<div class="selection">屯門區</div>
-					<div class="selection">北區</div>
-					<div class="selection">沙田區</div>
-					<div class="selection">大埔區</div>
-				</div>
-			</div>
-		</div>
-		<div class="filter-option">
-			<div class="name">刊登日期</div>
-			<div class="selections">
-				<div class="sub-selection">
-					<div class="name"></div>
-					<div class="selection">一星期內</div>
-					<div class="selection">一個月內</div>
-					<div class="selection">半年內</div>
+				<div class="sub-selection" *ngFor="let sub_filter of filter.options">
+					<div class="name">{{ sub_filter.sub_name }}</div>
+					<div class="selection" *ngFor="let sub_option of sub_filter.sub_options" [ngClass]="{'highlight' : sub_option.selected}">{{ sub_option }}</div>
 				</div>
 			</div>
 		</div>
