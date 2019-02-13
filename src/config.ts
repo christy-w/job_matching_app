@@ -16,7 +16,8 @@ export class Config {
     static AVAILABLE_LANGUAGES: string[] = ['zh', 'en'];
 
     // Membership
-    static USER_TYPE: string = '';  // 'applicant' OR 'employer'
+    static USER_AUTH: any = {};  // User Authentication Object
+    static USER_INFO: any = {};  // Applicant / Employer Object
     
     // First page to enter when the App is started
     static START_PAGE: any = 'ApplicantHomePage';

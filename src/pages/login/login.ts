@@ -44,11 +44,15 @@ export class LoginPage extends BasePage {
 				console.log('user', this.user);
 
 				// Direct applicant/employer user to pages
-				Config.USER_TYPE = this.user.main_group;
+				Config.USER_AUTH = this.user;
+				this.utils.setLocal('USER_AUTH', this.user);
 				this.nav.setRoot(MenuComponent);
+			}).catch(err => {
+				console.log('login error', err);
 			});
 		} else {
-			console.log('missing information');
+			// Show alert box for missing information
+			this.utils.showAlert('Missing Information');
 		}
 	}
 

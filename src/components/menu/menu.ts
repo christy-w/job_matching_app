@@ -34,23 +34,33 @@ export class MenuComponent {
 		this.language = this.utils.currentLang();
 		this.config = Config;
 
-		switch (this.config.USER_TYPE) {
-			case 'applicant':
-				this.hotkeys = [
-					{ tab: 'home', title: 'HOTKEY.HOME', component: 'ApplicantHomePage', icon: 'home', index: '' },
-					{ tab: 'recommendation', title: 'HOTKEY.RECOMMENDATION', component: 'ApplicantRecommendationPage', icon: 'thumb', index: '' },
-					{ tab: 'record', title: 'HOTKEY.RECORD', component: 'ApplicantRecordPage', icon: 'record', index: '' },
-					{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'ApplicantProfilePage', icon: 'profile', index: '' },
-				];
-				break;
-			case 'employer':
-				this.hotkeys = [
-					{ tab: 'home', title: 'HOTKEY.HOME', component: 'EmployerHomePage', icon: 'home', index: '' },
-					{ tab: 'record', title: 'HOTKEY.RECORD', component: 'EmployerRecordPage', icon: 'record', index: '' },
-					{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'EmployerProfilePage', icon: 'profile', index: '' },
-				];
-				break;
-		}
+		this.getUserAuth();
+		
+	}
+
+	getUserAuth() {
+		this.utils.getLocal('USER_AUTH').then(auth => {
+			if (auth) {
+				Config.USER_AUTH = auth;
+				switch (auth.main_group) {
+					case 'applicant':
+						this.hotkeys = [
+							{ tab: 'home', title: 'HOTKEY.HOME', component: 'ApplicantHomePage', icon: 'home', index: '' },
+							{ tab: 'recommendation', title: 'HOTKEY.RECOMMENDATION', component: 'ApplicantRecommendationPage', icon: 'thumb', index: '' },
+							{ tab: 'record', title: 'HOTKEY.RECORD', component: 'ApplicantRecordPage', icon: 'record', index: '' },
+							{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'ApplicantProfilePage', icon: 'profile', index: '' },
+						];
+						break;
+					case 'employer':
+						this.hotkeys = [
+							{ tab: 'home', title: 'HOTKEY.HOME', component: 'EmployerHomePage', icon: 'home', index: '' },
+							{ tab: 'record', title: 'HOTKEY.RECORD', component: 'EmployerRecordPage', icon: 'record', index: '' },
+							{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'EmployerProfilePage', icon: 'profile', index: '' },
+						];
+						break;
+				}
+			}
+		})
 		
 	}
 

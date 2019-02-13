@@ -7,6 +7,7 @@ import { Api } from '../providers';
 
 import { MenuComponent } from '../components/menu/menu';
 import { LanguagePage } from '../pages/language/language';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 @Component({
 	templateUrl: 'app.html'
@@ -31,14 +32,22 @@ export class MyApp extends BaseApp {
 	}
 
 	initPage() {
-		this.utils.getLocal('fs_first_time', true).then(first_time => {
-			console.log('fs_first_time', first_time);
-
-			// First time user
-			if (first_time) return this.rootPage = LanguagePage;
-
-			// Normal user
-			this.rootPage = MenuComponent;
+		// Check preferred language
+		this.utils.getLocal('UI_LANGUAGE').then(language => {
+			console.log('language', language);
+			if (language) {
+				this.utils.getLocal('USER_AUTH').then(auth => {
+					console.log('auth', auth);
+					if (auth) {
+						this.rootPage = MenuComponent;
+					} else {
+						this.rootPage = WelcomePage;
+					}
+				})
+			} else {
+				// Ask user to select language
+				this.rootPage = LanguagePage;
+			}
 		})
 	}
 }
