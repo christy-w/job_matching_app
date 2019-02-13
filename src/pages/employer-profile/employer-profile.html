@@ -1,0 +1,61 @@
+<common-header></common-header>
+
+<ion-content>
+    <div class="upper-section" ion-fixed>
+        <div class="page-title">我的個人檔案</div>
+    </div>
+    <ion-row class="profile-card">
+        <ion-col col-4>
+			<div class="thumbnail"></div>
+        </ion-col>
+        <ion-col class="profile-info-wrapper">
+            <div class="profile-info">
+                <div class="name">陳小珍</div>
+                <div class="ratings">
+                    <ionic3-star-rating 
+                        activeIcon = "md-star"
+                        defaultIcon = "md-star-outline"
+                        activeColor = "#fab712" 
+                        defaultColor = "#d9d7d7"
+                        readonly="true"
+                        [rating]="4">
+                    </ionic3-star-rating>
+                    <div class="review-counts">(10)</div>
+                </div>
+            </div>
+        </ion-col>
+    </ion-row>
+    <div class="list-card my-profile" *ngIf="profile_fields">
+        <div class="list-title">我的資料</div>
+        <div class="my-profile-wrapper">
+            <button ion-item class="list-item" *ngFor="let profile_field of profile_fields" (click)="openProfileDetailPage(profile_field)">{{ profile_field.name_zh }}</button>
+            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
+        </div>
+    </div>
+    <div class="list-card my-record">
+        <div class="list-title">我的紀錄</div>
+        <button ion-item class="list-item" (click)="openApplicantRecordPage()">申請紀錄</button>
+        <button ion-item class="list-item" (click)="openApplicantReviewPage()">受僱評價</button>
+    </div>
+    <div class="list-card my-settings">
+        <div class="list-title">我的設定</div>
+        <button ion-item class="list-item" detail-none>
+            <ion-label>語言 Language</ion-label>
+            <ion-select [(ngModel)]="language">
+                <ion-option value="zh">繁體中文</ion-option>
+                <ion-option value="en">英文</ion-option>
+            </ion-select>
+        </button>
+        <div ion-item class="list-item">
+            <ion-label>訊息通知開關</ion-label>
+            <ion-toggle item-end [(ngModel)]="notiToggle"></ion-toggle>
+        </div>
+        <div ion-item class="list-item">
+            <ion-label>照相機開關</ion-label>
+            <ion-toggle item-end [(ngModel)]="cameraToggle"></ion-toggle>
+        </div>
+        <button ion-item class="list-item">條款及細則</button>
+        <button ion-item class="list-item">聯絡我們</button>
+        <button ion-item class="list-item logout-btn">登出</button>
+    </div>
+</ion-content>

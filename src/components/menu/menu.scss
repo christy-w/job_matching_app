@@ -26,7 +26,7 @@ menu-component {
 		.key {
 			background: #fff;
 			text-align: center;
-			width:25%;
+			width: -webkit-fill-available;
 			&.active {
 				border-bottom: 2px solid $font-yellow;
 				opacity: 1 !important;

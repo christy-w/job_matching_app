@@ -1,0 +1,170 @@
+page-employer-record {
+    [ion-fixed] {
+        position: relative;
+        width: 100vw;
+        height: $upper-fixed-height;
+        display: block;
+    }
+    .scroll-content {
+          margin-top: $upper-fixed-height;
+    }
+    .upper-section {
+        .page-title {
+            padding: 80px 20px 0px 20px;
+            color: $dark-grey;
+            font-family: 'Roboto-bold';
+            font-size: 2em;
+            margin-top: -20px;
+        }
+        .page-desp {
+            padding: 0px 20px;
+            color: $medium-grey;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+        }
+    }
+    .records-wrapper {
+        .record-card {
+            position: relative;
+            margin: 10px 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: $item-shadow;
+            .row-wrapper {
+                margin: 10px 15px;
+                border-bottom: 1px solid $light-grey;
+            }
+            .job-card {
+                height: 110px;
+                margin: 0;
+            }
+            .thumbnail {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                text-align: center;
+                margin: auto;
+                background-image: url('../../assets/img/sample/island_pacific.jpg');
+                background-size: contain;
+                background-position: 50%;
+                box-shadow: $thumbnail-shadow;
+            }
+            .job-info {
+                margin-left: -5px;
+                font-family: $font-bold;
+                color: $dark-grey;
+                .title {
+                    display: inline-block;
+                    font-size: 1.4em;
+                }
+                .job-type {
+                    display: inline-block;
+                    font-family: $font-medium;
+                    .dot {
+                        display: inline-block;
+                        margin-bottom: 2px;
+                        background-color: $red;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                    }
+                }
+                .employer {
+                    font-size: 1em;
+                    color: $medium-grey;
+                }
+                .salary {
+                    font-size: 1.1em;
+                }
+                .tags {
+                    position: absolute;
+                    bottom: 10px;
+                    overflow: hidden;
+                    .tag {
+                        display: inline-block;
+                        text-align: center;
+                        padding: 2px 10px 2px 10px;
+                        color: #fff;
+                        font-size: 0.8em;
+                        background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                        background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        border-radius: 5px;
+                        box-shadow: $highlight-btn-shadow;
+                    }
+                }
+            }
+            .publish-date {
+                position: absolute;
+                right: 5px;
+                padding-top: 5px;
+            }
+            .fav-btn {
+                position: absolute;
+                bottom: 10px;
+                right: 5px;
+                ion-icon {
+                    color: $red;
+                }
+            }
+            .application-detail {
+                position: relative;
+                margin: 0px 15px;
+                .title {
+                    font-size: 1.2em;
+                    color: $medium-grey;
+                    font-family: 'Roboto-medium';
+                }
+                .status {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-family: 'Roboto-bold';
+                    color: $gradient-orange;
+                }
+                ion-col {
+                    padding: 3px 0px;
+                    margin: 0;
+                    font-family: 'Roboto-bold';
+                }
+                .info-title {
+                    font-size: 0.8em;
+                }
+                .info-content {
+                    font-size: 1em;
+                    color: $font-yellow;
+                }
+            }
+            .operation-buttons {
+                display: block;
+                padding: 10px 15px;
+                .operation-button {
+                    display: inline-block;
+                    width: 47%;
+                    padding: 8px;
+                    font-size: 1em;
+                    font-family: 'Roboto-bold';
+                    border-radius: 5px;
+                    margin: 2px;
+                    &.dull-btn {
+                        background-color: #f7f7f7;
+                        color: $dark-grey;
+                        box-shadow: $item-shadow;
+                    }
+                    &.highlight-btn {
+                        background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                        background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        color: #fff;
+                        box-shadow: $highlight-btn-shadow;
+                    }
+                }
+            }
+        }
+    }
+}
