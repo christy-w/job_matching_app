@@ -15,10 +15,15 @@ export class Api extends BaseService {
 		super(platform, utils);
 	}
 
-	// Generate user key
+	// POST /Auth
 	public postSignUpApplicant(data) {
 		this.headers.set('X-API-KEY', this.api_key_anonymous);
 		return this.post('/auth/sign_up', data);
+	}
+
+	public postActivate(data) {
+		this.headers.set('X-API-KEY', this.api_key_anonymous);
+		return this.post('/auth/activate', data);
 	}
 
 	public postLogin(data) {

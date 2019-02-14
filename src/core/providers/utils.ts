@@ -89,7 +89,7 @@ export class Utils {
 	}
 	
 	// Display Confirmation Alert
-	public async showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null): Promise<any> {
+	public async showConfirm(title: string, msg: string = '', confirm_handler: Function, cancel_handler: Function = null, confirm_text: string = 'ACTION.CONFIRM'): Promise<any> {
 		let options: any = {
 			title: title,
 			message: msg,
@@ -99,7 +99,7 @@ export class Utils {
 					handler: cancel_handler
 				},
 				{
-					text: this.translate.instant('ACTION.CONFIRM'),
+					text: this.translate.instant(confirm_text),
 					handler: confirm_handler
 				}
 			]

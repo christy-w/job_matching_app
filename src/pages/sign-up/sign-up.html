@@ -16,7 +16,7 @@
 		<ion-slide class="signup-step-2">
 			<div class="desp">SMS認證</div>
 			<div class="input-wrapper">
-				<ion-input class="login-input code-input" placeholder="認證碼(4位數字)"></ion-input>
+				<ion-input class="login-input code-input" [(ngModel)]="code_input" placeholder="認證碼(4位數字)"></ion-input>
 				<button class="resend-btn" (click)="resendVerifyCode()">重新發送</button>
 			</div>
 			<div class="operation-buttons">

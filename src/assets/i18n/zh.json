@@ -23,6 +23,7 @@
         "LOGIN": "登入",
         "SIGN_UP": "登記",
         "ACTIVATE": "驗證帳戶",
+        "SEND_CODE_AGAIN": "重發驗證碼",
         "FORGOT_PASSWORD": "忘記密碼",
         "RESET_PASSWORD": "重設密碼",
 
@@ -47,7 +48,9 @@
         "INACTIVATED_USER": " 帳戶未驗證，要進行驗證嗎？",
         "MISSING_INFO": "請填寫所有資料並重新嘗試。",
         "PASSWORD_DIFF": "請重新確認密碼。",
-        "ACTIVATION": "您的驗證碼是 "
+        "ACTIVATION": "您的驗證碼是 ",
+        "INCORRECT_ACTIVATION": "您輸入的驗證碼不正確，請重新嘗試。",
+        "MOBILE_REGISTERED": "電話號碼已登記，請重新輸入。"
     },
 
     "ERROR": {

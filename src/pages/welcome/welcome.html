@@ -5,7 +5,7 @@
 			<div class="black-overlay"></div>
 			<div class="content">
 				<img class="icon-img" src="assets/icon/welcome/1.png"/>
-				<div class="text">{{ 'WELCOME.SLIDE_1' | translate }}</div>
+				<div class="text" [innerHtml]="'WELCOME.SLIDE_1' | translate"></div>
 			</div>
 		</ion-slide>
 		<ion-slide class="welcome-2">
@@ -13,7 +13,7 @@
 			<div class="black-overlay"></div>
 			<div class="content">
 				<img class="icon-img" src="assets/icon/welcome/2.png"/>
-				<div class="text">{{ 'WELCOME.SLIDE_2' | translate }}</div>
+				<div class="text" [innerHtml]="'WELCOME.SLIDE_2' | translate"></div>
 			</div>
 		</ion-slide>
 		<ion-slide class="welcome-3">
@@ -21,7 +21,7 @@
 			<div class="black-overlay"></div>
 			<div class="content">
 				<img class="icon-img" src="assets/icon/welcome/3.png"/>
-				<div class="text">{{ 'WELCOME.SLIDE_3' | translate }}</div>
+				<div class="text" [innerHtml]="'WELCOME.SLIDE_3' | translate"></div>
 			</div>
 			<button ion-button class="start-btn" (click)="openLoginPage()">開始使用</button>
 		</ion-slide>

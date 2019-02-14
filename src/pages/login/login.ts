@@ -7,6 +7,7 @@ import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
 
 import { MenuComponent } from '../../components/menu/menu';
+import _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -40,13 +41,24 @@ export class LoginPage extends BasePage {
 			this.api.startQueue([
 				this.api.postLogin(login_input)
 			]).then(response => {
-				this.user = response[0];
-				console.log('user', this.user);
+				var login_response = response[0];
 
-				// Direct applicant/employer user to pages
-				Config.USER_AUTH = this.user;
-				this.utils.setLocal('USER_AUTH', this.user);
-				this.nav.setRoot(MenuComponent);
+				if (login_response.status) {
+					this.user = login_response;
+					console.log('user', this.user);
+	
+					// Direct applicant/employer user to pages
+					Config.USER_AUTH = this.user;
+					this.utils.setLocal('USER_AUTH', this.user);
+					this.nav.setRoot(MenuComponent);
+				} else {
+					// Login failed
+					if (login_response.error.includes('inactive')) {
+						this.utils.showConfirm('', this.utils.instantLang('MSG.INACTIVATED_USER'), () => {
+							this.goActivate();
+						})
+					}
+				}
 			}).catch(err => {
 				console.log('login error', err);
 			});
@@ -55,6 +67,10 @@ export class LoginPage extends BasePage {
 			console.log(this.utils.currentLang());
 			this.utils.showAlert('', this.utils.instantLang('LOGIN.MISSING_INFO'));
 		}
+	}
+
+	goActivate() {
+		
 	}
 
 	openSignUpPage() {
