@@ -1,7 +1,8 @@
-page-login {
+page-sign-up {
     ion-content, .scroll-content {
+        position: absolute;
         background-image: url('../../assets/img/login_bg.jpg');
-        background-position: 50%;
+        background-position: 10%;
         background-size: cover;
         margin: 0;
         .color-overlay {
@@ -29,64 +30,73 @@ page-login {
             opacity: 0.15;
         }
     }
-    .content-wrapper {
+    .page-title {
         position: relative;
         top: 120px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 75vw;
-        .page-title {
-            color: #fff;
-            font-family: 'Roboto-bold';
-            font-size: 2em;
-        }
+        padding-left: 45px;
+        color: #fff;
+        font-family: $font-bold;
+        font-size: 2em;
+    }
+    .page-desp {
+        position: relative;
+        top: 120px;
+        padding-left: 45px;
+        color: #fff;
+        font-family: $font-medium;
+        font-size: 0.8em;
+    }
+    .desp {
+        text-align: left;
+        padding-top: 20px;
+        line-height: 14px;
+        color: #fff;
+        font-family: $font-medium;
+        font-size: 0.6em;
+    }
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+        height: 45px;
         .login-input {
-            width: 100%;
+            position: absolute;
+            width: 70%;
+            left: 0;
             height: 45px;
-            margin: 15px 0px;
             padding: 0px 15px;
             background-color: #fff;
-            border-radius: 5px;
-            line-height: 45px;
+            border-radius: 5px 0px 0px 5px;
+            box-shadow: $item-shadow;
             .text-input {
                 margin: 0;
                 color: $font-yellow;
                 font-family: $font-bold;
-                font-size: 1em;
+                font-size: 0.8em;
+                line-height: 45px;
             }
         }
-        .forget-password-btn {
-            background: transparent;
-            padding: 0;
-            margin: 0;
-            border-bottom: 1px solid #fff;
-            color: #fff;
-            font-family: $font-medium;
-            font-size: 0.9em;
-            line-height: 20px;
-            height: 20px;
-            border-radius: 0;
-        }
-        .first-activate-btn {
+        .resend-btn {
             position: absolute;
+            width: 30%;
             right: 0;
-            background: transparent;
-            padding: 0;
-            margin: 0;
-            border-bottom: 1px solid #fff;
+            height: 45px;
+            padding: 0px 5px;
+            background-color: #fff;
+            border-radius: 0px 5px 5px 0px;
+            line-height: 45px;
+            font-family: $font-bold;
+            font-size: 0.8em;
+            background-color: $light-grey;
             color: #fff;
-            font-family: $font-medium;
-            font-size: 0.9em;
-            line-height: 20px;
-            height: 20px;
-            border-radius: 0;
+            box-shadow: $item-shadow;
         }
+
     }
-    .operation-buttons {
-        position: absolute;
-        width: 77vw;
-        top: 55vh;
+    .operation-buttons {    
+        position: relative;
+        width: 100%;
+        height: 90px;
+        top: 50px;
         left: 0;
         right: 0;
         margin: 0 auto;
@@ -96,12 +106,11 @@ page-login {
             display: inline-block;
             width: 48%;
             padding: 8px;
-            font-size: 1em;
+            font-size: 0.8em;
             font-family: 'Roboto-bold';
             border-radius: 5px;
             margin: 1px;
             &.dull-btn {
-                margin-left: 3px;
                 background-color: #fff;
                 color: $font-yellow;
                 box-shadow: $item-shadow;
