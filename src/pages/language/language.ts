@@ -27,7 +27,7 @@ export class LanguagePage extends BasePage {
   setLanguage(language) {
 	console.log('Selected language: ' + language);
 	this.utils.setLocal('UI_LANGUAGE', language);
-	this.utils.setupLang();
+	this.utils.changeLang(language);
     this.nav.setRoot('WelcomePage');
   }
 }

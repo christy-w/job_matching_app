@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Utils } from '../core/providers/utils';
 import { BaseService } from '../core/base-service';
-import { Http } from '@angular/http';
 
 @Injectable()
 export class Api extends BaseService {
@@ -12,8 +11,8 @@ export class Api extends BaseService {
 	protected api_prefix: string = 'http://localhost/fyp/api';
 	protected api_key_anonymous: string = 'anonymous';
 	
-	constructor(http: Http, platform: Platform, utils: Utils) {
-		super(http, platform, utils);
+	constructor(platform: Platform, utils: Utils) {
+		super(platform, utils);
 	}
 
 	// Generate user key

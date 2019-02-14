@@ -22,6 +22,7 @@
 
         "LOGIN": "登入",
         "SIGN_UP": "登記",
+        "ACTIVATE": "驗證帳戶",
         "FORGOT_PASSWORD": "忘記密碼",
         "RESET_PASSWORD": "重設密碼",
 
@@ -40,7 +41,13 @@
     "MSG": {
         "ERROR": "錯誤",
         "SUCCESS": "成功",
-        "CONFIRM_EXIT_APP": "確認離開?"
+        "CONFIRM_EXIT_APP": "確認離開?",
+        "INVALID_USER": "用戶不存在",
+        "INCORRECT_INPUT": "您輸入的資料不正確，請重新輸入。",
+        "INACTIVATED_USER": " 帳戶未驗證，要進行驗證嗎？",
+        "MISSING_INFO": "請填寫所有資料並重新嘗試。",
+        "PASSWORD_DIFF": "請重新確認密碼。",
+        "ACTIVATION": "您的驗證碼是 "
     },
 
     "ERROR": {
@@ -53,10 +60,9 @@
         "INVALID_LOGIN": "登入失敗"
     },
 
-    "LOGIN": {
-        "INVALID_USER": "用戶不存在",
-        "INCORRECT_LOGIN": "您輸入的資料不正確，請重新輸入。",
-        "INACTIVATED_USER": " 帳戶未驗證，要進行驗證嗎？",
-        "MISSING_INFO": "請填寫所有資料並重新嘗試。"
+    "WELCOME": {
+        "SLIDE_1": "在掌心中<br>輕鬆尋找各種工作",
+        "SLIDE_2": "取得適合你的<br>工作推薦",
+        "SLIDE_3": "一步完成申請<br>快捷取得職位"
     }
 }

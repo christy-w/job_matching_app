@@ -22,6 +22,7 @@
         
         "LOGIN": "Login",
         "SIGN_UP": "Sign Up",
+        "ACTIVATE": "Activate Account",
         "FORGOT_PASSWORD": "Forgot Password",
         "RESET_PASSWORD": "Reset Password",
 
@@ -39,8 +40,14 @@
 
     "MSG": {
         "ERROR": "Error",
-        "SUCCESS": "Success",
-        "CONFIRM_EXIT_APP": "Confirm to exit App?"
+        "SUCCESS": "Succeed",
+        "CONFIRM_EXIT_APP": "Confirm to exit?",
+        "INVALID_USER": "Invalid user",
+        "INCORRECT_INPUT": "Incorrect input, please try again.",
+        "INACTIVATED_USER": "User not activated, activate now?",
+        "MISSING_INFO": "Missing information, please try again.",
+        "PASSWORD_DIFF": "Please confirm your password again.",
+        "ACTIVATION": "Your activation code is "
     },
     
     "ERROR": {
@@ -53,10 +60,9 @@
         "INVALID_LOGIN": "Invalid Login"
     },
 
-    "LOGIN": {
-        "INVALID_USER": "Invalid User",
-        "INCORRECT_LOGIN": "Incorrect Login! Please try again.",
-        "INACTIVATED_USER": "Account has not been activated, confirm to activate now?",
-        "MISSING_INFO": "Missing required information"
+    "WELCOME": {
+        "SLIDE_1": "在掌心中<br>輕鬆尋找各種工作",
+        "SLIDE_2": "取得適合你的<br>工作推薦",
+        "SLIDE_3": "一步完成申請<br>快捷取得職位"
     }
 }

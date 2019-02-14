@@ -21,7 +21,9 @@ export class WelcomePage extends BasePage {
 		protected utils: Utils
 	) {
 		super(platform, view, nav, utils);
-    	Config.DEBUG_VERBOSE && console.log('WelcomePage constructor');
+		Config.DEBUG_VERBOSE && console.log('WelcomePage constructor');
+		
+		console.log(this.utils.currentLang());
 	}
 
 	openLoginPage() {

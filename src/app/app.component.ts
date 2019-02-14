@@ -34,6 +34,7 @@ export class MyApp extends BaseApp {
 		this.utils.getLocal('UI_LANGUAGE').then(language => {
 			console.log('language', language);
 			if (language) {
+				this.utils.changeLang(language);
 				this.utils.getLocal('USER_AUTH').then(auth => {
 					console.log('auth', auth);
 					if (auth) {
