@@ -57,7 +57,8 @@ page-login {
             }
         }
         .forget-password-btn {
-            background: transparent;
+            background: transparent !important;
+            background-color: transparent !important;
             padding: 0;
             margin: 0;
             border-bottom: 1px solid #fff;
@@ -67,11 +68,13 @@ page-login {
             line-height: 20px;
             height: 20px;
             border-radius: 0;
+            box-shadow: none !important;
         }
         .first-activate-btn {
             position: absolute;
             right: 0;
-            background: transparent;
+            background: transparent !important;
+            background-color: transparent !important;
             padding: 0;
             margin: 0;
             border-bottom: 1px solid #fff;
@@ -81,6 +84,7 @@ page-login {
             line-height: 20px;
             height: 20px;
             border-radius: 0;
+            box-shadow: none !important;
         }
     }
     .operation-buttons {
