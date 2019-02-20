@@ -43,7 +43,16 @@ export class LoginPage extends BasePage {
 			]).then(response => {
 				var login_response = response[0];
 
-				if (login_response.status) {
+				if (login_response.status == false) {
+					// Login failed
+					if (login_response.error.includes('inactive')) {
+						this.utils.showConfirm('', this.utils.instantLang('MSG.INACTIVATED_USER'), () => {
+							this.goActivate();
+						});
+					} else if (login_response.error.includes('Incorrect')) {
+						this.utils.showAlert('', this.utils.instantLang('MSG.INCORRECT_INPUT'));
+					}
+				} else {
 					this.user = login_response;
 					console.log('user', this.user);
 	
@@ -51,16 +60,9 @@ export class LoginPage extends BasePage {
 					Config.USER_AUTH = this.user;
 					this.utils.setLocal('USER_AUTH', this.user);
 					this.nav.setRoot(MenuComponent);
-				} else {
-					// Login failed
-					if (login_response.error.includes('inactive')) {
-						this.utils.showConfirm('', this.utils.instantLang('MSG.INACTIVATED_USER'), () => {
-							this.goActivate();
-						})
-					}
 				}
 			}).catch(err => {
-				console.log('login error', err);
+				console.log('Login Error', err);
 			});
 		} else {
 			// Show alert box for missing information
