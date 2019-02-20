@@ -31,6 +31,16 @@ export class Api extends BaseService {
 		return this.post('/auth/login', data);
 	}
 
+	public postForgetPassword(data) {
+		this.headers.set('X-API-KEY', this.api_key_anonymous);
+		return this.post('/auth/forgot_password', data);
+	}
+
+	public postResetPassword(data) {
+		this.headers.set('X-API-KEY', this.api_key_anonymous);
+		return this.post('/auth/reset_password', data);
+	}
+
 	/*--- GET ---*/
 	public getAllJobs() {
 		let url = '/job';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, ViewController, NavController } from 'ionic-angular';
+import { Platform, ViewController, NavController, App } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
@@ -19,7 +19,8 @@ export class EmployerProfilePage extends BasePage {
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
-		protected utils: Utils
+		protected utils: Utils,
+		private app: App
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('EmployerProfilePage constructor');
@@ -171,5 +172,18 @@ export class EmployerProfilePage extends BasePage {
 
 	openApplicantReviewPage() {
 		this.nav.push('ApplicantReviewPage');
+	}
+
+	resetPassword() {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.FORGET_PASSWORD'), () => {
+			this.app.getRootNav().setRoot('ResetPasswordPage');
+		});
+	}
+
+	logout() {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.LOGOUT'), () => {
+			this.utils.removeLocal('USER_AUTH');
+			this.app.getRootNav().setRoot('WelcomePage');
+		});
 	}
 }

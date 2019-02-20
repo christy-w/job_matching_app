@@ -67,7 +67,7 @@ export class LoginPage extends BasePage {
 		} else {
 			// Show alert box for missing information
 			console.log(this.utils.currentLang());
-			this.utils.showAlert('', this.utils.instantLang('LOGIN.MISSING_INFO'));
+			this.utils.showAlert('', this.utils.instantLang('MSG.MISSING_INFO'));
 		}
 	}
 
@@ -82,5 +82,9 @@ export class LoginPage extends BasePage {
 
 	openHomePage() {
 		this.nav.setRoot(MenuComponent);
+	}
+
+	forgetPassword() {
+		this.nav.push('ResetPasswordPage');
 	}
 }

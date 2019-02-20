@@ -50,7 +50,11 @@
         "PASSWORD_DIFF": "請重新確認密碼。",
         "ACTIVATION": "您的驗證碼是 ",
         "INCORRECT_ACTIVATION": "您輸入的驗證碼不正確，請重新嘗試。",
-        "MOBILE_REGISTERED": "電話號碼已登記，請重新輸入。"
+        "MOBILE_REGISTERED": "電話號碼已登記，請重新輸入。",
+        "FORGET_PASSWORD": "確定重設密碼？原有的密碼將被取代，而此操作將不能取消。",
+        "RESET_SUCCESS": "重設密碼成功，現在登入？",
+        "RESET_FAILED": "重設密碼失敗，請重新嘗試。",
+        "LOGOUT": "確定登出？"
     },
 
     "ERROR": {
