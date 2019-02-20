@@ -70,7 +70,8 @@ export class LoginPage extends BasePage {
 	}
 
 	goActivate() {
-		
+		let data = { 'user_mobile' : this.mobile_input, 'user_pw': this.password_input }
+		this.nav.push('ActivatePage', data);
 	}
 
 	openSignUpPage() {
