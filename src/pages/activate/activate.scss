@@ -1,4 +1,4 @@
-page-sign-up {
+page-activate {
     ion-content, .scroll-content {
         position: absolute;
         background-image: url('../../assets/img/login_bg.jpg');
@@ -30,6 +30,7 @@ page-sign-up {
             opacity: 0.15;
         }
     }
+
     .page-title {
         position: relative;
         top: 120px;
@@ -38,89 +39,82 @@ page-sign-up {
         font-family: $font-bold;
         font-size: 2em;
     }
-    .page-desp {
-        position: relative;
-        top: 120px;
-        padding-left: 45px;
-        color: #fff;
-        font-family: $font-medium;
-        font-size: 0.8em;
-    }
-    .desp {
-        text-align: left;
-        padding-top: 20px;
-        line-height: 14px;
-        color: #fff;
-        font-family: $font-medium;
-        font-size: 0.6em;
-    }
-    .input-wrapper {
-        position: relative;
-        width: 100%;
-        height: 45px;
-        .login-input {
-            position: absolute;
-            width: 70%;
-            left: 0;
-            height: 45px;
-            padding: 0px 15px;
-            background-color: #fff;
-            border-radius: 5px 0px 0px 5px;
-            box-shadow: $item-shadow;
-            .text-input {
-                margin: 0;
-                color: $font-yellow;
-                font-family: $font-bold;
-                font-size: 0.8em;
-                line-height: 45px;
-            }
-        }
-        .resend-btn {
-            position: absolute;
-            width: 30%;
-            right: 0;
-            height: 45px;
-            padding: 0px 5px;
-            background-color: #fff;
-            border-radius: 0px 5px 5px 0px;
-            line-height: 45px;
-            font-family: $font-bold;
-            font-size: 0.8em;
-            background-color: $light-grey;
-            color: #fff;
-            box-shadow: $item-shadow;
-        }
-
-    }
-    .operation-buttons {    
-        position: relative;
-        width: 100%;
-        height: 90px;
-        top: 50px;
+    .activate-form {
+        position: absolute;
         left: 0;
         right: 0;
-        margin: 0 auto;
-        display: block;
-        z-index: 1;
-        .operation-button {
-            display: inline-block;
-            width: 48%;
-            padding: 8px;
-            font-size: 0.8em;
-            font-family: 'Roboto-bold';
-            border-radius: 5px;
-            margin: 1px;
-            &.dull-btn {
+        top: 200px;
+        width: 75vw;
+        height: unset;
+        margin: auto;
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            height: 45px;
+            .login-input {
+                position: absolute;
+                width: 70%;
+                left: 0;
+                height: 45px;
+                padding: 0px 15px;
                 background-color: #fff;
-                color: $font-yellow;
+                border-radius: 5px 0px 0px 5px;
+                box-shadow: $item-shadow;
+                .text-input {
+                    margin: 0;
+                    color: $font-yellow;
+                    font-family: $font-bold;
+                    font-size: 14px;
+                    line-height: 45px;
+                }
+            }
+            .resend-btn {
+                position: absolute;
+                width: 30%;
+                right: 0;
+                height: 45px;
+                padding: 0px 5px;
+                background-color: #fff;
+                border-radius: 0px 5px 5px 0px;
+                line-height: 45px;
+                font-family: $font-bold;
+                font-size: 16px;
+                background-color: $light-grey;
+                color: #fff;
                 box-shadow: $item-shadow;
             }
-            &.highlight-btn {
-                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
-                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
-                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
-                color: #fff;
-                box-shadow: $highlight-btn-shadow;
+
+        }
+        .operation-buttons {    
+            position: relative;
+            width: 100%;
+            height: 90px;
+            top: 50px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            display: block;
+            z-index: 1;
+            .operation-button {
+                display: inline-block;
+                width: 48%;
+                padding: 8px;
+                font-size: 16px;
+                font-family: 'Roboto-bold';
+                border-radius: 5px;
+                margin: 1px;
+                &.dull-btn {
+                    background-color: #fff;
+                    color: $font-yellow;
+                    box-shadow: $item-shadow;
+                }
+                &.highlight-btn {
+                    background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                    background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                    background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                    color: #fff;
+                    box-shadow: $highlight-btn-shadow;
+                }
             }
         }
     }
