@@ -7,28 +7,18 @@
 		<div ion-item class='list-title-item'>
 			<ion-label>
 				<div class="list-title">我的設定</div>
-				<div class="list-desp">設置後，不符合的搜尋結果會被篩選並隱藏。</div>
 			</ion-label>
-            <ion-toggle item-end [(ngModel)]="settingToggle"></ion-toggle>
 		</div>
-		<div class="list-card">
-			<div class="card-wrapper">
-				<div class="item-wrapper" *ngFor="let setting of setting_fields" [ngSwitch]="setting.field_type">
-					<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
-						<ion-label>{{ setting.name }}</ion-label>
-						<ion-select [(ngModel)]="setting.selection" multiple="true" ionChange="onChange(setting)">
-							<ion-option [value]="option" *ngFor="let option of setting.options">{{ option }}</ion-option>
-						</ion-select>
-					</div>
-					<div ion-item class="list-item" *ngSwitchCase="'date'">
-						<ion-label>{{ setting.name }}</ion-label>
-						<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="setting.selection"></ion-datetime>
-					</div>
-				</div>
+		<div class="item-wrapper" *ngFor="let prefernece of preference_fields" [ngSwitch]="prefernece.field_type">
+			<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
+				<ion-label>{{ prefernece.name }}</ion-label>
+				<ion-select [(ngModel)]="prefernece.selection" multiple="true" ionChange="onChange(prefernece)">
+					<ion-option [value]="option" *ngFor="let option of prefernece.options">{{ option }}</ion-option>
+				</ion-select>
 			</div>
 		</div>
 	</div>
-	<div class="section-wrapper" *ngIf="preference_fields">
+	<!-- <div class="section-wrapper" *ngIf="preference_fields">
 		<div ion-item class='list-title-item'>
 			<ion-label>
 				<div class="list-title">我的喜好</div>
@@ -52,5 +42,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </ion-content>
