@@ -17,11 +17,12 @@ page-applicant-preference {
 
     .section-wrapper {
         position: relative;
-        margin: 20px 0;
+        margin: 20px 20px;
         .list-title-item {
-            padding-left: 20px !important;
+            padding-left: 0px !important;
             background: transparent !important;
             .item-inner {
+                padding: 0 !important;
                 border: none !important;
             }
         }
@@ -30,9 +31,20 @@ page-applicant-preference {
             font-size: 0.9em;
             font-family: 'Roboto-medium';
         }
+        .edit-btn {
+            text-align: center;
+            padding: 4px 10px 4px 10px;
+            margin: 2px 2px;
+            font-size: 0.9em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            color: $font-yellow;
+            background: #fff;
+            box-shadow: $item-shadow;
+        }
         .list-card {
             position: relative;
-            margin: 10px 15px;
+            margin: 10px 0px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: $item-shadow;

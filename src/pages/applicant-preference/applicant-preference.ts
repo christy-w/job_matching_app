@@ -4,6 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
+import _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -16,6 +17,7 @@ export class ApplicantPreferencePage extends BasePage {
 	setting_fields: any = [];
 	preference_fields: any = [];
 	preference_options: any = {};
+	edit_mode: boolean = false;
 
 	constructor(
 		protected platform: Platform,
@@ -26,7 +28,14 @@ export class ApplicantPreferencePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantPreferencePage constructor');
+	}
 
+	ngOnInit() {
+		this.initPreferenceArrays();
+		this.edit_mode = false;
+	}
+
+	initPreferenceArrays() {
 		this.preference_options = [
 			{
 				name_zh: '必要',
@@ -51,7 +60,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Employment Type',
 				field_type: 'multi_select',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: [
 					{
 						option_zh: '全職',
@@ -89,7 +98,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Work Days',
 				field_type: 'multi_select',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: [
 					{
 						option_zh: '星期一',
@@ -133,7 +142,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Minimum Monthly Salary',
 				field_type: 'input',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: []
 			},
 			{
@@ -141,7 +150,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Minimum Hourly Salary',
 				field_type: 'input',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: []
 			},
 			// {
@@ -158,7 +167,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Company Scale',
 				field_type: 'multi_select',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: [
 					{
 						option_zh: '20人以下',
@@ -192,7 +201,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Payment Methods',
 				field_type: 'multi_select',
 				selection: [],
-				importance: 'preferred',
+				importance: '',
 				options: [
 					{
 						option_zh: '現金',
@@ -222,7 +231,18 @@ export class ApplicantPreferencePage extends BasePage {
 			// },
 		];
 
+		this.preference_fields.forEach(preference => {
+			preference.importance = 'preferred';
+		});
 		console.log('preference_fields', this.preference_fields);
+	}
+
+	toggleEditMode() {
+		this.edit_mode = !this.edit_mode;
+
+		if (!this.edit_mode) {
+			console.log('preference', this.preference_fields);
+		}
 	}
 
 	ionViewWillEnter() {
@@ -233,6 +253,20 @@ export class ApplicantPreferencePage extends BasePage {
 		console.log('option', option);
 		console.log('preference', preference);
 		option.selected = !option.selected;
+
+		// if (option.selected) {
+
+		// 	console.log(option.value + ' is selected');
+		// } else {
+		// 	console.log(option.value + ' is removed');
+		// }
+		if (_.includes(preference.selection, option.value)) {
+			// Remove spot if it exits in favourites
+			_.pull(preference.selection, option.value);
+		} else {
+			// Add spot if it does not exist in favourites
+			preference.selection.push(option.value);
+		}
 	}
 
 	togglePreferenceWrapper(preference) {
