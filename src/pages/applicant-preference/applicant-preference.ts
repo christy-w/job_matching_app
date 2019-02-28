@@ -30,81 +30,207 @@ export class ApplicantPreferencePage extends BasePage {
 		this.preference_options = [
 			{
 				name_zh: '必要',
-				name_en: 'Must'
+				name_en: 'Must',
+				value: 'Must'
 			},
 			{
 				name_zh: '優先',
-				name_en: 'Preferred'
+				name_en: 'Preferred',
+				value: 'preferred'
 			},
 			{
 				name_zh: '毋須',
-				name_en: 'None'
-			},
+				name_en: 'None',
+				value: 'none'
+			}
 		];
 		
 		this.preference_fields = [
 			{
-				name: '工作類別',
-				selection: '',
-				options: ['全職', '兼職', '臨時工作']
+				name_zh: '工作類別',
+				name_en: 'Employment Type',
+				field_type: 'multi_select',
+				selection: [],
+				importance: '',
+				options: [
+					{
+						option_zh: '全職',
+						option_en: 'Full time',
+						value: 'fulltime'
+					},
+					{
+						option_zh: '兼職',
+						option_en: 'Part time',
+						value: 'parttime'
+					},
+					{
+						option_zh: '臨時工作',
+						option_en: 'Temporary work',
+						value: 'temporary'
+					},
+					{
+						option_zh: '自由工作',
+						option_en: 'Freelance',
+						value: 'freelance'
+					}
+				]
+			},
+			// {
+			// 	name_zh: '工作地區',
+			// 	name_en: 'Work Location',
+			// 	field_type: 'multi_select',
+			// 	selection: '',
+			// 	options_zh: [],
+			// 	options_en: [],
+			// 	options_value: []
+			// },
+			{
+				name_zh: '工作日子（適用於兼職及臨時工作）',
+				name_en: 'Work Days',
+				field_type: 'multi_select',
+				selection: [],
+				importance: '',
+				options: [
+					{
+						option_zh: '星期一',
+						option_en: 'Monday',
+						value: 'monday'
+					},
+					{
+						option_zh: '星期二',
+						option_en: 'Tuesday',
+						value: 'tuesday'
+					},
+					{
+						option_zh: '星期三',
+						option_en: 'Wednesday',
+						value: 'wednesday'
+					},
+					{
+						option_zh: '星期四',
+						option_en: 'Thursday',
+						value: 'thursday'
+					},
+					{
+						option_zh: '星期五',
+						option_en: 'Friday',
+						value: 'friday'
+					},
+					{
+						option_zh: '星期六',
+						option_en: 'Saturday',
+						value: 'saturday'
+					},
+					{
+						option_zh: '星期日',
+						option_en: 'Sunday',
+						value: 'sunday'
+					},
+				]
 			},
 			{
-				name: '工作地區',
-				selection: '',
-				options: ['油尖旺區', '深水埗區', '九龍城區']
+				name_zh: '最低月薪薪酬',
+				name_en: 'Minimum Monthly Salary',
+				field_type: 'input',
+				selection: [],
+				importance: '',
+				options: []
 			},
 			{
-				name: '工作時段（適用於兼職及臨時工作）',
-				selection: '',
-				options: ['早上', '下午', '晚間' ,'凌晨']
+				name_zh: '最低時薪薪酬',
+				name_en: 'Minimum Hourly Salary',
+				field_type: 'input',
+				selection: [],
+				importance: '',
+				options: []
+			},
+			// {
+			// 	name_zh: '公司產業',
+			// 	name_en: 'Industry',
+			// 	field_type: 'multi_select',
+			// 	selection: '',
+				// importance: '',
+			// 	options_zh: [],
+			// 	options_en: []
+			// },
+			{
+				name_zh: '公司規模',
+				name_en: 'Company Scale',
+				field_type: 'multi_select',
+				selection: [],
+				importance: '',
+				options: [
+					{
+						option_zh: '20人以下',
+						option_en: 'Below 20',
+						value: 'under_20'
+					},
+					{
+						option_zh: '21-100人',
+						option_en: '21-100',
+						value: '21-100'
+					},
+					{
+						option_zh: '101-500人',
+						option_en: '101-500',
+						value: '101-500'
+					},
+					{
+						option_zh: '501-1000人',
+						option_en: '501-1000',
+						value: '501-1000'
+					},
+					{
+						option_zh: '1000人以上',
+						option_en: 'Above 1000',
+						value: 'above_1000'
+					}
+				]
 			},
 			{
-				name: '工作日子（適用於兼職及臨時工作）',
-				selection: '',
-				options: ['星期一', '星期二', '星期三' ,'星期四', '星期五', '星期六' ,'星期日']
-			},
-			{
-				name: '最低月薪薪酬（適用於全職工作）',
-				selection: '',
-				options: ['HKD 10000', 'HKD 15000', 'HKD 20000' ,'HKD 25000', 'HKD 30000']
-			},
+				name_zh: '出糧方式',
+				name_en: 'Payment Methods',
+				field_type: 'multi_select',
+				selection: [],
+				importance: '',
+				options: [
+					{
+						option_zh: '現金',
+						option_en: 'Cash',
+						value: 'cash'
+					},
+					{
+						option_zh: '過數',
+						option_en: 'Bank Transfer',
+						value: 'transfer'
+					},
+					{
+						option_zh: '支票',
+						option_en: 'Cheque',
+						value: 'cheque'
+					}
+				]
+			}
+			// {
+			// 	name_zh: '僱員福利（適用於全職工作）',
+			// 	name_en: 'Benefits',
+			// 	field_type: 'multi_select',
+			// 	selection: '',
+			// 	options_zh: [],
+			// 	options_en: [],
+			// 	options_value: []
+			// },
 		];
 
-		// this.preference_fields = [
-		// 	{
-		// 		name: '理想時酬（適用於兼職及臨時工作）',
-		// 		field_type: 'input', // input/select/multi_select/date/range
-		// 		selection: '',
-		// 		options: []
-		// 	},
-		// 	{
-		// 		name: '理想月薪（適用於全職工作）',
-		// 		field_type: 'input', // input/select/multi_select/date/range
-		// 		selection: '',
-		// 		options: []
-		// 	},
-		// 	{
-		// 		name: '公司產業',
-		// 		field_type: 'multi_select', // input/select/multi_select/date/range
-		// 		selection: '',
-		// 		options: ['餐飲業', '酒店業', '展覽業', '運輸業', '零售業']
-		// 	},
-		// 	{
-		// 		name: '公司規模',
-		// 		field_type: 'multi_select', // input/select/multi_select/date/range
-		// 		selection: '',
-		// 		options: ['1-25人', '25-100人', '100-1000人', '1000人以上']
-		// 	},
-		// 	{
-		// 		name: '出糧方式',
-		// 		field_type: 'multi_select', // input/select/multi_select/date/range
-		// 		selection: '',
-		// 		options: ['過數出糧', '現金出糧', '支票出糧']
-		// 	},
-		// ];
+		console.log('preference_fields', this.preference_fields);
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = '';
+	}
+
+	selectPreference(option) {
+		console.log('option', option);
+		option.selected = !option.selected;
 	}
 }

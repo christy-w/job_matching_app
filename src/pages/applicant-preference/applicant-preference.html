@@ -9,38 +9,49 @@
 				<div class="list-title">我的設定</div>
 			</ion-label>
 		</div>
-		<div class="item-wrapper" *ngFor="let prefernece of preference_fields" [ngSwitch]="prefernece.field_type">
-			<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
-				<ion-label>{{ prefernece.name }}</ion-label>
-				<ion-select [(ngModel)]="prefernece.selection" multiple="true" ionChange="onChange(prefernece)">
-					<ion-option [value]="option" *ngFor="let option of prefernece.options">{{ option }}</ion-option>
-				</ion-select>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="section-wrapper" *ngIf="preference_fields">
-		<div ion-item class='list-title-item'>
-			<ion-label>
-				<div class="list-title">我的喜好</div>
-				<div class="list-desp">設置後，符合你喜好的搜尋結果會按符合程度順序列出，不符合的搜尋結果會排在較後的位置。</div>
-			</ion-label>
-			<ion-toggle item-end [(ngModel)]="preferenceToggle"></ion-toggle>
-		</div>
-		<div class="list-card">
+		<div class="list-card" *ngFor="let preference of preference_fields">
 			<div class="card-wrapper">
-				<div class="item-wrapper" *ngFor="let preference of preference_fields" [ngSwitch]="preference.field_type">
-					<div ion-item class="list-item" *ngSwitchCase="'input'">
-						<ion-label>{{ preference.name }}</ion-label>
-						<ion-input item-end placeholder="">$</ion-input>
+				<div class="item-wrapper" [ngSwitch]="preference.field_type">
+					<!-- Multi select type -->
+					<div class="list-item" *ngSwitchCase="'multi_select'">
+						<ion-row class="item-header">
+							<ion-col col-10 class="item-header-left" tappable>
+								<ion-label>
+									<ion-icon name="arrow-down"></ion-icon>
+									{{ preference['name_' + language] }}
+								</ion-label>
+							</ion-col>
+							<ion-col col-2 class="item-header-right">
+								<ion-select [(ngModel)]="preference.importance" multiple="false">
+									<ion-option [value]="option.value" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
+								</ion-select>
+							</ion-col>
+						</ion-row>
+						<div class="preference-wrapper">
+							<button class="preference-btn" *ngFor="let option of preference.options" [ngClass]="{'highlight' : option.selected}" (click)="setPreference(preference, option)">{{ option['option_' + language] }}</button>
+						</div>
 					</div>
-					<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
-						<ion-label>{{ preference.name }}</ion-label>
-						<ion-select [(ngModel)]="preference.selection" multiple="true" ionChange="onChange(preference)">
-							<ion-option [value]="option" *ngFor="let option of preference.options">{{ option }}</ion-option>
-						</ion-select>
+					<!-- Input type -->
+					<div class="list-item" *ngSwitchCase="'input'">
+						<ion-row class="item-header">
+							<ion-col col-10 class="item-header-left" tappable>
+								<ion-label>
+									<ion-icon name="arrow-down"></ion-icon>
+									{{ preference['name_' + language] }}
+								</ion-label>
+							</ion-col>
+							<ion-col col-2 class="item-header-right">
+								<ion-select [(ngModel)]="preference.importance" multiple="false">
+									<ion-option [value]="option.value" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
+								</ion-select>
+							</ion-col>
+						</ion-row>
+						<div class="preference-wrapper">
+							<ion-input [(ngModel)]="preference.selection" placeholder="請輸入數字，例如15,000，請輸入15000">$</ion-input>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 </ion-content>

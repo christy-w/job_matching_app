@@ -32,7 +32,7 @@ page-applicant-preference {
         }
         .list-card {
             position: relative;
-            margin: 0px 15px;
+            margin: 10px 15px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: $item-shadow;
@@ -49,9 +49,60 @@ page-applicant-preference {
                     font-family: $font-medium;
                     color: $dark-grey;
                     font-size: 1em;
-                    .text-input, .select-text, .datetime-text {
+                    padding: 5px 15px;
+                    .select-text {
                         text-align: right;
                         color: $font-yellow;
+                    }
+                    ion-col, ion-row {
+                        padding: 0;
+                        margin: 0;
+                    }              
+                    ion-select {
+                        max-width: unset !important;    
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                    ion-icon {
+                        color: $font-yellow;
+                        font-size: 15px;
+                        padding-right: 10px;
+                    }
+                    .preference-wrapper {
+                        position: relative;
+                        padding: 10px 0px;
+                        border-top: 1px solid $light-grey;
+                        .preference-btn {
+                            display: inline-block;
+                            text-align: center;
+                            padding: 4px 10px 4px 10px;
+                            margin: 2px 2px;
+                            font-size: 0.9em;
+                            font-family: 'Roboto-bold';
+                            border-radius: 5px;
+                            color: $medium-grey;
+                            background: $bg-white;
+                            &.highlight {
+                                color: #fff;
+                                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                                box-shadow: $highlight-btn-shadow;
+                            }
+                        }
+                        
+                        ion-input {
+                            position: relative;
+                            border-radius: 5px;
+                            background-color: #f7f7f7;
+                            margin-bottom: 10px;
+                            .text-input {
+                                margin: 5px 5px 5px 25px;
+                                color: $font-yellow;
+                                font-size: 0.9em;
+                                font-family: 'Roboto-bold';
+                            }
+                        }
                     }
                 }
             }
