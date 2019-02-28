@@ -18,7 +18,7 @@ export class MenuComponent {
 	config: any;
 	app_config: any;
 	pages: any;
-	menuPage: any = 'ApplicantHomePage';
+	menuPage: any = '';
 	hotkeys: any;
 	show_tab: boolean = true;
 	isLiveMode: boolean = false;
@@ -35,7 +35,6 @@ export class MenuComponent {
 		this.config = Config;
 
 		this.getUserAuth();
-		
 	}
 
 	getUserAuth() {
@@ -44,6 +43,7 @@ export class MenuComponent {
 				Config.USER_AUTH = auth;
 				switch (auth.main_group) {
 					case 'applicant':
+						this.menuPage = 'ApplicantHomePage';
 						this.hotkeys = [
 							{ tab: 'home', title: 'HOTKEY.HOME', component: 'ApplicantHomePage', icon: 'home', index: '' },
 							{ tab: 'recommendation', title: 'HOTKEY.RECOMMENDATION', component: 'ApplicantRecommendationPage', icon: 'thumb', index: '' },
@@ -52,6 +52,7 @@ export class MenuComponent {
 						];
 						break;
 					case 'employer':
+						this.menuPage = 'EmployerHomePage';
 						this.hotkeys = [
 							{ tab: 'home', title: 'HOTKEY.HOME', component: 'EmployerHomePage', icon: 'home', index: '' },
 							{ tab: 'record', title: 'HOTKEY.RECORD', component: 'EmployerRecordPage', icon: 'record', index: '' },

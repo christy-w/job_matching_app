@@ -7,12 +7,12 @@ import { Utils } from '../../core/providers/utils';
 
 @IonicPage()
 @Component({
-	selector: 'page-employer-job',
-	templateUrl: 'employer-job.html'
+	selector: 'page-employer-job-create',
+	templateUrl: 'employer-job-create.html'
 })
-export class EmployerJobPage extends BasePage {
+export class EmployerJobCreatePage extends BasePage {
 
-	name: string = 'EmployerJobPage';
+	name: string = 'EmployerJobCreatePage';
 
 	constructor(
 		protected platform: Platform,
@@ -21,7 +21,7 @@ export class EmployerJobPage extends BasePage {
 		protected utils: Utils
 	) {
 		super(platform, view, nav, utils);
-		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
+		Config.DEBUG_VERBOSE && console.log('EmployerJobCreatePage constructor');
 	}
 
 	ionViewWillEnter() {

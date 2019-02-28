@@ -32,6 +32,7 @@ export class ApplicantHomePage extends BasePage {
 	}
 
 	openSearchFilter() {
+		console.log('searchFilter');
 		let searchFilter = this.utils.createPopover(SearchFilter, {}, {cssClass:'search-filter'});
 		searchFilter.onDidDismiss(data => {
 			// (data) ? this.saveFilter(data) : this.cancelFilter();

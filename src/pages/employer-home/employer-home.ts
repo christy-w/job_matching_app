@@ -43,4 +43,8 @@ export class EmployerHomePage extends BasePage {
 	openJobPage() {
 		this.nav.push('EmployerJobPage');
 	}
+
+	createJob() {
+		this.nav.push('EmployerJobCreatePage');
+	}
 }
