@@ -90,6 +90,17 @@ page-applicant-preference {
                             color: transparent;
                         }
                     }
+                    .importance-text {
+                        padding: 11px 8px 11px 0px;
+                        text-align: right;
+                        color: $font-yellow;
+                        &.must {
+                            color: $red;
+                        }
+                        &.none {
+                            color: transparent;
+                        }
+                    }
                     ion-icon {
                         color: $font-yellow;
                         font-size: 15px;
@@ -140,6 +151,19 @@ page-applicant-preference {
                     }
                 }
             }
+        }
+        .preference-msg {
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: $item-shadow;
+            border-radius: 5px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            color: $medium-grey;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
         }
     }
 }
