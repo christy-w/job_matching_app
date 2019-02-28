@@ -31,7 +31,7 @@ export class ApplicantPreferencePage extends BasePage {
 			{
 				name_zh: '必要',
 				name_en: 'Must',
-				value: 'Must'
+				value: 'must'
 			},
 			{
 				name_zh: '優先',
@@ -51,7 +51,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Employment Type',
 				field_type: 'multi_select',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: [
 					{
 						option_zh: '全職',
@@ -89,7 +89,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Work Days',
 				field_type: 'multi_select',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: [
 					{
 						option_zh: '星期一',
@@ -133,7 +133,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Minimum Monthly Salary',
 				field_type: 'input',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: []
 			},
 			{
@@ -141,7 +141,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Minimum Hourly Salary',
 				field_type: 'input',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: []
 			},
 			// {
@@ -158,7 +158,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Company Scale',
 				field_type: 'multi_select',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: [
 					{
 						option_zh: '20人以下',
@@ -192,7 +192,7 @@ export class ApplicantPreferencePage extends BasePage {
 				name_en: 'Payment Methods',
 				field_type: 'multi_select',
 				selection: [],
-				importance: '',
+				importance: 'preferred',
 				options: [
 					{
 						option_zh: '現金',
@@ -229,8 +229,13 @@ export class ApplicantPreferencePage extends BasePage {
 		Config.ACTIVE_TAB = '';
 	}
 
-	selectPreference(option) {
+	setPreference(preference, option) {
 		console.log('option', option);
+		console.log('preference', preference);
 		option.selected = !option.selected;
+	}
+
+	togglePreferenceWrapper(preference) {
+		preference.isExpanded = !preference.isExpanded;
 	}
 }

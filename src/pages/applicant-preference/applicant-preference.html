@@ -9,44 +9,46 @@
 				<div class="list-title">我的設定</div>
 			</ion-label>
 		</div>
-		<div class="list-card" *ngFor="let preference of preference_fields">
+		<div class="list-card" *ngFor="let preference of preference_fields"  [ngClass]="{'none' : preference.importance == 'none'}">
 			<div class="card-wrapper">
 				<div class="item-wrapper" [ngSwitch]="preference.field_type">
 					<!-- Multi select type -->
 					<div class="list-item" *ngSwitchCase="'multi_select'">
 						<ion-row class="item-header">
-							<ion-col col-10 class="item-header-left" tappable>
+							<ion-col col-10 class="item-header-left" [ngClass]="{'disabled': preference.importance == 'none'}" tappable (click)="togglePreferenceWrapper(preference)">
 								<ion-label>
-									<ion-icon name="arrow-down"></ion-icon>
+									<ion-icon [hidden]="preference.isExpanded || preference.importance == 'none'" name="arrow-down"></ion-icon>
+									<ion-icon [hidden]="!preference.isExpanded || preference.importance == 'none'" name="arrow-up"></ion-icon>
 									{{ preference['name_' + language] }}
 								</ion-label>
 							</ion-col>
 							<ion-col col-2 class="item-header-right">
-								<ion-select [(ngModel)]="preference.importance" multiple="false">
+								<ion-select [(ngModel)]="preference.importance" multiple="false" [ngClass]="{'must': preference.importance == 'must', 'none': preference.importance == 'none'}">
 									<ion-option [value]="option.value" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
 								</ion-select>
 							</ion-col>
 						</ion-row>
-						<div class="preference-wrapper">
+						<div class="preference-wrapper" [ngClass]="{'show': preference.isExpanded}">
 							<button class="preference-btn" *ngFor="let option of preference.options" [ngClass]="{'highlight' : option.selected}" (click)="setPreference(preference, option)">{{ option['option_' + language] }}</button>
 						</div>
 					</div>
 					<!-- Input type -->
 					<div class="list-item" *ngSwitchCase="'input'">
 						<ion-row class="item-header">
-							<ion-col col-10 class="item-header-left" tappable>
+							<ion-col col-10 class="item-header-left" [ngClass]="{'disabled': preference.importance == 'none'}" tappable (click)="togglePreferenceWrapper(preference)">
 								<ion-label>
-									<ion-icon name="arrow-down"></ion-icon>
+									<ion-icon [hidden]="preference.isExpanded || preference.importance == 'none'" name="arrow-down"></ion-icon>
+									<ion-icon [hidden]="!preference.isExpanded || preference.importance == 'none'" name="arrow-up"></ion-icon>
 									{{ preference['name_' + language] }}
 								</ion-label>
 							</ion-col>
 							<ion-col col-2 class="item-header-right">
-								<ion-select [(ngModel)]="preference.importance" multiple="false">
+								<ion-select [(ngModel)]="preference.importance" multiple="false"  [ngClass]="{'must': preference.importance == 'must', 'none': preference.importance == 'none'}">
 									<ion-option [value]="option.value" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
 								</ion-select>
 							</ion-col>
 						</ion-row>
-						<div class="preference-wrapper">
+						<div class="preference-wrapper" [ngClass]="{'show': preference.isExpanded}">
 							<ion-input [(ngModel)]="preference.selection" placeholder="請輸入數字，例如15,000，請輸入15000">$</ion-input>
 						</div>
 					</div>

@@ -36,6 +36,12 @@ page-applicant-preference {
             background-color: #fff;
             border-radius: 5px;
             box-shadow: $item-shadow;
+            &.none {
+                background-color: #EFEFEF;
+                .list-item {
+                    color: $medium-grey !important;
+                }
+            }
             .item-wrapper {
                 .item-inner {
                     border-bottom: 1px solid $light-grey;
@@ -50,18 +56,27 @@ page-applicant-preference {
                     color: $dark-grey;
                     font-size: 1em;
                     padding: 5px 15px;
-                    .select-text {
-                        text-align: right;
-                        color: $font-yellow;
-                    }
                     ion-col, ion-row {
                         padding: 0;
                         margin: 0;
-                    }              
+                    }
+                    .item-header-left.disabled{
+                        pointer-events: none;
+                    }    
                     ion-select {
                         max-width: unset !important;    
                         padding-left: 0;
                         padding-right: 0;
+                        .select-text {
+                            text-align: right;
+                            color: $font-yellow;
+                        }
+                        &.must .select-text {
+                            color: $red;
+                        }
+                        &.none .select-text {
+                            color: transparent;
+                        }
                     }
                     ion-icon {
                         color: $font-yellow;
@@ -72,6 +87,13 @@ page-applicant-preference {
                         position: relative;
                         padding: 10px 0px;
                         border-top: 1px solid $light-grey;
+                        height: 0;
+                        display: none;
+                        transition: all 0.3s linear;
+                        &.show {
+                            height: auto;
+                            display: block;
+                        }
                         .preference-btn {
                             display: inline-block;
                             text-align: center;
