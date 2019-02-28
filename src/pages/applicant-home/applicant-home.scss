@@ -36,7 +36,8 @@ page-applicant-home {
                 background-color: #fff;
                 border-radius: 5px;
                 box-shadow: $item-shadow;
-                height: 110px;
+                height: auto;
+                padding: 8px 0;
                 .thumbnail {
                     position: absolute;
                     top: 0;
@@ -48,7 +49,6 @@ page-applicant-home {
                     border-radius: 50%;
                     text-align: center;
                     margin: auto;
-                    background-image: url('../../assets/img/sample/island_pacific.jpg');
                     background-size: contain;
                     background-position: 50%;
                     box-shadow: $thumbnail-shadow;
@@ -81,8 +81,7 @@ page-applicant-home {
                         font-size: 1.1em;
                     }
                     .tags {
-                        position: absolute;
-                        bottom: 10px;
+                        position: relative;
                         overflow: hidden;
                         .tag {
                             display: inline-block;
