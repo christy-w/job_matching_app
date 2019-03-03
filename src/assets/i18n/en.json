@@ -71,5 +71,12 @@
         "SLIDE_1": "在掌心中<br>輕鬆尋找各種工作",
         "SLIDE_2": "取得適合你的<br>工作推薦",
         "SLIDE_3": "一步完成申請<br>快捷取得職位"
+    },
+
+    "SEARCH_FILTER": {
+        "SEARCH_PLACEHOLDER": "Name of position/company",
+        "TYPE": "Employment Type",
+        "LOCATION": "Work Location",
+        "PUBLISH_DATE": "Publish Date"
     }
 }

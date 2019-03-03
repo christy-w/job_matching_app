@@ -1,58 +1,86 @@
 import { Component } from '@angular/core';
+import { Utils } from '../../core/providers/utils';
+import { Api } from '../../providers';
+import _ from 'lodash';
 
 @Component({
   selector: 'search-filter',
   templateUrl: 'search-filter.html'
 })
 export class SearchFilter {
+	language: string = '';
+	filters_employment_types: any = [];
+	all_districts: any;
 
-  filters: any = [];
-  buttonToggle: boolean = false;
+  constructor(
+		private utils: Utils,
+		private api: Api
+	) {
+	}
 
-  constructor() {
-    console.log('Hello SearchFilter Component');
-
-		this.filters = [
+	ionViewWillEnter() {
+		this.language = this.utils.currentLang();
+		this.initDistricts();
+		this.filters_employment_types = [
 			{
-				name: '工作類別',
-				options: [
-					{
-						sub_name: '',
-						sub_options: ['兼職', '全職', '臨時工作']
-					},
-				]
+				name_zh: '兼職',
+				name_en: 'Part Time',
+				value: 'parttime'
 			},
 			{
-				name: '地區',
-				options: [
-					{
-						sub_name: '香港島',
-						sub_options: ['中西區', '灣仔區', '東區', '南區']
-					},
-					{
-						sub_name: '九龍',
-						sub_options: ['九龍城區', '觀塘區', '黃大仙區', '深水埗區', '油尖旺區']
-					},
-					{
-						sub_name: '新界',
-						sub_options: ['葵青區', '荃灣區', '西貢區', '屯門區', '北區', '沙田區', '大埔區']
-					},
-				]
+				name_zh: '全職',
+				name_en: 'Full Time',
+				value: 'fulltime'
 			},
 			{
-				name: '刊登日期',
-				options: [
-					{
-						sub_name: '',
-						sub_options: ['一星期內', '一個月內', '半年內']
-					}
-				]
+				name_zh: '臨時工作',
+				name_en: 'Temporary Work',
+				value: 'temporary'
 			}
 		];
-  }
+		console.log('type', this.filters_employment_types);
+	}
+	
+	initDistricts() {
+		this.api.startQueue([
+			this.api.getAllDistricts()
+		]).then(response => {
+			var all_districts = response[0];
+			
+			all_districts = _.chain(all_districts)
+				.groupBy('area')
+				.map((locations, area) => ({ locations, area }))
+				.value();
 
-  selectFilter(option) {
-    option.selected = !option.selected;
-  }
+			all_districts.forEach(area => {
+				switch(area.area) {
+					case 'hk':
+						area.area_zh = '香港島'
+						area.area_en = 'Hong Kong Island'
+						break;
+					case 'kln':
+						area.area_zh = '九龍'
+						area.area_en = 'Kowloon'
+						break;
+					case 'nt':
+						area.area_zh = '新界'
+						area.area_en = 'New Territories'
+						break;
+				}
+			});
+			this.all_districts = all_districts;
+			console.log('all districts', this.all_districts);
+		});
+	}
+
+  selectType(type) {
+		type.selected = !type.selected;
+		console.log('selected option', type.value);
+	}
+	
+	selectDistrict(district) {
+		district.selected = !district.selected;
+		console.log('selected district', district.id);
+	}
 
 }

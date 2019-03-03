@@ -2,15 +2,23 @@
 <div class="search-filter-container">
 	<div class="search-field">
 		<ion-icon name="search"></ion-icon>
-		<ion-input placeholder="職位/公司名稱"></ion-input>
+		<ion-input placeholder="{{ 'SEARCH_FILTER.SEARCH_PLACEHOLDER' | translate }}"></ion-input>
 	</div>
-	<div class="filter-options" *ngIf="filters">
-		<div class="filter-option" *ngFor="let filter of filters">
-			<div class="name">{{ filter.name }}</div>
+	<div class="filter-options" *ngIf="filters_employment_types">
+		<div class="filter-option employment-type">
+			<div class="name">{{ 'SEARCH_FILTER.TYPE' | translate }}</div>
 			<div class="selections">
-				<div class="sub-selection" *ngFor="let sub_filter of filter.options">
-					<div class="name">{{ sub_filter.sub_name }}</div>
-					<div class="selection" *ngFor="let sub_option of sub_filter.sub_options" [ngClass]="{'highlight' : sub_option.selected}">{{ sub_option }}</div>
+				<div class="sub-selection">
+					<div class="selection" *ngFor="let option of filters_employment_types" [ngClass]="{'highlight' : option.selected}" (click)="selectType(option)" tappable>{{ option['name_' + language] }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="filter-option work-location">
+			<div class="name">{{ 'SEARCH_FILTER.LOCATION' | translate }}</div>
+			<div class="selections">
+				<div class="sub-selection" *ngFor="let area of all_districts">
+					<div class="name">{{ area['area_' + language] }}</div>
+					<div class="selection" *ngFor="let district of area.locations" [ngClass]="{'highlight' : district.selected}" (click)="selectDistrict(district)" tappable>{{ district['name_' + language] }}</div>
 				</div>
 			</div>
 		</div>
