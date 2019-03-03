@@ -35,10 +35,17 @@ export class MyApp extends BaseApp {
 			console.log('language', language);
 			if (language) {
 				this.utils.changeLang(language);
+				// Check user activities
 				this.utils.getLocal('USER_AUTH').then(auth => {
 					console.log('auth', auth);
 					if (auth) {
-						this.rootPage = MenuComponent;
+						// Check internet
+						if (this.utils.isOnline()) {
+							this.rootPage = MenuComponent;
+						} else {
+							this.utils.showAlert('', this.utils.instantLang('MSG.OFFLINE'));
+							this.rootPage = 'LoginPage';
+						}
 					} else {
 						this.rootPage = 'WelcomePage';
 					}

@@ -42,6 +42,7 @@
     "MSG": {
         "ERROR": "錯誤",
         "SUCCESS": "成功",
+        "OFFLINE": "此程式需要連接網路，請重試。",
         "CONFIRM_EXIT_APP": "確認離開?",
         "INVALID_USER": "用戶不存在",
         "INCORRECT_INPUT": "您輸入的資料不正確，請重新輸入。",

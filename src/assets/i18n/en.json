@@ -42,6 +42,7 @@
     "MSG": {
         "ERROR": "Error",
         "SUCCESS": "Succeed",
+        "OFFLINE": "This application requires to connect to the internet, please try again.",
         "CONFIRM_EXIT_APP": "Confirm to exit?",
         "INVALID_USER": "Invalid user",
         "INCORRECT_INPUT": "Incorrect input, please try again.",
