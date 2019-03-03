@@ -47,6 +47,11 @@ export class Api extends BaseService {
 		return this.get(url);
 	}
 
+	public getJobDetail(job_id) {
+		let url = '/job/' + job_id;
+		return this.get(url);
+	}
+
 	public getAllDistricts() {
 		let url = '/system/districts';
 		return this.get(url);

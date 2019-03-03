@@ -8,7 +8,7 @@
 	<div class="list-section">
 		<div class="list-all-jobs" *ngIf="jobs">
 			<!-- Job Post Item -->
-			<ion-row class="job-post" (click)="openJobPage()" tappable *ngFor="let job of jobs">
+			<ion-row class="job-post" (click)="openJobPage(job.id)" tappable *ngFor="let job of jobs">
 				<ion-col col-3>
 					<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
 				</ion-col>
@@ -21,8 +21,7 @@
 					<div class="employer">{{ job.employer['name_' + language] }}</div>
 					<div class="salary">{{ job['wage_' + language] }}</div>
 					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
+						<div class="tag" *ngFor="let benefit of job.employer.benefits">{{ benefit['name_' + language] }}</div>
 					</div>
 				</ion-col>
 				<ion-col col-2>

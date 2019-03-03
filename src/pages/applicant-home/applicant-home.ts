@@ -119,8 +119,9 @@ export class ApplicantHomePage extends BasePage {
 	    searchFilter.present();
 	}
 
-	openJobPage() {
-		this.nav.push('ApplicantJobPage');
+	openJobPage(job_id) {
+		let data = { 'job_id': job_id };
+		this.nav.push('ApplicantJobPage', data);
 	}
 
 	filterJobList(filters) {

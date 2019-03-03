@@ -8,7 +8,8 @@ page-applicant-job {
         background-color: #fff;
         border-radius: 5px;
         box-shadow: $item-shadow;
-        height: 110px;
+        height: auto;
+        padding: 8px 0;
         .thumbnail {
             position: absolute;
             top: 0;
@@ -20,7 +21,6 @@ page-applicant-job {
             border-radius: 50%;
             text-align: center;
             margin: auto;
-            background-image: url('../../assets/img/sample/island_pacific.jpg');
             background-size: contain;
             background-position: 50%;
             box-shadow: $thumbnail-shadow;
@@ -48,17 +48,22 @@ page-applicant-job {
             .employer {
                 font-size: 1em;
                 color: $medium-grey;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
             .salary {
+                padding-top: 10px;
                 font-size: 1.1em;
+                padding-bottom: 3px;
             }
             .tags {
-                position: absolute;
-                bottom: 10px;
+                position: relative;
                 overflow: hidden;
                 .tag {
                     display: inline-block;
                     text-align: center;
+                    margin: 0px 2px;
                     padding: 2px 10px 2px 10px;
                     color: #fff;
                     font-size: 0.8em;
@@ -72,13 +77,17 @@ page-applicant-job {
         }
         .publish-date {
             position: absolute;
-            right: 15px;
+            right: 5px;
             padding-top: 5px;
+            text-align: right;
+            font-size: 10px;
+            color: $medium-grey;
+            font-family: $font-medium;
         }
         .fav-btn {
             position: absolute;
-            bottom: 10px;
-            right: 15px;
+            bottom: 5px;
+            right: 5px;
             ion-icon {
                 color: $red;
             }
