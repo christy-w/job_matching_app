@@ -5,6 +5,7 @@ import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers/api';
 
 import moment from 'moment';
+import { PreferenceModal } from '../preference-modal/preference-modal';
 
 @Component({
 	selector: 'menu-component',
@@ -50,7 +51,6 @@ export class MenuComponent {
 							{ tab: 'record', title: 'HOTKEY.RECORD', component: 'ApplicantRecordPage', icon: 'record', index: '' },
 							{ tab: 'profile', title: 'HOTKEY.PROFILE', component: 'ApplicantProfilePage', icon: 'profile', index: '' },
 						];
-						// this.checkApplicantPreference();
 						break;
 					case 'employer':
 						this.menuPage = 'EmployerHomePage';
@@ -65,17 +65,6 @@ export class MenuComponent {
 		})
 		
 	}
-
-	checkApplicantPreference() {
-		this.utils.getLocal('USER_PREFERENCE').then(preference => {
-			if (preference) {
-			} else {
-				console.log('not yet set preference');
-				this.menuPage = 'ApplicantHomePage';
-			}
-		})
-	}
-	
 
 	onClickHotKey(key) {
 		if (Config.ACTIVE_TAB == key){

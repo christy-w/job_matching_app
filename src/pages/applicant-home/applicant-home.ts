@@ -5,6 +5,7 @@ import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { SearchFilter } from '../../components/search-filter/search-filter';
+import { PreferenceModal } from '../../components/preference-modal/preference-modal';
 import { Api } from '../../providers';
 import _ from 'lodash';
 import * as moment from 'moment';
@@ -33,6 +34,20 @@ export class ApplicantHomePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'home';
+		this.checkUserPreference();
+	}
+
+	checkUserPreference() {
+		this.utils.getLocal('USER_PREFERENCE').then(preference => {
+			console.log('preference', preference);
+			if (!preference) {
+				this.utils.getLocal('USER_PREFERENCE_NEVER_SHOW').then(bool => {
+					if (!bool) {
+						this.utils.showModal(PreferenceModal, {}, {cssClass:'preference-modal'});
+					}
+				})
+			}
+		})
 	}
 
 	ngOnInit() {

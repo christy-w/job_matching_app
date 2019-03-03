@@ -16,7 +16,7 @@ import { TimelineItemComponent } from '../components/timeline/timeline';
         CardSlider,
         TimelineComponent,
         TimelineItemComponent,
-        TimelineTimeComponent
+        TimelineTimeComponent,
     ],
     imports: [
         IonicModule
@@ -27,7 +27,7 @@ import { TimelineItemComponent } from '../components/timeline/timeline';
         CardSlider,
         TimelineComponent,
         TimelineItemComponent,
-        TimelineTimeComponent
+        TimelineTimeComponent,
     ]
 })
 export class ComponentsModule { }

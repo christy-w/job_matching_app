@@ -1,44 +1,27 @@
 import { Component } from '@angular/core';
-import { Platform, ViewController, NavController, NavParams } from 'ionic-angular';
-import { IonicPage } from 'ionic-angular';
-import { BasePage } from '../../core/base-page';
-import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
-import _ from 'lodash';
+import { ViewController } from 'ionic-angular';
 
-@IonicPage()
 @Component({
-	selector: 'page-applicant-preference',
-	templateUrl: 'applicant-preference.html'
+  selector: 'preference-modal',
+  templateUrl: 'preference-modal.html'
 })
-export class ApplicantPreferencePage extends BasePage {
-
-	name: string = 'ApplicantPreferencePage';
-	preference_fields: any = [];
+export class PreferenceModal {
+  language: string = '';
+  preference_fields: any = [];
 	preference_options: any = {};
 	edit_mode: boolean = false;
-	saved_preferences: any;
-	show_msg: boolean = false;
 
-	constructor(
-		protected platform: Platform,
-		protected view: ViewController,
-		protected nav: NavController,
-		protected utils: Utils,
-		private params: NavParams
-	) {
-		super(platform, view, nav, utils);
-		Config.DEBUG_VERBOSE && console.log('ApplicantPreferencePage constructor');
-	}
+  constructor(private utils: Utils, private view: ViewController) {
+  }
 
-	ngOnInit() {
+  ngOnInit() {
+    this.language = this.utils.currentLang();
 		this.initPreferenceArrays();
-		this.edit_mode = false;
-
-		this.checkUserPreference();
+		this.edit_mode = true;
 	}
 
-	initPreferenceArrays() {
+  initPreferenceArrays() {
 		this.preference_options = [
 			{	
 				id: 0,
@@ -251,57 +234,17 @@ export class ApplicantPreferencePage extends BasePage {
 			// 	options_en: [],
 			// 	options_value: []
 			// },
-		];
-	}
-
-	toggleEditMode() {
-		this.edit_mode = !this.edit_mode;
-
-		if (!this.edit_mode) {
-			console.log('preference', this.preference_fields);
-			this.saved_preferences = this.preference_fields;
-			this.utils.setLocal('USER_PREFERENCE', this.preference_fields);
-		} else {
-			this.preference_fields = this.saved_preferences;
-		}
-	}
-
-	checkUserPreference() {
-		this.utils.getLocal('USER_PREFERENCE').then(pref => {
-			if (!pref) {
-				this.show_msg = true;
-				this.preference_fields.forEach(preference => {
-					// Default set all preferences importance to 'None'
-					preference.importance = 0;
-				});
-				console.log('preference_fields', this.preference_fields);
-			} else {
-				this.show_msg = false;
-				this.saved_preferences = pref;
-				console.log('saved_preferences', this.saved_preferences);
-			}
-		})
-	}
-
-	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
-	}
-
-	setPreference(preference, option) {
-		console.log('option', option);
-		console.log('preference', preference);
-		option.selected = !option.selected;
-
-		if (_.includes(preference.selection, option.id)) {
-			// Remove option if it exits in preferences
-			_.pull(preference.selection, option.id);
-		} else {
-			// Add option if it does not exist in preferences
-			preference.selection.push(option.id);
-		}
-	}
-
-	togglePreferenceWrapper(preference) {
-		preference.isExpanded = !preference.isExpanded;
-	}
+    ];
+    
+    this.preference_fields.forEach(preference => {
+      // Default set all preferences importance to 'None'
+      preference.importance = 1;
+    });
+    console.log('preference_fields', this.preference_fields);
+  }
+  
+  dismissModal() {
+    this.view.dismiss();
+    this.utils.setLocal('USER_PREFERENCE_NEVER_SHOW', true);
+  }
 }

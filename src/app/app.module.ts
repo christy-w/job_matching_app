@@ -29,6 +29,7 @@ import { InappHref } from '../core/components/inapp-href/inapp-href';
 // Components
 import { MenuComponent } from '../components/menu/menu';
 import { SearchFilter } from '../components/search-filter/search-filter';
+import { PreferenceModal } from '../components/preference-modal/preference-modal';
 import { DatetimePicker } from '../components/datetime-picker/datetime-picker';
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -43,7 +44,8 @@ let components = [
 	NewVersionPage,
 	MenuComponent,
 	SearchFilter,
-	DatetimePicker
+	DatetimePicker,
+	PreferenceModal
 ];
 
 let directives = [
