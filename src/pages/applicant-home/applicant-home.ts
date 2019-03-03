@@ -17,6 +17,7 @@ import * as moment from 'moment';
 export class ApplicantHomePage extends BasePage {
 
 	name: string = 'ApplicantHomePage';
+	language: string = '';
 	jobs: any;
 
 	constructor(
@@ -28,7 +29,6 @@ export class ApplicantHomePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
-
 	}
 
 	ionViewWillEnter() {
@@ -36,6 +36,9 @@ export class ApplicantHomePage extends BasePage {
 	}
 
 	ngOnInit() {
+		this.language = this.utils.currentLang();
+		console.log('home > lang', this.language);
+
 		this.api.startQueue([
 			this.api.getAllJobs()
 		]).then(response => {
@@ -56,7 +59,7 @@ export class ApplicantHomePage extends BasePage {
 					job.diff_days_en = 'Today';
 				} else if (diff_days > 0){
 					job.diff_days_zh = diff_days + '日前';
-					job.diff_days_en = diff_days + 'days ago';
+					job.diff_days_en = diff_days + ' days ago';
 				}
 
 				// Format job type and wage

@@ -14,6 +14,7 @@ export class ApplicantProfilePage extends BasePage {
 
 	name: string = 'ApplicantProfilePage';
 	profile_fields: any = [];
+	language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -24,7 +25,18 @@ export class ApplicantProfilePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantProfilePage constructor');
+	}
 
+	ngOnInit() {
+		this.initProfileFields();
+		this.language = this.utils.currentLang();
+	}
+
+	ionViewWillEnter() {
+		Config.ACTIVE_TAB = 'profile';
+	}
+
+	initProfileFields() {
 		this.profile_fields = [
 			{
 				name_zh: "個人資料",
@@ -153,10 +165,6 @@ export class ApplicantProfilePage extends BasePage {
 		];
 	}
 
-	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'profile';
-	}
-
 	openProfileDetailPage(detail) {
 		let params = { content: detail };
 		this.nav.push('ApplicantProfileDetailPage', params);
@@ -185,5 +193,11 @@ export class ApplicantProfilePage extends BasePage {
 			this.utils.removeLocal('USER_AUTH');
 			this.app.getRootNav().setRoot('WelcomePage');
 		});
+	}
+
+	setLanguage(language) {
+		console.log('Changing language to ', language);
+		this.language = language;
+		this.utils.changeLang(this.language);
 	}
 }

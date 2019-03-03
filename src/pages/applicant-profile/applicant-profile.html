@@ -41,7 +41,7 @@
         <div class="list-title">我的設定</div>
         <button ion-item class="list-item" detail-none>
             <ion-label>語言 Language</ion-label>
-            <ion-select [(ngModel)]="language">
+            <ion-select [(ngModel)]="language" (ionChange)="setLanguage(language)">
                 <ion-option value="zh">繁體中文</ion-option>
                 <ion-option value="en">英文</ion-option>
             </ion-select>
