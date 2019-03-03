@@ -114,13 +114,17 @@ export class ApplicantHomePage extends BasePage {
 		console.log('searchFilter');
 		let searchFilter = this.utils.createPopover(SearchFilter, {}, {cssClass:'search-filter'});
 		searchFilter.onDidDismiss(data => {
-			// (data) ? this.saveFilter(data) : this.cancelFilter();
-			// this.filterShown = false;
+			(data) ? this.filterJobList(data) : searchFilter.dismiss();
 		});
 	    searchFilter.present();
 	}
 
 	openJobPage() {
 		this.nav.push('ApplicantJobPage');
+	}
+
+	filterJobList(filters) {
+		console.log('type filters', filters.types);
+		console.log('district filters', filters.districts);
 	}
 }
