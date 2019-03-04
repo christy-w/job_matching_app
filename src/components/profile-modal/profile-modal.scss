@@ -1,0 +1,96 @@
+profile-modal {
+    .scroll-content {
+        padding-top: $header-height;
+        margin: 0 !important;
+    }
+    .slide-zoom {
+        text-align: left;
+    }
+    .profile-slide {
+        font-size: unset;
+        display: block;
+    }
+    .skip-btn {
+        position: relative;
+        margin-left: 20px;
+        padding: 0;
+        top: -30px;
+        text-align: center;
+        color: $font-yellow;
+        font-size: 15px;
+        background: transparent !important;
+        ion-icon {
+            position: relative;
+            padding-left: 5px;
+            font-size: 15px;
+            margin: auto;
+        }
+    }
+    .page-title {
+        padding: 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .list-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        .item-wrapper {
+            .item-inner {
+                border-bottom: 1px solid $light-grey;
+            }
+            &:last-child {
+                .item-inner {
+                    border: none;
+                }
+            }
+            .list-item {
+                font-family: $font-medium;
+                color: $dark-grey;
+                font-size: 1.2em;
+                .text-input, .select-text, .datetime-text {
+                    text-align: right;
+                    color: $font-yellow;
+                }
+            }
+        }
+        .list-title {
+            padding: 10px 15px;
+            font-family: $font-regular;
+            color: $medium-grey;
+            font-size: 1em;
+        }
+        .add-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: $font-yellow;
+            font-size: 1.8em;
+        }
+    }
+    .next-btn {
+        position: absolute;
+        bottom: 50px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: $bg-white;
+        box-shadow: $thumbnail-shadow;
+        ion-icon {
+            font-size: 28px;
+            color: $light-grey;
+        }
+        &.highlight {
+            background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+            background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+            background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+            ion-icon {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<ion-content>
+    <button class="skip-btn" (click)="dismissModal()">
+		稍後設定
+		<ion-icon name="arrow-forward"></ion-icon>
+	</button>
+	<ion-slides class="profile-slider">
+		<ion-slide class="profile-slide" *ngFor="let step of settings_steps">
+			<div class="page-title" *ngIf="step">{{ step['name_' + language] }}</div>
+			<div class="list-card" *ngIf="step.fields">
+				<div class="card-wrapper">
+					<div class="item-wrapper" *ngFor="let field of step.fields" [ngSwitch]="field.field_type">
+						<!-- <div  > -->
+							<div ion-item class="list-item" *ngSwitchCase="'input'">
+								<ion-label>{{ field['name_' + language] }}</ion-label>
+								<ion-input [(ngModel)]="field.selection"item-end placeholder="Hi"></ion-input>
+							</div>
+							<div ion-item class="list-item" *ngSwitchCase="'select'">
+								<ion-label>{{ field['name_' + language] }}</ion-label>
+								<ion-select [(ngModel)]="field.selection" ionChange="onChange(field)">
+									<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
+								</ion-select>
+							</div>
+							<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
+								<ion-label>{{ field['name_' + language] }}</ion-label>
+								<ion-select [(ngModel)]="field.selection" multiple="true" ionChange="onChange(field)">
+									<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
+								</ion-select>
+							</div>
+							<div ion-item class="list-item" *ngSwitchCase="'date'">
+								<ion-label>{{ field['name_' + language] }}</ion-label>
+								<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="field.selection"></ion-datetime>
+							</div>
+						<!-- </div> -->
+					</div>
+				</div>
+			</div>
+			<button class="next-btn" (click)="submitInfo(step)">
+				<ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		</ion-slide>
+	</ion-slides>
+    
+  </ion-content>

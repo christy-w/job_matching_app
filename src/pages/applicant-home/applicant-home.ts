@@ -9,6 +9,7 @@ import { PreferenceModal } from '../../components/preference-modal/preference-mo
 import { Api } from '../../providers';
 import _ from 'lodash';
 import * as moment from 'moment';
+import { ProfileModal } from '../../components/profile-modal/profile-modal';
 
 @IonicPage()
 @Component({
@@ -38,16 +39,26 @@ export class ApplicantHomePage extends BasePage {
 	}
 
 	checkUserPreference() {
-		this.utils.getLocal('USER_PREFERENCE').then(preference => {
-			console.log('preference', preference);
-			if (!preference) {
-				this.utils.getLocal('USER_PREFERENCE_NEVER_SHOW').then(bool => {
+		this.utils.getLocal('USER_PROFILE').then(profile => {
+			console.log('profile', profile);
+			if (!profile) {
+				this.utils.getLocal('USER_PROFILE_NEVER_SHOW').then(bool => {
 					if (!bool) {
-						this.utils.showModal(PreferenceModal, {}, {cssClass:'preference-modal'});
+						this.utils.showModal(ProfileModal, {}, {cssClass:'profile-modal'});
 					}
 				})
 			}
 		})
+		// this.utils.getLocal('USER_PREFERENCE').then(preference => {
+		// 	console.log('preference', preference);
+		// 	if (!preference) {
+		// 		this.utils.getLocal('USER_PREFERENCE_NEVER_SHOW').then(bool => {
+		// 			if (!bool) {
+		// 				this.utils.showModal(PreferenceModal, {}, {cssClass:'preference-modal'});
+		// 			}
+		// 		})
+		// 	}
+		// })
 	}
 
 	ngOnInit() {

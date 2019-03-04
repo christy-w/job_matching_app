@@ -87,6 +87,7 @@ page-applicant-home {
                     }
                     .tags {
                         position: relative;
+                        height: 20px;
                         overflow: hidden;
                         .tag {
                             display: inline-block;
@@ -95,6 +96,10 @@ page-applicant-home {
                             padding: 2px 10px 2px 10px;
                             color: #fff;
                             font-size: 0.8em;
+                            max-width: 100px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
                             background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
                             background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                             background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
