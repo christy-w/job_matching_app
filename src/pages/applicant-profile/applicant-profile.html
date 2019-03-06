@@ -25,10 +25,12 @@
             </div>
         </ion-col>
     </ion-row>
-    <div class="list-card my-profile" *ngIf="profile_fields">
+    <div class="list-card my-profile">
         <div class="list-title">我的資料</div>
         <div class="my-profile-wrapper">
-            <button ion-item class="list-item" *ngFor="let profile_field of profile_fields" (click)="openProfileDetailPage(profile_field)">{{ profile_field.name_zh }}</button>
+            <button ion-item class="list-item" (click)="openProfileDetailPage('personal_details')">{{ 'APPLICANT_PROFILE.PERSONAL_DETAILS' | translate }}</button>
+            <button ion-item class="list-item" (click)="openProfileDetailPage('work_experiences')">{{ 'APPLICANT_PROFILE.WORK_EXPERIENCES' | translate }}</button>
+            <button ion-item class="list-item" (click)="openProfileDetailPage('skills_certificates')">{{ 'APPLICANT_PROFILE.SKILLS_CERTIFICATES' | translate }}</button>
             <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
         </div>
     </div>

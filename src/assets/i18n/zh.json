@@ -86,5 +86,11 @@
         "LANGUAGE": "語言能力",
         "COMPUTER": "電腦技能",
         "CERTS": "保安資格"
+    },
+
+    "APPLICANT_PROFILE": {
+        "PERSONAL_DETAILS": "個人資料",
+        "WORK_EXPERIENCES": "工作經驗",
+        "SKILLS_CERTIFICATES": "技能及資格"
     }
 }

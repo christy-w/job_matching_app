@@ -236,10 +236,6 @@ export class ProfileModal {
 			this.language_abilities = response[0];
 			this.computer_skills = _.filter(response[1], { 'status': 'active'});
 			this.related_certs = _.filter(response[2], { 'status': 'active'});
-
-			console.log('language_abilities', this.language_abilities);
-			console.log('computer_skills', this.computer_skills);
-			console.log('related_certs', this.related_certs);
 		});
 	}
 	
@@ -249,7 +245,6 @@ export class ProfileModal {
 	}
 
 	goNextSection(step) {
-		console.log('step', step);
 		let return_data = {}; 
 		_.each(step.fields, (field) => {
 			return_data[field.type] = field.selection;
@@ -267,6 +262,7 @@ export class ProfileModal {
 		_.extend(this.update_data, skills);
 		console.log('update_data', this.update_data);
 
+		// Update User Info
 		this.api.startQueue([
 			this.api.postUpdateApplicant(this.update_data)
 		]).then(response => {

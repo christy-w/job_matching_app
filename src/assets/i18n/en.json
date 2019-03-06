@@ -86,5 +86,11 @@
         "LANGUAGE": "Language Abilities",
         "COMPUTER": "Computer Skills",
         "CERTS": "Related Certificates"
+    },
+
+    "APPLICANT_PROFILE": {
+        "PERSONAL_DETAILS": "Personal Details",
+        "WORK_EXPERIENCES": "Work Experiences",
+        "SKILLS_CERTIFICATES": "Skills and Certificates"
     }
 }
