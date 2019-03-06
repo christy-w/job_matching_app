@@ -79,5 +79,12 @@
         "TYPE": "Employment Type",
         "LOCATION": "Work Location",
         "PUBLISH_DATE": "Publish Date"
+    },
+
+    "PROFILE_MODAL": {
+        "SKILLS": "Skills and Certificates",
+        "LANGUAGE": "Language Abilities",
+        "COMPUTER": "Computer Skills",
+        "CERTS": "Related Certificates"
     }
 }

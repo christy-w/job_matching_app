@@ -79,5 +79,12 @@
         "TYPE": "工作類別",
         "LOCATION": "地區",
         "PUBLISH_DATE": "刊登日期"
+    },
+
+    "PROFILE_MODAL": {
+        "SKILLS": "技能及資格",
+        "LANGUAGE": "語言能力",
+        "COMPUTER": "電腦技能",
+        "CERTS": "保安資格"
     }
 }

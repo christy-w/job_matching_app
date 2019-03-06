@@ -53,7 +53,7 @@ export class SearchFilter {
 	
 	initDistricts() {
 		this.api.startQueue([
-			this.api.getAllDistricts()
+			this.api.getSystemInfo('districts')
 		]).then(response => {
 			var all_districts = response[0];
 			

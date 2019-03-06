@@ -10,9 +10,16 @@ export class Api extends BaseService {
 	//protected api_prefix: string = 'https://dev.juicyapphk.com/juicycore/api';
 	protected api_prefix: string = 'http://localhost/fyp_web/api';
 	protected api_key_anonymous: string = 'anonymous';
-	
+	protected user_api_key: string = '';
+
 	constructor(platform: Platform, utils: Utils) {
 		super(platform, utils);
+		this.utils.getLocal('USER_AUTH').then(auth => {
+			if (auth) {
+				this.user_api_key = auth.api_key;
+				console.log('user_api_key', this.user_api_key);
+			}
+		})
 	}
 
 	// POST /Auth
@@ -41,6 +48,12 @@ export class Api extends BaseService {
 		return this.post('/auth/reset_password', data);
 	}
 
+	// POST and GET /Applicants
+	public postUpdateApplicant(data) {
+		this.headers.set('X-API-KEY', this.user_api_key);
+		return this.post('/applicant/update', data);
+	}
+
 	/*--- GET ---*/
 	public getAllJobs() {
 		let url = '/job';
@@ -52,8 +65,8 @@ export class Api extends BaseService {
 		return this.get(url);
 	}
 
-	public getAllDistricts() {
-		let url = '/system/districts';
+	public getSystemInfo(name) {
+		let url = '/system/' + name;
 		return this.get(url);
 	}
 }
