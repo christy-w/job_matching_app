@@ -1,6 +1,19 @@
 page-applicant-profile-detail {
-    .scroll-content {
-          margin-top: $header-height;
+    .back-btn {
+        position: relative;
+        margin-left: 20px;
+        margin-top: $header-height;
+        padding: 0;
+        text-align: center;
+        color: $font-yellow;
+        font-size: 15px;
+        background: transparent !important;
+        img {
+            vertical-align: middle;
+            margin: 0 auto;
+            width: 25px;
+            height: 25px;
+        }
     }
     .page-title {
         padding: 0px 20px;

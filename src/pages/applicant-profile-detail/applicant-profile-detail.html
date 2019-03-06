@@ -1,6 +1,9 @@
-<common-header [enable-back]="true"></common-header>
+<!-- <common-header [enable-back]="true"></common-header> -->
 
 <ion-content>
+	<button ion-button class="back-btn" (click)="backToProfile()">
+		<img src="../../assets/icon/back.png"/>
+	</button>
 	<!-- <div class="page-title" *ngIf="detail">{{ detail.name_zh }}</div> -->
     <div class="list-card" *ngIf="detail_type == 'personal_details' || detail_type == 'work_experiences'">
         <div class="card-wrapper">

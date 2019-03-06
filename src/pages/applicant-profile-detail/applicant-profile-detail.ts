@@ -243,8 +243,6 @@ export class ApplicantProfileDetailPage extends BasePage {
 				];
 				break;
 		}
-
-
 		if (this.user_profile) {
 			this.renderUserProfile();
 		}
@@ -271,5 +269,23 @@ export class ApplicantProfileDetailPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = '';
+	}
+
+	backToProfile() {
+		switch(this.detail_type) {
+			case 'personal_details':
+			case 'work_experiences':
+				console.log('update', this.detail_fields);
+				break;
+			case 'skills_certificates':
+				this.selected_languages = this.user_profile.language_abilities;
+				this.selected_skills = this.user_profile.computer_skills;
+				this.selected_certs = this.user_profile.related_certs;
+				console.log('update selected_languages', this.selected_languages);
+				console.log('update selected_skills', this.selected_skills);
+				console.log('update selected_certs', this.selected_certs);
+				break;
+		}
+		this.nav.pop();
 	}
 }
