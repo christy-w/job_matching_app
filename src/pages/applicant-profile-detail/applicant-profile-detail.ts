@@ -22,6 +22,10 @@ export class ApplicantProfileDetailPage extends BasePage {
 	language_abilities: any;
 	computer_skills: any;
 	related_certs: any;
+
+	selected_languages: any;
+	selected_skills: any;
+	selected_certs: any;
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -123,9 +127,6 @@ export class ApplicantProfileDetailPage extends BasePage {
 						options: []
 					},
 				];
-				if (this.user_profile) {
-					this.renderUserProfile();
-				}
 				break;
 			case 'work_experiences':
 				this.detail_fields = [
@@ -240,10 +241,12 @@ export class ApplicantProfileDetailPage extends BasePage {
 						]
 					},
 				];
-				if (this.user_profile) {
-					this.renderUserProfile();
-				}
 				break;
+		}
+
+
+		if (this.user_profile) {
+			this.renderUserProfile();
 		}
 	}
 
@@ -258,14 +261,15 @@ export class ApplicantProfileDetailPage extends BasePage {
 					this.detail_fields[i].selection = value;
 				}
 				break;
+			case 'skills_certificates':
+				this.selected_languages = this.user_profile.language_abilities;
+				this.selected_skills = this.user_profile.computer_skills;
+				this.selected_certs = this.user_profile.related_certs;
+				break;
 		}
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = '';
-	}
-
-	onChange(field) {
-		console.log('field', field);
 	}
 }
