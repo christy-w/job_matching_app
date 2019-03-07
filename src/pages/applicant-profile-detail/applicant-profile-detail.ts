@@ -17,6 +17,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	name: string = 'ApplicantProfileDetailPage';
 	detail_type: string = '';
 	user_profile: any;
+	original_profile: any;
 	detail_fields: any;
 
 	language_abilities: any;
@@ -41,9 +42,12 @@ export class ApplicantProfileDetailPage extends BasePage {
 		console.log('detail', this.detail_type);
 	}
 
+	ionViewWillEnter() {
+		Config.ACTIVE_TAB = '';
+	}
+
 	ngOnInit() {
 		this.initSkillsArrays();
-		// this.renderUserProfile();
 		this.language = this.utils.currentLang();
 	}
 
@@ -59,12 +63,13 @@ export class ApplicantProfileDetailPage extends BasePage {
 			this.related_certs = _.filter(response[2], { 'status': 'active'});
 			this.user_profile = response[3];
 
+			// Copy original data for later comparison
+			this.original_profile = this.user_profile;
+
 			// Inif profile fields after getting user profile;
 			this.initProfileFields();
-			console.log('user_profile', this.user_profile);
 		});
 	}
-
 
 	initProfileFields() {
 		switch(this.detail_type) {
@@ -249,6 +254,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	}
 
 	renderUserProfile() {
+		// Render original profile
 		switch(this.detail_type) {
 			case 'personal_details':
 			case 'work_experiences':
@@ -267,25 +273,66 @@ export class ApplicantProfileDetailPage extends BasePage {
 		}
 	}
 
-	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
-	}
-
 	backToProfile() {
+		let needUpdate = false;
 		switch(this.detail_type) {
 			case 'personal_details':
 			case 'work_experiences':
-				console.log('update', this.detail_fields);
+				// Check if there is update
+				this.detail_fields.forEach(field => {
+					if (this.user_profile[field.type] != field.selection) {
+						// Update new profile
+						this.user_profile[field.type] = field.selection;
+						needUpdate = true;
+					}
+				});
 				break;
 			case 'skills_certificates':
 				this.selected_languages = this.user_profile.language_abilities;
 				this.selected_skills = this.user_profile.computer_skills;
 				this.selected_certs = this.user_profile.related_certs;
-				console.log('update selected_languages', this.selected_languages);
-				console.log('update selected_skills', this.selected_skills);
-				console.log('update selected_certs', this.selected_certs);
+
+				if (this.user_profile['language_abilities'] != this.selected_languages) {
+					this.user_profile['language_abilities'] = this.selected_languages;
+					needUpdate = true;
+				}
+
+				if (this.user_profile['computer_skills'] != this.selected_skills) {
+					this.user_profile['computer_skills'] = this.selected_skills;
+					needUpdate = true;
+				}
+
+				if (this.user_profile['related_certs'] != this.selected_certs) {
+					this.user_profile['related_certs'] = this.selected_certs;
+					needUpdate = true;
+				}
 				break;
 		}
-		this.nav.pop();
+
+		if (needUpdate) {
+			// Update profile and dismiss
+			this.updateProfile();
+		} else {
+			// Dismiss
+			this.nav.pop();
+		}
+	}
+
+	updateProfile() {
+		// Update User Info
+		let profile_to_update = _.omit(this.user_profile, ['status', 'id']);
+		console.log('to submit', profile_to_update);
+		this.api.startQueue([
+			this.api.postUpdateApplicant(profile_to_update)
+		]).then(response => {
+			let update_response = response[0];
+
+			// Successful update
+			if (update_response == 1) {
+				this.nav.pop();
+			} else {
+				console.log('update unsuccessful');
+			}
+		});
 	}
 }
