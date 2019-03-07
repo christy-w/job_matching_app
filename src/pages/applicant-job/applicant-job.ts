@@ -15,7 +15,7 @@ import * as moment from 'moment';
 	templateUrl: 'applicant-job.html'
 })
 export class ApplicantJobPage extends BasePage {
-
+	language: string = '';
 	name: string = 'ApplicantJobPage';
 	job: any;
 
@@ -36,6 +36,7 @@ export class ApplicantJobPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'job';
+		this.language = this.utils.currentLang();
 	}
 
 	initJobDetail(job_id) {
@@ -56,10 +57,9 @@ export class ApplicantJobPage extends BasePage {
 			}
 
 			// Format job type and wage
-			let type = job.type;
 			let monthly_wage = job.monthly_wage;
 			let hourly_wage = job.hourly_wage;
-			switch(type) {
+			switch(job.type) {
 				case 'fulltime':
 					job.type_zh = '全職';
 					job.type_en = 'Full Time';
@@ -79,6 +79,30 @@ export class ApplicantJobPage extends BasePage {
 					job.wage_en = '$' + hourly_wage + '/Hour';
 					break;
 			}
+
+			switch(job.employer.scale) {
+				case 'under_20':
+					job.employer['scale_zh'] = '20人或以下';
+					job.employer['scale_en'] = '20 people or below';
+					break;
+				case '21_100':
+					job.employer.scale_zh = '21-100人';
+					job.employer.scale_en = '20-100 people';
+					break;
+				case '101_500':
+					job.employer.scale_zh = '101-500人';
+					job.employer.scale_en = '101-500 people';
+					break;
+				case '501_1000':
+					job.employer.scale_zh = '501-1000人';
+					job.employer.scale_en = '501-1000 people';
+					break;
+				case 'above_1000':
+					job.employer.scale_zh = '1000人以上';
+					job.employer.scale_en = 'More than 1000 people';
+					break;
+			}
+			
 			this.job = job;
 			console.log('job detail', this.job);
 		});

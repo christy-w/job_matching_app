@@ -241,7 +241,7 @@ export class ProfileModal {
 	
 	dismissModal() {
 		this.view.dismiss();
-		this.utils.setLocal('USER_PREFERENCE_NEVER_SHOW', true);
+		this.utils.setLocal('USER_PROFILE_NEVER_SHOW', true);
 	}
 
 	goNextSection(step) {

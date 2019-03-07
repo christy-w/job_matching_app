@@ -10,6 +10,64 @@ page-applicant-job {
         box-shadow: $item-shadow;
         height: auto;
         padding: 8px 0;
+        .job-info {
+            padding-left: 15px;
+            font-family: $font-bold;
+            color: $dark-grey;
+            .title {
+                display: inline-block;
+                font-size: 1.7em;
+            }
+            .job-type {
+                display: inline-block;
+                font-family: $font-medium;
+                .dot {
+                    display: inline-block;
+                    margin-bottom: 2px;
+                    background-color: $red;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                }
+            }
+            .district {
+                font-size: 1em;
+                color: $medium-grey;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .salary {
+                padding-top: 20px;
+                font-size: 1.4em;
+            }
+        }
+        .publish-date {
+            position: absolute;
+            right: 15px;
+            padding-top: 5px;
+            text-align: right;
+            font-size: 10px;
+            color: $medium-grey;
+            font-family: $font-medium;
+        }
+        .fav-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            ion-icon {
+                color: $red;
+            }
+        }
+    }
+    .employer-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        height: auto;
+        padding: 8px 0;
         .thumbnail {
             position: absolute;
             top: 0;
@@ -25,37 +83,25 @@ page-applicant-job {
             background-position: 50%;
             box-shadow: $thumbnail-shadow;
         }
-        .job-info {
+        .employer-info {
             margin-left: -5px;
             font-family: $font-bold;
             color: $dark-grey;
             .title {
                 display: inline-block;
-                font-size: 1.4em;
+                font-size: 1.1em;
+                padding-bottom: 5px;
             }
-            .job-type {
-                display: inline-block;
-                font-family: $font-medium;
-                .dot {
-                    display: inline-block;
-                    margin-bottom: 2px;
-                    background-color: $red;
-                    width: 5px;
-                    height: 5px;
-                    border-radius: 50%;
-                }
-            }
-            .employer {
+            .info {
                 font-size: 1em;
                 color: $medium-grey;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-            .salary {
-                padding-top: 10px;
-                font-size: 1.1em;
-                padding-bottom: 3px;
+                ion-icon {
+                    color: $light-grey;
+                    width: 10px;
+                }
+                span {
+                    padding-left: 5px;
+                }
             }
             .tags {
                 position: relative;
@@ -75,23 +121,7 @@ page-applicant-job {
                 }
             }
         }
-        .publish-date {
-            position: absolute;
-            right: 5px;
-            padding-top: 5px;
-            text-align: right;
-            font-size: 10px;
-            color: $medium-grey;
-            font-family: $font-medium;
-        }
-        .fav-btn {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            ion-icon {
-                color: $red;
-            }
-        }
+        
     }
     .job-detail {
         position: relative;
