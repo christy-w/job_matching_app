@@ -5,7 +5,9 @@ import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
+import { Match } from '../../providers';
 
+import _ from 'lodash';
 @IonicPage()
 @Component({
 	selector: 'page-applicant-recommendation',
@@ -15,13 +17,15 @@ export class ApplicantRecommendationPage extends BasePage {
 
 	name: string = 'ApplicantRecommendationPage';
 	user_preference: any;
+	all_jobs: any;
 	recommendations: any = [];
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
 		protected utils: Utils,
-		private api: Api
+		private api: Api,
+		private match: Match
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantRecommendationPage constructor');
@@ -135,7 +139,6 @@ export class ApplicantRecommendationPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'recommendation';
-		this.initAllJobs();
 		this.getUserPreference();
 	}
 
@@ -143,10 +146,50 @@ export class ApplicantRecommendationPage extends BasePage {
 		this.utils.getLocal('USER_PREFERENCE').then(pref => {
 			if (pref && pref != null) {
 				this.user_preference = pref;
+				this.initAllJobs();
 				console.log('User saved preference', this.user_preference);
 			} else {
 				this.user_preference = null;
 				console.log('No preference');
+			}
+		})
+	}
+
+	initRecommendations() {
+		_.each(this.user_preference, (pref) => {
+			// Key to match with job key
+			let match_key = this.match.translatePrefKey(pref.value);
+			// All preferences
+			let match_all_value = this.match.translatePrefAllValue(pref.value);
+			// User preferences that are selected
+			let match_value = this.match.translatePrefValue(pref.value, pref.selection);
+			// User preferences that are not selected
+			let other_value = _.difference(match_all_value, match_value);
+
+			if (pref.importance == 2) {
+				// For fields considered as MUST
+				let must_jobs = [];
+				// Check if preference match with job, if not, filter from list
+				_.each(match_value, (value) => {
+					let matched_jobs = _.filter(this.all_jobs, function(job) {
+						return job[match_key] == value;
+					});
+					must_jobs = _.concat(must_jobs, matched_jobs)
+				})
+				console.log('must_jobs', must_jobs);
+			} else if (pref.importance == 1) {
+				// For fields considered as PREFERRED
+				let preferred_jobs = [];
+				_.each(match_value, (value) => {
+					// Place preferref jobs first, then the others
+					let matched_jobs = _.partition(this.all_jobs, function(job) {
+						return job[match_key] == value;
+					});
+					preferred_jobs = _.flatten(matched_jobs);
+					console.log('preferred_jobs', preferred_jobs);
+				})
+			} else {
+
 			}
 		})
 	}
@@ -155,7 +198,11 @@ export class ApplicantRecommendationPage extends BasePage {
 		this.api.startQueue([
 			this.api.getAllJobs()
 		]).then(response => {
-			let all_jobs = response[0];
+			this.all_jobs = response[0];
+	
+			if (this.all_jobs) {
+				this.initRecommendations();
+			}
 		});
 	}
 

@@ -23,6 +23,7 @@ import { MyApp } from './app.component';
 import { NewVersionPage } from '../core/components/new-version/new-version';
 import { Utils } from '../core/providers/utils';
 import { Api } from '../providers';
+import { Match } from '../providers';
 import { EscapeHtml } from '../core/pipes/escape-html';
 import { InappHref } from '../core/components/inapp-href/inapp-href';
 
@@ -85,6 +86,7 @@ export function providers() {
 
 		// Custom
 		Api,
+		Match,
 		Utils,
 		// Here we tell the Angular ErrorHandling class
 		// that it should be using the IonicErrorHandler class for any errors
