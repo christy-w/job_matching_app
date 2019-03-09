@@ -57,7 +57,8 @@
         "RESET_FAILED": "Reset password failed, please try again.",
         "LOGOUT": "Confirm to logout?",
         "UPDATE_SUCCESS": "Information updated successfully.",
-        "UPDATE_FAILED": "Information update failed, please check and try again."
+        "UPDATE_FAILED": "Information update failed, please check and try again.",
+        "UPDATE_INVALID": "Information are invalid, please check and try again."
     },
     
     "ERROR": {

@@ -23,17 +23,17 @@ export class ProfileModal {
 	constructor(
 		private utils: Utils, 
 		private view: ViewController,
-		private api: Api
+		private api: Api,
 	) {
 	}
 
 	ngOnInit() {
 		this.language = this.utils.currentLang();
-		this.initPreferenceArrays();
+		this.initProfileArrays();
 		this.initSkillsArrays();
 	}
 
-	initPreferenceArrays() {
+	initProfileArrays() {
 		this.settings_steps = [
 			{
 				name_zh: "個人資料",
@@ -151,7 +151,7 @@ export class ProfileModal {
 						name_zh: "職業狀況",
 						name_en: "Employment Status",
 						type: "employment_status",
-						required: true,
+						required: false,
 						field_type: "select", // input/select/multi_select/date/
 						selection: '',
 						options: [
@@ -246,11 +246,21 @@ export class ProfileModal {
 
 	goNextSection(step) {
 		let return_data = {}; 
+		let validate = true;
 		_.each(step.fields, (field) => {
 			return_data[field.type] = field.selection;
+			if (field.required && !field.selection) {
+				validate = false;
+				return false;
+			}
 		})
-		_.extend(this.update_data, return_data);
-		this.slides.slideNext();
+
+		if (validate) {
+			_.extend(this.update_data, return_data);
+			this.slides.slideNext();
+		} else {
+			this.utils.showAlert('', this.utils.instantLang('MSG.UPDATE_INVALID'));
+		}
 	}
 
 	sendUpdateInfo(languages, computer_skills, certs) {
@@ -262,7 +272,7 @@ export class ProfileModal {
 		_.extend(this.update_data, skills);
 		console.log('update_data', this.update_data);
 
-		// Update User Info
+		//Update User Info
 		this.api.startQueue([
 			this.api.postUpdateApplicant(this.update_data)
 		]).then(response => {

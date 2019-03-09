@@ -57,7 +57,8 @@
         "RESET_FAILED": "重設密碼失敗，請重新嘗試。",
         "LOGOUT": "確定登出？",
         "UPDATE_SUCCESS": "資料已經更改成功。",
-        "UPDATE_FAILED": "資料更改失敗，請重新檢查並嘗試。"
+        "UPDATE_FAILED": "資料更改失敗，請重新檢查並嘗試。",
+        "UPDATE_INVALID": "請重新檢查並填寫資料。"
     },
 
     "ERROR": {

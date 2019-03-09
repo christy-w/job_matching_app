@@ -17,7 +17,6 @@ export class ApplicantProfileDetailPage extends BasePage {
 	name: string = 'ApplicantProfileDetailPage';
 	detail_type: string = '';
 	user_profile: any;
-	original_profile: any;
 	detail_fields: any;
 	detail_title: string = '';
 
@@ -63,9 +62,6 @@ export class ApplicantProfileDetailPage extends BasePage {
 		]).then(response => {
 			this.user_profile = response[0];
 			console.log('Profile detail', this.user_profile);
-
-			// Copy original data for later comparison
-			this.original_profile = this.user_profile;
 
 			// Inif profile fields after getting user profile;
 			this.initProfileFields();
@@ -282,9 +278,24 @@ export class ApplicantProfileDetailPage extends BasePage {
 				}
 				break;
 			case 'skills_certificates':
-				this.selected_languages = this.user_profile.language_abilities;
-				this.selected_skills = this.user_profile.computer_skills;
-				this.selected_certs = this.user_profile.related_certs;
+				if (this.user_profile.language_abilities) {
+					this.selected_languages = this.user_profile.language_abilities;
+				} else {
+					this.selected_languages = '';
+				}
+
+				if (this.user_profile.computer_skills) {
+					this.selected_skills = this.user_profile.computer_skills;
+				} else {
+					this.selected_skills = '';
+				}
+
+				if (this.user_profile.related_certs) {
+					this.selected_certs = this.user_profile.related_certs;
+				} else {
+					this.selected_certs = '';
+				}
+				console.log('selected_languages', this.selected_languages);
 				break;
 		}
 	}
@@ -304,10 +315,6 @@ export class ApplicantProfileDetailPage extends BasePage {
 				});
 				break;
 			case 'skills_certificates':
-				this.selected_languages = this.user_profile.language_abilities;
-				this.selected_skills = this.user_profile.computer_skills;
-				this.selected_certs = this.user_profile.related_certs;
-
 				if (this.user_profile['language_abilities'] != this.selected_languages) {
 					this.user_profile['language_abilities'] = this.selected_languages;
 					needUpdate = true;
