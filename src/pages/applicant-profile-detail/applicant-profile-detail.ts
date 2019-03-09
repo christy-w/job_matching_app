@@ -19,6 +19,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	user_profile: any;
 	original_profile: any;
 	detail_fields: any;
+	detail_title: string = '';
 
 	language_abilities: any;
 	computer_skills: any;
@@ -49,6 +50,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 
 	ngOnInit() {
 		this.syncUserProfile();
+
 		if (this.detail_type == 'skills_certificates') {
 			this.initSkillsArrays();
 		}
@@ -71,6 +73,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	}
 
 	initSkillsArrays() {
+		this.detail_title = 'APPLICANT_PROFILE.SKILLS_CERTIFICATES';
 		this.api.startQueue([
 			this.api.getSystemInfo('language_abilities'),
 			this.api.getSystemInfo('computer_skills'),
@@ -85,6 +88,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	initProfileFields() {
 		switch(this.detail_type) {
 			case 'personal_details': 
+				this.detail_title = 'APPLICANT_PROFILE.PERSONAL_DETAILS';
 				this.detail_fields = [
 					{
 						name_zh: "中文姓名",
@@ -145,6 +149,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 				];
 				break;
 			case 'work_experiences':
+				this.detail_title = 'APPLICANT_PROFILE.WORK_EXPERIENCES';
 				this.detail_fields = [
 					{
 						name_zh: "教育程度",
@@ -340,10 +345,10 @@ export class ApplicantProfileDetailPage extends BasePage {
 
 			// Successful update
 			if (update_response == 1) {
-				console.log('User info is updated successfully');
+				this.utils.showToast(this.utils.instantLang('MSG.UPDATE_SUCCESS'));
 				this.nav.pop();
 			} else {
-				console.log('update unsuccessful');
+				this.utils.showAlert('', this.utils.instantLang('MSG.UPDATE_FAILED'));
 			}
 		});
 	}

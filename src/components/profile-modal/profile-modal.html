@@ -11,7 +11,7 @@
 					<div class="item-wrapper" *ngFor="let field of step.fields" [ngSwitch]="field.field_type">
 						<div ion-item class="list-item" *ngSwitchCase="'input'">
 							<ion-label>{{ field['name_' + language] }}</ion-label>
-							<ion-input [(ngModel)]="field.selection"item-end placeholder="Hi"></ion-input>
+							<ion-input [(ngModel)]="field.selection"item-end></ion-input>
 						</div>
 						<div ion-item class="list-item" *ngSwitchCase="'select'">
 							<ion-label>{{ field['name_' + language] }}</ion-label>

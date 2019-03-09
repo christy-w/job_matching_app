@@ -272,6 +272,8 @@ export class ProfileModal {
 			if (update_response == 1) {
 				this.view.dismiss();
 				this.utils.setLocal('USER_PROFILE_NEVER_SHOW', true);
+			} else {
+				this.utils.showAlert('', this.utils.instantLang('MSG.UPDATE_FAILED'));
 			}
 		});
 	}
