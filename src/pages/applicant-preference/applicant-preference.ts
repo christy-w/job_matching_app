@@ -204,7 +204,7 @@ export class ApplicantPreferencePage extends BasePage {
 				// Check if pref are null
 				_.each(pref, (preference) => {
 					if (preference.selection == '' || preference.selection.length == 0) {
-						console.log('preference ' + preference.value + 'is empty');
+						console.log('preference ' + preference.value + ' is empty');
 						preference.importance = 0;
 					}
 				})

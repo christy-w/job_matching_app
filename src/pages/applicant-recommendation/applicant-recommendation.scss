@@ -19,4 +19,42 @@ page-applicant-recommendation {
     .recommendation-slider {
         margin-top: 10px;
     }
+
+    .preference-msg {
+        position: relative;
+        margin: 20px;
+        background-color: #fff;
+        box-shadow: $item-shadow;
+        border-radius: 5px;
+        height: 300px;
+        text-align: center;
+        .msg-wrapper {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 80%;
+            color: $medium-grey;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+            .go-setting-btn {
+                display: block;
+                text-align: center;
+                width: 47%;
+                padding: 8px;
+                font-size: 1em;
+                font-family: 'Roboto-bold';
+                border-radius: 5px;
+                margin: 50px auto;
+                left: 0;
+                right: 0;
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $highlight-btn-shadow;
+            }
+        }
+    }
 }

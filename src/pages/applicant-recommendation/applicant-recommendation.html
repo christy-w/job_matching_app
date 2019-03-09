@@ -3,7 +3,15 @@
 <ion-content>
     <div class="page-title">所有工作</div>
     <div class="page-desp">有 3 項與你極符合的工作</div>
-    <div class="recommendation-slider">
+    <div class="recommendation-slider" *ngIf="user_preference">
         <card-slider [slidesInfo]="recommendations"></card-slider>
+    </div>
+    <div class="preference-msg" *ngIf="!user_preference">
+        <div class="msg-wrapper">
+            您還未設置喜好設定，<br>我們未能為你篩選符合你喜好的工作。<br>請到設定頁面，點選「要求及喜好」設置。
+            <button class="go-setting-btn" (click)="goSettingPage()">
+                現在設置
+            </button>
+        </div>
     </div>
 </ion-content>

@@ -4,6 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
+import { Api } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -13,12 +14,14 @@ import { Utils } from '../../core/providers/utils';
 export class ApplicantRecommendationPage extends BasePage {
 
 	name: string = 'ApplicantRecommendationPage';
+	user_preference: any;
 	recommendations: any = [];
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
-		protected utils: Utils
+		protected utils: Utils,
+		private api: Api
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantRecommendationPage constructor');
@@ -132,7 +135,31 @@ export class ApplicantRecommendationPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'recommendation';
+		this.initAllJobs();
+		this.getUserPreference();
 	}
 
+	getUserPreference() {
+		this.utils.getLocal('USER_PREFERENCE').then(pref => {
+			if (pref && pref != null) {
+				this.user_preference = pref;
+				console.log('User saved preference', this.user_preference);
+			} else {
+				this.user_preference = null;
+				console.log('No preference');
+			}
+		})
+	}
 	
+	initAllJobs() {
+		this.api.startQueue([
+			this.api.getAllJobs()
+		]).then(response => {
+			let all_jobs = response[0];
+		});
+	}
+
+	goSettingPage() {
+		this.nav.setRoot('ApplicantProfilePage');
+	}
 }
