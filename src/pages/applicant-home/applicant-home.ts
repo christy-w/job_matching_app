@@ -35,30 +35,34 @@ export class ApplicantHomePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'home';
+		this.checkUserProfile();
 		this.checkUserPreference();
 	}
 
+	checkUserProfile() {
+		// Check if User updated profile
+		if (Config.USER_AUTH.info_updated == 0) {
+			// If no update record, check if the user skips updating
+			this.utils.getLocal('USER_PROFILE_NEVER_SHOW').then(bool => {
+				if (!bool) {
+					// If user did not skip, ask to update
+					this.utils.showModal(ProfileModal, {}, {cssClass:'profile-modal'});
+				}
+			})
+		}
+	}
+
 	checkUserPreference() {
-		this.utils.getLocal('USER_PROFILE').then(profile => {
-			console.log('profile', profile);
-			if (!profile) {
-				this.utils.getLocal('USER_PROFILE_NEVER_SHOW').then(bool => {
+		this.utils.getLocal('USER_PREFERENCE').then(preference => {
+			console.log('preference', preference);
+			if (!preference) {
+				this.utils.getLocal('USER_PREFERENCE_NEVER_SHOW').then(bool => {
 					if (!bool) {
-						this.utils.showModal(ProfileModal, {}, {cssClass:'profile-modal'});
+						this.utils.showModal(PreferenceModal, {}, {cssClass:'preference-modal'});
 					}
 				})
 			}
 		})
-		// this.utils.getLocal('USER_PREFERENCE').then(preference => {
-		// 	console.log('preference', preference);
-		// 	if (!preference) {
-		// 		this.utils.getLocal('USER_PREFERENCE_NEVER_SHOW').then(bool => {
-		// 			if (!bool) {
-		// 				this.utils.showModal(PreferenceModal, {}, {cssClass:'preference-modal'});
-		// 			}
-		// 		})
-		// 	}
-		// })
 	}
 
 	ngOnInit() {

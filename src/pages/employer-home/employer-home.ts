@@ -35,16 +35,11 @@ export class EmployerHomePage extends BasePage {
 
 	// Recommend employer user to reset password
 	checkEmployerResetPw() {
-		this.utils.getLocal('USER_AUTH').then(auth => {
-			console.log('home > auth', auth);
-			if (auth) {
-				if (auth.register_password != null) {
-					this.utils.showConfirm('', 'Please reset password', ()=> {
-						this.app.getRootNav().setRoot('ResetPasswordPage');
-					})
-				}
-			}
-		})
+		if (Config.USER_AUTH.register_password != null) {
+			this.utils.showConfirm('', 'Please reset password', ()=> {
+				this.app.getRootNav().setRoot('ResetPasswordPage');
+			})
+		}
 	}
 
 	openSearchFilter() {

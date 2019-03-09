@@ -44,30 +44,41 @@ export class ApplicantProfileDetailPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = '';
-	}
-
-	ngOnInit() {
-		this.initSkillsArrays();
 		this.language = this.utils.currentLang();
 	}
 
-	initSkillsArrays() {
+	ngOnInit() {
+		this.syncUserProfile();
+		if (this.detail_type == 'skills_certificates') {
+			this.initSkillsArrays();
+		}
+	}
+
+	syncUserProfile() {
+		console.log('syncUserProfile');
 		this.api.startQueue([
-			this.api.getSystemInfo('language_abilities'),
-			this.api.getSystemInfo('computer_skills'),
-			this.api.getSystemInfo('related_certificates'),
 			this.api.getApplicantProfile()
 		]).then(response => {
-			this.language_abilities = response[0];
-			this.computer_skills = _.filter(response[1], { 'status': 'active'});
-			this.related_certs = _.filter(response[2], { 'status': 'active'});
-			this.user_profile = response[3];
+			this.user_profile = response[0];
+			console.log('Profile detail', this.user_profile);
 
 			// Copy original data for later comparison
 			this.original_profile = this.user_profile;
 
 			// Inif profile fields after getting user profile;
 			this.initProfileFields();
+		})
+	}
+
+	initSkillsArrays() {
+		this.api.startQueue([
+			this.api.getSystemInfo('language_abilities'),
+			this.api.getSystemInfo('computer_skills'),
+			this.api.getSystemInfo('related_certificates')
+		]).then(response => {
+			this.language_abilities = response[0];
+			this.computer_skills = _.filter(response[1], { 'status': 'active'});
+			this.related_certs = _.filter(response[2], { 'status': 'active'});
 		});
 	}
 
@@ -329,6 +340,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 
 			// Successful update
 			if (update_response == 1) {
+				console.log('User info is updated successfully');
 				this.nav.pop();
 			} else {
 				console.log('update unsuccessful');

@@ -69,7 +69,7 @@ export class ApplicantProfilePage extends BasePage {
 
 	logout() {
 		this.utils.showConfirm('', this.utils.instantLang('MSG.LOGOUT'), () => {
-			this.utils.removeLocal('USER_AUTH');
+			this.utils.clearLocal();
 			this.app.getRootNav().setRoot('WelcomePage');
 		});
 	}

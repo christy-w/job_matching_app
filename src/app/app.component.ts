@@ -39,6 +39,7 @@ export class MyApp extends BaseApp {
 				this.utils.getLocal('USER_AUTH').then(auth => {
 					console.log('auth', auth);
 					if (auth) {
+						Config.USER_AUTH = auth;
 						// Check internet
 						if (this.utils.isOnline()) {
 							this.rootPage = MenuComponent;
