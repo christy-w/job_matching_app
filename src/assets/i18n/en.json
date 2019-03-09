@@ -58,7 +58,8 @@
         "LOGOUT": "Confirm to logout?",
         "UPDATE_SUCCESS": "Information updated successfully.",
         "UPDATE_FAILED": "Information update failed, please check and try again.",
-        "UPDATE_INVALID": "Information are invalid, please check and try again."
+        "UPDATE_INVALID": "Information are invalid, please check and try again.",
+        "PREFERENCE_INTERRUPT": "You are editing the preferences, confirm to exit? your edited preferences will not be saved."
     },
     
     "ERROR": {

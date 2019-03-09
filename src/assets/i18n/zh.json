@@ -58,7 +58,8 @@
         "LOGOUT": "確定登出？",
         "UPDATE_SUCCESS": "資料已經更改成功。",
         "UPDATE_FAILED": "資料更改失敗，請重新檢查並嘗試。",
-        "UPDATE_INVALID": "請重新檢查並填寫資料。"
+        "UPDATE_INVALID": "請重新檢查並填寫資料。",
+        "PREFERENCE_INTERRUPT": "你正在更改喜好設定，確認不儲存並離開？"
     },
 
     "ERROR": {

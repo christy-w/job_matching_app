@@ -1,9 +1,10 @@
-<common-header [enable-back]="true"></common-header>
-
 <ion-content>
+	<button ion-button class="back-btn" (click)="backToProfile()">
+		<img src="../../assets/icon/back.png"/>
+	</button>
 	<div class="page-title">設定及喜好</div>
 	<div class="page-desp">系統會根據你填寫的設定及喜好，為你尋找合心意的工作。</div>
-	<div class="section-wrapper" *ngIf="setting_fields">
+	<div class="section-wrapper">
 		<div ion-item class='list-title-item'>
 			<ion-label>
 				<div class="list-title">我的設定</div>
@@ -59,8 +60,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="confirmed-card-wrapper" [hidden]="edit_mode && saved_preferences">
-			<div class="list-card" *ngFor="let preference of saved_preferences" [hidden]="preference.importance == 0">
+		<div class="confirmed-card-wrapper" [hidden]="edit_mode">
+			<div class="list-card" *ngFor="let preference of preference_fields" [hidden]="preference.importance == 0">
 				<div class="card-wrapper">
 					<div class="item-wrapper" [ngSwitch]="preference.field_type">
 						<!-- Multi select type -->

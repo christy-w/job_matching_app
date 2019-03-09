@@ -17,7 +17,6 @@ export class ApplicantPreferencePage extends BasePage {
 	preference_fields: any = [];
 	preference_options: any = {};
 	edit_mode: boolean = false;
-	saved_preferences: any;
 	show_msg: boolean = false;
 
 	constructor(
@@ -31,10 +30,9 @@ export class ApplicantPreferencePage extends BasePage {
 		Config.DEBUG_VERBOSE && console.log('ApplicantPreferencePage constructor');
 	}
 
-	ngOnInit() {
+	ionViewWillEnter() {
+		Config.ACTIVE_TAB = '';
 		this.initPreferenceArrays();
-		this.edit_mode = false;
-
 		this.checkUserPreference();
 	}
 
@@ -61,6 +59,7 @@ export class ApplicantPreferencePage extends BasePage {
 			{
 				name_zh: '工作類別',
 				name_en: 'Employment Type',
+				value: 'employment_type',
 				field_type: 'multi_select',
 				selection: [],
 				importance: 1,
@@ -82,78 +81,13 @@ export class ApplicantPreferencePage extends BasePage {
 						option_zh: '臨時工作',
 						option_en: 'Temporary work',
 						value: 'temporary'
-					},
-					{
-						id: 3,
-						option_zh: '自由工作',
-						option_en: 'Freelance',
-						value: 'freelance'
 					}
-				]
-			},
-			// {
-			// 	name_zh: '工作地區',
-			// 	name_en: 'Work Location',
-			// 	field_type: 'multi_select',
-			// 	selection: '',
-			// 	options_zh: [],
-			// 	options_en: [],
-			// 	options_value: []
-			// },
-			{
-				name_zh: '工作日子（適用於兼職及臨時工作）',
-				name_en: 'Work Days',
-				field_type: 'multi_select',
-				selection: [],
-				importance: 1,
-				options: [
-					{
-						id: 0,
-						option_zh: '星期一',
-						option_en: 'Monday',
-						value: 'monday'
-					},
-					{
-						id: 1,
-						option_zh: '星期二',
-						option_en: 'Tuesday',
-						value: 'tuesday'
-					},
-					{
-						id: 2,
-						option_zh: '星期三',
-						option_en: 'Wednesday',
-						value: 'wednesday'
-					},
-					{
-						id: 3,
-						option_zh: '星期四',
-						option_en: 'Thursday',
-						value: 'thursday'
-					},
-					{
-						id: 4,
-						option_zh: '星期五',
-						option_en: 'Friday',
-						value: 'friday'
-					},
-					{
-						id: 5,
-						option_zh: '星期六',
-						option_en: 'Saturday',
-						value: 'saturday'
-					},
-					{
-						id: 6,
-						option_zh: '星期日',
-						option_en: 'Sunday',
-						value: 'sunday'
-					},
 				]
 			},
 			{
 				name_zh: '最低月薪薪酬',
 				name_en: 'Minimum Monthly Salary',
+				value: 'monthly_wage',
 				field_type: 'input',
 				selection: '',
 				importance: 1,
@@ -162,23 +96,16 @@ export class ApplicantPreferencePage extends BasePage {
 			{
 				name_zh: '最低時薪薪酬',
 				name_en: 'Minimum Hourly Salary',
+				value: 'hourly_wage',
 				field_type: 'input',
 				selection: '',
 				importance: 1,
 				options: []
 			},
-			// {
-			// 	name_zh: '公司產業',
-			// 	name_en: 'Industry',
-			// 	field_type: 'multi_select',
-			// 	selection: '',
-				// importance: '',
-			// 	options_zh: [],
-			// 	options_en: []
-			// },
 			{
 				name_zh: '公司規模',
 				name_en: 'Company Scale',
+				value: 'employer_scale',
 				field_type: 'multi_select',
 				selection: [],
 				importance: 1,
@@ -193,19 +120,19 @@ export class ApplicantPreferencePage extends BasePage {
 						id: 1,
 						option_zh: '21-100人',
 						option_en: '21-100',
-						value: '21-100'
+						value: '21_100'
 					},
 					{
 						id: 2,
 						option_zh: '101-500人',
 						option_en: '101-500',
-						value: '101-500'
+						value: '101_500'
 					},
 					{
 						id: 3,
 						option_zh: '501-1000人',
 						option_en: '501-1000',
-						value: '501-1000'
+						value: '501_1000'
 					},
 					{
 						id: 4,
@@ -218,6 +145,7 @@ export class ApplicantPreferencePage extends BasePage {
 			{
 				name_zh: '出糧方式',
 				name_en: 'Payment Methods',
+				value: 'payment_method',
 				field_type: 'multi_select',
 				selection: [],
 				importance: 1,
@@ -242,33 +170,29 @@ export class ApplicantPreferencePage extends BasePage {
 					}
 				]
 			}
-			// {
-			// 	name_zh: '僱員福利（適用於全職工作）',
-			// 	name_en: 'Benefits',
-			// 	field_type: 'multi_select',
-			// 	selection: '',
-			// 	options_zh: [],
-			// 	options_en: [],
-			// 	options_value: []
-			// },
+			// Benefits
+			// Work location
+			// Company industry
 		];
 	}
 
 	toggleEditMode() {
 		this.edit_mode = !this.edit_mode;
+		this.show_msg = false;
 
+		console.log('edit_mode',this.edit_mode);
 		if (!this.edit_mode) {
+			// Save Preference
 			console.log('preference', this.preference_fields);
-			this.saved_preferences = this.preference_fields;
 			this.utils.setLocal('USER_PREFERENCE', this.preference_fields);
 		} else {
-			this.preference_fields = this.saved_preferences;
+			console.log('editing for following preferences', this.preference_fields);
 		}
 	}
 
 	checkUserPreference() {
 		this.utils.getLocal('USER_PREFERENCE').then(pref => {
-			if (!pref) {
+			if (!pref || pref == null) {
 				this.show_msg = true;
 				this.preference_fields.forEach(preference => {
 					// Default set all preferences importance to 'None'
@@ -277,14 +201,17 @@ export class ApplicantPreferencePage extends BasePage {
 				console.log('preference_fields', this.preference_fields);
 			} else {
 				this.show_msg = false;
-				this.saved_preferences = pref;
-				console.log('saved_preferences', this.saved_preferences);
+				// Check if pref are null
+				_.each(pref, (preference) => {
+					if (preference.selection == '' || preference.selection.length == 0) {
+						console.log('preference ' + preference.value + 'is empty');
+						preference.importance = 0;
+					}
+				})
+				this.preference_fields = pref;
+				console.log('saved_preferences', this.preference_fields);
 			}
 		})
-	}
-
-	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
 	}
 
 	setPreference(preference, option) {
@@ -303,5 +230,16 @@ export class ApplicantPreferencePage extends BasePage {
 
 	togglePreferenceWrapper(preference) {
 		preference.isExpanded = !preference.isExpanded;
+	}
+
+	backToProfile() {
+		if (this.edit_mode) {
+			this.utils.showConfirm('', this.utils.instantLang('MSG.PREFERENCE_INTERRUPT'), () => {
+				this.edit_mode = false;
+				this.nav.pop();
+			})
+		} else {
+			this.nav.pop();
+		}
 	}
 }

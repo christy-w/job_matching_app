@@ -9,7 +9,7 @@
 			<ion-label>
 				<div class="list-title">我的設定</div>
 			</ion-label>
-			<button item-end class="edit-btn" (click)="toggleEditMode()">完成</button>
+			<button item-end class="edit-btn" (click)="savePreference()">完成</button>
 		</div>
 		<div class="edit-card-wrapper" [hidden]="!edit_mode">
 			<div class="list-card" *ngFor="let preference of preference_fields"  [ngClass]="{'none' : preference.importance == 0}">
