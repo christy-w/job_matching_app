@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, ViewController, NavController } from 'ionic-angular';
+import { Platform, ViewController, NavController, App } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
@@ -20,7 +20,8 @@ export class EmployerHomePage extends BasePage {
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
-		protected utils: Utils
+		protected utils: Utils,
+		private app: App
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('HomePage constructor');
@@ -29,6 +30,21 @@ export class EmployerHomePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'home';
+		this.checkEmployerResetPw();
+	}
+
+	// Recommend employer user to reset password
+	checkEmployerResetPw() {
+		this.utils.getLocal('USER_AUTH').then(auth => {
+			console.log('home > auth', auth);
+			if (auth) {
+				if (auth.register_password != null) {
+					this.utils.showConfirm('', 'Please reset password', ()=> {
+						this.app.getRootNav().setRoot('ResetPasswordPage');
+					})
+				}
+			}
+		})
 	}
 
 	openSearchFilter() {
