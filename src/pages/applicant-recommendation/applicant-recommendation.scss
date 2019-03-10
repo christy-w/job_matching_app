@@ -340,8 +340,11 @@ page-applicant-recommendation {
                             color: $font-yellow;
                             .check-icon {
                                 margin-left: 2px;
-                                width: 15px;
-                                height: 15px;
+                                font-size: 20px;
+                            }
+                            &.must {
+                                color: $red;
+                                
                             }
                         }
                     }

@@ -328,12 +328,18 @@ export class ApplicantRecommendationPage extends BasePage {
 	getPreferredInput(preferred_input_pref) {
 		let reformatted_ft_jobs = [];
 		let reformatted_non_ft_jobs = [];
+		let temp;
+		if (this.preferred_jobs.length == 0) {
+			temp = this.must_jobs;
+		} else {
+			temp = this.preferred_jobs;
+		}
 		_.each(preferred_input_pref, (pref) => {
 			// Key to match with job key
 			let match_key = this.match.translatePrefKey(pref.value);
 			let match_value = pref.selection;
-			reformatted_ft_jobs = _.partition(this.preferred_jobs, {'type': 'fulltime'})[0];
-			reformatted_non_ft_jobs = _.partition(this.preferred_jobs, {'type': 'fulltime'})[1];
+			reformatted_ft_jobs = _.partition(temp, {'type': 'fulltime'})[0];
+			reformatted_non_ft_jobs = _.partition(temp, {'type': 'fulltime'})[1];
 
 			_.each(reformatted_ft_jobs, (ft_job) => {
 				if (match_key == 'monthly_wage' && ft_job['monthly_wage'] >= match_value) {

@@ -59,13 +59,14 @@
                             <div class="match-list">
                                 <ion-row class="match-item" *ngFor="let item of job.match_item">
                                     <ion-col col-7 class="match-name">{{ item['name_' + language] }}</ion-col>
-                                    <ion-col col-5 class="match-content" *ngIf="item.name != 'monthly_wage' && item.name != 'hourly_wage'">
+                                    <ion-col col-5 class="match-content" *ngIf="item.name != 'monthly_wage' && item.name != 'hourly_wage'" [ngClass]="{'must': item.importance == 2}">
                                         {{ item.content['option_' + language] }}
-                                        <img class="check-icon" src="../../assets/icon/tick.png"/>
+                                        <!-- <img class="check-icon" src="../../assets/icon/tick.png"/> -->
+                                        <ion-icon class="check-icon" name="ios-checkmark"></ion-icon>
                                     </ion-col>
-                                    <ion-col col-5 class="match-content" *ngIf="item.name == 'monthly_wage' || item.name == 'hourly_wage'">
+                                    <ion-col col-5 class="match-content" *ngIf="item.name == 'monthly_wage' || item.name == 'hourly_wage'" [ngClass]="{'must': item.importance == 2}">
                                         {{ item.content }}
-                                        <img class="check-icon" src="../../assets/icon/tick.png"/>
+                                        <ion-icon class="check-icon" name="ios-checkmark"></ion-icon>
                                     </ion-col>
                                 </ion-row>
                             </div>
