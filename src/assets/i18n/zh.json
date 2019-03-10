@@ -36,7 +36,9 @@
         "LAST_PAGE": "最後一頁",
         "PREVIOUS_STEP": "上一步",
         "NEXT_STEP": "下一步",
-        "PULL_TO_REFRESH": "下拉刷新"
+        "PULL_TO_REFRESH": "下拉刷新",
+        "GO_DETAIL": "查看詳情",
+        "APPLY_JOB": "申請工作"
     },
 
     "MSG": {
@@ -96,5 +98,11 @@
         "PERSONAL_DETAILS": "個人資料",
         "WORK_EXPERIENCES": "工作經驗",
         "SKILLS_CERTIFICATES": "技能及資格"
+    },
+
+    "RECOMMEND": {
+        "THIS_JOB": "此項工作",
+        "YOUR_PREF": "你的喜好",
+        "PREF_NUM": "個喜好"
     }
 }

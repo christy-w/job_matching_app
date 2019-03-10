@@ -8,6 +8,7 @@ import { CardSlider } from './card-slider/card-slider';
 import { TimelineComponent } from '../components/timeline/timeline';
 import { TimelineTimeComponent } from '../components/timeline/timeline';
 import { TimelineItemComponent } from '../components/timeline/timeline';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { TimelineItemComponent } from '../components/timeline/timeline';
         TimelineTimeComponent,
     ],
     imports: [
-        IonicModule
+        IonicModule,
+        TranslateModule.forChild()
     ],
     exports: [
         CommonHeader,

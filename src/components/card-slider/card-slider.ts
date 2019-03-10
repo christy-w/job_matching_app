@@ -1,6 +1,7 @@
 import { Component, ViewChild, Input } from '@angular/core';
 import { Slides, NavController } from 'ionic-angular';
 import { Utils } from '../../core/providers/utils';
+import _ from 'lodash';
 
 @Component({
 	selector: 'card-slider',
@@ -12,25 +13,21 @@ export class CardSlider {
 	@Input() slidesInfo: any;
 
   	language: string;
-	autoplay_millisecond: any = 2300;
-  	speed_millisecond: any = 300;
-  
+
 	constructor(
 		private utils: Utils,
 		protected nav: NavController
 	) {
 		this.language = this.utils.currentLang();
+		console.log('this.slidesInfo', this.slidesInfo);
 	}
 
-	ngAfterViewInit() {
-		console.log('this.slidesInfo', this.slidesInfo);
+	ionViewAfterInit() {
 		if(this.slides)
 		{
-			this.slides.slidesPerView = '1.2';
+			this.slides.slidesPerView = 'auto';
 			this.slides.centeredSlides = true;
-			this.slides.spaceBetween = '10';
-			this.slides.speed = parseInt(this.speed_millisecond);
-			this.slides.loop = false;
+			this.slides.spaceBetween = 10;
 		}
 	}
 

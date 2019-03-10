@@ -7,21 +7,21 @@
 						<div class="fav-btn">
 							<ion-icon name="heart"></ion-icon>
 						</div>
-						<div class="publish-date">{{ job.publish_date }}</div>
-						<div class="thumbnail"></div>
-						<div class="job-title">{{ job.name }}</div>
+						<div class="publish-date">{{ job['diff_days_' + language] }}</div>
+						<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
+						<div class="job-title">{{ job['name_' + language] }}</div>
 						<div class="job-type">
 							<div class="dot"></div>
-							{{ job.job_type }}
+							{{ job['type_' + language] }}
 						</div>
-						<div class="employer">{{ job.employer_name }}</div>
+						<div class="employer">{{ job.employer['name_' + language] }}</div>
 					</div>
 					<div class="lower-section">
-						<div class="match-status">此項工作<span>{{ job.match_level }}</span>你的喜好</div>
-						<div class="mark">{{ job.match_mark }}</div>
-						<div class="total">/ {{ job.total_mark }} 個喜好</div>
+						<div class="match-status">{{'RECOMMEND.THIS_JOB' | translate }} <span>{{ job['match_level_' + language] }}</span> {{'RECOMMEND.YOUR_PREF' | translate}}</div>
+						<div class="mark">{{ job.match_num }}</div>
+						<div class="total">/ {{ job.match_total_num }} {{'RECOMMEND.PREF_NUM' | translate }}</div>
 						<div class="operation-buttons">
-							<button class="highlight-btn operation-button" (click)="flip(job)">查看詳情</button>
+							<button class="highlight-btn operation-button" (click)="flip(job)">{{'ACTION.GO_DETAIL' | translate}}</button>
 						</div>
 					</div>
 				</div>
@@ -29,27 +29,27 @@
 					<div class="upper-section">
 						<ion-row class="job-card">
 							<ion-col col-3>
-								<div class="thumbnail"></div>
+								<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
 							</ion-col>
 							<ion-col col-9 class="job-info">
-								<div class="title">{{ job.name }}</div>
+								<div class="title">{{ job['name_' + language] }}</div>
 								<span class="job-type">
 									<div class="dot"></div>
-									{{ job.job_type }}
+									{{ job['type_' + language] }}
 								</span>
-								<div class="employer">{{ job.employer_name }}</div>
-								<div class="salary">{{ job.salary }}</div>
+								<div class="employer">{{ job.employer['name_' + language] }}</div>
+								<div class="salary">{{ job['wage_' + language] }}</div>
 								<div class="tags">
-									<div class="tag" *ngFor="let tag of job.tags">{{ tag }}</div>
+									<div class="tag" *ngFor="let benefit of job.employer.benefits">{{ benefit['name_' + language] }}</div>
 								</div>
 							</ion-col>
 						</ion-row>
 					</div>
 					<div class="lower-section">
-						<div class="match-status">此項工作<span>{{ job.match_level }}</span>你的喜好</div>
+						<div class="match-status">{{'RECOMMEND.THIS_JOB' | translate }} <span>{{ job['match_level_' + language] }}</span> {{'RECOMMEND.YOUR_PREF' | translate}}</div>
 						<div class="match-mark">
-							<div class="mark">{{ job.match_mark }}</div>
-							<div class="total">/ {{ job.total_mark }}</div>
+							<div class="mark">{{ job.match_num }}</div>
+							<div class="total">/ {{ job.match_total_num }}</div>
 						</div>
 						<div class="match-list">
 							<ion-row class="match-item" *ngFor="let match_item of job.match_items">
@@ -61,7 +61,7 @@
 						</div>
 					</div>
 					<div class="operation-buttons">
-						<button class="highlight-btn operation-button" (click)="flip(job)">申請此工作</button>
+						<button class="highlight-btn operation-button" (click)="flip(job)">{{'ACTION.APPLY_JOB' | translate}}</button>
 					</div>
 				</div>
 			</div>

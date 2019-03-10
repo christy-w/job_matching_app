@@ -99,4 +99,12 @@ export class Match extends BaseService {
         }
         return pref_options;
     }
+
+    public translatePrefContent(pref_key, text_value) {
+        let pref_model = _.find(this.preference_model, {'key': pref_key});
+        if (pref_model) {
+            let field_content = _.find(pref_model.fields, {'value': text_value});
+            return field_content; 
+        }
+    }
 }

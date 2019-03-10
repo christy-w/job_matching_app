@@ -36,7 +36,9 @@
         "LAST_PAGE": "Last Page",
         "PREVIOUS_STEP": "Previous Step",
         "NEXT_STEP": "Next Step",
-        "PULL_TO_REFRESH": "Pull to Refresh"
+        "PULL_TO_REFRESH": "Pull to Refresh",
+        "GO_DETAIL": "See Details",
+        "APPLY_JOB": "Apply"
     },
 
     "MSG": {
@@ -96,5 +98,11 @@
         "PERSONAL_DETAILS": "Personal Details",
         "WORK_EXPERIENCES": "Work Experiences",
         "SKILLS_CERTIFICATES": "Skills and Certificates"
+    },
+
+    "RECOMMEND": {
+        "THIS_JOB": "This job",
+        "YOUR_PREF": "your preferences",
+        "PREF_NUM": "preferences"
     }
 }
