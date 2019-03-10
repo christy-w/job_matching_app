@@ -19,6 +19,14 @@ export class ApplicantRecommendationPage extends BasePage {
 	user_preference: any;
 	all_jobs: any;
 	recommendations: any = [];
+
+	// must_pref: any = [];
+	// preferred_pref: any = [];
+	// other_pref: any = [];
+
+	must_jobs: any = [];
+	preferred_jobs: any = [];
+	other_jobs: any = [];
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -156,7 +164,100 @@ export class ApplicantRecommendationPage extends BasePage {
 	}
 
 	initRecommendations() {
-		_.each(this.user_preference, (pref) => {
+		// Pick MUST fulfilled preferences
+		let must_pref = _.filter(this.user_preference, {'importance':2})
+		console.log('must_pref', must_pref);
+
+		// Get jobs fulfilled MUST condition
+		this.getMustJobs(must_pref);
+		// this.getPreferredJobs(preferred_pref);
+		// this.getOtherJobs(none_pref);
+		// _.each(this.user_preference, (pref) => {
+		// 	// Key to match with job key
+		// 	let match_key = this.match.translatePrefKey(pref.value);
+		// 	// All preferences
+		// 	let match_all_value = this.match.translatePrefAllValue(pref.value);
+		// 	// User preferences that are selected
+		// 	let match_value = this.match.translatePrefValue(pref.value, pref.selection);
+		// 	// User preferences that are not selected
+		// 	let other_value = _.difference(match_all_value, match_value);
+
+		// 	if (pref.importance == 2) {
+		// 		// For fields considered as MUST
+		// 		let must_jobs = [];
+		// 		// Check if preference match with job, if not, filter from list
+		// 		_.each(match_value, (value) => {
+		// 			let matched_jobs = _.filter(this.all_jobs, function(job) {
+		// 				return job[match_key] == value;
+		// 			});
+		// 			must_jobs = _.concat(must_jobs, matched_jobs)
+		// 		})
+		// 		console.log('must_jobs', must_jobs);
+		// 	} else if (pref.importance == 1) {
+		// 		// For fields considered as PREFERRED
+		// 		let preferred_jobs = [];
+		// 		_.each(match_value, (value) => {
+		// 			// Place preferref jobs first, then the others
+		// 			let matched_jobs = _.partition(this.all_jobs, function(job) {
+		// 				return job[match_key] == value;
+		// 			});
+		// 			preferred_jobs = _.flatten(matched_jobs);
+		// 			console.log('preferred_jobs', preferred_jobs);
+		// 		})
+		// 	} else {
+
+		// 	}
+		// })
+	}
+
+	getMustJobs(must_pref) {
+
+		_.each(must_pref, (pref) => {
+			// console.log('pref', pref.value);
+			// Key to match with job key
+			let match_key = this.match.translatePrefKey(pref.value);
+			// User preferences that are selected
+			let match_value = this.match.translatePrefValue(pref.value, pref.selection);
+			
+			// Check if preference match with job, if not, filter from list
+			let must_jobs_per_pref = [];
+			_.each(match_value, (value) => {
+				// console.log('value', value);
+				let matched_jobs_per_pref = _.filter(this.all_jobs, function(job) {
+					if (!job.match_item) {
+						job.match_item = [];
+					}
+					if (job[match_key] == value) {
+						job.match_item.push({ 'name': match_key, 'content': value });
+					}
+					return job[match_key] == value;
+				});
+				// console.log('matched', matched_jobs_per_pref);
+				must_jobs_per_pref = _.concat(must_jobs_per_pref, matched_jobs_per_pref)
+			})
+			this.must_jobs = must_jobs_per_pref;
+		});
+		console.log('must_jobs', this.must_jobs);
+
+		if (this.checkLength(this.must_jobs)) {
+			// Pick PREFFERED to fulfilled preferences
+			let preferred_pref = _.filter(this.user_preference, {'importance':1});
+			console.log('preferred_pref', preferred_pref);
+			
+			if (preferred_pref.length > 0) {
+				this.getPreferredJobs(preferred_pref);
+			} else {
+				this.recommendations = this.must_jobs;
+				console.log('Recommended from Must jobs (<10)', this.recommendations);
+			}
+		} else {
+			this.recommendations = _.take(this.must_jobs, 10);
+			console.log('Recommended from 10 Must jobs', this.recommendations);
+		}
+	}
+
+	getPreferredJobs(preferred_pref) {
+		_.each(preferred_pref, (pref) => {
 			// Key to match with job key
 			let match_key = this.match.translatePrefKey(pref.value);
 			// All preferences
@@ -166,32 +267,23 @@ export class ApplicantRecommendationPage extends BasePage {
 			// User preferences that are not selected
 			let other_value = _.difference(match_all_value, match_value);
 
-			if (pref.importance == 2) {
-				// For fields considered as MUST
-				let must_jobs = [];
-				// Check if preference match with job, if not, filter from list
-				_.each(match_value, (value) => {
-					let matched_jobs = _.filter(this.all_jobs, function(job) {
-						return job[match_key] == value;
-					});
-					must_jobs = _.concat(must_jobs, matched_jobs)
-				})
-				console.log('must_jobs', must_jobs);
-			} else if (pref.importance == 1) {
-				// For fields considered as PREFERRED
-				let preferred_jobs = [];
-				_.each(match_value, (value) => {
-					// Place preferref jobs first, then the others
-					let matched_jobs = _.partition(this.all_jobs, function(job) {
-						return job[match_key] == value;
-					});
-					preferred_jobs = _.flatten(matched_jobs);
-					console.log('preferred_jobs', preferred_jobs);
-				})
-			} else {
-
-			}
+			// For fields considered as PREFERRED
+			_.each(match_value, (value) => {
+				// Place preferref jobs first, then the others
+				let matched_jobs = _.partition(this.must_jobs, function(job) {
+					return job[match_key] == value;
+				});
+				this.preferred_jobs = _.flatten(matched_jobs);
+				console.log('preferred_jobs', this.preferred_jobs);
+			})
 		})
+
+	}
+
+	checkLength(job_list) {
+		if (job_list.length > 10)
+			return false; 
+		return true;
 	}
 	
 	initAllJobs() {

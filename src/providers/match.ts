@@ -35,6 +35,29 @@ export class Match extends BaseService {
 						value: 'temporary'
 					}
                 ]
+            },
+            {
+                key: 'payment_method',
+                fields: [
+					{
+						id: 0,
+						option_zh: '現金',
+						option_en: 'Cash',
+						value: 'cash'
+					},
+					{
+						id: 1,
+						option_zh: '過數',
+						option_en: 'Bank Transfer',
+						value: 'transfer'
+					},
+					{
+						id: 2,
+						option_zh: '支票',
+						option_en: 'Cheque',
+						value: 'cheque'
+					}
+                ]
             }
         ];
     }
@@ -57,10 +80,12 @@ export class Match extends BaseService {
         let pref_selection = [];
         let pref_model = _.find(this.preference_model, {'key': pref_key});
         console.log('pref_model', pref_model);
-        _.each(pref_value, (value) => {
-            let field_value = pref_model.fields[value].value;
-            pref_selection.push(field_value);
-        })
+        if (pref_model) {
+            _.each(pref_value, (value) => {
+                let field_value = pref_model.fields[value].value;
+                pref_selection.push(field_value);
+            })
+        }
         return pref_selection;
     }
 
