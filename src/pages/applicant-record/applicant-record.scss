@@ -29,13 +29,14 @@ page-applicant-record {
             margin: 10px 15px;
             background-color: #fff;
             border-radius: 5px;
-            box-shadow: $item-shadow;
+            box-shadow: $item-shadow;    
+            padding-bottom: 10px;
             .row-wrapper {
                 margin: 10px 15px;
                 border-bottom: 1px solid $light-grey;
             }
             .job-card {
-                height: 110px;
+                height: 125px;
                 margin: 0;
             }
             .thumbnail {
@@ -77,20 +78,30 @@ page-applicant-record {
                 .employer {
                     font-size: 1em;
                     color: $medium-grey;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
                 .salary {
+                    padding-top: 10px;
                     font-size: 1.1em;
+                    padding-bottom: 3px;
                 }
                 .tags {
-                    position: absolute;
-                    bottom: 10px;
+                    position: relative;
+                    height: 20px;
                     overflow: hidden;
                     .tag {
                         display: inline-block;
                         text-align: center;
+                        margin: 0px 2px;
                         padding: 2px 10px 2px 10px;
                         color: #fff;
                         font-size: 0.8em;
+                        max-width: 100px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                         background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
                         background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                         background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
@@ -101,13 +112,17 @@ page-applicant-record {
             }
             .publish-date {
                 position: absolute;
-                right: 5px;
+                right: 15px;
                 padding-top: 5px;
+                text-align: right;
+                font-size: 10px;
+                color: $medium-grey;
+                font-family: $font-medium;
             }
             .fav-btn {
                 position: absolute;
                 bottom: 10px;
-                right: 5px;
+                right: 15px;
                 ion-icon {
                     color: $red;
                 }
@@ -141,16 +156,15 @@ page-applicant-record {
                 }
             }
             .operation-buttons {
-                display: block;
+                display: flex;
                 padding: 10px 15px;
                 .operation-button {
-                    display: inline-block;
-                    width: 47%;
+                    flex: 1;
                     padding: 8px;
                     font-size: 1em;
                     font-family: 'Roboto-bold';
                     border-radius: 5px;
-                    margin: 2px;
+                    margin: 2px 4px;
                     &.dull-btn {
                         background-color: #f7f7f7;
                         color: $dark-grey;
@@ -161,7 +175,17 @@ page-applicant-record {
                         background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                         background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
                         color: #fff;
-                        box-shadow: $highlight-btn-shadow;
+                        box-shadow: $item-shadow;
+                    }
+                    &.accept-btn {
+                        background: $green;
+                        color: #fff;
+                        box-shadow: $item-shadow;
+                    }
+                    &.reject-btn {
+                        background: $red;
+                        color: #fff;
+                        box-shadow: $item-shadow;
                     }
                 }
             }

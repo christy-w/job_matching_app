@@ -61,7 +61,19 @@
         "UPDATE_SUCCESS": "資料已經更改成功。",
         "UPDATE_FAILED": "資料更改失敗，請重新檢查並嘗試。",
         "UPDATE_INVALID": "請重新檢查並填寫資料。",
-        "PREFERENCE_INTERRUPT": "你正在更改喜好設定，確認不儲存並離開？"
+        "PREFERENCE_INTERRUPT": "你正在更改喜好設定，確認不儲存並離開？",
+        "APPLY_CONFIRM": "確定要申請此工作？",
+        "APPLY_SUCCESS": "已成功遞交申請，請定期留意「我的申請記錄」檢視申請進度。",
+        "APPLY_FAILED": "系統錯誤，請再嘗試。",
+        "CANCEL_CONFIRM": "確定要取消此工作申請? 此操作將不能取消。",
+        "CANCEL_SUCCESS": "已取消申請。",
+        "CANCEL_FAILED": "取消申請失敗，請重新嘗試。",
+        "ACCEPT_CONFIRM": "確定要接受此職位? ",
+        "ACCEPT_SUCCESS": "恭喜！您已接受了此職位。",
+        "ACCEPT_FAILED": "接受職位失敗，請重新嘗試。",
+        "REJECT_CONFIRM": "確定要拒絕此職位? 此操作將不能取消。",
+        "REJECT_SUCCESS": "您已拒絕了此職位。",
+        "REJECT_FAILED": "拒絕職位失敗，請重新嘗試。"
     },
 
     "ERROR": {

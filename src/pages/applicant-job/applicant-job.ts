@@ -18,6 +18,7 @@ export class ApplicantJobPage extends BasePage {
 	language: string = '';
 	name: string = 'ApplicantJobPage';
 	job: any;
+	isApplied: boolean = false;
 
 	constructor(
 		protected platform: Platform,
@@ -41,9 +42,20 @@ export class ApplicantJobPage extends BasePage {
 
 	initJobDetail(job_id) {
 		this.api.startQueue([
-			this.api.getJobDetail(job_id)
+			this.api.getJobDetail(job_id),
 		]).then(response => {
 			let job = response[0];
+
+			if (job && job.applications.length > 0) {
+				let applied = _.filter(job.applications, {'applicant_user_id': Config.USER_AUTH.id});
+				if (applied && applied.length > 0) {
+					let application_status = applied[0].status;
+					console.log('This application is applied, status is ', application_status);
+					if (application_status == 'active') {
+						this.isApplied = true;
+					}
+				}
+			}
 
 			// Format publish dates
 			let publish_date = moment(job.publish_date,'YYYY-MM-DD HH:mm:ss');
@@ -115,5 +127,43 @@ export class ApplicantJobPage extends BasePage {
 			// this.filterShown = false;
 		});
 	    datetimePicker.present();
+	}
+
+	applyJob(job_id) {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.APPLY_CONFIRM'), ()=>{
+			this.api.startQueue([
+				this.api.postApplicationApply(job_id)
+			]).then(response => {
+				let post_response = response[0];
+	
+				if (post_response['status']) {
+					// Applied successful
+					this.utils.showAlert('', this.utils.instantLang('MSG.APPLY_SUCCESS'));
+				} else {
+					// Apply failed
+					this.utils.showAlert('', this.utils.instantLang('MSG.APPLY_FAILED'));
+				}
+				console.log('post_response', post_response);
+			});
+		})
+	}
+
+	cancelJob(job_id) {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.CANCEL_CONFIRM'), ()=>{
+			this.api.startQueue([
+				this.api.postApplicationCancel(job_id)
+			]).then(response => {
+				let post_response = response[0];
+	
+				// if (post_response['status']) {
+				// 	// Applied successful
+				// 	this.utils.showAlert('', this.utils.instantLang('MSG.APPLY_SUCCESS'));
+				// } else {
+				// 	// Apply failed
+				// 	this.utils.showAlert('', this.utils.instantLang('MSG.APPLY_FAILED'));
+				// }
+				console.log('post_response', post_response);
+			});
+		})
 	}
 }

@@ -55,6 +55,27 @@ export class Api extends BaseService {
 		return this.getRemote(url);
 	}
 
+	// POST and GET /Applications
+	public postApplicationApply(job_id) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/application/apply/' + job_id);
+	}
+
+	public postApplicationCancel(job_id) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/application/cancel/' + job_id);
+	}
+
+	public postApplicationUpdate(job_id, data) {
+		return this.post('/application/update/' + job_id, data);
+	}
+
+	public getApplicationsByUser() {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		let url = '/application/user';
+		return this.getRemote(url);
+	}
+
 	/*--- GET ---*/
 	public getAllJobs() {
 		let url = '/job';

@@ -61,7 +61,10 @@
         "UPDATE_SUCCESS": "Information updated successfully.",
         "UPDATE_FAILED": "Information update failed, please check and try again.",
         "UPDATE_INVALID": "Information are invalid, please check and try again.",
-        "PREFERENCE_INTERRUPT": "You are editing the preferences, confirm to exit? your edited preferences will not be saved."
+        "PREFERENCE_INTERRUPT": "You are editing the preferences, confirm to exit? your edited preferences will not be saved.",
+        "APPLY_CONFIRM": "Confirm to apply this job?",
+        "APPLY_SUCCESS": "Your application has been submitted sucessfully. Please check the application status regularly on My Application Record",
+        "APPLY_FAILED": "Error. Please try again."
     },
     
     "ERROR": {

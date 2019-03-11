@@ -163,6 +163,11 @@ page-applicant-job {
                 color: #fff;
                 box-shadow: $highlight-btn-shadow;
             }
+            &.alert-btn {
+                background: $red;
+                color: #fff;
+                box-shadow: $item-shadow;
+            }
         }
     }   
     

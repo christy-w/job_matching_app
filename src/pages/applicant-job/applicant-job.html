@@ -31,7 +31,8 @@
 			</div> -->
 		</div>
 		<div class="operation-buttons">
-			<button class="highlight-btn operation-button" (click)="openDatetimePicker()">申請工作</button>
+			<button class="highlight-btn operation-button" [hidden]="isApplied" (click)="applyJob(job.id)">申請工作</button>
+			<button class="alert-btn operation-button" [hidden]="!isApplied" (click)="cancelJob(job.id)">取消申請</button>
 		</div>
 	</div>
 	<ion-row class="employer-card">
