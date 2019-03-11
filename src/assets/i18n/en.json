@@ -120,6 +120,7 @@
     },
 
     "EMPLOYER": {
-        "HOME": "Posted Jobs"
+        "HOME": "Posted Jobs",
+        "CREATE_JOB": "Create"
     }
 }

@@ -120,6 +120,7 @@
     },
 
     "EMPLOYER": {
-        "HOME": "我的工作"
+        "HOME": "我的工作",
+        "CREATE_JOB": "新增工作"
     }
 }
