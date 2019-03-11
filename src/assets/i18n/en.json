@@ -64,7 +64,17 @@
         "PREFERENCE_INTERRUPT": "You are editing the preferences, confirm to exit? your edited preferences will not be saved.",
         "APPLY_CONFIRM": "Confirm to apply this job?",
         "APPLY_SUCCESS": "Your application has been submitted sucessfully. Please check the application status regularly on My Application Record",
-        "APPLY_FAILED": "Error. Please try again."
+        "APPLY_FAILED": "Error. Please try again.",
+        "CANCEL_CONFIRM": "Confirm to cancel this application? This action is irreversible.",
+        "CANCEL_SUCCESS": "Application cancelled",
+        "CANCEL_FAILED": "Application cancelled failed, please try again.",
+        "ACCEPT_CONFIRM": "Confirm to accept this offer?",
+        "ACCEPT_SUCCESS": "Congratulations! You have accepted the offer.",
+        "ACCEPT_FAILED": "Offer accepting failed. Please try again.",
+        "REJECT_CONFIRM": "Confirm to reject this offer? This action is irreversible.",
+        "REJECT_SUCCESS": "Offer rejected.",
+        "REJECT_FAILED": "Offer reject failed, Please try again.",
+        "ASK_RESET_PW": "Your password is a default password. Please reset your password."
     },
     
     "ERROR": {
@@ -78,9 +88,9 @@
     },
 
     "WELCOME": {
-        "SLIDE_1": "在掌心中<br>輕鬆尋找各種工作",
-        "SLIDE_2": "取得適合你的<br>工作推薦",
-        "SLIDE_3": "一步完成申請<br>快捷取得職位"
+        "SLIDE_1": "Easy job searching<br>at your fingertips",
+        "SLIDE_2": "Find jobs that are<br>right for you right<br>away",
+        "SLIDE_3": "Apply with<br>one click"
     },
 
     "SEARCH_FILTER": {
@@ -107,5 +117,9 @@
         "THIS_JOB": "This job",
         "YOUR_PREF": "your preferences",
         "PREF_NUM": "preferences"
+    },
+
+    "EMPLOYER": {
+        "HOME": "Posted Jobs"
     }
 }

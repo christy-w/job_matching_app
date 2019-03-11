@@ -3,152 +3,31 @@
 		<button class="add-btn" (click)="createJob()">
 			<ion-icon name="md-add"></ion-icon>
 		</button>
-		<div class="page-title">我的工作</div>
+		<div class="page-title">{{ 'EMPLOYER.HOME' | translate }}</div>
 	</div>
 	<div class="list-section">
-		<div class="list-all-jobs">
+		<div class="list-all-jobs" *ngIf="jobs">
 			<!-- Job Post Item -->
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
+			<ion-row class="job-post" (click)="openJobPage(job.id)" tappable *ngFor="let job of jobs">
 				<ion-col col-3>
-					<div class="thumbnail"></div>
+					<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
 				</ion-col>
 				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
+					<div class="title">{{ job['name_' + language] }}</div>
 					<span class="job-type">
 						<div class="dot"></div>
-						臨時工作
+						{{ job['type_' + language] }}
 					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
+					<div class="employer">{{ job.employer['name_' + language] }}</div>
+					<div class="salary">{{ job['wage_' + language] }}</div>
 					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
+						<div class="tag" *ngFor="let benefit of job.employer.benefits">{{ benefit['name_' + language] }}</div>
 					</div>
 				</ion-col>
 				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
-				<ion-col col-3>
-					<div class="thumbnail"></div>
-				</ion-col>
-				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
-					<span class="job-type">
-						<div class="dot"></div>
-						臨時工作
-					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
-					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
-					</div>
-				</ion-col>
-				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
-				<ion-col col-3>
-					<div class="thumbnail"></div>
-				</ion-col>
-				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
-					<span class="job-type">
-						<div class="dot"></div>
-						臨時工作
-					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
-					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
-					</div>
-				</ion-col>
-				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
-				<ion-col col-3>
-					<div class="thumbnail"></div>
-				</ion-col>
-				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
-					<span class="job-type">
-						<div class="dot"></div>
-						臨時工作
-					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
-					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
-					</div>
-				</ion-col>
-				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
-				<ion-col col-3>
-					<div class="thumbnail"></div>
-				</ion-col>
-				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
-					<span class="job-type">
-						<div class="dot"></div>
-						臨時工作
-					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
-					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
-					</div>
-				</ion-col>
-				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row class="job-post" (click)="openJobPage()" tappable>
-				<ion-col col-3>
-					<div class="thumbnail"></div>
-				</ion-col>
-				<ion-col col-7 class="job-info">
-					<div class="title">夜更保安員</div>
-					<span class="job-type">
-						<div class="dot"></div>
-						臨時工作
-					</span>
-					<div class="employer">太平洋酒店</div>
-					<div class="salary">$55/小時</div>
-					<div class="tags">
-						<div class="tag">即日出糧</div>
-						<div class="tag">即日出糧</div>
-					</div>
-				</ion-col>
-				<ion-col col-2>
-					<div class="publish-date">1日前</div>
-					<div class="fav-btn">
-						<ion-icon name="heart"></ion-icon>
+					<div class="publish-date">{{ job['diff_days_' + language]}}</div>
+					<div class="application-badge" *ngIf="job.applications.length > 0">
+						<div class="applications">{{ job.applications.length }}</div>
 					</div>
 				</ion-col>
 			</ion-row>

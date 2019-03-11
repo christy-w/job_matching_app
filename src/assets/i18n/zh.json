@@ -73,7 +73,8 @@
         "ACCEPT_FAILED": "接受職位失敗，請重新嘗試。",
         "REJECT_CONFIRM": "確定要拒絕此職位? 此操作將不能取消。",
         "REJECT_SUCCESS": "您已拒絕了此職位。",
-        "REJECT_FAILED": "拒絕職位失敗，請重新嘗試。"
+        "REJECT_FAILED": "拒絕職位失敗，請重新嘗試。",
+        "ASK_RESET_PW": "您的密碼是預設密碼，請設置您的新密碼。"
     },
 
     "ERROR": {
@@ -116,5 +117,9 @@
         "THIS_JOB": "此項工作",
         "YOUR_PREF": "你的喜好",
         "PREF_NUM": "個喜好"
+    },
+
+    "EMPLOYER": {
+        "HOME": "我的工作"
     }
 }
