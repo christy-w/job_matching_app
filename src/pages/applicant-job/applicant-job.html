@@ -30,9 +30,8 @@
 				持有效保安員證及QAS證書( 未領有以上證件但有意求職者,可另行商議 )
 			</div> -->
 		</div>
-		<div class="operation-buttons">
-			<button class="highlight-btn operation-button" [hidden]="isApplied" (click)="applyJob(job.id)">申請工作</button>
-			<button class="alert-btn operation-button" [hidden]="!isApplied" (click)="cancelJob(job.id)">取消申請</button>
+		<div class="operation-buttons" [hidden]="isApplied">
+			<button class="highlight-btn operation-button" (click)="applyJob(job.id)">申請工作</button>
 		</div>
 	</div>
 	<ion-row class="employer-card">

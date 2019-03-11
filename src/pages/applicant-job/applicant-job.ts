@@ -49,11 +49,7 @@ export class ApplicantJobPage extends BasePage {
 			if (job && job.applications.length > 0) {
 				let applied = _.filter(job.applications, {'applicant_user_id': Config.USER_AUTH.id});
 				if (applied && applied.length > 0) {
-					let application_status = applied[0].status;
-					console.log('This application is applied, status is ', application_status);
-					if (application_status == 'active') {
-						this.isApplied = true;
-					}
+					this.isApplied = true;
 				}
 			}
 

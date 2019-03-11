@@ -8,7 +8,7 @@
     <div class="records-wrapper" *ngIf="records">
         <!-- Record card item -->
         <div class="record-card" *ngFor="let record of records">
-            <div class="row-wrapper">
+            <div class="row-wrapper" (click)="seeJobDetail(record.job.id)" tappable>
                 <ion-row class="job-card">
                     <ion-col col-3>
                         <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + record.job.employer.thumbnail_url + ')'}"></div>

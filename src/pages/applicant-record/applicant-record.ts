@@ -6,7 +6,6 @@ import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
 import _ from 'lodash';
-import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -181,5 +180,10 @@ export class ApplicantRecordPage extends BasePage {
 				})
 			});
 		}
+	}
+
+	seeJobDetail(job_id) {
+		let data = { 'job_id': job_id };
+		this.nav.push('ApplicantJobPage', data);
 	}
 }
