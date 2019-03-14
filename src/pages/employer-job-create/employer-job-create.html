@@ -4,6 +4,11 @@
 	</button>
 	<div class="page-title">{{ 'EMPLOYER.CREATE_JOB' | translate }}</div>
 	<div class="create-wrapper">
-
+		<div class="item-wrapper" *ngFor="let field of job_fields" [ngSwitch]="field.type">
+			<div class="field-item" *ngSwitchCase="'input'">
+				<div class="field-title">{{ field['name_' + language] }}</div>
+				<ion-textarea [(ngModel)]="field.input" class="field-input"></ion-textarea>
+			</div>
+		</div>
 	</div>
 </ion-content>
