@@ -15,14 +15,15 @@ export class ApplicantProfilePage extends BasePage {
 
 	name: string = 'ApplicantProfilePage';
 	language: string = '';
-
+	user_profile: any;
 
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
 		protected nav: NavController,
 		protected utils: Utils,
-		private app: App
+		private app: App,
+		private api: Api
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantProfilePage constructor');
@@ -30,19 +31,21 @@ export class ApplicantProfilePage extends BasePage {
 
 	ngOnInit() {
 		this.language = this.utils.currentLang();
+
+		this.initApplicantProfile();
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'profile';
 	}
 
-	// initApplicantProfile() {
-	// 	this.api.startQueue([
-	// 		this.api.getApplicantProfile()
-	// 	]).then(response => {
-	// 		this.user_profile = response[0]; 
-	// 	});
-	// }
+	initApplicantProfile() {
+		this.api.startQueue([
+			this.api.getApplicantProfile()
+		]).then(response => {
+			this.user_profile = response[0]; 
+		});
+	}
 
 	openProfileDetailPage(detail_type) {
 		let params = { content: detail_type };

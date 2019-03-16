@@ -4,13 +4,13 @@
     <div class="upper-section" ion-fixed>
         <div class="page-title">我的個人檔案</div>
     </div>
-    <ion-row class="profile-card">
+    <ion-row class="profile-card" *ngIf="user_profile">
         <ion-col col-4>
-			<div class="thumbnail"></div>
+            <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + user_profile.thumbnail_url + ')'}"></div>
         </ion-col>
         <ion-col class="profile-info-wrapper">
             <div class="profile-info">
-                <div class="name">陳小珍</div>
+                <div class="name">{{ user_profile['name_' + language] }}</div>
                 <div class="ratings">
                     <ionic3-star-rating 
                         activeIcon = "md-star"
