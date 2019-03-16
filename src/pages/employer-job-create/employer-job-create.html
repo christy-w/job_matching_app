@@ -2,12 +2,31 @@
 	<button ion-button class="back-btn" (click)="backToHome()">
 		<img src="../../assets/icon/back.png"/>
 	</button>
-	<div class="page-title">{{ 'EMPLOYER.CREATE_JOB' | translate }}</div>
+	<ion-item>
+		<div class="page-title">{{ 'EMPLOYER.CREATE_JOB' | translate }}<span>* 必須填寫</span></div>
+		<button item-end class="edit-btn" (click)="completeForm()">完成</button>
+	</ion-item>
 	<div class="create-wrapper">
 		<div class="item-wrapper" *ngFor="let field of job_fields" [ngSwitch]="field.type">
-			<div class="field-item" *ngSwitchCase="'input'">
-				<div class="field-title">{{ field['name_' + language] }}</div>
-				<ion-textarea [(ngModel)]="field.input" class="field-input"></ion-textarea>
+			<div ion-card class="field-item" *ngSwitchCase="'textarea'">
+				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
+				<ion-textarea [(ngModel)]="field.input"></ion-textarea>
+			</div>
+			<div ion-item class="field-item" *ngSwitchCase="'input'">
+				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
+				<ion-input [(ngModel)]="field.input" placeholder="{{ field['name_' + language] }}"></ion-input>
+			</div>
+			<div ion-item class="field-item" *ngSwitchCase="'select'">
+				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
+				<ion-select [(ngModel)]="field.input">
+					<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
+				</ion-select>
+			</div>
+			<div ion-item class="field-item" *ngSwitchCase="'district_select'">
+				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
+				<ion-select [(ngModel)]="field.input" *ngIf="districts">
+					<ion-option [value]="district.id" *ngFor="let district of districts">{{ district['name_' + language] }}</ion-option>
+				</ion-select>
 			</div>
 		</div>
 	</div>

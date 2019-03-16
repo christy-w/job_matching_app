@@ -74,7 +74,10 @@
         "REJECT_CONFIRM": "Confirm to reject this offer? This action is irreversible.",
         "REJECT_SUCCESS": "Offer rejected.",
         "REJECT_FAILED": "Offer reject failed, Please try again.",
-        "ASK_RESET_PW": "Your password is a default password. Please reset your password."
+        "ASK_RESET_PW": "Your password is a default password. Please reset your password.",
+        "CREATE_NOT_ENOUGH": "Items with * must be filled.",
+        "CREATE_SUCCESS": "Position created successfully.",
+        "CREATE_FAILED": "Position created failed. Please try again."
     },
     
     "ERROR": {

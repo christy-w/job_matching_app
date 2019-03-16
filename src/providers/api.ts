@@ -76,7 +76,7 @@ export class Api extends BaseService {
 		return this.getRemote(url);
 	}
 
-	/*--- GET ---*/
+	// POST and GET /jobs
 	public getAllJobs() {
 		let url = '/job';
 		return this.getRemote(url);
@@ -86,6 +86,13 @@ export class Api extends BaseService {
 		let url = '/job/' + job_id;
 		return this.getRemote(url);
 	}
+
+	public postJobCreate(data) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/job', data);
+	}
+
+	// GET /system
 
 	public getSystemInfo(name) {
 		let url = '/system/' + name;

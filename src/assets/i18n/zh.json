@@ -74,7 +74,10 @@
         "REJECT_CONFIRM": "確定要拒絕此職位? 此操作將不能取消。",
         "REJECT_SUCCESS": "您已拒絕了此職位。",
         "REJECT_FAILED": "拒絕職位失敗，請重新嘗試。",
-        "ASK_RESET_PW": "您的密碼是預設密碼，請設置您的新密碼。"
+        "ASK_RESET_PW": "您的密碼是預設密碼，請設置您的新密碼。",
+        "CREATE_NOT_ENOUGH": "以*標示的項目必須填寫。",
+        "CREATE_SUCCESS": "已成功新增職位。",
+        "CREATE_FAILED": "新增職位失敗，請重新嘗試。"
     },
 
     "ERROR": {
