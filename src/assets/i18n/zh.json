@@ -116,6 +116,15 @@
         "SKILLS_CERTIFICATES": "技能及資格"
     },
 
+    "EMPLOYER_PROFILE": {
+        "NAME": "公司名稱",
+        "DESP": "簡介",
+        "INDUSTRY": "行業",
+        "DISTRICT": "地區",
+        "ADDRESS": "地址",
+        "TEL": "電話"
+    },
+
     "RECOMMEND": {
         "THIS_JOB": "此項工作",
         "YOUR_PREF": "你的喜好",

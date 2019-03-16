@@ -5,6 +5,7 @@ import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
+import _ from 'lodash';
 
 @IonicPage()
 @Component({

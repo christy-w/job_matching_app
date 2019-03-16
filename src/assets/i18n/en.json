@@ -116,6 +116,15 @@
         "SKILLS_CERTIFICATES": "Skills and Certificates"
     },
 
+    "EMPLOYER_PROFILE": {
+        "NAME": "Company Name",
+        "DESP": "Description",
+        "INDUSTRY": "Industry",
+        "DISTRICT": "District",
+        "ADDRESS": "Address",
+        "TEL": "Tel"
+    },
+
     "RECOMMEND": {
         "THIS_JOB": "This job",
         "YOUR_PREF": "your preferences",

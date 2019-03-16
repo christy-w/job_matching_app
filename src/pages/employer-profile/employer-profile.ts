@@ -47,9 +47,8 @@ export class EmployerProfilePage extends BasePage {
 		Config.ACTIVE_TAB = 'profile';
 	}
 
-	openProfileDetailPage(detail_type) {
-		let params = { content: detail_type };
-		this.nav.push('ApplicantProfileDetailPage', params);
+	openProfileDetailPage() {
+		this.nav.push('EmployerProfileDetailPage');
 	}
 
 	openApplicantPreferencePage() {

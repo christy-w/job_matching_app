@@ -1,0 +1,30 @@
+<common-header [enable-back]="true"></common-header>
+<ion-content>
+	<div class="page-title">{{ 'HOTKEY.PROFILE' | translate }}</div>
+    <div class="list-card" *ngIf="user_profile">
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.NAME' | translate }}</ion-label>
+			<div>{{ user_profile['name_' + language ]}}</div>
+		</div>
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.DESP' | translate }}</ion-label>
+			<div>{{ user_profile['description_' + language ]}}</div>
+		</div>
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.INDUSTRY' | translate }}</ion-label>
+			<div>{{ user_profile['industry_name_' + language ]}}</div>
+		</div>
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.DISTRICT' | translate }}</ion-label>
+			<div>{{ user_profile['district_name_' + language ]}}</div>
+		</div>
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.ADDRESS' | translate }}</ion-label>
+			<div>{{ user_profile['address_' + language ]}}</div>
+		</div>
+		<div class="list-item">
+			<ion-label>{{ 'EMPLOYER_PROFILE.TEL' | translate }}</ion-label>
+			<div>{{ user_profile.tel }}</div>
+		</div>
+	</div>
+</ion-content>

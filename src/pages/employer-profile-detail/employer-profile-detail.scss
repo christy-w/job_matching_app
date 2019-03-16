@@ -1,0 +1,31 @@
+page-employer-profile-detail {
+    .scroll-content {
+        margin-top: $upper-fixed-height;
+    }
+    .page-title {
+        padding: 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .list-card {
+        position: relative;
+            .list-item {
+            font-family: $font-medium;
+            color: $dark-grey;
+            font-size: 1.2em;
+            padding: 5px 15px;
+            margin: 10px 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: $item-shadow;
+            ion-label {
+                padding-bottom: 10px;
+                border-bottom: 1px solid $light-grey;
+            }
+            div {
+                color: $font-yellow;
+            }
+        }
+    }
+}
