@@ -1,0 +1,111 @@
+<ion-content>
+	<button ion-button class="back-btn" (click)="backToProfile()">
+		<img src="../../assets/icon/back.png"/>
+	</button>
+	<div class="page-title">設定及喜好</div>
+	<div class="page-desp">系統會根據你填寫的設定及喜好，為你尋找合心意的工作。</div>
+	<div class="section-wrapper">
+		<div ion-item class='list-title-item'>
+			<ion-label>
+				<div class="list-title">我的設定</div>
+			</ion-label>
+			<button [hidden]="edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">修改</button>
+			<button [hidden]="!edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">完成</button>
+		</div>
+		<div class="edit-card-wrapper" [hidden]="!edit_mode">
+			<div class="list-card" *ngFor="let preference of preference_fields"  [ngClass]="{'none' : preference.importance == 0}">
+				<div class="card-wrapper">
+					<div class="item-wrapper" [ngSwitch]="preference.field_type">
+						<!-- Multi select type -->
+						<div class="list-item" *ngSwitchCase="'multi_select'">
+							<ion-row class="item-header">
+								<ion-col col-10 class="item-header-left" [ngClass]="{'disabled': preference.importance == 0}" tappable (click)="togglePreferenceWrapper(preference)">
+									<ion-label>
+										<ion-icon [hidden]="preference.isExpanded || preference.importance == 0" name="arrow-down"></ion-icon>
+										<ion-icon [hidden]="!preference.isExpanded || preference.importance == 0" name="arrow-up"></ion-icon>
+										{{ preference['name_' + language] }}
+									</ion-label>
+								</ion-col>
+								<ion-col col-2 class="item-header-right">
+									<ion-select [(ngModel)]="preference.importance" multiple="false" [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
+										<ion-option [value]="option.id" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
+									</ion-select>
+								</ion-col>
+							</ion-row>
+							<div class="preference-wrapper" [ngClass]="{'show': preference.isExpanded || preference.importance != 0}">
+								<button class="preference-btn" *ngFor="let option of preference.options" [ngClass]="{'highlight' : option.selected}" (click)="setPreference(preference, option)">{{ option['option_' + language] }}</button>
+							</div>
+						</div>
+						<!-- Input type -->
+						<!-- <div class="list-item" *ngSwitchCase="'input'">
+							<ion-row class="item-header">
+								<ion-col col-10 class="item-header-left" [ngClass]="{'disabled': preference.importance == 0}" tappable (click)="togglePreferenceWrapper(preference)">
+									<ion-label>
+										<ion-icon [hidden]="preference.isExpanded || preference.importance == 0" name="arrow-down"></ion-icon>
+										<ion-icon [hidden]="!preference.isExpanded || preference.importance == 0" name="arrow-up"></ion-icon>
+										{{ preference['name_' + language] }}
+									</ion-label>
+								</ion-col>
+								<ion-col col-2 class="item-header-right">
+									<ion-select [(ngModel)]="preference.importance" multiple="false"  [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
+										<ion-option [value]="option.id" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
+									</ion-select>
+								</ion-col>
+							</ion-row>
+							<div class="preference-wrapper" [ngClass]="{'show': preference.isExpanded || preference.importance != 0}">
+								<ion-input [(ngModel)]="preference.selection" placeholder="請輸入數字，例如15,000，請輸入15000">$</ion-input>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="confirmed-card-wrapper" [hidden]="edit_mode">
+			<div class="list-card" *ngFor="let preference of preference_fields" [hidden]="preference.importance == 0">
+				<div class="card-wrapper">
+					<div class="item-wrapper" [ngSwitch]="preference.field_type">
+						<!-- Multi select type -->
+						<div class="list-item" *ngSwitchCase="'multi_select'">
+							<ion-row class="item-header">
+								<ion-col col-10 class="item-header-left">
+									<ion-label>
+										{{ preference['name_' + language] }}
+									</ion-label>
+								</ion-col>
+								<ion-col col-2 class="item-header-right">
+									<div class="importance-text" [ngClass]="{'must': preference.importance == 2}">
+										{{ preference_options[preference.importance]['name_' + language] }}
+									</div>
+								</ion-col>
+							</ion-row>
+							<div class="preference-wrapper" [ngClass]="{'show': preference.selection.length != 0}">
+								<button class="preference-btn highlight" *ngFor="let selection of preference.selection">{{ preference.options[selection]['option_' + language] }}</button>
+							</div>
+						</div>
+						<!-- Input type -->
+						<!-- <div class="list-item" *ngSwitchCase="'input'">
+							<ion-row class="item-header">
+								<ion-col col-10 class="item-header-left">
+									<ion-label>
+										{{ preference['name_' + language] }}
+									</ion-label>
+								</ion-col>
+								<ion-col col-2 class="item-header-right">
+									<div class="importance-text" [ngClass]="{'must': preference.importance == 2}">
+										{{ preference_options[preference.importance]['name_' + language] }}
+									</div>
+								</ion-col>
+							</ion-row>
+							<div class="preference-wrapper" [ngClass]="{'show': preference.selection}">{{ preference.selection }}</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="preference-msg" [hidden]="!show_msg">
+			<div class="msg-wrapper">
+				您還未設置喜好設定，請按「修改」設置。
+			</div>
+		</div>
+	</div>
+</ion-content>

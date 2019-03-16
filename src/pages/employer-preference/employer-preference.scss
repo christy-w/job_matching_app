@@ -1,0 +1,181 @@
+page-employer-preference {
+    .back-btn {
+        position: relative;
+        margin: 20px;
+        padding: 0;
+        text-align: center;
+        color: $font-yellow;
+        font-size: 15px;
+        background: transparent !important;
+        img {
+            vertical-align: middle;
+            margin: 0 auto;
+            width: 25px;
+            height: 25px;
+        }
+    }
+    .page-title {
+        padding: 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .page-desp {
+        padding: 0px 20px;
+        color: $medium-grey;
+        font-size: 0.9em;
+        font-family: 'Roboto-medium';
+    }
+
+    .section-wrapper {
+        position: relative;
+        margin: 20px 20px;
+        .list-title-item {
+            padding-left: 0px !important;
+            background: transparent !important;
+            .item-inner {
+                padding: 0 !important;
+                border: none !important;
+            }
+        }
+        .list-title {
+            color: $font-yellow;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+        }
+        .edit-btn {
+            text-align: center;
+            padding: 4px 10px 4px 10px;
+            margin: 2px 2px;
+            font-size: 0.9em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            color: $font-yellow;
+            background: #fff;
+            box-shadow: $item-shadow;
+        }
+        .list-card {
+            position: relative;
+            margin: 10px 0px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: $item-shadow;
+            &.none {
+                background-color: #EFEFEF;
+                .list-item {
+                    color: $medium-grey !important;
+                }
+            }
+            .item-wrapper {
+                .item-inner {
+                    border-bottom: 1px solid $light-grey;
+                }
+                &:last-child {
+                    .item-inner {
+                        border: none;
+                    }
+                }
+                .list-item {
+                    font-family: $font-medium;
+                    color: $dark-grey;
+                    font-size: 1em;
+                    padding: 5px 15px;
+                    ion-col, ion-row {
+                        padding: 0;
+                        margin: 0;
+                    }
+                    .item-header-left.disabled{
+                        pointer-events: none;
+                    }    
+                    ion-select {
+                        max-width: unset !important;    
+                        padding-left: 0;
+                        padding-right: 0;
+                        .select-text {
+                            text-align: right;
+                            color: $font-yellow;
+                        }
+                        &.must .select-text {
+                            color: $red;
+                        }
+                        &.none .select-text {
+                            color: transparent;
+                        }
+                    }
+                    .importance-text {
+                        padding: 11px 8px 11px 0px;
+                        text-align: right;
+                        color: $font-yellow;
+                        &.must {
+                            color: $red;
+                        }
+                        &.none {
+                            color: transparent;
+                        }
+                    }
+                    ion-icon {
+                        color: $font-yellow;
+                        font-size: 15px;
+                        padding-right: 10px;
+                    }
+                    .preference-wrapper {
+                        position: relative;
+                        padding: 10px 0px;
+                        border-top: 1px solid $light-grey;
+                        height: 0;
+                        display: none;
+                        transition: all 0.3s linear;
+                        &.show {
+                            height: auto;
+                            display: block;
+                        }
+                        .preference-btn {
+                            display: inline-block;
+                            text-align: center;
+                            padding: 4px 10px 4px 10px;
+                            margin: 2px 2px;
+                            font-size: 0.9em;
+                            font-family: 'Roboto-bold';
+                            border-radius: 5px;
+                            color: $medium-grey;
+                            background: $bg-white;
+                            &.highlight {
+                                color: #fff;
+                                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                                box-shadow: $highlight-btn-shadow;
+                            }
+                        }
+                        
+                        ion-input {
+                            position: relative;
+                            border-radius: 5px;
+                            background-color: #f7f7f7;
+                            margin-bottom: 10px;
+                            .text-input {
+                                margin: 5px 5px 5px 25px;
+                                color: $font-yellow;
+                                font-size: 0.9em;
+                                font-family: 'Roboto-bold';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .preference-msg {
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: $item-shadow;
+            border-radius: 5px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            color: $medium-grey;
+            font-size: 0.9em;
+            font-family: 'Roboto-medium';
+        }
+    }
+}
