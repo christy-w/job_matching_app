@@ -1,18 +1,45 @@
-<!--
-  Generated template for the EmployerJobPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>employer-job</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
+<ion-content *ngIf="job">
+	<button ion-button class="back-btn" (click)="backToHome()">
+		<img src="../../assets/icon/back.png"/>
+	</button>
+	<button class="candidate-btn" *ngIf="job.applications.length > 0" (click)="openEmployerRecommendPage(job.id)">
+		<img src="assets/icon/group.png"/>
+		<div class="application-badge">
+			<div class="applications">{{ job.applications.length }}</div>
+		</div>
+	</button>
+	<ion-row class="job-card">
+		<ion-col col-10 class="job-info">
+			<div class="title">{{ job['name_' + language] }}</div>
+			<span class="job-type">
+				<div class="dot"></div>
+				{{ job['type_' + language] }}
+			</span>
+			<div class="district">{{ job['district_name_' + language] }}</div>
+			<div class="salary">{{ job['wage_' + language] }}</div>
+		</ion-col>
+		<ion-col col-2>
+			<div class="publish-date">{{ job['diff_days_' + language]}}</div>
+		</ion-col>
+	</ion-row>
+	<div class="job-detail">
+		<div class="job-content">
+			<div *ngIf="job['description_' + language]">
+				<div class="title">{{ 'JOB.DESCRIPTION' | translate }}</div>
+				<div class="content" [innerHTML]="job['description_' + language]"></div>
+			</div>
+			<div *ngIf="job['requirements_' + language]">
+				<div class="title">{{ 'JOB.REQUIREMENTS' | translate }}</div>
+				<div class="content" [innerHTML]="job['requirements_' + language]"></div>
+			</div>
+			<div *ngIf="job['benefits_' + language]">
+				<div class="title">{{ 'JOB.BENEFITS' | translate }}</div>
+				<div class="content" [innerHTML]="job['benefits_' + language]"></div>
+			</div>
+			<div *ngIf="job['others_' + language]">
+				<div class="title">{{ 'JOB.OTHERS' | translate }}</div>
+				<div class="content" [innerHTML]="job['others_' + language]"></div>
+			</div>
+		</div>
+	</div>
 </ion-content>

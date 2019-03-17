@@ -58,7 +58,94 @@ export class Match extends BaseService {
 						value: 'cheque'
 					}
                 ]
-            }
+            },
+            {
+                key: 'gender',
+                fields: [
+					{
+						id: 0,
+						option_zh: '男',
+						option_en: 'Male',
+						value: 'male'
+					},
+					{
+						id: 1,
+						option_zh: '女',
+						option_en: 'Female',
+						value: 'female'
+					}
+                ]
+            },
+            {
+                key: 'education_level',
+                fields: [
+					{
+						id: 0,
+						option_zh: '從未',
+						option_en: 'Never',
+						value: 'never'
+					},
+					{
+						id: 1,
+						option_zh: '小學或以下',
+						option_en: 'Primary school or below',
+						value: 'primary'
+					},
+					{
+						id: 2,
+						option_zh: '中學',
+						option_en: 'Secondary school',
+						value: 'secondary'
+					},
+					{
+						id: 3,
+						option_zh: '大專 / 副學士 / 文憑',
+						option_en: 'Post-secondary school / Associate Degree / Diploma',
+						value: 'post_secondary'
+					},
+					{
+						id: 4,
+						option_zh: '大學或以上',
+						option_en: 'University or above',					
+						value: 'university'
+					}
+                ]
+            },
+            {
+                key: 'related_experience',
+                fields: [
+					{
+						id: 0,
+						option_zh: '沒有經驗',
+						option_en: 'None',
+						value: 'none'
+					},
+					{
+						id: 1,
+						option_zh: '半年或以內',
+						option_en: '6 months or less',
+						value: 'half_year'
+					},
+					{
+						id: 2,
+						option_zh: '半年至1年',
+						option_en: '6 months to 1 year',
+						value: '1_year'
+					},
+					{
+						id: 3,
+						option_zh: '1年至3年',
+						option_en: '1 year to 3 years',
+						value: '3_year'
+					},
+					{
+						id: 4,
+						option_zh: '3年以上',
+						option_en: '3 years of more',
+						value: '3_year_above'
+					}
+                ]
+            },
         ];
     }
 
@@ -69,9 +156,7 @@ export class Match extends BaseService {
                 return 'type';
             case 'employer_scale':
                 break;
-            case 'monthly_wage':
-            case 'hourly_wage':
-            case 'payment_method':
+            default:
                 return pref_key;
         }
     }

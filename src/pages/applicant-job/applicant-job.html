@@ -21,14 +21,6 @@
 	<div class="job-detail">
 		<div class="job-content">
 			<div class="content" [innerHTML]="job['description_' + language]"></div>
-			<!-- <div class="title">要求</div>
-			<div class="content">
-				惡劣天氣交通及工作津貼、7-14日年假、休息日、法定假期、醫療福利、在職培訓及大量晉升機會
-				
-				接受戶外工作
-				
-				持有效保安員證及QAS證書( 未領有以上證件但有意求職者,可另行商議 )
-			</div> -->
 		</div>
 		<div class="operation-buttons" [hidden]="isApplied">
 			<button class="highlight-btn operation-button" (click)="applyJob(job.id)">申請工作</button>

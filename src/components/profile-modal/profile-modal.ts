@@ -279,7 +279,7 @@ export class ProfileModal {
 			let update_response = response[0];
 
 			// Successful update
-			if (update_response == 1) {
+			if (update_response && update_response.status) {
 				this.view.dismiss();
 				this.utils.setLocal('USER_PROFILE_NEVER_SHOW', true);
 			} else {

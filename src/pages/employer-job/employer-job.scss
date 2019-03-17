@@ -1,3 +1,211 @@
 page-employer-job {
-
+    .back-btn {
+        position: relative;
+        margin: 20px;
+        padding: 0;
+        text-align: center;
+        color: $font-yellow;
+        font-size: 15px;
+        background: transparent !important;
+        img {
+            vertical-align: middle;
+            margin: 0 auto;
+            width: 25px;
+            height: 25px;
+        }
+    }
+    .candidate-btn {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        color: $font-yellow;
+        background: transparent !important;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+        .application-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            .applications {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: $red;
+                color: #fff;;
+            }
+        }
+    }
+    .job-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        height: auto;
+        padding: 8px 0;
+        .job-info {
+            padding-left: 15px;
+            font-family: $font-bold;
+            color: $dark-grey;
+            .title {
+                display: inline-block;
+                font-size: 1.7em;
+            }
+            .job-type {
+                display: inline-block;
+                font-family: $font-medium;
+                .dot {
+                    display: inline-block;
+                    margin-bottom: 2px;
+                    background-color: $red;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                }
+            }
+            .district {
+                font-size: 1em;
+                color: $medium-grey;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .salary {
+                padding-top: 20px;
+                font-size: 1.4em;
+            }
+        }
+        .publish-date {
+            position: absolute;
+            right: 15px;
+            padding-top: 5px;
+            text-align: right;
+            font-size: 10px;
+            color: $medium-grey;
+            font-family: $font-medium;
+        }
+        .fav-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            ion-icon {
+                color: $red;
+            }
+        }
+    }
+    .employer-card {
+        position: relative;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        height: auto;
+        padding: 8px 0;
+        .thumbnail {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            margin: auto;
+            background-size: contain;
+            background-position: 50%;
+            box-shadow: $thumbnail-shadow;
+        }
+        .employer-info {
+            margin-left: -5px;
+            font-family: $font-bold;
+            color: $dark-grey;
+            .title {
+                display: inline-block;
+                font-size: 1.1em;
+                padding-bottom: 5px;
+            }
+            .info {
+                font-size: 1em;
+                color: $medium-grey;
+                ion-icon {
+                    color: $light-grey;
+                    width: 10px;
+                }
+                span {
+                    padding-left: 5px;
+                }
+            }
+            .tags {
+                position: relative;
+                overflow: hidden;
+                .tag {
+                    display: inline-block;
+                    text-align: center;
+                    margin: 0px 2px;
+                    padding: 2px 10px 2px 10px;
+                    color: #fff;
+                    font-size: 0.8em;
+                    background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                    background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                    background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                    border-radius: 5px;
+                    box-shadow: $highlight-btn-shadow;
+                }
+            }
+        }
+        
+    }
+    .job-detail {
+        position: relative;
+        background-color: #fff;
+        border-radius: 5px;
+        margin: 10px 15px;
+        box-shadow: $item-shadow;
+        padding: 10px 20px;
+        color: $dark-grey;
+        .job-content {
+            .title {
+                font-size: 1.2em;
+                font-family: 'Roboto-medium';
+            }
+            .content {
+                padding: 10px 0px;
+                font-size: 1em;
+            }
+        }
+    }
+    .operation-buttons {
+        position: relative;
+        width: 100%;
+        .operation-button {
+            display: block;
+            text-align: center;
+            width: 47%;
+            padding: 8px;
+            font-size: 1em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            &.highlight-btn {
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $highlight-btn-shadow;
+            }
+            &.alert-btn {
+                background: $red;
+                color: #fff;
+                box-shadow: $item-shadow;
+            }
+        }
+    }   
+    
 }

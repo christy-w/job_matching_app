@@ -83,7 +83,7 @@ export class EmployerPreferencePage extends BasePage {
 				name_en: 'Education Level',
 				value: 'education_level',
 				field_type: 'multi_select',
-				selection: '',
+				selection: [],
 				importance: 1,
 				options: [
 					{
@@ -123,7 +123,7 @@ export class EmployerPreferencePage extends BasePage {
 				name_en: 'Related Experiences',
 				value: 'related_experience',
 				field_type: 'multi_select',
-				selection: '',
+				selection: [],
 				importance: 1,
 				options: [
 					{

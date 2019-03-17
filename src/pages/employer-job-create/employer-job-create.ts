@@ -226,6 +226,10 @@ export class EmployerJobCreatePage extends BasePage {
 		Config.ACTIVE_TAB = '';
 	}
 
+	backToHome() {
+		this.nav.pop();
+	}
+
 	completeForm() {
 		console.log('form', this.job_fields);
 

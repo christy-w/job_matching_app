@@ -134,5 +134,12 @@
     "EMPLOYER": {
         "HOME": "我的工作",
         "CREATE_JOB": "新增工作"
+    },
+
+    "JOB": {
+        "DESCRIPTION": "職責",
+        "REQUIREMENTS": "要求",
+        "BENEFITS": "福利",
+        "OTHERS": "其他資訊"
     }
 }

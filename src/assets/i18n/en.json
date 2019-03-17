@@ -134,5 +134,12 @@
     "EMPLOYER": {
         "HOME": "Posted Jobs",
         "CREATE_JOB": "Create"
+    },
+
+    "JOB": {
+        "DESCRIPTION": "Description",
+        "REQUIREMENTS": "Requirements",
+        "BENEFITS": "Benefits",
+        "OTHERS": "Additional Information"
     }
 }

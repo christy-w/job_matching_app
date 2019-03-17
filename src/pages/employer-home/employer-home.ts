@@ -118,11 +118,17 @@ export class EmployerHomePage extends BasePage {
 	    searchFilter.present();
 	}
 
-	openJobPage() {
-		this.nav.push('EmployerJobPage');
+	openJobPage(job_id) {
+		let data = { 'job_id': job_id };
+		this.nav.push('EmployerJobPage', data);
 	}
 
 	createJob() {
 		this.nav.push('EmployerJobCreatePage');
+	}
+
+	openEmployerRecommendPage(applications) {
+		let data = { 'applications': applications};
+		this.nav.push('EmployerRecommendPage', data);
 	}
 }
