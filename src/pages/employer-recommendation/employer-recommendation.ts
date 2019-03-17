@@ -186,7 +186,6 @@ export class EmployerRecommendationPage extends BasePage {
 			_.each(match_value, (value) => {
 
 				let field_content = this.match.translatePrefContent(pref.value, value);
-				console.log(234, field_content);
 				let matched_jobs_per_pref = _.filter(this.applications, function(job) {
 					if (!job.match_item) {
 						job.match_item = [];
@@ -238,10 +237,6 @@ export class EmployerRecommendationPage extends BasePage {
 			return false; 
 		return true;
 	}
-
-	flip(slide) {
-		slide.flipped = !slide.flipped;
-	}
 	
 	initApplications(job_id) {
 		this.api.startQueue([
@@ -267,7 +262,16 @@ export class EmployerRecommendationPage extends BasePage {
 		});
 	}
 
+	seeDetail(applicant_id) {
+		let data = { 'applicant_id': applicant_id };
+		this.nav.push('CandidateProfilePage', data);
+	}
+
+	hireApplicant(applicantion_id) {
+
+	}
+
 	goSettingPage() {
-		this.nav.setRoot('ApplicantProfilePage');
+		this.nav.setRoot('EmployerProfilePage');
 	}
 }

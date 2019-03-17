@@ -1,0 +1,91 @@
+page-candidate-profile {
+    .scroll-content {
+        margin-top: $header-height;
+    }
+    .page-title {
+        display: inline-block;
+        padding: 20px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+        margin-top: -20px;
+    }
+    .ratings {
+        display: inline-block;
+        .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] {
+            margin: 0.1rem;
+            width: 15px;
+            height: 15px;
+        }
+        .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] ion-icon[_ngcontent-c0] {
+            font-size: 20px;
+        }
+        .ionic3-star-rating {
+            display: inline-block;
+            bottom: 10px;
+            position: relative;
+        }
+        .review-counts {
+            position: relative;
+            bottom: 5px;
+            display: inline-block;
+            color: $medium-grey;
+            font-size: 0.6em;
+            font-family: $font-bold;
+        }
+    }
+    .list-card {
+        .card-wrapper {
+            position: relative;
+            margin: 10px 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: $item-shadow;
+            .card-title {
+                color: $medium-grey;
+                font-size: 12px;
+                padding: 15px 15px 5px 15px;
+            }
+            .list-item {
+                font-family: $font-medium;
+                color: $dark-grey;
+                font-size: 1.2em;
+                .item-inner {
+                    border-bottom: 1px solid $light-grey;
+                }
+                &:last-child {
+                    .item-inner {
+                        border: none;
+                    }
+                }
+                .info {
+                    color: $font-yellow;
+                }
+                .header {
+                    position: relative;
+                    font-size: 0.8em;
+                    height: 20px;
+                    .employer {
+                        line-height: 20px;
+                        width: 70%;
+                        color: $font-yellow;
+                        overflow: hidden;
+                    }
+                    .date {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        text-align: right;
+                        color: $medium-grey;
+                        line-height: 20px;
+                    }
+                }
+                .feedback {
+                    font-size: 0.8em;
+                    overflow: initial;
+                    white-space: normal;
+                }
+            }
+        }
+    }
+}

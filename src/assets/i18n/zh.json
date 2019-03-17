@@ -38,7 +38,8 @@
         "NEXT_STEP": "下一步",
         "PULL_TO_REFRESH": "下拉刷新",
         "GO_DETAIL": "查看詳情",
-        "APPLY_JOB": "申請工作"
+        "APPLY_JOB": "申請工作",
+        "CHOOSE": "選擇"
     },
 
     "MSG": {
@@ -128,7 +129,10 @@
     "RECOMMEND": {
         "THIS_JOB": "此項工作",
         "YOUR_PREF": "你的喜好",
-        "PREF_NUM": "個喜好"
+        "PREF_NUM": "個喜好",
+        "THIS_CANDIDATE": "此求職者",
+        "YOUR_REQ": "你的要求",
+        "REQ_NUM": "個要求"
     },
 
     "EMPLOYER": {

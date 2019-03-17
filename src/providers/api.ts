@@ -50,8 +50,9 @@ export class Api extends BaseService {
 		return this.post('/applicant/update', data);
 	}
 
-	public getApplicantProfile() {
-		let url = '/applicant/' + Config.USER_AUTH.id;
+	public getApplicantProfile(applicant_id?) {
+		let user_id = (applicant_id) ? applicant_id : Config.USER_AUTH.id;
+		let url = '/applicant/' + user_id;
 		return this.getRemote(url);
 	}
 
@@ -101,6 +102,11 @@ export class Api extends BaseService {
 
 	public getSystemInfo(name) {
 		let url = '/system/' + name;
+		return this.getRemote(url);
+	}
+
+	public getSystemInfoItem(name, id) {
+		let url = '/system/' + name + '/' + id;
 		return this.getRemote(url);
 	}
 

@@ -38,7 +38,8 @@
         "NEXT_STEP": "Next Step",
         "PULL_TO_REFRESH": "Pull to Refresh",
         "GO_DETAIL": "See Details",
-        "APPLY_JOB": "Apply"
+        "APPLY_JOB": "Apply",
+        "CHOOSE": "Choose"
     },
 
     "MSG": {
@@ -128,7 +129,10 @@
     "RECOMMEND": {
         "THIS_JOB": "This job",
         "YOUR_PREF": "your preferences",
-        "PREF_NUM": "preferences"
+        "PREF_NUM": "preferences",
+        "THIS_CANDIDATE": "This candidate",
+        "YOUR_REQ": "your requirements",
+        "REQ_NUM": "requirements"
     },
 
     "EMPLOYER": {
