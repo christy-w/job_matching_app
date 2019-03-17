@@ -78,7 +78,10 @@
         "ASK_RESET_PW": "Your password is a default password. Please reset your password.",
         "CREATE_NOT_ENOUGH": "Items with * must be filled.",
         "CREATE_SUCCESS": "Position created successfully.",
-        "CREATE_FAILED": "Position created failed. Please try again."
+        "CREATE_FAILED": "Position created failed. Please try again.",
+        "OFFER_CONFIRM": "Confirm to offer this position to this candidate? This action is irreversible.",
+        "OFFER_SUCCESS": "Sent successfully.",
+        "OFFER_FAILED": "Sent failed. Please try again."
     },
     
     "ERROR": {

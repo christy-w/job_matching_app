@@ -267,8 +267,25 @@ export class EmployerRecommendationPage extends BasePage {
 		this.nav.push('CandidateProfilePage', data);
 	}
 
-	hireApplicant(applicantion_id) {
-
+	hireApplicant(application_id) {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.OFFER_CONFIRM'), ()=>{
+			let data = {
+				application_status: 'offered'
+			}
+			this.api.startQueue([
+				this.api.postApplicationUpdate(application_id, data)
+			]).then(response => {
+				let accept_response = response[0];
+				if (accept_response['status']) {
+					// Applied successful
+					this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_SUCCESS'));
+				} else {
+					// Apply failed
+					this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_FAILED'));
+				}
+				this.nav.setRoot('EmployerRecordPage');
+			})
+		})
 	}
 
 	goSettingPage() {

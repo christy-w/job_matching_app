@@ -78,7 +78,10 @@
         "ASK_RESET_PW": "您的密碼是預設密碼，請設置您的新密碼。",
         "CREATE_NOT_ENOUGH": "以*標示的項目必須填寫。",
         "CREATE_SUCCESS": "已成功新增職位。",
-        "CREATE_FAILED": "新增職位失敗，請重新嘗試。"
+        "CREATE_FAILED": "新增職位失敗，請重新嘗試。",
+        "OFFER_CONFIRM": "確定要提供工作機會給此求職者? 此操作將不能取消。",
+        "OFFER_SUCCESS": "已發送給求職者",
+        "OFFER_FAILED": "發送失敗，請重新嘗試"
     },
 
     "ERROR": {
