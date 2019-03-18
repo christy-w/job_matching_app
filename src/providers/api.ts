@@ -50,6 +50,11 @@ export class Api extends BaseService {
 		return this.post('/applicant/update', data);
 	}
 
+	public postApplicantFeedback(data) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/applicant/feedback', data);
+	}
+
 	public getApplicantProfile(applicant_id?) {
 		let user_id = (applicant_id) ? applicant_id : Config.USER_AUTH.id;
 		let url = '/applicant/' + user_id;

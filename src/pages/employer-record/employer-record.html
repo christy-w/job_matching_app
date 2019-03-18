@@ -51,7 +51,7 @@
                 <button class="dull-btn operation-button" *ngIf="record.allow_operation == 'cancel'" (click)="cancelOffer(record.id)">取消機會</button>
             </div>
             <div class="operation-buttons" *ngIf="record.allow_operation == 'feedback'">
-                <button class="highlight-btn operation-button" (click)="leaveFeedback()">給予評價</button>
+                <button class="highlight-btn operation-button" (click)="leaveFeedback(record.job_id, record.applicant_user_id)">給予評價</button>
             </div>
         </div>
     </div>

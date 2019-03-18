@@ -1,0 +1,135 @@
+feedback-popup {
+    position: relative;
+    box-shadow: $item-shadow;
+    ion-content {
+        overflow: hidden;
+    }
+    .title {
+        text-align: center;
+        color: $dark-grey;
+        font-family: 'Roboto-medium';
+        font-size: 1.2em;
+    }
+    .section {
+        margin: 10px 0;
+        .name {
+            color: $font-yellow;
+            font-size: 1em;
+            padding-bottom: 5px;
+            font-family: $font-regular;
+            border-bottom: 1px solid $light-grey;
+        }
+        ion-input {
+            margin: 10px 0;
+            position: relative;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            margin-bottom: 10px;
+            .text-input {
+                min-height: 25px;
+                margin: 0 auto;
+                color: $font-yellow;
+                font-size: 0.8em;
+                font-family: 'Roboto-bold';
+                width: 90%;
+                display: flex;
+                overflow: hidden;
+                text-overflow: hidden;
+            }
+        }
+        ion-textarea {
+            position: relative;
+            display: block;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            margin: 10px 0;
+            min-height: 100px;
+            .text-input {
+                width: 90%;
+                margin: 0 auto;
+                color: $font-yellow;
+                font-size: 0.9em;
+                font-family: 'Roboto-bold';
+                min-height: 100px;
+            }
+        }
+
+    }
+    .rating-wrapper {
+        width: 100%;
+    }
+    .rate {
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: fit-content;
+        height: 46px;
+        padding: 0 10px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:20px;
+        color: $medium-grey;
+    }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rate > input:checked ~ label {
+        color: $font-yellow;    
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: $font-yellow;  
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: $font-yellow;
+    }
+
+    .operation-buttons {
+        display: flex;
+        padding: 10px 0;
+        .operation-button {
+            flex: 1;
+            padding: 8px;
+            font-size: 1em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            margin: 2px 4px;
+            &.dull-btn {
+                background-color: #f7f7f7;
+                color: $dark-grey;
+                box-shadow: $item-shadow;
+            }
+            &.highlight-btn {
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $item-shadow;
+            }
+            &.green-btn {
+                background: $green;
+                color: #fff;
+                box-shadow: $item-shadow;
+            }
+            &.red-btn {
+                background: $red;
+                color: #fff;
+                box-shadow: $item-shadow;
+            }
+        }
+    }
+}

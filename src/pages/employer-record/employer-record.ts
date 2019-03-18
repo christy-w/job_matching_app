@@ -6,6 +6,7 @@ import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
 import _ from 'lodash';
+import { FeedbackPopup } from '../../components/feedback-popup/feedback-popup';
 
 @IonicPage()
 @Component({
@@ -161,5 +162,14 @@ export class EmployerRecordPage extends BasePage {
 	seeJobDetail(job_id) {
 		let data = { 'job_id': job_id };
 		this.nav.push('ApplicantJobPage', data);
+	}
+
+	leaveFeedback(job_id, applicant_id) {
+		let feedback_popup = this.utils.createPopover(FeedbackPopup, {'job_id': job_id, 'applicant_id': applicant_id}, {cssClass:'feedback-popup'});
+		feedback_popup.onDidDismiss(data => {
+			// (data) ? this.saveFilter(data) : this.cancelFilter();
+			// this.filterShown = false;
+		});
+		feedback_popup.present();
 	}
 }

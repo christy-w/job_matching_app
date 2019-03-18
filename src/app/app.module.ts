@@ -33,6 +33,7 @@ import { SearchFilter } from '../components/search-filter/search-filter';
 import { PreferenceModal } from '../components/preference-modal/preference-modal';
 import { ProfileModal } from '../components/profile-modal/profile-modal';
 import { CandidatePopup } from '../components/candidate-popup/candidate-popup';
+import { FeedbackPopup } from '../components/feedback-popup/feedback-popup';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -48,7 +49,8 @@ let components = [
 	SearchFilter,
 	CandidatePopup,
 	PreferenceModal,
-	ProfileModal
+	ProfileModal,
+	FeedbackPopup
 ];
 
 let directives = [
