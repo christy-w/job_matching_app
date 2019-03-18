@@ -127,7 +127,33 @@ page-employer-record {
                     color: $red;
                 }
             }
+            .applicant-detail {
+                position: relative;
+                margin: 0px 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid $light-grey;
+                .title  {
+                    font-size: 1.2em;
+                    color: $medium-grey;
+                    font-family: 'Roboto-medium';
+                }
+                .name {
+                    padding-top: 5px;
+                    font-family: $font-bold;
+                    color: $dark-grey;
+                    font-size: 1.1em;
+                }
+                .email, .mobile {
+                    padding-top: 5px;
+                    color: $font-yellow;
+                    font-size: 1em;
+                    span {
+                        padding-left: 5px;
+                    }
+                }
+            }
             .application-detail {
+                padding-top: 10px;
                 position: relative;
                 margin: 0px 15px;
                 .title {
@@ -137,7 +163,7 @@ page-employer-record {
                 }
                 .status {
                     position: absolute;
-                    top: 0;
+                    bottom: 0;
                     right: 0;
                     font-family: 'Roboto-bold';
                     color: $gradient-orange;

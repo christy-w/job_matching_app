@@ -95,6 +95,7 @@ page-employer-recommendation {
                 padding-bottom:10px;
                 
                 .ratings {
+                    display: inline-block;
                     .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] {
                         margin: 0.1rem;
                         width: 15px;
@@ -103,7 +104,14 @@ page-employer-recommendation {
                     .ionic3-star-rating[_ngcontent-c0] .button[_ngcontent-c0] ion-icon[_ngcontent-c0] {
                         font-size: 20px;
                     }
+                    .ionic3-star-rating {
+                        display: inline-block;
+                        bottom: 10px;
+                        position: relative;
+                    }
                     .review-counts {
+                        position: relative;
+                        bottom: 5px;
                         display: inline-block;
                         color: $medium-grey;
                         font-size: 0.6em;
@@ -139,6 +147,11 @@ page-employer-recommendation {
                     }
                 }
                 .employer {
+                    font-family: $font-medium;
+                    font-size: 0.8em;
+                    color: $medium-grey;
+                }
+                span {
                     font-family: $font-medium;
                     font-size: 0.8em;
                     color: $medium-grey;
@@ -232,6 +245,16 @@ page-employer-recommendation {
                         background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
                         background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                         background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        color: #fff;
+                        box-shadow: $item-shadow;
+                    }
+                    &.green-btn {
+                        background: $green;
+                        color: #fff;
+                        box-shadow: $item-shadow;
+                    }
+                    &.red-btn {
+                        background: $red;
                         color: #fff;
                         box-shadow: $item-shadow;
                     }

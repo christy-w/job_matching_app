@@ -52,8 +52,9 @@ export class EmployerApplicantPage extends BasePage {
 		this.api.startQueue([
 			this.api.getJobApplications(job_id)
 		]).then(response => {
-      this.applications = _.filter(response[0], {'application_status': 'submitted'});
-
+      let applications = _.filter(response[0], {'application_status': 'submitted'});
+      this.applications = _.orderBy(applications, ['applied_at'], ['desc']);
+      
       for (let i=0; i<this.applications.length; i++) {
          // Translate gender field
          switch(this.applications[i].applicant.gender) {
@@ -169,7 +170,6 @@ export class EmployerApplicantPage extends BasePage {
             })
           });
         }
-        console.log('123', this.applications[i]);
       }
       console.log('applications', this.applications);
 		});
@@ -180,26 +180,43 @@ export class EmployerApplicantPage extends BasePage {
 		this.nav.push('CandidateProfilePage', data);
 	}
 
-	hireApplicant(application_id) {
-		this.utils.showConfirm('', this.utils.instantLang('MSG.OFFER_CONFIRM'), ()=>{
-			let data = {
-				application_status: 'offered'
-			}
-			this.api.startQueue([
-				this.api.postApplicationUpdate(application_id, data)
-			]).then(response => {
-				let accept_response = response[0];
-				if (accept_response['status']) {
-					// Applied successful
-					this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_SUCCESS'));
-				} else {
-					// Apply failed
-					this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_FAILED'));
-				}
-				this.nav.setRoot('EmployerRecordPage');
-			})
-		})
-	}
+	respondApplicant(application_id, response:boolean) {
+    if (response) {
+      this.utils.showConfirm('', this.utils.instantLang('MSG.OFFER_CONFIRM'), ()=>{
+        let data = {
+          application_status: 'offered'
+        }
+        this.api.startQueue([
+          this.api.postApplicationUpdate(application_id, data)
+        ]).then(response => {
+          let accept_response = response[0];
+          if (accept_response['status']) {
+            // Applied successful
+            this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_SUCCESS'));
+          } else {
+            // Apply failed
+            this.utils.showAlert('', this.utils.instantLang('MSG.OFFER_FAILED'));
+          }
+        })
+      })
+    } else {
+      let data = {
+        application_status: 'vacancy_filled'
+      }
+      this.api.startQueue([
+        this.api.postApplicationUpdate(application_id, data)
+      ]).then(response => {
+        let accept_response = response[0];
+        if (accept_response['status']) {
+          // Applied successful
+          this.utils.showAlert('', this.utils.instantLang('MSG.CANCEL_OFFER_SUCCESS'));
+        } else {
+          // Apply failed
+          this.utils.showAlert('', this.utils.instantLang('MSG.CANCEL_OFFER_FAILED'));
+        }
+      })
+    }	
+  }
 
 	goSettingPage() {
 		this.nav.setRoot('EmployerProfilePage');

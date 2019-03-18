@@ -151,6 +151,18 @@ page-employer-applicant {
                     font-size: 0.8em;
                     color: $medium-grey;
                 }
+                .detail-btn {
+                    position: relative;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    display: block;
+                    text-align: center;
+                    text-decoration: underline;
+                    background: transparent !important;
+                    font-family: $font-medium;
+                    color: $medium-grey;
+                }
             }
             .lower-section {
                 position: relative;
@@ -240,6 +252,16 @@ page-employer-applicant {
                         background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
                         background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
                         background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                        color: #fff;
+                        box-shadow: $item-shadow;
+                    }
+                    &.green-btn {
+                        background: $green;
+                        color: #fff;
+                        box-shadow: $item-shadow;
+                    }
+                    &.red-btn {
+                        background: $red;
                         color: #fff;
                         box-shadow: $item-shadow;
                     }

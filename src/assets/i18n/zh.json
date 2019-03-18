@@ -39,7 +39,8 @@
         "PULL_TO_REFRESH": "下拉刷新",
         "GO_DETAIL": "查看詳情",
         "APPLY_JOB": "申請工作",
-        "CHOOSE": "選擇"
+        "CHOOSE": "提供職位",
+        "REJECT": "拒絕"
     },
 
     "MSG": {
@@ -81,7 +82,10 @@
         "CREATE_FAILED": "新增職位失敗，請重新嘗試。",
         "OFFER_CONFIRM": "確定要提供工作機會給此求職者? 此操作將不能取消。",
         "OFFER_SUCCESS": "已發送給求職者",
-        "OFFER_FAILED": "發送失敗，請重新嘗試"
+        "OFFER_FAILED": "發送失敗，請重新嘗試",
+        "CANCEL_OFFER_CONFIRM": "確定要取消此工作機會? 此操作將不能取消。",
+        "CANCEL_OFFER_SUCCESS": "已發送給求職者",
+        "CANCEL_OFFER_FAILED": "發送失敗，請重新嘗試"
     },
 
     "ERROR": {

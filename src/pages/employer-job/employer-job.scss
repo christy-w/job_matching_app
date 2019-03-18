@@ -14,6 +14,31 @@ page-employer-job {
             height: 25px;
         }
     }
+    .history-btn {
+        position: absolute;
+        top: 30px;
+        right: 90px;
+        color: $font-yellow;
+        background: transparent !important;
+        img {
+            width: 30px;
+            height: 30px;
+        }
+        .application-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            .applications {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: $red;
+                color: #fff;;
+            }
+        }
+    }
     .candidate-btn {
         position: absolute;
         top: 25px;

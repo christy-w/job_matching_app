@@ -2,11 +2,17 @@
 	<button ion-button class="back-btn" (click)="backToHome()">
 		<img src="../../assets/icon/back.png"/>
 	</button>
+	<button class="history-btn" *ngIf="job.applications.length > 0" (click)="openRecordPage(job.id)">
+			<img src="assets/icon/clock.png"/>
+		<!-- <div class="application-badge">
+			<div class="applications">3</div>
+		</div> -->
+	</button>
 	<button class="candidate-btn" *ngIf="job.applications.length > 0" (click)="openCandidatePopup(job.id)">
 		<img src="assets/icon/group.png"/>
-		<div class="application-badge">
+		<!-- <div class="application-badge">
 			<div class="applications">{{ job.applications.length }}</div>
-		</div>
+		</div> -->
 	</button>
 	<ion-row class="job-card">
 		<ion-col col-10 class="job-info">

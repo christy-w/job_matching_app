@@ -39,7 +39,8 @@
         "PULL_TO_REFRESH": "Pull to Refresh",
         "GO_DETAIL": "See Details",
         "APPLY_JOB": "Apply",
-        "CHOOSE": "Choose"
+        "CHOOSE": "Offer Position",
+        "REJECT": "Reject"
     },
 
     "MSG": {
@@ -81,7 +82,10 @@
         "CREATE_FAILED": "Position created failed. Please try again.",
         "OFFER_CONFIRM": "Confirm to offer this position to this candidate? This action is irreversible.",
         "OFFER_SUCCESS": "Sent successfully.",
-        "OFFER_FAILED": "Sent failed. Please try again."
+        "OFFER_FAILED": "Sent failed. Please try again.",
+        "CANCEL_OFFER_CONFIRM": "Confirm to cancel this offer? This action is irreversible.",
+        "CANCEL_OFFER_SUCCESS": "Sent successfully.",
+        "CANCEL_OFFER_FAILED": "Sent failed. Please try again."
     },
     
     "ERROR": {

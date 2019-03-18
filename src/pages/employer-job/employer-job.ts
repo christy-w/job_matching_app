@@ -46,13 +46,6 @@ export class EmployerJobPage extends BasePage {
 		]).then(response => {
 			let job = response[0];
 
-			if (job && job.applications.length > 0) {
-				let applied = _.filter(job.applications, {'applicant_user_id': Config.USER_AUTH.id});
-				if (applied && applied.length > 0) {
-					this.isApplied = true;
-				}
-			}
-
 			// Format publish dates
 			let publish_date = moment(job.publish_date,'YYYY-MM-DD HH:mm:ss');
 			var diff_days = moment().diff(publish_date, 'days');
@@ -100,6 +93,11 @@ export class EmployerJobPage extends BasePage {
 	openEmployerRecommendPage(job_id) {
 		let data = { 'job_id': job_id };
 		this.nav.push('EmployerRecommendationPage', data);
+	}
+
+	openRecordPage(job_id) {
+		let data = { 'job_id': job_id };
+		this.nav.push('EmployerRecordPage', data);
 	}
 
 	openCandidatePopup(job_id) {

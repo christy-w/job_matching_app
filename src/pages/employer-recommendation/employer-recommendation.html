@@ -1,4 +1,4 @@
-<common-header></common-header>
+<common-header [enable-back]="true"></common-header>
 
 <ion-content>
     <div class="page-title">所有申請</div>
@@ -11,6 +11,10 @@
                         <div class="upper-section">
                             <div class="thumbnail" *ngIf="application.applicant.thumbnail_url" [ngStyle]="{'background-image': 'url(' + application.applicant.thumbnail_url + ')'}"></div>
                             <div class="job-title">{{ application.applicant['name_' + language] }}</div>
+                            <div class="info">
+                                <span class="gender">{{ application.applicant['gender_' + language] }}</span>
+                                <span class="age">({{ application.applicant.age }})</span>
+                            </div>
                             <div class="ratings">
                                 <ionic3-star-rating 
                                     activeIcon = "md-star"
@@ -22,6 +26,7 @@
                                 </ionic3-star-rating>
                                 <div class="review-counts">(10)</div>
                             </div>
+                            <button class="detail-btn" (click)="seeDetail(application.applicant_user_id)">{{'ACTION.GO_DETAIL' | translate}}</button>
                         </div>
                         <div class="lower-section">
                             <div class="match-status">{{'RECOMMEND.THIS_CANDIDATE' | translate }} <span>{{ application['match_level_' + language] }}</span> {{'RECOMMEND.YOUR_REQ' | translate}}</div>
@@ -44,8 +49,8 @@
                                 </ion-row>
                             </div>
                             <div class="operation-buttons">
-                                    <button class="dull-btn operation-button" (click)="seeDetail(application.applicant_user_id)">{{'ACTION.GO_DETAIL' | translate}}</button>
-                                <button class="highlight-btn operation-button" (click)="hireApplicant(application.id)">{{'ACTION.CHOOSE' | translate}}</button>
+                                <button class="red-btn operation-button" (click)="respondApplicant(application.id, false)">{{'ACTION.REJECT' | translate}}</button>
+                                <button class="green-btn operation-button" (click)="respondApplicant(application.id, true)">{{'ACTION.CHOOSE' | translate}}</button>
                             </div>
                         </div>
                     </div>

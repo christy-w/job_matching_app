@@ -25,6 +25,7 @@
                                 </ionic3-star-rating>
                                 <div class="review-counts">(10)</div>
                             </div>
+                            <button class="detail-btn" (click)="seeDetail(application.applicant_user_id)">{{'ACTION.GO_DETAIL' | translate}}</button>
                         </div>
                         <div class="lower-section">
                             <div class="match-list">
@@ -48,8 +49,8 @@
                                 </ion-row>
                             </div>
                             <div class="operation-buttons">
-                                <button class="dull-btn operation-button" (click)="seeDetail(application.applicant_user_id)">{{'ACTION.GO_DETAIL' | translate}}</button>
-                                <button class="highlight-btn operation-button" (click)="hireApplicant(application.id)">{{'ACTION.CHOOSE' | translate}}</button>
+                                <button class="red-btn operation-button" (click)="respondApplicant(application.id, false)">{{'ACTION.REJECT' | translate}}</button>
+                                <button class="green-btn operation-button" (click)="respondApplicant(application.id, true)">{{'ACTION.CHOOSE' | translate}}</button>
                             </div>
                         </div>
                     </div>
