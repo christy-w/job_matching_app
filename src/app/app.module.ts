@@ -32,7 +32,7 @@ import { MenuComponent } from '../components/menu/menu';
 import { SearchFilter } from '../components/search-filter/search-filter';
 import { PreferenceModal } from '../components/preference-modal/preference-modal';
 import { ProfileModal } from '../components/profile-modal/profile-modal';
-import { DatetimePicker } from '../components/datetime-picker/datetime-picker';
+import { CandidatePopup } from '../components/candidate-popup/candidate-popup';
 /**
  * The Pages array lists all of the pages we want to use in our app.
  * We then take these pages and inject them into our NgModule so Angular
@@ -46,7 +46,7 @@ let components = [
 	NewVersionPage,
 	MenuComponent,
 	SearchFilter,
-	DatetimePicker,
+	CandidatePopup,
 	PreferenceModal,
 	ProfileModal
 ];

@@ -1,0 +1,45 @@
+candidate-popup {
+    position: relative;
+    padding: 15px;
+    box-shadow: $item-shadow;
+    ion-content, .scroll-content {
+        background: #fff !important;
+        margin-bottom: 0 !important;
+    }
+    .title {
+        text-align: center;
+        color: $dark-grey;
+        font-family: 'Roboto-medium';
+        font-size: 1.2em;
+    }
+    .operation-buttons {
+        position: relative;
+        width: 100%;
+        display: block;
+        margin-top: 30px;
+        .operation-button {
+            // position: absolute;
+            // left: 0;
+            // right: 0;
+            display: block;
+            width: 80%;
+            padding: 8px;
+            font-size: 1em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            margin: 10px auto;
+            &.dull-btn {
+                background-color: #f7f7f7;
+                color: $dark-grey;
+                box-shadow: $item-shadow;
+            }
+            &.highlight-btn {
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $highlight-btn-shadow;
+            }
+        }
+    }
+}

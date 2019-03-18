@@ -4,7 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
-import { DatetimePicker } from '../../components/datetime-picker/datetime-picker';
+import { CandidatePopup } from '../../components/candidate-popup/candidate-popup';
 import { Api } from '../../providers';
 import _ from 'lodash';
 import * as moment from 'moment';
@@ -100,5 +100,21 @@ export class EmployerJobPage extends BasePage {
 	openEmployerRecommendPage(job_id) {
 		let data = { 'job_id': job_id };
 		this.nav.push('EmployerRecommendationPage', data);
+	}
+
+	openCandidatePopup(job_id) {
+		this.utils.getLocal('USER_PREFERENCE').then(pref => {
+			if (pref) {
+				let candidate_popup = this.utils.createPopover(CandidatePopup, {'job_id': job_id}, {cssClass:'candidate-popup'});
+				candidate_popup.onDidDismiss(data => {
+					// (data) ? this.saveFilter(data) : this.cancelFilter();
+					// this.filterShown = false;
+				});
+				candidate_popup.present();
+			} else {
+				let data = {'job_id': job_id};
+				this.nav.push('EmployerApplicantPage', data);
+			}
+		});
 	}
 }

@@ -60,13 +60,13 @@
         </div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.computer_skills">
-        <div class="title">語言能力</div>
+        <div class="title">電腦技能</div>
         <div class="info">
           <span *ngFor="let skill of candidate.computer_texts">{{ skill['name_' + language] }}</span>
         </div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.related_certs">
-        <div class="title">語言能力</div>
+        <div class="title">資格及證書</div>
         <div class="info">
           <span *ngFor="let cert of candidate.related_texts">{{ cert['name_' + language] }}</span>
         </div>

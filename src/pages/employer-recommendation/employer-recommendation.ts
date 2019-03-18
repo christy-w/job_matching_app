@@ -242,7 +242,7 @@ export class EmployerRecommendationPage extends BasePage {
 		this.api.startQueue([
 			this.api.getJobApplications(job_id)
 		]).then(response => {
-			this.applications = response[0];
+			this.applications = _.filter(response[0], {'application_status': 'submitted'});
 	
 			if (this.applications) {
 				console.log('applications', this.applications);

@@ -4,7 +4,6 @@ import { IonicPage } from 'ionic-angular';
 import { BasePage } from '../../core/base-page';
 import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
-import { DatetimePicker } from '../../components/datetime-picker/datetime-picker';
 import { Api } from '../../providers';
 import _ from 'lodash';
 import * as moment from 'moment';
@@ -114,15 +113,6 @@ export class ApplicantJobPage extends BasePage {
 			this.job = job;
 			console.log('job detail', this.job);
 		});
-	}
-
-	openDatetimePicker() {
-		let datetimePicker = this.utils.createPopover(DatetimePicker, {}, {cssClass:'datetime-picker'});
-		datetimePicker.onDidDismiss(data => {
-			// (data) ? this.saveFilter(data) : this.cancelFilter();
-			// this.filterShown = false;
-		});
-	    datetimePicker.present();
 	}
 
 	applyJob(job_id) {

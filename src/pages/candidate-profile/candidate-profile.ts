@@ -27,8 +27,8 @@ export class CandidateProfilePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
     Config.DEBUG_VERBOSE && console.log('CandidateProfilePage constructor');
-    let applicant_id = '3';
-    // let applicant_id = this.params.get('applicant_id');
+    // let applicant_id = '3';
+    let applicant_id = this.params.get('applicant_id');
     this.api.startQueue([
 			this.api.getApplicantProfile(applicant_id),
 		]).then(response => {
