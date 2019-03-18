@@ -14,16 +14,16 @@
                               <span class="gender">{{ application.applicant['gender_' + language] }}</span>
                               <span class="age">({{ application.applicant.age }})</span>
                             </div>
-                            <div class="ratings">
+                            <div class="ratings" *ngIf="application.applicant.feedbacks.length > 0">
                                 <ionic3-star-rating 
                                     activeIcon = "md-star"
                                     defaultIcon = "md-star-outline"
                                     activeColor = "#fab712" 
                                     defaultColor = "#d9d7d7"
                                     readonly="true"
-                                    [rating]="4">
+                                    [rating]="application.applicant.avg_ratings">
                                 </ionic3-star-rating>
-                                <div class="review-counts">(10)</div>
+                                <div class="review-counts" *ngIf="application.applicant.feedbacks.length > 0">({{application.applicant.feedbacks.length}})</div>
                             </div>
                             <button class="detail-btn" (click)="seeDetail(application.applicant_user_id)">{{'ACTION.GO_DETAIL' | translate}}</button>
                         </div>

@@ -11,16 +11,16 @@
         <ion-col class="profile-info-wrapper">
             <div class="profile-info">
                 <div class="name">{{ user_profile['name_' + language] }}</div>
-                <div class="ratings">
+                <div class="ratings" *ngIf="user_profile.feedbacks.length > 0">
                     <ionic3-star-rating 
                         activeIcon = "md-star"
                         defaultIcon = "md-star-outline"
                         activeColor = "#fab712" 
                         defaultColor = "#d9d7d7"
                         readonly="true"
-                        [rating]="4">
+                        [rating]="user_profile.avg_ratings">
                     </ionic3-star-rating>
-                    <div class="review-counts">(10)</div>
+                    <div class="review-counts" *ngIf="user_profile.feedbacks.length > 0">({{user_profile.feedbacks.length}})</div>
                 </div>
             </div>
         </ion-col>
