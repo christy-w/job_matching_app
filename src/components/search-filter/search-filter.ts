@@ -14,7 +14,7 @@ export class SearchFilter {
 	all_districts: any;
 	selected_districts: any = [];
 	selected_types: any = [];
-
+	search_input: string = '';
   constructor(
 		private utils: Utils,
 		private api: Api,
@@ -91,7 +91,6 @@ export class SearchFilter {
 
   selectType(type) {
 		type.selected = !type.selected;
-		console.log('selected type', type.value);
 
 		if (_.includes(this.selected_types, type.value)) {
 			// Remove selected if it exits in collection
@@ -104,7 +103,6 @@ export class SearchFilter {
 	
 	selectDistrict(district) {
 		district.selected = !district.selected;
-		console.log('selected district', district.id);
 
 		if (_.includes(this.selected_districts, district.id)) {
 			// Remove selected if it exits in collection
@@ -116,8 +114,37 @@ export class SearchFilter {
 	}
 
 	confirmFilter() {
-		let data = { 'types': this.selected_types, 'districts': this.selected_districts };
+		let data = { 'search_input': this.search_input, 'types': this.selected_types, 'districts': this.selected_districts };
+		console.log('filter data', data);
 		this.view.dismiss(data);
 	}
 
+	selectAllFilter() {
+		this.selected_districts = [];
+		this.selected_types = [];
+		_.each(this.all_districts, (area) => {
+			_.each(area.locations, (district) => {
+				district.selected = true;
+				this.selected_districts.push(district.id);
+			})
+		});
+		_.each(this.filters_employment_types, (type) => {
+			type.selected = true;
+			this.selected_types.push(type.value);
+		});
+	}
+
+	deselectAllFilter() {
+		_.each(this.all_districts, (area) => {
+			_.each(area.locations, (district) => {
+				district.selected = false;
+			})
+		});
+		_.each(this.filters_employment_types, (type) => {
+			type.selected = false;
+		});
+		this.selected_districts = [];
+		this.selected_types = [];
+		this.search_input = '';
+	}
 }

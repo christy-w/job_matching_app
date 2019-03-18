@@ -21,7 +21,8 @@ export class ApplicantHomePage extends BasePage {
 	name: string = 'ApplicantHomePage';
 	language: string = '';
 	jobs: any;
-
+	filtered_jobs: any = [];
+	all_jobs: any;
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -76,9 +77,6 @@ export class ApplicantHomePage extends BasePage {
 
 			// Default sort jobs by publish date
 			all_jobs = _.filter(all_jobs, { 'status': 'active' });
-			all_jobs = _.orderBy(all_jobs, function(job) { 
-				return moment(job.publish_date); 
-			}).reverse();
 
 			all_jobs.forEach(job => {
 				// Format publish dates
@@ -117,11 +115,11 @@ export class ApplicantHomePage extends BasePage {
 						break;
 				}
 			});
-
-			this.jobs = all_jobs;
-
-			// console.log('now', now);
-			console.log('all jobs', this.jobs);
+			
+			this.all_jobs = all_jobs;
+			this.jobs = _.orderBy(this.all_jobs, function(job) { 
+				return moment(job.publish_date); 
+			}).reverse();
 		});
 	}
 
@@ -140,7 +138,51 @@ export class ApplicantHomePage extends BasePage {
 	}
 
 	filterJobList(filters) {
-		console.log('type filters', filters.types);
-		console.log('district filters', filters.districts);
+		this.jobs = this.all_jobs;
+		// Search by key words
+		let searched_jobs = [];
+		let key_word = filters.search_input.toLowerCase();
+		if (key_word) {
+			_.each(this.jobs, (job)=> {
+				if (job.employer.name_zh.toLowerCase().includes(key_word)
+					|| job.employer.name_en.toLowerCase().includes(key_word)
+					|| job.name_zh.toLowerCase().includes(key_word)
+					|| job.name_en.toLowerCase().includes(key_word)
+				) {
+					searched_jobs.push(job);
+				}
+			})
+		} else {
+			searched_jobs = this.jobs;
+		}
+		console.log('Searched: ', searched_jobs);
+
+		// Search by type filter
+		let type_filtered_jobs = [];
+		let types = filters.types;
+		if (types && types.length > 0) {
+			_.each(types, (type) => {
+				let type_matched_jobs = _.filter(searched_jobs, {'type': type});
+				type_filtered_jobs.push(type_matched_jobs);
+			})
+			type_filtered_jobs = _.flatten(type_filtered_jobs);
+		}
+		console.log('Filtered by type: ', type_filtered_jobs);
+
+		// Search by district filter
+		let district_filtered_jobs = [];
+		let districts = filters.districts;
+		if (districts && districts.length > 0) {
+			_.each(districts, (district) => {
+				let district_matched_jobs = _.filter(type_filtered_jobs, {'district_id': district});
+				district_filtered_jobs.push(district_matched_jobs);
+			})
+			district_filtered_jobs = _.flatten(district_filtered_jobs);
+		}
+		console.log('Filtered by district: ', district_filtered_jobs);
+
+		this.jobs = _.orderBy(district_filtered_jobs, function(job) { 
+			return moment(job.publish_date); 
+		}).reverse();
 	}
 }

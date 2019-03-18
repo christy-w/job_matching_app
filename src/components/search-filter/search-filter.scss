@@ -28,6 +28,21 @@ search-filter {
         }
     }
     .filter-options {
+        position: relative;
+        .select-btn, .deselect-btn {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            text-align: center;
+            padding: 4px 10px 4px 10px;
+            margin: 2px 2px;
+            font-size: 0.9em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            color: $font-yellow;
+            background: #fff;
+            box-shadow: $item-shadow;
+        }
         .filter-option {
             padding: 10px 0px;
             .name {
