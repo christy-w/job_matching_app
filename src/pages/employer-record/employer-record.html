@@ -5,103 +5,39 @@
         <div class="page-title">申請工作紀錄</div>
         <div class="page-desp">有 1 項待確認的工作</div>
     </div>
-    <div class="records-wrapper">
+    <div class="records-wrapper" *ngIf="records">
         <!-- Record card item -->
-        <div class="record-card">
-            <div class="row-wrapper">
+        <div class="record-card" *ngFor="let record of records">
+            <div class="row-wrapper" (click)="seeJobDetail(record.job.id)" tappable>
                 <ion-row class="job-card">
                     <ion-col col-3>
-                        <div class="thumbnail"></div>
+                        <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + record.job.employer.thumbnail_url + ')'}"></div>
                     </ion-col>
-                    <ion-col col-7 class="job-info">
-                        <div class="title">夜更保安員</div>
+                    <ion-col col-9 class="job-info">
+                        <div class="title">{{ record.job['name_' + language] }}</div>
                         <span class="job-type">
                             <div class="dot"></div>
-                            臨時工作
+                            {{ record.job['type_' + language] }}
                         </span>
-                        <div class="employer">太平洋酒店</div>
-                        <div class="salary">$55/小時</div>
+                        <div class="employer">{{ record.job.employer['name_' + language] }}</div>
+                        <div class="salary">{{ record.job['wage_' + language] }}</div>
                         <div class="tags">
-                            <div class="tag">即日出糧</div>
-                            <div class="tag">即日出糧</div>
-                        </div>
-                    </ion-col>
-                    <ion-col col-2>
-                        <div class="publish-date">1日前</div>
-                        <div class="fav-btn">
-                            <ion-icon name="heart"></ion-icon>
+                            <div class="tag"  *ngFor="let benefit of record.job.employer.benefits">{{ benefit['name_' + language] }}</div>
                         </div>
                     </ion-col>
                 </ion-row>
             </div>
             <div class="application-detail">
-                <div class="title">申請詳情</div>
-                <div class="status">申請確認中</div>
-                <ion-row class="info-row">
-                    <ion-col col-3 class="info-title">日期</ion-col>
-                    <ion-col col-9 class="info-content">2018-09-01 (星期二)</ion-col>
-                </ion-row>
-                <ion-row class="info-row">
-                    <ion-col col-3 class="info-title">時間</ion-col>
-                    <ion-col col-9 class="info-content">12:00PM - 6:00PM</ion-col>
-                </ion-row>
-                <ion-row class="info-row">
-                    <ion-col col-3 class="info-title">地點</ion-col>
-                    <ion-col col-9 class="info-content">鰂魚涌太平洋道一號</ion-col>
-                </ion-row>
+                <div class="title">申請進度</div>
+                <div class="status" [ngStyle]="{'color': record.status_color }">{{ record['status_' + language]}}</div>
             </div>
-            <div class="operation-buttons">
-                <button class="dull-btn operation-button">取消申請</button>
-                <button class="highlight-btn operation-button">修改申請</button>
+            <div class="operation-buttons" [hidden]="record.allow_operation == 'none'">
+                <button class="dull-btn operation-button" *ngIf="record.allow_operation == 'cancel'" (click)="cancelApplication(record.id)">取消申請</button>
+            </div>
+            <div class="operation-buttons" *ngIf="record.allow_operation == 'offer'">
+                <button class="reject-btn operation-button" (click)="respondOffer(record.id, false)">拒絕職位</button>
+                <button class="accept-btn operation-button" (click)="respondOffer(record.id, true)">接受職位</button>
             </div>
         </div>
-        <div class="record-card">
-                <div class="row-wrapper">
-                    <ion-row class="job-card">
-                        <ion-col col-3>
-                            <div class="thumbnail"></div>
-                        </ion-col>
-                        <ion-col col-7 class="job-info">
-                            <div class="title">夜更保安員</div>
-                            <span class="job-type">
-                                <div class="dot"></div>
-                                臨時工作
-                            </span>
-                            <div class="employer">太平洋酒店</div>
-                            <div class="salary">$55/小時</div>
-                            <div class="tags">
-                                <div class="tag">即日出糧</div>
-                                <div class="tag">即日出糧</div>
-                            </div>
-                        </ion-col>
-                        <ion-col col-2>
-                            <div class="publish-date">1日前</div>
-                            <div class="fav-btn">
-                                <ion-icon name="heart"></ion-icon>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                </div>
-                <div class="application-detail">
-                    <div class="title">申請詳情</div>
-                    <div class="status">申請確認中</div>
-                    <ion-row class="info-row">
-                        <ion-col col-3 class="info-title">日期</ion-col>
-                        <ion-col col-9 class="info-content">2018-09-01 (星期二)</ion-col>
-                    </ion-row>
-                    <ion-row class="info-row">
-                        <ion-col col-3 class="info-title">時間</ion-col>
-                        <ion-col col-9 class="info-content">12:00PM - 6:00PM</ion-col>
-                    </ion-row>
-                    <ion-row class="info-row">
-                        <ion-col col-3 class="info-title">地點</ion-col>
-                        <ion-col col-9 class="info-content">鰂魚涌太平洋道一號</ion-col>
-                    </ion-row>
-                </div>
-                <div class="operation-buttons">
-                    <button class="dull-btn operation-button">取消申請</button>
-                    <button class="highlight-btn operation-button">修改申請</button>
-                </div>
-            </div>
     </div>
 </ion-content>

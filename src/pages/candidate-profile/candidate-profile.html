@@ -50,7 +50,29 @@
         <div class="info" item-end>{{ candidate['experience_' + language] }}</div>
       </div>
     </div>
-    <!-- -->
+    <!-- Skills and Abilities-->
+    <div class="card-wrapper">
+      <div class="card-title">能力及資格</div>
+      <div ion-item class="list-item" *ngIf="candidate.language_abilities">
+        <div class="title">語言能力</div>
+        <div class="info">
+          <span *ngFor="let lang of candidate.language_texts">{{ lang['name_' + language] }}</span>
+        </div>
+      </div>
+      <div ion-item class="list-item" *ngIf="candidate.computer_skills">
+        <div class="title">語言能力</div>
+        <div class="info">
+          <span *ngFor="let skill of candidate.computer_texts">{{ skill['name_' + language] }}</span>
+        </div>
+      </div>
+      <div ion-item class="list-item" *ngIf="candidate.related_certs">
+        <div class="title">語言能力</div>
+        <div class="info">
+          <span *ngFor="let cert of candidate.related_texts">{{ cert['name_' + language] }}</span>
+        </div>
+      </div>
+    </div>
+    <!-- Feedback -->
     <div class="card-wrapper">
       <div class="card-title">受僱評價</div>
       <div ion-item class="list-item">
