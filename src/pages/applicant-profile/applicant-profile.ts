@@ -64,6 +64,10 @@ export class ApplicantProfilePage extends BasePage {
 		this.nav.push('ApplicantReviewPage');
 	}
 
+	openApplicantFavouritePage() {
+		this.nav.push('ApplicantFavouritePage');
+	}
+
 	resetPassword() {
 		this.utils.showConfirm('', this.utils.instantLang('MSG.FORGET_PASSWORD'), () => {
 			this.app.getRootNav().setRoot('ResetPasswordPage');

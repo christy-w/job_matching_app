@@ -1,9 +1,8 @@
+<common-header [enable-back]="true"></common-header>
+
 <ion-content>
 	<div class="upper-section" ion-fixed>
-		<button class="search-btn" (click)="openSearchFilter()">
-			<ion-icon name="ios-search"></ion-icon>
-		</button>
-		<div class="page-title">{{ 'HOTKEY.HOME' | translate }}</div>
+		<div class="page-title">{{ 'PAGE.FAVOURITE' | translate }}</div>
 	</div>
 	<div class="list-section">
 		<div class="list-all-jobs" *ngIf="jobs">
@@ -26,10 +25,9 @@
 				</ion-col>
 				<ion-col col-2>
 					<div class="publish-date">{{ job['diff_days_' + language]}}</div>
-					<!-- <button class="fav-btn" (click)="clickFav($event, job.id)">
-						<ion-icon [hidden]="!checkFav(job.id)" name="heart"></ion-icon>
-						<ion-icon [hidden]="checkFav(job.id)" name="heart-outline"></ion-icon>
-					</button> -->
+					<div class="fav-btn">
+						<ion-icon name="heart"></ion-icon>
+					</div>
 				</ion-col>
 			</ion-row>
 		</div>

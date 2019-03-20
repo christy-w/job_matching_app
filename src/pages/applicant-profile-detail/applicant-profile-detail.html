@@ -2,7 +2,7 @@
 
 <ion-content>
 	<button ion-button class="back-btn" (click)="backToProfile()">
-		<img src="../../assets/icon/back.png"/>
+		<img src="assets/icon/back.png"/>
 	</button>
 	<div class="page-title" *ngIf="detail_type">{{ detail_title | translate }}</div>
     <div class="list-card" *ngIf="detail_type == 'personal_details' || detail_type == 'work_experiences'">

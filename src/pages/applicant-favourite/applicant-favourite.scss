@@ -1,4 +1,4 @@
-page-applicant-home {
+page-applicant-favourite {
     [ion-fixed] {
         position: relative;
         width: 100vw;
@@ -121,7 +121,6 @@ page-applicant-home {
                     position: absolute;
                     bottom: 5px;
                     right: 5px;
-                    background: transparent;
                     ion-icon {
                         color: $red;
                     }

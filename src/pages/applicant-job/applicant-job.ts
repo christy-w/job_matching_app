@@ -18,6 +18,7 @@ export class ApplicantJobPage extends BasePage {
 	name: string = 'ApplicantJobPage';
 	job: any;
 	isApplied: boolean = false;
+	fav_jobs: any;
 
 	constructor(
 		protected platform: Platform,
@@ -32,11 +33,36 @@ export class ApplicantJobPage extends BasePage {
 
 		let job_id = this.params.get('job_id');
 		this.initJobDetail(job_id);
+		this.getFavourited();
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'job';
 		this.language = this.utils.currentLang();
+	}
+
+	getFavourited() {
+		this.utils.getLocal('FAV_JOBS', []).then(data => {
+			this.fav_jobs = data;
+			console.log('Favourited jobs', this.fav_jobs);
+		});
+	}
+
+	checkFav(job_id) {
+		return _.includes(this.fav_jobs, job_id);
+	}
+
+	clickFav(event:Event, job_id) {
+		event.stopPropagation();
+		if (_.includes(this.fav_jobs, job_id)) {
+			// Remove spot if it exits in favourites
+			_.pull(this.fav_jobs, job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		} else {
+			// Add spot if it does not exist in favourites
+			this.fav_jobs.push(job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		}
 	}
 
 	initJobDetail(job_id) {

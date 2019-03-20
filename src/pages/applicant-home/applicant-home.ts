@@ -22,6 +22,7 @@ export class ApplicantHomePage extends BasePage {
 	language: string = '';
 	jobs: any;
 	filtered_jobs: any = [];
+	fav_jobs: any;
 	all_jobs: any;
 	constructor(
 		protected platform: Platform,
@@ -120,7 +121,33 @@ export class ApplicantHomePage extends BasePage {
 			this.jobs = _.orderBy(this.all_jobs, function(job) { 
 				return moment(job.publish_date); 
 			}).reverse();
+
+			this.getFavourited();
 		});
+	}
+
+	getFavourited() {
+		this.utils.getLocal('FAV_JOBS', []).then(data => {
+			this.fav_jobs = data;
+			console.log('Favourited jobs', this.fav_jobs);
+		});
+	}
+
+	checkFav(job_id) {
+		return _.includes(this.fav_jobs, job_id);
+	}
+
+	clickFav(event:Event, job_id) {
+		event.stopPropagation();
+		if (_.includes(this.fav_jobs, job_id)) {
+			// Remove spot if it exits in favourites
+			_.pull(this.fav_jobs, job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		} else {
+			// Add spot if it does not exist in favourites
+			this.fav_jobs.push(job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		}
 	}
 
 	openSearchFilter() {
