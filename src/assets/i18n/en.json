@@ -54,6 +54,7 @@
         "INACTIVATED_USER": "User not activated, activate now?",
         "MISSING_INFO": "Missing information, please try again.",
         "PASSWORD_DIFF": "Please confirm your password again.",
+        "PASSWORD_TOO_SHORT": "The Password field must contain at least 6 digits.",
         "ACTIVATION": "Your activation code is ",
         "INCORRECT_ACTIVATION": "Incorrect activation code, please try again.",
         "MOBILE_REGISTERED": "Mobile registered, please try again.",
