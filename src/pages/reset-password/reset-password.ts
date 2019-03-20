@@ -56,22 +56,26 @@ export class ResetPasswordPage extends BasePage {
 		if (this.mobile_input && this.password_input && this.password_confirm_input) {
 			if (this.password_input === this.password_confirm_input) {
 				// Data validation is completed, proceed to sign up
-				var reset_input = {
-					"mobile": this.mobile_input
-				};
-				this.api.startQueue([
-					this.api.postForgetPassword(reset_input)
-				]).then(response => {
-					this.forget_response = response[0];
-
-					if (this.forget_response.status == false) {
-						if (this.forget_response.error.includes('Unable to email')) {
-							this.utils.showAlert('', this.utils.instantLang('MSG.INVALID_USER'));
+				if (this.password_input.length < 6) {
+					this.utils.showAlert('', this.utils.instantLang('MSG.PASSWORD_TOO_SHORT'));
+				} else {
+					var reset_input = {
+						"mobile": this.mobile_input
+					};
+					this.api.startQueue([
+						this.api.postForgetPassword(reset_input)
+					]).then(response => {
+						this.forget_response = response[0];
+	
+						if (this.forget_response.status == false) {
+							if (this.forget_response.error.includes('Unable to email')) {
+								this.utils.showAlert('', this.utils.instantLang('MSG.INVALID_USER'));
+							}
+						} else {
+							this.goNextSlide();
 						}
-					} else {
-						this.goNextSlide();
-					}
-				});
+					});
+				}
 			} else {
 				this.utils.showAlert('', this.utils.instantLang('MSG.PASSWORD_DIFF'));
 			}
@@ -157,13 +161,12 @@ export class ResetPasswordPage extends BasePage {
 					var reset = response[0];
 
 					if (reset.status && reset.status == true) {
-						this.utils.showConfirm('', this.utils.instantLang('MSG.RESET_SUCCESS'), () => {
-							if (this.saved_mobile) {
-								this.resetLogin();
-							} else {
-								this.popToLoginPage();
-							}
-						})
+						this.utils.showToast(this.utils.instantLang('MSG.RESET_SUCCESS'));
+						if (this.saved_mobile) {
+							this.resetLogin();
+						} else {
+							this.popToLoginPage();
+						}
 					} else {
 						this.utils.showConfirm('', this.utils.instantLang('MSG.RESET_FAILED'), () => {
 							this.goPrevSlide();

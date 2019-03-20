@@ -51,8 +51,6 @@ export class LoginPage extends BasePage {
 						});
 					} else if (login_response.error.includes('Incorrect')) {
 						this.utils.showAlert('', this.utils.instantLang('MSG.INCORRECT_INPUT'));
-					} else if (login_response.error.includes('at least')) {
-						this.utils.showAlert('', this.utils.instantLang('MSG.PASSWORD_TOO_SHORT'));
 					}
 				} else {
 					this.user = login_response;

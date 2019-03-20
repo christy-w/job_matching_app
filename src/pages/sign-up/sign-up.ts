@@ -65,6 +65,10 @@ export class SignUpPage extends BasePage {
 							default:
 								break;
 						}
+						
+						if (sign_up_response.error.includes('at least')) {
+							this.utils.showAlert('', this.utils.instantLang('MSG.PASSWORD_TOO_SHORT'));
+						}
 					} else {
 						this.sign_up_data = sign_up_response;
 						console.log('sign_up_data', this.sign_up_data);
