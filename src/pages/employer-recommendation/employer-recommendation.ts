@@ -59,6 +59,7 @@ export class EmployerRecommendationPage extends BasePage {
 		if (must_pref && must_pref.length > 0) {
 			this.getMustApplicants(must_pref);
 		} else if (preferred_pref && preferred_pref.length > 0){
+			this.must_applicants = this.applications;
 			this.getPreferredApplicants(preferred_pref)
 		} else {
 			console.log('initRecommendations > no pref');
