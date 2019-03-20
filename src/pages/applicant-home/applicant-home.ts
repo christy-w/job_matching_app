@@ -41,6 +41,10 @@ export class ApplicantHomePage extends BasePage {
 		this.checkUserPreference();
 	}
 
+	ionViewDidEnter() {
+		this.getFavourited();
+	}
+
 	checkUserProfile() {
 		// Check if User updated profile
 		if (Config.USER_AUTH.info_updated == 0) {
@@ -122,7 +126,6 @@ export class ApplicantHomePage extends BasePage {
 				return moment(job.publish_date); 
 			}).reverse();
 
-			this.getFavourited();
 		});
 	}
 

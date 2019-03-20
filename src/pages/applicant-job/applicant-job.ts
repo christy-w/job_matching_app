@@ -33,12 +33,12 @@ export class ApplicantJobPage extends BasePage {
 
 		let job_id = this.params.get('job_id');
 		this.initJobDetail(job_id);
-		this.getFavourited();
 	}
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'job';
 		this.language = this.utils.currentLang();
+		this.getFavourited();
 	}
 
 	getFavourited() {

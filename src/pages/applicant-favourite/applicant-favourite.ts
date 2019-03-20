@@ -18,7 +18,7 @@ export class ApplicantFavouritePage extends BasePage {
 	name: string = 'ApplicantFavouritePage';
 	language: string = '';
 	jobs: any;
-	all_jobs: any;
+	fav_jobs: any;
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -32,21 +32,58 @@ export class ApplicantFavouritePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'settings';
+		this.getFavourited();
+	}
+
+	getFavourited() {
+		this.utils.getLocal('FAV_JOBS', []).then(data => {
+			this.fav_jobs = data;
+			console.log('Favourited jobs', this.fav_jobs);
+		});
+		this.initJobList();
+	}
+
+	checkFav(job_id) {
+		return _.includes(this.fav_jobs, job_id);
+	}
+
+	clickFav(event:Event, job_id) {
+		event.stopPropagation();
+		if (_.includes(this.fav_jobs, job_id)) {
+			// Remove spot if it exits in favourites
+			_.pull(this.fav_jobs, job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		} else {
+			// Add spot if it does not exist in favourites
+			this.fav_jobs.push(job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		}
+		this.getFavourited();
 	}
 
 	ngOnInit() {
 		this.language = this.utils.currentLang();
 		console.log('home > lang', this.language);
+	}
 
+	initJobList() {
 		this.api.startQueue([
 			this.api.getAllJobs()
 		]).then(response => {
-			var all_jobs = response[0];
+			var all_jobs = _.filter(response[0], { 'status': 'active' });
 
 			// Default sort jobs by publish date
-			all_jobs = _.filter(all_jobs, { 'status': 'active' });
+			let fav_list = [];
+			_.each(this.fav_jobs, (job_id) => {
+				_.each(all_jobs, (job) => {
+					if (job.id == job_id) {
+						fav_list.push(job);
+					}
+				})
+			})
+			console.log('fav_list', fav_list);
 
-			all_jobs.forEach(job => {
+			fav_list.forEach(job => {
 				// Format publish dates
 				let publish_date = moment(job.publish_date,'YYYY-MM-DD HH:mm:ss');
 				var diff_days = moment().diff(publish_date, 'days');
@@ -84,8 +121,7 @@ export class ApplicantFavouritePage extends BasePage {
 				}
 			});
 			
-			this.all_jobs = all_jobs;
-			this.jobs = _.orderBy(this.all_jobs, function(job) { 
+			this.jobs = _.orderBy(fav_list, function(job) { 
 				return moment(job.publish_date); 
 			}).reverse();
 		});
