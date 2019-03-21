@@ -82,10 +82,11 @@ search-filter {
         }
     }
     .operation-buttons {
-        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
         .operation-button {
-            display: inline-block;
-            width: 47%;
+            width: 80%;
             padding: 8px;
             font-size: 1em;
             font-family: 'Roboto-bold';

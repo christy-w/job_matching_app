@@ -49,7 +49,7 @@ page-applicant-home {
                     border-radius: 50%;
                     text-align: center;
                     margin: auto;
-                    background-size: contain;
+                    background-size: cover;
                     background-position: 50%;
                     box-shadow: $thumbnail-shadow;
                 }
@@ -92,7 +92,7 @@ page-applicant-home {
                         .tag {
                             display: inline-block;
                             text-align: center;
-                            margin: 0px 2px;
+                            margin: 2px;
                             padding: 2px 10px 2px 10px;
                             color: #fff;
                             font-size: 0.8em;

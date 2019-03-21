@@ -21,35 +21,54 @@
 	</ion-row>
 	<div class="job-detail">
 		<div class="job-content">
-			<div class="content" [innerHTML]="job['description_' + language]"></div>
+			<div *ngIf="job['description_' + language]">
+				<div class="title">{{ 'JOB.DESCRIPTION' | translate }}</div>
+				<div class="content" [innerHTML]="job['description_' + language]"></div>
+			</div>
+			<div *ngIf="job['requirements_' + language]">
+				<div class="title">{{ 'JOB.REQUIREMENTS' | translate }}</div>
+				<div class="content" [innerHTML]="job['requirements_' + language]"></div>
+			</div>
+			<div *ngIf="job['benefits_' + language]">
+				<div class="title">{{ 'JOB.BENEFITS' | translate }}</div>
+				<div class="content" [innerHTML]="job['benefits_' + language]"></div>
+			</div>
+			<div *ngIf="job['others_' + language]">
+				<div class="title">{{ 'JOB.OTHERS' | translate }}</div>
+				<div class="content" [innerHTML]="job['others_' + language]"></div>
+			</div>
 		</div>
 		<div class="operation-buttons" [hidden]="isApplied">
 			<button class="highlight-btn operation-button" (click)="applyJob(job.id)">申請工作</button>
 		</div>
 	</div>
-	<ion-row class="employer-card">
-		<ion-col col-3>
-			<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
-		</ion-col>
-		<ion-col col-9 class="employer-info">
-			<div class="title">{{ job.employer['name_' + language] }}</div>
-			<div class="info-list">
-				<div class="info">
-					<ion-icon name="ios-hammer"></ion-icon>
-					<span>{{ job.employer['industry_name_' + language] }}</span>
+	<div class="employer-card">
+		<ion-row>
+			<ion-col col-3>
+				<div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
+			</ion-col>
+			<ion-col col-9 class="employer-info">
+				<div class="title">{{ job.employer['name_' + language] }}</div>
+				<div class="info-list">
+					<div class="info">
+						<ion-icon name="ios-hammer"></ion-icon>
+						<span>{{ job.employer['industry_name_' + language] }}</span>
+					</div>
+					<div class="info">
+						<ion-icon name="ios-pin"></ion-icon>
+						<span>{{ job.employer['district_name_' + language] }}</span>
+					</div>
+					<div class="info">
+						<ion-icon name="ios-people"></ion-icon>
+						<span>{{ job.employer['scale_' + language] }}</span>
+					</div>
 				</div>
-				<div class="info">
-					<ion-icon name="ios-pin"></ion-icon>
-					<span>{{ job.employer['district_name_' + language] }}</span>
+				<div class="tags">
+					<div class="tag" *ngFor="let benefit of job.employer.benefits">{{ benefit['name_' + language] }}</div>
 				</div>
-				<div class="info">
-					<ion-icon name="ios-people"></ion-icon>
-					<span>{{ job.employer['scale_' + language] }}</span>
-				</div>
-			</div>
-			<div class="tags">
-				<div class="tag" *ngFor="let benefit of job.employer.benefits">{{ benefit['name_' + language] }}</div>
-			</div>
-		</ion-col>
-	</ion-row>
+			</ion-col>
+		</ion-row>
+		<div class="desp-title">簡介</div>
+		<div class="desp">{{ job.employer['description_' + language] }}</div>
+	</div>
 </ion-content>

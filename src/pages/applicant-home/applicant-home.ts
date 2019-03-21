@@ -157,7 +157,8 @@ export class ApplicantHomePage extends BasePage {
 		console.log('searchFilter');
 		let searchFilter = this.utils.createPopover(SearchFilter, {}, {cssClass:'search-filter'});
 		searchFilter.onDidDismiss(data => {
-			(data) ? this.filterJobList(data) : searchFilter.dismiss();
+			// (data) ? this.filterJobList(data) : searchFilter.dismiss();
+			if (data) this.filterJobList(data);
 		});
 	    searchFilter.present();
 	}

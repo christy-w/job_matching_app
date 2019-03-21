@@ -126,7 +126,7 @@ page-employer-recommendation {
                     width: 115px;
                     height: 115px;
                     border-radius: 50%;
-                    background-size: contain;
+                    background-size: cover;
                     background-position: 50%;
                     box-shadow: $thumbnail-shadow;
                 }
@@ -283,7 +283,7 @@ page-employer-recommendation {
                     text-align: center;
                     margin: auto;
                     background-image: url('assets/img/sample/island_pacific.jpg');
-                    background-size: contain;
+                    background-size: cover;
                     background-position: 50%;
                     box-shadow: $thumbnail-shadow;
                 }

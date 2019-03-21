@@ -40,6 +40,7 @@ page-applicant-job {
             .salary {
                 padding-top: 20px;
                 font-size: 1.4em;
+                color: $font-yellow;
             }
         }
         .publish-date {
@@ -80,7 +81,7 @@ page-applicant-job {
             border-radius: 50%;
             text-align: center;
             margin: auto;
-            background-size: contain;
+            background-size: cover;
             background-position: 50%;
             box-shadow: $thumbnail-shadow;
         }
@@ -110,7 +111,7 @@ page-applicant-job {
                 .tag {
                     display: inline-block;
                     text-align: center;
-                    margin: 0px 2px;
+                    margin: 2px;
                     padding: 2px 10px 2px 10px;
                     color: #fff;
                     font-size: 0.8em;
@@ -122,7 +123,19 @@ page-applicant-job {
                 }
             }
         }
-        
+        .desp-title {
+            margin: 5px 15px;
+            border-top: 1px solid $light-grey;
+            padding-top: 5px;
+            font-size: 1em;
+            font-family: 'Roboto-medium';
+            color: $font-yellow;
+        }
+        .desp {
+            margin: 5px 15px;
+            font-size: 1em;
+            color: $dark-grey;
+        }
     }
     .job-detail {
         position: relative;
@@ -133,9 +146,11 @@ page-applicant-job {
         padding: 10px 20px;
         color: $dark-grey;
         .job-content {
+            margin: 10px 0;
             .title {
                 font-size: 1.2em;
                 font-family: 'Roboto-medium';
+                color: $font-yellow;
             }
             .content {
                 padding: 10px 0px;

@@ -45,23 +45,23 @@ $font-thin: 'Roboto-thin';
 
 @font-face {
   font-family: $font-bold;
-  src: url('assets/fonts/Roboto-Bold.ttf');
+  src: url('../assets/fonts/Roboto-Bold.ttf');
 }
 @font-face {
   font-family: $font-medium;
-  src: url('assets/fonts/Roboto-Medium.ttf');
+  src: url('../assets/fonts/Roboto-Medium.ttf');
 }
 @font-face {
   font-family: $font-regular;
-  src: url('assets/fonts/Roboto-Regular.ttf');
+  src: url('../assets/fonts/Roboto-Regular.ttf');
 }
 @font-face {
   font-family: $font-light;
-  src: url('assets/fonts/Roboto-Light.ttf');
+  src: url('../assets/fonts/Roboto-Light.ttf');
 }
 @font-face {
   font-family: $font-thin;
-  src: url('assets/fonts/Roboto-Thin.ttf');
+  src: url('../assets/fonts/Roboto-Thin.ttf');
 }
 
 ion-content, .fixed-content, .scroll-content{
