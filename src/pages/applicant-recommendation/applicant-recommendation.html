@@ -9,9 +9,10 @@
                 <div class="card-flipper">
                     <div class="card-front">
                         <div class="upper-section">
-                            <div class="fav-btn">
-                                <ion-icon name="heart"></ion-icon>
-                            </div>
+                            <button class="fav-btn" (click)="clickFav($event, job.id)">
+                                <ion-icon [hidden]="!checkFav(job.id)" name="heart"></ion-icon>
+                                <ion-icon [hidden]="checkFav(job.id)" name="heart-outline"></ion-icon>
+                            </button>
                             <div class="publish-date">{{ job['diff_days_' + language] }}</div>
                             <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + job.employer.thumbnail_url + ')'}"></div>
                             <div class="job-title">{{ job['name_' + language] }}</div>

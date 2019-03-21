@@ -21,7 +21,7 @@ export class ApplicantRecommendationPage extends BasePage {
 	user_preference: any;
 	all_jobs: any;
 	recommendations: any = [];
-
+	fav_jobs: any;
 	must_jobs: any = [];
 	preferred_jobs: any = [];
 	other_jobs: any = [];
@@ -40,6 +40,7 @@ export class ApplicantRecommendationPage extends BasePage {
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'recommendation';
 		this.getUserPreference();
+		this.getFavourited();
 	}
 
 	getUserPreference() {
@@ -363,6 +364,30 @@ export class ApplicantRecommendationPage extends BasePage {
 		if (job_list.length > 10)
 			return false; 
 		return true;
+	}
+
+	getFavourited() {
+		this.utils.getLocal('FAV_JOBS', []).then(data => {
+			this.fav_jobs = data;
+			console.log('Favourited jobs', this.fav_jobs);
+		});
+	}
+
+	checkFav(job_id) {
+		return _.includes(this.fav_jobs, job_id);
+	}
+
+	clickFav(event:Event, job_id) {
+		event.stopPropagation();
+		if (_.includes(this.fav_jobs, job_id)) {
+			// Remove spot if it exits in favourites
+			_.pull(this.fav_jobs, job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		} else {
+			// Add spot if it does not exist in favourites
+			this.fav_jobs.push(job_id);
+			this.utils.setLocal('FAV_JOBS', this.fav_jobs);
+		}
 	}
 
 	flip(job) {
