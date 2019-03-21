@@ -2,7 +2,7 @@
 
 <ion-content *ngIf="candidate">
   <div class="page-title">{{ candidate['name_' + language] }}</div>
-  <div class="ratings" *ngIf="candidate.feedbacks.length > 0">
+  <div class="ratings" *ngIf="candidate && candidate.feedbacks.length > 0">
     <ionic3-star-rating 
         activeIcon = "md-star"
         defaultIcon = "md-star-outline"
@@ -11,7 +11,7 @@
         readonly="true"
         [rating]="candidate.avg_ratings">
     </ionic3-star-rating>
-    <div class="review-counts" *ngIf="candidate.feedbacks.length > 0">({{user_profile.feedbacks.length}})</div>
+    <div class="review-counts" *ngIf="candidate.feedbacks && candidate.feedbacks.length > 0">({{candidate.feedbacks.length}})</div>
   </div>
   <div class="list-card">
     <!-- Personal details -->
@@ -73,28 +73,14 @@
       </div>
     </div>
     <!-- Feedback -->
-    <div class="card-wrapper">
+    <div class="card-wrapper" *ngIf="candidate.feedbacks && candidate.feedbacks.length > 0">
       <div class="card-title">受僱評價</div>
-      <div ion-item class="list-item">
+      <div ion-item class="list-item" *ngFor="let feedback of candidate.feedbacks">
         <div class="header">
-          <div class="employer">Judy Law</div>
-          <div class="date">1 week ago</div>
+          <div class="employer">{{ feedback.username }}</div>
+          <div class="date">{{ feedback.publish_date }}</div>
         </div>
-        <div class="feedback">做事專業，感覺到對工作有熱誠。能處理好各種大小事。</div>
-      </div>
-      <div ion-item class="list-item">
-        <div class="header">
-          <div class="employer">Judy Law</div>
-          <div class="date">1 week ago</div>
-        </div>
-        <div class="feedback">做事專業，感覺到對工作有熱誠。能處理好各種大小事。</div>
-      </div>
-      <div ion-item class="list-item">
-        <div class="header">
-          <div class="employer">Judy Law</div>
-          <div class="date">1 week ago</div>
-        </div>
-        <div class="feedback">做事專業，感覺到對工作有熱誠。能處理好各種大小事。</div>
+        <div class="feedback">{{ feedback.feedback }}</div>
       </div>
     </div>
 	</div>

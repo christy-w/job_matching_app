@@ -45,7 +45,7 @@ export class EmployerHomePage extends BasePage {
 	// Recommend employer user to reset password
 	checkEmployerResetPw() {
 		if (Config.USER_AUTH.register_password != null) {
-			this.utils.showConfirm('', 'MSG.ASK_RESET_PW', ()=> {
+			this.utils.showConfirm('', this.utils.instantLang('MSG.ASK_RESET_PW'), ()=> {
 				this.app.getRootNav().setRoot('ResetPasswordPage');
 			})
 		}

@@ -351,7 +351,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 			let update_response = response[0];
 
 			// Successful update
-			if (update_response == 1) {
+			if (update_response && update_response.status) {
 				this.utils.showToast(this.utils.instantLang('MSG.UPDATE_SUCCESS'));
 				this.nav.pop();
 			} else {

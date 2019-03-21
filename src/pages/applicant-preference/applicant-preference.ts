@@ -102,46 +102,46 @@ export class ApplicantPreferencePage extends BasePage {
 				importance: 1,
 				options: []
 			},
-			{
-				name_zh: '公司規模',
-				name_en: 'Company Scale',
-				value: 'employer_scale',
-				field_type: 'multi_select',
-				selection: [],
-				importance: 1,
-				options: [
-					{
-						id: 0,
-						option_zh: '20人以下',
-						option_en: 'Below 20',
-						value: 'under_20'
-					},
-					{
-						id: 1,
-						option_zh: '21-100人',
-						option_en: '21-100',
-						value: '21_100'
-					},
-					{
-						id: 2,
-						option_zh: '101-500人',
-						option_en: '101-500',
-						value: '101_500'
-					},
-					{
-						id: 3,
-						option_zh: '501-1000人',
-						option_en: '501-1000',
-						value: '501_1000'
-					},
-					{
-						id: 4,
-						option_zh: '1000人以上',
-						option_en: 'Above 1000',
-						value: 'above_1000'
-					}
-				]
-			},
+			// {
+			// 	name_zh: '公司規模',
+			// 	name_en: 'Company Scale',
+			// 	value: 'employer_scale',
+			// 	field_type: 'multi_select',
+			// 	selection: [],
+			// 	importance: 1,
+			// 	options: [
+			// 		{
+			// 			id: 0,
+			// 			option_zh: '20人以下',
+			// 			option_en: 'Below 20',
+			// 			value: 'under_20'
+			// 		},
+			// 		{
+			// 			id: 1,
+			// 			option_zh: '21-100人',
+			// 			option_en: '21-100',
+			// 			value: '21_100'
+			// 		},
+			// 		{
+			// 			id: 2,
+			// 			option_zh: '101-500人',
+			// 			option_en: '101-500',
+			// 			value: '101_500'
+			// 		},
+			// 		{
+			// 			id: 3,
+			// 			option_zh: '501-1000人',
+			// 			option_en: '501-1000',
+			// 			value: '501_1000'
+			// 		},
+			// 		{
+			// 			id: 4,
+			// 			option_zh: '1000人以上',
+			// 			option_en: 'Above 1000',
+			// 			value: 'above_1000'
+			// 		}
+			// 	]
+			// },
 			{
 				name_zh: '出糧方式',
 				name_en: 'Payment Methods',
