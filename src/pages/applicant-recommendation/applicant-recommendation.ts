@@ -365,8 +365,17 @@ export class ApplicantRecommendationPage extends BasePage {
 		return true;
 	}
 
-	flip(slide) {
-		slide.flipped = !slide.flipped;
+	flip(job) {
+		if (job.flipped) {
+			this.openJobPage(job.id);
+		} else {
+			job.flipped = !job.flipped;
+		}
+	}
+
+	openJobPage(job_id) {
+		let data = { 'job_id': job_id };
+		this.nav.push('ApplicantJobPage', data);
 	}
 	
 	initAllJobs() {

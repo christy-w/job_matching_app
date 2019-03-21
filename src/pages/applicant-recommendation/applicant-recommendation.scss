@@ -198,7 +198,7 @@ page-applicant-recommendation {
             .upper-section {
                 border-bottom: 1px solid $light-grey;
                 .job-card {
-                    height: 110px;
+                    height: auto;
                     margin: 0;
                 }
                 .thumbnail {
@@ -247,8 +247,7 @@ page-applicant-recommendation {
                         font-size: 0.9em;
                     }
                     .tags {
-                        position: absolute;
-                        bottom: 10px;
+                        position: relative;
                         overflow: hidden;
                         .tag {
                             display: inline-block;
