@@ -44,6 +44,17 @@ export class Api extends BaseService {
 		return this.post('/auth/reset_password', data);
 	}
 
+	// POST and GET /Users
+	public postUpdateMobile(data) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/user/update_mobile', data);
+	}
+
+	public postVerifyMobile(data) {
+		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);
+		return this.post('/user/verify_mobile', data);
+	}
+
 	// POST and GET /Applicants
 	public postUpdateApplicant(data) {
 		this.headers.set('X-API-KEY', Config.USER_AUTH.api_key);

@@ -82,6 +82,12 @@ export class ApplicantProfilePage extends BasePage {
 		});
 	}
 
+	updateMobile() {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.UPDATE_MOBILE'), () => {
+			this.app.getRootNav().setRoot('UpdateMobilePage');
+		});
+	}
+
 	logout() {
 		this.utils.showConfirm('', this.utils.instantLang('MSG.LOGOUT'), () => {
 			this.utils.clearLocal();

@@ -61,6 +61,7 @@
         "FORGET_PASSWORD": "Confirm to reset password? Your original password will be replaced and this action is irreversible.",
         "RESET_SUCCESS": "Password has been reset successfully, please login to proceed.",
         "RESET_FAILED": "Reset password failed, please try again.",
+        "UPDATE_MOBILE": "Confirm to update mobile? The original mobile number will be replaced and this action is irreversible.",
         "LOGOUT": "Confirm to logout?",
         "UPDATE_SUCCESS": "Information updated successfully.",
         "UPDATE_FAILED": "Information update failed, please check and try again.",
