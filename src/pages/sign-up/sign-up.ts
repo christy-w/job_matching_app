@@ -6,6 +6,7 @@ import { Config } from '../../config';
 import { Utils } from '../../core/providers/utils';
 import { MenuComponent } from '../../components/menu/menu';
 import { Api } from '../../providers';
+import { AgreementComponent } from '../../components/agreement/agreement';
 
 @IonicPage()
 @Component({
@@ -35,6 +36,7 @@ export class SignUpPage extends BasePage {
 	}
   
 	ngAfterViewInit() {
+		this.utils.showModal(AgreementComponent, {}, {cssClass:'agreement-component'});
 		if(this.slides) {
 			this.slides.lockSwipes(true);
 			this.slides.slidesPerView = '1';

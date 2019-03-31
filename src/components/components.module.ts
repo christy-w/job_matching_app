@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
         CardSlider,
         TimelineComponent,
         TimelineItemComponent,
-        TimelineTimeComponent,
+        TimelineTimeComponent
     ],
     imports: [
         IonicModule,
@@ -29,7 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
         CardSlider,
         TimelineComponent,
         TimelineItemComponent,
-        TimelineTimeComponent,
+        TimelineTimeComponent
     ]
 })
 export class ComponentsModule { }

@@ -29,6 +29,7 @@ import { InappHref } from '../core/components/inapp-href/inapp-href';
 
 // Components
 import { MenuComponent } from '../components/menu/menu';
+import { AgreementComponent } from '../components/agreement/agreement';
 import { SearchFilter } from '../components/search-filter/search-filter';
 import { PreferenceModal } from '../components/preference-modal/preference-modal';
 import { ProfileModal } from '../components/profile-modal/profile-modal';
@@ -50,7 +51,8 @@ let components = [
 	CandidatePopup,
 	PreferenceModal,
 	ProfileModal,
-	FeedbackPopup
+	FeedbackPopup,
+	AgreementComponent
 ];
 
 let directives = [

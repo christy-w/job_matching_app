@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="title">私隱政策聲明</div>
+  <div class="privacy-content" [innerHTML]=""></div>
+  <div class="agreement-checkbox">
+    <ion-label>我同意以上的條款與細則</ion-label>
+    <ion-checkbox [(ngModel)]="isAgreed"></ion-checkbox>
+  </div>
+  <div class="operation-buttons" [hidden]="isAgreed">
+    <button class="highlight-btn operation-button">繼續</button>
+  </div>
+</ion-content>
