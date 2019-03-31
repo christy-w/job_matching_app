@@ -1,3 +1,67 @@
-agreement {
-
+agreement-component {
+    .scroll-content {
+        margin: 0 !important;
+    }
+    .title {
+        padding: 80px 20px 0px 20px;
+        color: $dark-grey;
+        font-family: 'Roboto-bold';
+        font-size: 2em;
+    }
+    .statement-wrapper {
+        position: relative;
+        max-height: 400px;
+        overflow: auto;
+        margin: 10px 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: $item-shadow;
+        padding: 8px;
+    }
+    .agreement-checkbox {
+        display: flex !important;
+        margin: 5px 20px;
+        line-height: 20px;
+        padding: 0 !important;
+        border: none !important;
+        background-color: transparent;
+        ion-label, ion-checkbox {    
+            display: inline-block !important;
+        }
+        ion-checkbox {
+            top: -10px;
+            padding-right: 10px;
+            color: #fff;
+        }
+        ion-label {
+            color: $dark-grey;
+            font-family: 'Roboto-medium';
+            font-size: 0.8em;
+        }
+    }
+    .operation-buttons {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        .operation-button {
+            width: 80%;
+            padding: 8px;
+            font-size: 1em;
+            font-family: 'Roboto-bold';
+            border-radius: 5px;
+            margin: 2px;
+            &.dull-btn {
+                background-color: #f7f7f7;
+                color: $dark-grey;
+                box-shadow: $item-shadow;
+            }
+            &.highlight-btn {
+                background: -moz-linear-gradient(-45deg, $gradient-yellow 0%, $gradient-orange 100%);
+                background: -webkit-linear-gradient(-45deg, $gradient-yellow 0%,$gradient-orange 100%);
+                background: linear-gradient(135deg, $gradient-yellow 0%,$gradient-orange 100%);
+                color: #fff;
+                box-shadow: $highlight-btn-shadow;
+            }
+        }
+    }
 }

@@ -120,4 +120,10 @@ export class Api extends BaseService {
 		let url = '/employer/' + Config.USER_AUTH.id;
 		return this.getRemote(url);
 	}
+
+	// GET /about
+	public getAbout() {
+		let url = '/about';
+		return this.getRemote(url);
+	}
 }

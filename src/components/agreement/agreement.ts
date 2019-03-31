@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Api } from '../../providers';
+import { Utils } from '../../core/providers/utils';
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'agreement-component',
@@ -6,10 +9,29 @@ import { Component } from '@angular/core';
 })
 export class AgreementComponent {
   isAgreed: boolean = false;
-  privacy_content: any;
+  about: any;
+  language: string = '';
 
-  constructor() {
-    console.log('Hello AgreementComponent Component');
+  constructor(
+    private api: Api,
+    private utils: Utils,
+    private view: ViewController
+    ) {
+    this.language = this.utils.currentLang();
+    console.log('aaa', this.language);
+    this.initAbout();
   }
 
+  initAbout() {
+    this.api.startQueue([
+      this.api.getAbout()
+    ]).then(response => {
+      this.about = response[0];
+      console.log('about', this.about);
+    })
+  }
+
+  dismiss() {
+    this.view.dismiss();
+  }
 }

@@ -34,9 +34,13 @@ export class SignUpPage extends BasePage {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('SignUpPage constructor');
 	}
+
+	ionViewDidEnter() {
+		console.log('123');
+		this.utils.showModal(AgreementComponent, {}, {cssClass:'agreement-component'});
+	}
   
 	ngAfterViewInit() {
-		this.utils.showModal(AgreementComponent, {}, {cssClass:'agreement-component'});
 		if(this.slides) {
 			this.slides.lockSwipes(true);
 			this.slides.slidesPerView = '1';
