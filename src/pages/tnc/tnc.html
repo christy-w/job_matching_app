@@ -1,5 +1,8 @@
 <common-header [enable-back]="true"></common-header>
 
-<ion-content>
-  TNC
+<ion-content *ngIf="about">
+  <div class="page-title">條款與細則</div>
+  <div class="about-content" [innerHTML]="about['terms_conditions_' + language]"></div>
+  <div class="page-title">私隱政策</div>
+  <div class="about-content" [innerHTML]="about['privacy_statement_' + language]"></div>
 </ion-content>

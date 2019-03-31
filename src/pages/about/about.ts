@@ -14,6 +14,7 @@ import { Api } from '../../providers';
 export class AboutPage extends BasePage {
 
 	name: string = 'AboutPage';
+	about: any;
 
 	constructor(
 		protected platform: Platform,
@@ -26,5 +27,14 @@ export class AboutPage extends BasePage {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('AboutPage constructor');
 
+		this.initAbout();
+	}
+
+	initAbout() {
+		this.api.startQueue([
+		  this.api.getAbout()
+		]).then(response => {
+		  this.about = response[0];
+		})
 	}
 }

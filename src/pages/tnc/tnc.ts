@@ -14,6 +14,7 @@ import { Api } from '../../providers';
 export class TncPage extends BasePage {
 
 	name: string = 'TncPage';
+	about: any;
 
 	constructor(
 		protected platform: Platform,
@@ -26,5 +27,13 @@ export class TncPage extends BasePage {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('TncPage constructor');
 
+		this.initAbout();
+	}
+	initAbout() {
+		this.api.startQueue([
+		  this.api.getAbout()
+		]).then(response => {
+		  this.about = response[0];
+		})
 	}
 }

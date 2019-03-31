@@ -59,6 +59,14 @@ export class EmployerProfilePage extends BasePage {
 		this.nav.push('EmployerRecordPage');
 	}
 
+	openAboutPage() {
+		this.nav.push('AboutPage');
+	}
+
+	openTncPage() {
+		this.nav.push('TncPage');
+	}
+
 	resetPassword() {
 		this.utils.showConfirm('', this.utils.instantLang('MSG.FORGET_PASSWORD'), () => {
 			this.app.getRootNav().setRoot('ResetPasswordPage');
