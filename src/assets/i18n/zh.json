@@ -88,7 +88,8 @@
         "OFFER_FAILED": "發送失敗，請重新嘗試",
         "CANCEL_OFFER_CONFIRM": "確定要取消此工作機會? 此操作將不能取消。",
         "CANCEL_OFFER_SUCCESS": "已發送給求職者",
-        "CANCEL_OFFER_FAILED": "發送失敗，請重新嘗試"
+        "CANCEL_OFFER_FAILED": "發送失敗，請重新嘗試",
+        "WITHDRAW_CONFIRM": "確定要取消此職位空缺? 所以未完成的申請將被取消，而此操作將不能取消。"
     },
 
     "ERROR": {

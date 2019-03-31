@@ -225,6 +225,11 @@ page-employer-job {
                 color: #fff;
                 box-shadow: $highlight-btn-shadow;
             }
+            &.dull-btn {
+                background-color: #f7f7f7;
+                color: $dark-grey;
+                box-shadow: $item-shadow;
+            }
             &.alert-btn {
                 background: $red;
                 color: #fff;

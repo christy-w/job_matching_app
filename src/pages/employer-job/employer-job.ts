@@ -115,4 +115,24 @@ export class EmployerJobPage extends BasePage {
 			}
 		});
 	}
+
+	cancelJob(job_id) {
+		this.utils.showConfirm('', this.utils.instantLang('MSG.WITHDRAW_CONFIRM'), ()=>{
+			this.api.startQueue([
+				this.api.postJobWithdraw(job_id)
+			]).then(response => {
+				let post_response = response[0];
+	
+				if (post_response['status']) {
+					// Applied successful
+					this.utils.showAlert('', this.utils.instantLang('MSG.SUCCESS'));
+				} else {
+					// Apply failed
+					this.utils.showAlert('', this.utils.instantLang('MSG.ERROR'));
+				}
+				console.log('post_response', post_response);
+			});
+		})
+
+	}
 }

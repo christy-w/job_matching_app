@@ -114,6 +114,10 @@ export class Api extends BaseService {
 		return this.post('/job', data);
 	}
 
+	public postJobWithdraw(job_id) {
+		return this.post('/job/withdraw/' + job_id);
+	}
+
 	// GET /system
 
 	public getSystemInfo(name) {
