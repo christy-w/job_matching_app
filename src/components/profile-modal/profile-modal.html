@@ -15,13 +15,13 @@
 						</div>
 						<div ion-item class="list-item" *ngSwitchCase="'select'">
 							<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
-							<ion-select [(ngModel)]="field.selection">
+							<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="field.selection">
 								<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
 							</ion-select>
 						</div>
 						<div ion-item class="list-item" *ngSwitchCase="'multi_select'">
 							<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
-							<ion-select [(ngModel)]="field.selection" multiple="true">
+							<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="field.selection" multiple="true">
 								<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
 							</ion-select>
 						</div>
@@ -43,7 +43,7 @@
 					<div class="item-wrapper language-abilities" *ngIf="language_abilities">
 						<div ion-item class="list-item">
 							<ion-label>{{ 'PROFILE_MODAL.LANGUAGE' | translate }}</ion-label>
-							<ion-select [(ngModel)]="selected_languages" multiple="true">
+							<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="selected_languages" multiple="true">
 								<ion-option [value]="ability.id" *ngFor="let ability of language_abilities">{{ ability['name_' + language] }}</ion-option>
 							</ion-select>
 						</div>
@@ -51,7 +51,7 @@
 					<div class="item-wrapper computer-skills" *ngIf="computer_skills">
 						<div ion-item class="list-item">
 							<ion-label>{{ 'PROFILE_MODAL.COMPUTER' | translate }}</ion-label>
-							<ion-select [(ngModel)]="selected_skills" multiple="true">
+							<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="selected_skills" multiple="true">
 								<ion-option [value]="skill.id" *ngFor="let skill of computer_skills">{{ skill['name_' + language] }}</ion-option>
 							</ion-select>
 						</div>
@@ -59,7 +59,7 @@
 					<div class="item-wrapper related-certs" *ngIf="related_certs">
 						<div ion-item class="list-item">
 							<ion-label>{{ 'PROFILE_MODAL.CERTS' | translate }}</ion-label>
-							<ion-select [(ngModel)]="selected_certs" multiple="true">
+							<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="selected_certs" multiple="true">
 								<ion-option [value]="cert.id" *ngFor="let cert of related_certs">{{ cert['name_' + language] }}</ion-option>
 							</ion-select>
 						</div>

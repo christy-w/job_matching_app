@@ -1,8 +1,8 @@
 <common-header></common-header>
 
 <ion-content>
-    <div class="page-title">所有工作</div>
-    <div class="page-desp">有 3 項與你極符合的工作</div>
+    <div class="page-title">符合您的工作</div>
+    <!-- <div class="page-desp">有 3 項與你極符合的工作</div> -->
     <div class="recommendation-slider" *ngIf="user_preference">
         <ion-slides #cardSlider class="slide-list" *ngIf="recommendations && recommendations.length > 0" loop=false pager=true slidesPerView='auto' spaceBetween=15 centeredSlides=true>
             <ion-slide class="slide-item" *ngFor="let job of recommendations" [class.flipped]="job.flipped">

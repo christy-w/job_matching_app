@@ -36,7 +36,7 @@ export class ApplicantJobPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'job';
+		Config.ACTIVE_TAB = 'home';
 		this.language = this.utils.currentLang();
 		this.getFavourited();
 	}

@@ -31,7 +31,7 @@ export class ApplicantFavouritePage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'settings';
+		Config.ACTIVE_TAB = 'profile';
 		this.getFavourited();
 	}
 

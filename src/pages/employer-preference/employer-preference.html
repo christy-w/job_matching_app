@@ -27,7 +27,7 @@
 									</ion-label>
 								</ion-col>
 								<ion-col col-2 class="item-header-right">
-									<ion-select [(ngModel)]="preference.importance" multiple="false" [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
+									<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="preference.importance" multiple="false" [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
 										<ion-option [value]="option.id" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
 									</ion-select>
 								</ion-col>
@@ -47,7 +47,7 @@
 									</ion-label>
 								</ion-col>
 								<ion-col col-2 class="item-header-right">
-									<ion-select [(ngModel)]="preference.importance" multiple="false"  [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
+									<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="preference.importance" multiple="false"  [ngClass]="{'must': preference.importance == 2, 'none': preference.importance == 0}">
 										<ion-option [value]="option.id" *ngFor="let option of preference_options">{{ option['name_' + language] }}</ion-option>
 									</ion-select>
 								</ion-col>

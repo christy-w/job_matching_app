@@ -43,7 +43,7 @@ export class ApplicantProfileDetailPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
+		Config.ACTIVE_TAB = 'profile';
 		this.language = this.utils.currentLang();
 	}
 

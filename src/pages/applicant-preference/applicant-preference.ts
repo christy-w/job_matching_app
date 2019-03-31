@@ -31,7 +31,7 @@ export class ApplicantPreferencePage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
+		Config.ACTIVE_TAB = 'profile';
 		this.initPreferenceArrays();
 		this.checkUserPreference();
 	}

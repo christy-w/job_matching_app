@@ -18,13 +18,13 @@
 			</div>
 			<div ion-item class="field-item" *ngSwitchCase="'select'">
 				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
-				<ion-select [(ngModel)]="field.input">
+				<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="field.input">
 					<ion-option [value]="option.value" *ngFor="let option of field.options">{{ option['name_' + language] }}</ion-option>
 				</ion-select>
 			</div>
 			<div ion-item class="field-item" *ngSwitchCase="'district_select'">
 				<ion-label>{{ field['name_' + language] }}<span *ngIf="field.required">*</span></ion-label>
-				<ion-select [(ngModel)]="field.input" *ngIf="districts">
+				<ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="field.input" *ngIf="districts">
 					<ion-option [value]="district.id" *ngFor="let district of districts">{{ district['name_' + language] }}</ion-option>
 				</ion-select>
 			</div>

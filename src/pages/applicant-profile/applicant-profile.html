@@ -5,7 +5,7 @@
         <div class="page-title">我的個人檔案</div>
     </div>
     <ion-row class="profile-card" *ngIf="user_profile">
-        <ion-col col-4>
+        <ion-col col-4 *ngIf="user_profile.thumbnail_url">
             <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + user_profile.thumbnail_url + ')'}"></div>
         </ion-col>
         <ion-col class="profile-info-wrapper">
@@ -44,7 +44,7 @@
         <div class="list-title">我的設定</div>
         <button ion-item class="list-item" detail-none>
             <ion-label>語言 Language</ion-label>
-            <ion-select [(ngModel)]="language" (ionChange)="setLanguage(language)">
+            <ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="language" (ionChange)="setLanguage(language)">
                 <ion-option value="zh">繁體中文</ion-option>
                 <ion-option value="en">英文</ion-option>
             </ion-select>
