@@ -5,8 +5,8 @@
 		<ion-input placeholder="{{ 'SEARCH_FILTER.SEARCH_PLACEHOLDER' | translate }}" [(ngModel)]="search_input"></ion-input>
 	</div>
 	<div class="filter-options" *ngIf="filters_employment_types">
-		<button class="select-btn" *ngIf="!(selected_districts.length > 0 && selected_types.length > 0)" (click)="selectAllFilter()">全選</button>
-		<button class="deselect-btn" *ngIf="selected_districts.length > 0 || selected_types.length > 0" (click)="deselectAllFilter()">全不選</button>
+		<button class="select-btn" *ngIf="!(selected_districts.length > 0 && selected_types.length > 0)" (click)="selectAllFilter()">{{ 'SEARCH_FILTER.SELECT_ALL' | translate }}</button>
+		<button class="deselect-btn" *ngIf="selected_districts.length > 0 || selected_types.length > 0" (click)="deselectAllFilter()">{{ 'SEARCH_FILTER.DESELECT_ALL' | translate }}</button>
 		<div class="filter-option employment-type">
 			<div class="name">{{ 'SEARCH_FILTER.TYPE' | translate }}</div>
 			<div class="selections">
@@ -26,6 +26,6 @@
 		</div>
 	</div>
 	<div class="operation-buttons">
-		<button class="highlight-btn operation-button" (click)="confirmFilter()">搜尋工作</button>
+		<button class="highlight-btn operation-button" (click)="confirmFilter()">{{ 'SEARCH_FILTER.SEARCH' | translate }}</button>
 	</div>
 </div>

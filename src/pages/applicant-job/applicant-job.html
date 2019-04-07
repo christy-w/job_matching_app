@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="operation-buttons" [hidden]="isApplied">
-			<button class="highlight-btn operation-button" (click)="applyJob(job.id)">申請工作</button>
+			<button class="highlight-btn operation-button" (click)="applyJob(job.id)">{{ 'ACTION.APPLY_JOB' | translate }}</button>
 		</div>
 	</div>
 	<div class="employer-card">
@@ -68,7 +68,7 @@
 				</div>
 			</ion-col>
 		</ion-row>
-		<div class="desp-title">簡介</div>
+		<div class="desp-title">{{ 'ACTION.DESP' | translate }}</div>
 		<div class="desp">{{ job.employer['description_' + language] }}</div>
 	</div>
 </ion-content>

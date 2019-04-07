@@ -49,6 +49,7 @@
         "REJECT": "Reject",
         "START": "Getting Started",
         "BACK": "Back",
+        "DESP": "Description",
 
         "SKIP": "Skip",
         "COMPLETE": "Complete",
@@ -70,6 +71,7 @@
     "MSG": {
         "ERROR": "Error",
         "SUCCESS": "Succeed",
+        "COMPULSORY": "Required",
         "LOGIN_CONTACT": "May you have other questions regarding to login, please contact us.",
         "SIGN_UP_DESP": "Employer registration is not open to the public temporarily. Please contact us if you would like to register as an employer.",
         "OFFLINE": "This application requires to connect to the internet, please try again.",
@@ -137,13 +139,22 @@
         "SEARCH_PLACEHOLDER": "Name of position/company",
         "TYPE": "Employment Type",
         "LOCATION": "Work Location",
-        "PUBLISH_DATE": "Publish Date"
+        "PUBLISH_DATE": "Publish Date",
+        "SEARCH": "Search",
+        "DESELECT_ALL": "Deselect All",
+        "SELECT_ALL": "Select All"
     },
 
     "FEEDBACK_POPUP": {
         "TITLE": "Leave a comment",
         "USERNAME": "Name to be shown",
         "COMMENT": "Comment"
+    },
+
+    "CANDIDATE_POPUP": {
+        "TITLE": "{{applicant_num}} candidate(s) have applied for this job.",
+        "ALL": "All Applicants",
+        "PREFERENCED": "Applicants matched with preferences"
     },
 
     "PROFILE_MODAL": {
@@ -194,7 +205,20 @@
     "APPLICANT_PROFILE": {
         "PERSONAL_DETAILS": "Personal Details",
         "WORK_EXPERIENCES": "Work Experiences",
-        "SKILLS_CERTIFICATES": "Skills and Certificates"
+        "SKILLS_CERTIFICATES": "Skills and Certificates",
+        "NAME": "Name",
+        "GENDER": "Gender",
+        "DOB": "Date of Birth",
+        "AGE": "Age",
+        "OTHER": "Other Information",
+        "EDU_LEVEL": "Education Level",
+        "EMPLOYMENT_STATUS": "Employment Status",
+        "RELATED_EXP": "Related Experiences",
+        "SKILLS": "Skills and Certificates",
+        "LANG": "Language Abilities",
+        "COMPUTER": "Computer Skills",
+        "CERTS": "Related Certificates"
+
     },
 
     "EMPLOYER_PROFILE": {
@@ -207,6 +231,10 @@
     },
 
     "RECOMMEND": {
+        "APPLICANT_TITLE": "Jobs Matched",
+        "EMPLOYER_TITLE": "Applicants Matched",
+        "REMINDER": "You have no preferences yet. Please go to My Profile, and click 'Preferences' to fill in your preferences.",
+        "GO_SETTING": "Set Preferences",
         "THIS_JOB": "This job",
         "YOUR_PREF": "your preferences",
         "PREF_NUM": "preferences",

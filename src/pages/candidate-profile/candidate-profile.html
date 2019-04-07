@@ -16,57 +16,57 @@
   <div class="list-card">
     <!-- Personal details -->
     <div class="card-wrapper">
-      <div class="card-title">個人資料</div>
+      <div class="card-title">{{'APPLICANT_PROFILE.PERSONAL_DETAILS' | translate}}</div>
       <div ion-item class="list-item" *ngIf="candidate['name_' + language]">
-        <ion-label>姓名</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.NAME' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate['name_' + language] }}</div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate['gender_' + language]">
-        <ion-label>性別</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.GENDER' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate['gender_' + language] }}</div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.dob">
-        <ion-label>出生日期</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.DOB' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate.dob }}</div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.age">
-        <ion-label>年齡</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.AGE' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate.age }}</div>
       </div>
     </div>
     <!-- Employment-->
     <div class="card-wrapper">
-      <div class="card-title">其他資料</div>
+      <div class="card-title">{{'APPLICANT_PROFILE.OTHER' | translate}}</div>
       <div ion-item class="list-item" *ngIf="candidate['education_' + language]">
-        <ion-label>教育程度</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.EDU_LEVEL' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate['education_' + language] }}</div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate['employment_' + language]">
-        <ion-label>就業狀況</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.EMPLOYMENT_STATUS' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate['employment_' + language] }}</div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate['experience_' + language]">
-        <ion-label>相關工作經驗</ion-label>
+        <ion-label>{{'APPLICANT_PROFILE.RELATED_EXP' | translate}}</ion-label>
         <div class="info" item-end>{{ candidate['experience_' + language] }}</div>
       </div>
     </div>
     <!-- Skills and Abilities-->
     <div class="card-wrapper">
-      <div class="card-title">能力及資格</div>
+      <div class="card-title">{{'APPLICANT_PROFILE.SKILLS' | translate}}</div>
       <div ion-item class="list-item" *ngIf="candidate.language_abilities">
-        <div class="title">語言能力</div>
+        <div class="title">{{'APPLICANT_PROFILE.LANG' | translate}}</div>
         <div class="info">
           <span *ngFor="let lang of candidate.language_texts">{{ lang['name_' + language] }}</span>
         </div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.computer_skills">
-        <div class="title">電腦技能</div>
+        <div class="title">{{'APPLICANT_PROFILE.COMPUTER' | translate}}</div>
         <div class="info">
           <span *ngFor="let skill of candidate.computer_texts">{{ skill['name_' + language] }}</span>
         </div>
       </div>
       <div ion-item class="list-item" *ngIf="candidate.related_certs">
-        <div class="title">資格及證書</div>
+        <div class="title">{{'APPLICANT_PROFILE.CERTS' | translate}}</div>
         <div class="info">
           <span *ngFor="let cert of candidate.related_texts">{{ cert['name_' + language] }}</span>
         </div>
@@ -74,7 +74,7 @@
     </div>
     <!-- Feedback -->
     <div class="card-wrapper" *ngIf="candidate.feedbacks && candidate.feedbacks.length > 0">
-      <div class="card-title">受僱評價</div>
+      <div class="card-title">{{'REVIEW.TITLE' | translate}}</div>
       <div ion-item class="list-item" *ngFor="let feedback of candidate.feedbacks">
         <div class="header">
           <div class="employer">{{ feedback.username }}</div>

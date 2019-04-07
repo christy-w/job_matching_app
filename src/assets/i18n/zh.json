@@ -49,6 +49,7 @@
         "REJECT": "拒絕",
         "START": "開始使用",
         "BACK": "返回",
+        "DESP": "簡介",
 
         "SKIP": "稍後設定",
         "COMPLETE": "完成",
@@ -70,6 +71,7 @@
     "MSG": {
         "ERROR": "錯誤",
         "SUCCESS": "成功",
+        "COMPULSORY": "必須填寫",
         "LOGIN_CONTACT": "如有其他帳戶登入問題，歡迎聯絡我們。",
         "SIGN_UP_DESP": "暫時僱主帳戶的申請並不對外公開，如欲申請，請聯絡我們。",
         "OFFLINE": "此程式需要連接網路，請重試。",
@@ -137,13 +139,22 @@
         "SEARCH_PLACEHOLDER": "職位/公司名稱",
         "TYPE": "工作類別",
         "LOCATION": "地區",
-        "PUBLISH_DATE": "刊登日期"
+        "PUBLISH_DATE": "刊登日期",
+        "SEARCH": "搜尋工作",
+        "DESELECT_ALL": "全不選",
+        "SELECT_ALL": "全選"
     },
 
     "FEEDBACK_POPUP": {
         "TITLE": "對此僱員留下意見",
         "USERNAME": "顯示名稱",
         "COMMENT": "評語/留言"
+    },
+
+    "CANDIDATE_POPUP": {
+        "TITLE": "此工作現有{{applicant_num}}個申請者",
+        "ALL": "所有申請者",
+        "PREFERENCED": "符合要求的申請者"
     },
 
     "PROFILE_MODAL": {
@@ -194,7 +205,18 @@
     "APPLICANT_PROFILE": {
         "PERSONAL_DETAILS": "個人資料",
         "WORK_EXPERIENCES": "工作經驗",
-        "SKILLS_CERTIFICATES": "技能及資格"
+        "NAME": "姓名",
+        "GENDER": "性別",
+        "DOB": "出生日期",
+        "AGE": "年齡",
+        "OTHER": "其他資料",
+        "EDU_LEVEL": "教育程度",
+        "EMPLOYMENT_STATUS": "就業狀況",
+        "RELATED_EXP": "相關工作經驗",
+        "SKILLS": "能力及資格",
+        "LANG": "語言能力",
+        "COMPUTER": "電腦技能",
+        "CERTS": "資格及證書"
     },
 
     "EMPLOYER_PROFILE": {
@@ -207,6 +229,10 @@
     },
 
     "RECOMMEND": {
+        "APPLICANT_TITLE": "符合您的工作",
+        "EMPLOYER_TITLE": "符合要求的申請者",
+        "REMINDER": "您還未設置喜好設定，我們未能為你篩選符合你喜好的結果。請到設定頁面，點選「要求及喜好」設置。",
+        "GO_SETTING": "現在設置",
         "THIS_JOB": "此項工作",
         "YOUR_PREF": "你的喜好",
         "PREF_NUM": "個喜好",

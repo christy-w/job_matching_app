@@ -3,8 +3,8 @@
 		<img src="assets/icon/back.png"/>
 	</button>
 	<ion-item>
-		<div class="page-title">{{ 'EMPLOYER.CREATE_JOB' | translate }}<span>* 必須填寫</span></div>
-		<button item-end class="edit-btn" (click)="completeForm()">完成</button>
+		<div class="page-title">{{ 'EMPLOYER.CREATE_JOB' | translate }}<span>* {{'MSG.COMPULSORY' | translate}}</span></div>
+		<button item-end class="edit-btn" (click)="completeForm()">{{'ACTION.COMPLETE' | translate}}</button>
 	</ion-item>
 	<div class="create-wrapper">
 		<div class="item-wrapper" *ngFor="let field of job_fields" [ngSwitch]="field.type">

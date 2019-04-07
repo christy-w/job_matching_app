@@ -1,7 +1,7 @@
 <common-header [enable-back]="true"></common-header>
 
 <ion-content>
-    <div class="page-title">所有申請</div>
+    <div class="page-title">{{'CANDIDATE_POPUP.ALL' | translate }}</div>
     <div class="recommendation-slider" *ngIf="applications">
         <ion-slides #cardSlider class="slide-list" loop=false pager=true slidesPerView='auto' spaceBetween=15 centeredSlides=true>
             <ion-slide class="slide-item" *ngFor="let application of applications">
@@ -30,19 +30,19 @@
                         <div class="lower-section">
                             <div class="match-list">
                                 <ion-row class="match-item">
-                                  <ion-col col-7 class="match-name">教育程度</ion-col>
+                                  <ion-col col-7 class="match-name">{{'APPLICANT_PROFILE.EDU_LEVEL' | translate}}</ion-col>
                                   <ion-col col-5 class="match-content">
                                       {{ application.applicant['education_' + language] }}
                                   </ion-col>
                                 </ion-row>
                                 <ion-row class="match-item">
-                                  <ion-col col-7 class="match-name">就業狀況</ion-col>
+                                  <ion-col col-7 class="match-name">{{'APPLICANT_PROFILE.EMPLOYMENT_STATUS' | translate}}</ion-col>
                                   <ion-col col-5 class="match-content">
                                       {{ application.applicant['employment_' + language] }}
                                   </ion-col>
                                 </ion-row>
                                 <ion-row class="match-item">
-                                  <ion-col col-7 class="match-name">相關工作經驗</ion-col>
+                                  <ion-col col-7 class="match-name">{{'APPLICANT_PROFILE.RELATED_EXP' | translate}}</ion-col>
                                   <ion-col col-5 class="match-content">
                                       {{ application.applicant['experience_' + language] }}
                                   </ion-col>
