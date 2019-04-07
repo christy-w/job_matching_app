@@ -2,8 +2,8 @@
 
 <ion-content>
     <div class="upper-section" ion-fixed>
-        <div class="page-title">申請工作紀錄</div>
-        <div class="page-desp">有 1 項待確認的工作</div>
+        <div class="page-title">{{ 'RECORD.APPLICANT' | translate }}</div>
+        <!-- <div class="page-desp">有 1 項待確認的工作</div> -->
     </div>
     <div class="records-wrapper" *ngIf="records">
         <!-- Record card item -->
@@ -28,15 +28,15 @@
                 </ion-row>
             </div>
             <div class="application-detail">
-                <div class="title">申請進度</div>
+                <div class="title">{{ 'RECORD.PROGRESS' | translate }}</div>
                 <div class="status" [ngStyle]="{'color': record.status_color }">{{ record['status_' + language]}}</div>
             </div>
             <div class="operation-buttons" [hidden]="record.allow_operation == 'none'">
-                <button class="dull-btn operation-button" *ngIf="record.allow_operation == 'cancel'" (click)="cancelApplication(record.id)">取消申請</button>
+                <button class="dull-btn operation-button" *ngIf="record.allow_operation == 'cancel'" (click)="cancelApplication(record.id)">{{ 'RECORD.APPLICATION_CANCEL' | translate }}</button>
             </div>
             <div class="operation-buttons" *ngIf="record.allow_operation == 'offer'">
-                <button class="reject-btn operation-button" (click)="respondOffer(record.id, false)">拒絕職位</button>
-                <button class="accept-btn operation-button" (click)="respondOffer(record.id, true)">接受職位</button>
+                <button class="reject-btn operation-button" (click)="respondOffer(record.id, false)">{{ 'RECORD.OFFER_REJECT' | translate }}</button>
+                <button class="accept-btn operation-button" (click)="respondOffer(record.id, true)">{{ 'RECORD.OFFER_ACCEPT' | translate }}</button>
             </div>
         </div>
     </div>

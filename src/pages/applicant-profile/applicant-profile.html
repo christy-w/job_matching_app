@@ -2,7 +2,7 @@
 
 <ion-content>
     <div class="upper-section" ion-fixed>
-        <div class="page-title">我的個人檔案</div>
+        <div class="page-title">{{ 'PROFILE_MODAL.MY_PROFILE' | translate }}</div>
     </div>
     <ion-row class="profile-card" *ngIf="user_profile">
         <ion-col col-4 *ngIf="user_profile.thumbnail_url">
@@ -26,41 +26,41 @@
         </ion-col>
     </ion-row>
     <div class="list-card my-profile">
-        <div class="list-title">我的資料</div>
+        <div class="list-title">{{ 'PROFILE_MODAL.MY_INFO' | translate }}</div>
         <div class="my-profile-wrapper">
             <button ion-item class="list-item" (click)="openProfileDetailPage('personal_details')">{{ 'APPLICANT_PROFILE.PERSONAL_DETAILS' | translate }}</button>
             <button ion-item class="list-item" (click)="openProfileDetailPage('work_experiences')">{{ 'APPLICANT_PROFILE.WORK_EXPERIENCES' | translate }}</button>
             <button ion-item class="list-item" (click)="openProfileDetailPage('skills_certificates')">{{ 'APPLICANT_PROFILE.SKILLS_CERTIFICATES' | translate }}</button>
-            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
+            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">{{ 'PREFERENCE.TITLE' | translate }}</button>
         </div>
     </div>
     <div class="list-card my-record">
-        <div class="list-title">我的紀錄</div>
-        <button ion-item class="list-item" (click)="openApplicantFavouritePage()">我的收藏</button>
-        <button ion-item class="list-item" (click)="openApplicantRecordPage()">申請紀錄</button>
-        <button ion-item class="list-item" (click)="openApplicantReviewPage()">受僱評價</button>
+        <div class="list-title">{{ 'PROFILE_MODAL.MY_RECORD' | translate }}</div>
+        <button ion-item class="list-item" (click)="openApplicantFavouritePage()">{{ 'PAGE.FAVOURITE' | translate }}</button>
+        <button ion-item class="list-item" (click)="openApplicantRecordPage()">{{ 'PAGE.RECORD' | translate }}</button>
+        <button ion-item class="list-item" (click)="openApplicantReviewPage()">{{ 'PAGE.REVIEW' | translate }}</button>
     </div>
     <div class="list-card my-settings">
-        <div class="list-title">我的設定</div>
+        <div class="list-title">{{ 'PROFILE_MODAL.MY_SETTING' | translate }}</div>
         <button ion-item class="list-item" detail-none>
             <ion-label>語言 Language</ion-label>
             <ion-select okText="{{'ACTION.OK' | translate}}" cancelText="{{'ACTION.CANCEL' | translate}}" [(ngModel)]="language" (ionChange)="setLanguage(language)">
                 <ion-option value="zh">繁體中文</ion-option>
-                <ion-option value="en">英文</ion-option>
+                <ion-option value="en">English</ion-option>
             </ion-select>
         </button>
         <div ion-item class="list-item">
-            <ion-label>訊息通知開關</ion-label>
+            <ion-label>{{ 'PROFILE_MODAL.NOTI' | translate }}</ion-label>
             <ion-toggle item-end [(ngModel)]="notiToggle"></ion-toggle>
         </div>
         <!-- <div ion-item class="list-item">
             <ion-label>照相機開關</ion-label>
             <ion-toggle item-end [(ngModel)]="cameraToggle"></ion-toggle>
         </div> -->
-        <button ion-item class="list-item" (click)="openTncPage()">條款及細則</button>
-        <button ion-item class="list-item" (click)="openAboutPage()">關於我們</button>
-        <button ion-item class="list-item" (click)="updateMobile()">更改電話</button>
-        <button ion-item class="list-item" (click)="resetPassword()">重設密碼</button>
-        <button ion-item class="list-item logout-btn" (click)="logout()">登出</button>
+        <button ion-item class="list-item" (click)="openTncPage()">{{ 'PROFILE_MODAL.TNC' | translate }}</button>
+        <button ion-item class="list-item" (click)="openAboutPage()">{{ 'PROFILE_MODAL.ABOUT' | translate }}</button>
+        <button ion-item class="list-item" (click)="updateMobile()">{{ 'ACTION.UPDATE_MOBILE' | translate }}</button>
+        <button ion-item class="list-item" (click)="resetPassword()">{{ 'ACTION.RESET_PASSWORD' | translate }}</button>
+        <button ion-item class="list-item logout-btn" (click)="logout()">{{ 'ACTION.LOGOUT' | translate }}</button>
     </div>
 </ion-content>

@@ -1,11 +1,11 @@
 <ion-content>
-	<div class="title">你對此僱員有什麼意見？</div>
+	<div class="title">{{ 'FEEDBACK_POPUP.TITLE' | translate }}</div>
 	<div class="section">
-		<div class="name">顯示名稱</div>
+		<div class="name">{{ 'FEEDBACK_POPUP.USERNAME' | translate }}</div>
 		<ion-input [(ngModel)]="username"></ion-input>
 	</div>
 	<div class="section">
-		<div class="name">評語/留言</div>
+		<div class="name">{{ 'FEEDBACK_POPUP.COMMENT' | translate }}</div>
 		<ion-textarea [(ngModel)]="feedback"></ion-textarea>
 	</div>
 	<div class="rating-wrapper">

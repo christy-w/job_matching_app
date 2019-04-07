@@ -172,10 +172,16 @@ page-applicant-preference {
             border-radius: 5px;
             height: 300px;
             text-align: center;
-            line-height: 300px;
             color: $medium-grey;
             font-size: 0.9em;
             font-family: 'Roboto-medium';
+            .msg-wrapper {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto 20px;
+                height: fit-content;
+            }
         }
     }
 }

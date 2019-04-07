@@ -1,9 +1,9 @@
 <common-header [enable-back]="true"></common-header>
 
 <ion-content>
-	<div class="page-title">受僱評價</div>
+	<div class="page-title">{{ 'REVIEW.TITLE' | translate }}</div>
 	<span class="review-count" *ngIf="reviews && reviews.length > 0">({{ reviews.length }})</span>
-	<div class="page-desp">最近3個月的受僱評價</div>
+	<div class="page-desp">{{ 'REVIEW.DESP' | translate }}</div>
 	<div class="review-card" *ngFor="let review of reviews">
 		<div class="upper-section">
 			<div class="reviewer-name">{{ review.username }}</div>

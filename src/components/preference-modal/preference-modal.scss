@@ -96,6 +96,7 @@ preference-modal {
                         max-width: unset !important;    
                         padding-left: 0;
                         padding-right: 0;
+                        width: fit-content;
                         .select-text {
                             text-align: right;
                             color: $font-yellow;

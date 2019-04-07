@@ -2,15 +2,15 @@
 	<button ion-button class="back-btn" (click)="backToProfile()">
 		<img src="assets/icon/back.png"/>
 	</button>
-	<div class="page-title">設定及喜好</div>
-	<div class="page-desp">系統會根據你填寫的設定及喜好，為你尋找合心意的工作。</div>
+	<div class="page-title">{{ 'PREFERENCE.TITLE' | translate }}</div>
+	<div class="page-desp">{{ 'PREFERENCE.DESP' | translate }}</div>
 	<div class="section-wrapper">
 		<div ion-item class='list-title-item'>
 			<ion-label>
-				<div class="list-title">我的設定</div>
+				<div class="list-title">{{ 'PREFERENCE.MY_SETTING' | translate }}</div>
 			</ion-label>
-			<button [hidden]="edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">修改</button>
-			<button [hidden]="!edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">完成</button>
+			<button [hidden]="edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">{{ 'ACTION.EDIT' | translate }}</button>
+			<button [hidden]="!edit_mode" item-end class="edit-btn" (click)="toggleEditMode()">{{ 'ACTION.COMPLETE' | translate }}</button>
 		</div>
 		<div class="edit-card-wrapper" [hidden]="!edit_mode">
 			<div class="list-card" *ngFor="let preference of preference_fields"  [ngClass]="{'none' : preference.importance == 0}">
@@ -53,7 +53,7 @@
 								</ion-col>
 							</ion-row>
 							<div class="preference-wrapper" [ngClass]="{'show': preference.isExpanded || preference.importance != 0}">
-								<ion-input [(ngModel)]="preference.selection" placeholder="請輸入數字，例如15,000，請輸入15000">$</ion-input>
+								<ion-input [(ngModel)]="preference.selection" placeholder="{{ 'PLACEHOLDER.WAGE' | translate }}">$</ion-input>
 							</div>
 						</div>
 					</div>
@@ -103,9 +103,7 @@
 			</div>
 		</div>
 		<div class="preference-msg" [hidden]="!show_msg">
-			<div class="msg-wrapper">
-				您還未設置喜好設定，請按「修改」設置。
-			</div>
+			<div class="msg-wrapper">{{ 'PREFERENCE.REMINDER' | translate }}</div>
 		</div>
 	</div>
 </ion-content>

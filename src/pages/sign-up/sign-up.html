@@ -1,27 +1,27 @@
 <ion-content>
     <div class="color-overlay"></div>
 	<div class="black-overlay"></div>
-	<div class="page-title">申請僱員帳戶</div>
-	<div class="page-desp">暫時僱主帳戶的申請並不對外公開，如欲申請，請聯絡我們。</div>
+	<div class="page-title">{{ 'ACTION.SIGN_UP' | translate }}</div>
+	<div class="page-desp">{{ 'MSG.SIGN_UP_DESP' | translate }}</div>
     <ion-slides pager paginationType="progress" class="signup-form" #signUpSlides>
 		<ion-slide class="signup-step-1">
-			<ion-input class="login-input mobile-input" [(ngModel)]="mobile_input" placeholder="手機號碼(+852)"></ion-input>
-			<ion-input class="login-input password-input" [(ngModel)]="password_input" type="password" placeholder="密碼"></ion-input>
-			<ion-input class="login-input password-confirm-input" [(ngModel)]="password_confirm_input" type="password" placeholder="密碼（再次輸入）"></ion-input>
+			<ion-input class="login-input mobile-input" [(ngModel)]="mobile_input" placeholder="{{ 'PLACEHOLDER.MOBILE' | translate }}"></ion-input>
+			<ion-input class="login-input password-input" [(ngModel)]="password_input" type="password" placeholder="{{ 'PLACEHOLDER.PASSWORD' | translate }}"></ion-input>
+			<ion-input class="login-input password-confirm-input" [(ngModel)]="password_confirm_input" type="password" placeholder="{{ 'PLACEHOLDER.PASSWORD_CONFIRM' | translate }}"></ion-input>
 			<div class="operation-buttons">
-				<button class="dull-btn operation-button" (click)="openLoginPage()">返回</button>
-				<button class="highlight-btn operation-button" (click)="submitSignUp()">確認並發送認證碼</button>
+				<button class="dull-btn operation-button" (click)="openLoginPage()">{{ 'ACTION.BACK' | translate }}</button>
+				<button class="highlight-btn operation-button" (click)="submitSignUp()">{{ 'ACTION.SEND_CODE' | translate }}</button>
 			</div>
 		</ion-slide>
 		<ion-slide class="signup-step-2">
-			<div class="desp">SMS認證</div>
+			<div class="desp">{{ 'PLACEHOLDER.SMS_ACTIVATION' | translate }}</div>
 			<div class="input-wrapper">
-				<ion-input class="login-input code-input" [(ngModel)]="code_input" placeholder="認證碼(4位數字)"></ion-input>
-				<button class="resend-btn" (click)="resendVerifyCode()">重新發送</button>
+				<ion-input class="login-input code-input" [(ngModel)]="code_input" placeholder="{{ 'PLACEHOLDER.CODE' | translate }}"></ion-input>
+				<button class="resend-btn" (click)="resendVerifyCode()">{{ 'ACTION.SEND_CODE_AGAIN' | translate }}</button>
 			</div>
 			<div class="operation-buttons">
-				<button class="dull-btn operation-button" (click)="goPrevSlide()">上一步</button>
-				<button class="highlight-btn operation-button" (click)="confirmCode()">提交</button>
+				<button class="dull-btn operation-button" (click)="goPrevSlide()">{{ 'ACTION.PREVIOUS' | translate }}</button>
+				<button class="highlight-btn operation-button" (click)="confirmCode()">{{ 'ACTION.SUBMIT' | translate }}</button>
 			</div>
 		</ion-slide>
 	</ion-slides>

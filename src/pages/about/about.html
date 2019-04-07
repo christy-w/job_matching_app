@@ -1,8 +1,8 @@
 <common-header [enable-back]="true"></common-header>
 
 <ion-content *ngIf="about">
-  <div class="page-title">關於我們</div>
+  <div class="page-title">{{'PROFILE_MODAL.ABOUT' | translate}}</div>
   <div class="about-content" [innerHTML]="about['about_' + language]"></div>
-  <div class="page-title">聯絡我們</div>
+  <div class="page-title">{{'PROFILE_MODAL.CONTACT' | translate}}</div>
   <div class="about-content" [innerHTML]="about['contact_' + language]"></div>
 </ion-content>

@@ -1,15 +1,15 @@
 <ion-content>
   <div class="color-overlay"></div>
 <div class="black-overlay"></div>
-<div class="page-title">首次認證</div>
+<div class="page-title">{{ 'ACTION.ACTIVATE' | translate }}</div>
 <div class="activate-form">
   <div class="input-wrapper">
-    <ion-input class="login-input code-input" [(ngModel)]="code_input" placeholder="認證碼(4位數字)"></ion-input>
-    <button class="resend-btn" (click)="sendVerifyCode()">重新發送</button>
+    <ion-input class="login-input code-input" [(ngModel)]="code_input" placeholder="{{ 'PLACEHOLDER.CODE' | translate }}"></ion-input>
+    <button class="resend-btn" (click)="sendVerifyCode()">{{ 'ACTION.SEND_CODE_AGAIN' | translate }}</button>
   </div>
   <div class="operation-buttons">
-    <button class="dull-btn operation-button" (click)="goBack()">返回</button>
-    <button class="highlight-btn operation-button" (click)="confirmCode()">提交</button>
+    <button class="dull-btn operation-button" (click)="goBack()">{{ 'ACTION.BACK' | translate }}</button>
+    <button class="highlight-btn operation-button" (click)="confirmCode()">{{ 'ACTION.SUBMIT' | translate }}</button>
   </div>
 </div>
 </ion-content>

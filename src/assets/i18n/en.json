@@ -4,7 +4,9 @@
         "NEWS": "News",
         "ABOUT": "About",
         "CONTACT": "Contact Us",
-        "FAVOURITE": "My Favourites"
+        "FAVOURITE": "My Favourites",
+        "RECORD": "Application Record",
+        "REVIEW": "Employment Evaluation"
     },
 
     "HOTKEY": {
@@ -22,11 +24,14 @@
         "RESET": "Reset",
         
         "LOGIN": "Login",
-        "SIGN_UP": "Sign Up",
+        "LOGOUT": "Logout",
+        "SIGN_UP": "Applicant Sign Up",
         "ACTIVATE": "Activate Account",
+        "SEND_CODE": "Activate",
         "SEND_CODE_AGAIN": "Resend activation code",
         "FORGOT_PASSWORD": "Forgot Password",
         "RESET_PASSWORD": "Reset Password",
+        "UPDATE_MOBILE": "Update Mobile",
 
         "LOADING": "Loading...",
         "PREVIOUS": "Previous",
@@ -41,12 +46,32 @@
         "GO_DETAIL": "See Details",
         "APPLY_JOB": "Apply",
         "CHOOSE": "Offer Position",
-        "REJECT": "Reject"
+        "REJECT": "Reject",
+        "START": "Getting Started",
+        "BACK": "Back",
+
+        "SKIP": "Skip",
+        "COMPLETE": "Complete",
+        "EDIT": "Edit"
+    },
+
+    "PLACEHOLDER": {
+        "SMS_ACTIVATION": "SMS Activation",
+        "MOBILE": "Mobile (+852)",
+        "PASSWORD": "Password (At least 8 digits)",
+        "REGISTERED_MOBILE": "Registered Mobile (+852)",
+        "NEW_PASSWORD": "New Password (At least 8 digits)",
+        "PASSWORD_CONFIRM": "Confirm Password",
+        "CODE": "Activation Code (4 digits)",
+        "NEW_MOBILE": "New Mobile (+852)",
+        "WAGE": "Enter numbers only. Eg. 15,000，enter 15000"
     },
 
     "MSG": {
         "ERROR": "Error",
         "SUCCESS": "Succeed",
+        "LOGIN_CONTACT": "May you have other questions regarding to login, please contact us.",
+        "SIGN_UP_DESP": "Employer registration is not open to the public temporarily. Please contact us if you would like to register as an employer.",
         "OFFLINE": "This application requires to connect to the internet, please try again.",
         "CONFIRM_EXIT_APP": "Confirm to exit?",
         "INVALID_USER": "Invalid user",
@@ -104,7 +129,7 @@
 
     "WELCOME": {
         "SLIDE_1": "Easy job searching<br>at your fingertips",
-        "SLIDE_2": "Find jobs that are<br>right for you right<br>away",
+        "SLIDE_2": "Find jobs that are<br>right for you right away",
         "SLIDE_3": "Apply with<br>one click"
     },
 
@@ -115,11 +140,55 @@
         "PUBLISH_DATE": "Publish Date"
     },
 
+    "FEEDBACK_POPUP": {
+        "TITLE": "Leave a comment",
+        "USERNAME": "Name to be shown",
+        "COMMENT": "Comment"
+    },
+
     "PROFILE_MODAL": {
+        "COMPANY_PROFILE": "Company Profile",
+        "MY_PROFILE": "My Profile",
+        "MY_INFO": "My Information",
+        "MY_RECORD": "My Records",
+        "MY_SETTING": "My Settings",
         "SKILLS": "Skills and Certificates",
         "LANGUAGE": "Language Abilities",
         "COMPUTER": "Computer Skills",
-        "CERTS": "Related Certificates"
+        "CERTS": "Related Certificates",
+        "NOTI": "Push notifications permission",
+        "TNC": "Terms & Conditions",
+        "ABOUT": "About Us",
+        "CONTACT": "Contact Us"
+    },
+
+    "PREFERENCE": {
+        "TITLE": "Preferences",
+        "DESP": "System will find favourable results according to your filled in preferences.",
+        "MY_SETTING": "My Preferences",
+        "REMINDER": "You have no preferences yet. Please click 'Edit' to set your preferences."
+    },
+
+    "RECORD": {
+        "APPLICANT": "Application Record",
+        "EMPLOYER": "Application Record",
+        "PROGRESS": "Application Progress",
+        "OFFER_ACCEPT": "Accept Offer",
+        "OFFER_REJECT": "Reject Offer",
+        "OFFER_CANCEL": "Cancel Position",
+        "APPLICATION_CANCEL": "Cancel",
+        "APPLICANT_INFO": "Applicant Info",
+        "GIVE_REVIEW": "Give Evaluation"
+    },  
+
+    "REVIEW": {
+        "TITLE": "Employment Evaluation",
+        "DESP": "Employment evaluations within these 3 months"
+    },    
+
+    "AGREEMENT": {
+        "PRIVACY_STATEMENT": "Privacy Policy Statement ",
+        "AGREE": "I AGREE to the above terms and conditions."
     },
 
     "APPLICANT_PROFILE": {

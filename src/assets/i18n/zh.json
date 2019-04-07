@@ -4,7 +4,9 @@
         "NEWS": "News",
         "ABOUT": "關於",
         "CONTACT": "聯絡我們",
-        "FAVOURITE": "我的收藏"
+        "FAVOURITE": "我的收藏",
+        "RECORD": "申請紀錄",
+        "REVIEW": "受僱評價"
     },
 
     "HOTKEY": {
@@ -22,11 +24,14 @@
         "RESET": "重置",
 
         "LOGIN": "登入",
-        "SIGN_UP": "登記",
+        "LOGOUT": "登出",
+        "SIGN_UP": "申請僱員帳戶",
         "ACTIVATE": "驗證帳戶",
+        "SEND_CODE": "確認並發送認證碼",
         "SEND_CODE_AGAIN": "重發驗證碼",
         "FORGOT_PASSWORD": "忘記密碼",
         "RESET_PASSWORD": "重設密碼",
+        "UPDATE_MOBILE": "更改電話",
 
         "LOADING": "載入中...",
         "PREVIOUS": "上一步",
@@ -41,12 +46,32 @@
         "GO_DETAIL": "查看詳情",
         "APPLY_JOB": "申請工作",
         "CHOOSE": "提供職位",
-        "REJECT": "拒絕"
+        "REJECT": "拒絕",
+        "START": "開始使用",
+        "BACK": "返回",
+
+        "SKIP": "稍後設定",
+        "COMPLETE": "完成",
+        "EDIT": "修改"
+    },
+
+    "PLACEHOLDER": {
+        "SMS_ACTIVATION": "SMS認證",
+        "MOBILE": "手機號碼(+852)",
+        "PASSWORD": "密碼(至少8位字元)",
+        "REGISTERED_MOBILE": "已登記手機號碼(+852)",
+        "NEW_PASSWORD": "新密碼(至少8位字元)",
+        "PASSWORD_CONFIRM": "確認密碼",
+        "CODE": "認證碼(4位數字)",
+        "NEW_MOBILE": "新手機號碼(+852)",
+        "WAGE": "請輸入數字，例如15,000，請輸入15000"
     },
 
     "MSG": {
         "ERROR": "錯誤",
         "SUCCESS": "成功",
+        "LOGIN_CONTACT": "如有其他帳戶登入問題，歡迎聯絡我們。",
+        "SIGN_UP_DESP": "暫時僱主帳戶的申請並不對外公開，如欲申請，請聯絡我們。",
         "OFFLINE": "此程式需要連接網路，請重試。",
         "CONFIRM_EXIT_APP": "確認離開?",
         "INVALID_USER": "用戶不存在",
@@ -115,11 +140,55 @@
         "PUBLISH_DATE": "刊登日期"
     },
 
+    "FEEDBACK_POPUP": {
+        "TITLE": "對此僱員留下意見",
+        "USERNAME": "顯示名稱",
+        "COMMENT": "評語/留言"
+    },
+
     "PROFILE_MODAL": {
+        "COMPANY_PROFILE": "公司檔案",
+        "MY_PROFILE": "我的個人檔案",
+        "MY_INFO": "我的資料",
+        "MY_RECORD": "我的紀錄",
+        "MY_SETTING": "我的設定",
         "SKILLS": "技能及資格",
         "LANGUAGE": "語言能力",
         "COMPUTER": "電腦技能",
-        "CERTS": "保安資格"
+        "CERTS": "保安資格",
+        "NOTI": "訊息通知開關",
+        "TNC": "條款及細則",
+        "ABOUT": "關於我們",
+        "CONTACT": "聯絡我們"
+    },
+
+    "PREFERENCE": {
+        "TITLE": "要求與喜好",
+        "DESP": "系統會根據你填寫的要求及喜好，為你尋找合心意的結果。",
+        "MY_SETTING": "我的喜好",
+        "REMINDER": "您還未設置喜好設定，請按「修改」設置。"
+    },
+
+    "RECORD": {
+        "APPLICANT": "申請工作紀錄",
+        "EMPLOYER": "處理工作紀錄",
+        "PROGRESS": "處理進度",
+        "OFFER_ACCEPT": "接受職位",
+        "OFFER_REJECT": "拒絕職位",
+        "OFFER_CANCEL": "取消職位",
+        "APPLICATION_CANCEL": "取消申請",
+        "APPLICANT_INFO": "申請者資料",
+        "GIVE_REVIEW": "給予評價"
+    },  
+
+    "REVIEW": {
+        "TITLE": "受僱評價",
+        "DESP": "最近3個月的受僱評價"
+    },   
+
+    "AGREEMENT": {
+        "PRIVACY_STATEMENT": "私隱政策聲明",
+        "AGREE": "我同意以上的條款與細則"
     },
 
     "APPLICANT_PROFILE": {

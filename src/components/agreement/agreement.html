@@ -1,14 +1,14 @@
 <ion-content *ngIf="about">
-  <div class="title">私隱政策聲明</div>
+  <div class="title">{{ 'AGREEMENT.PRIVACY_STATEMENT' | translate }}</div>
   <div class="statement-wrapper">
     <div class="statement-content" [innerHTML]="about['privacy_statement_' + language]"></div>
   </div>
   <div ion-item no-lines class="agreement-checkbox">
     <ion-checkbox [(ngModel)]="isAgreed"></ion-checkbox>
-    <ion-label>我同意以上的條款與細則</ion-label>
+    <ion-label>{{ 'AGREEMENT.AGREE' | translate }}</ion-label>
   </div>
   <!-- [ngClass]="{'highlight-btn': isAgreed}" -->
   <div class="operation-buttons">
-    <button class="highlight-btn operation-button" [disabled]="!isAgreed" (click)="dismiss()">繼續</button>
+    <button class="highlight-btn operation-button" [disabled]="!isAgreed" (click)="dismiss()">{{ 'ACTION.CONFIRM' | translate }}</button>
   </div>
 </ion-content>
