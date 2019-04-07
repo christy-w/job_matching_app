@@ -1,7 +1,7 @@
 <common-header [enable-back]="true"></common-header>
 
 <ion-content>
-    <div class="page-title">所有申請</div>
+    <div class="page-title">符合要求的申請者</div>
     <!-- <div class="page-desp">有 3 項與你極符合的工作</div> -->
     <div class="recommendation-slider" *ngIf="user_preference">
         <ion-slides #cardSlider class="slide-list" *ngIf="recommendations && recommendations.length > 0" loop=false pager=true slidesPerView='auto' spaceBetween=15 centeredSlides=true>

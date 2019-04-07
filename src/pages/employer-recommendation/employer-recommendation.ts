@@ -44,7 +44,7 @@ export class EmployerRecommendationPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'recommendation';
+		Config.ACTIVE_TAB = 'home';
 	}
 
 	initRecommendations() {
@@ -171,6 +171,9 @@ export class EmployerRecommendationPage extends BasePage {
 					re.wage_en = '$' + hourly_wage + '/Hour';
 					break;
 			}
+
+			// Format age
+			re.applicant.age = moment().diff(moment(re.applicant.dob, "YYYY-MM-DD"), 'years');
 		});
 		this.recommendations = _.orderBy(this.recommendations, ['match_num'], ['desc']);
 	}

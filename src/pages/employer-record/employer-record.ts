@@ -117,7 +117,7 @@ export class EmployerRecordPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'record';
+		Config.ACTIVE_TAB = 'home';
 	}
 
 	cancelApplication(application_id) {

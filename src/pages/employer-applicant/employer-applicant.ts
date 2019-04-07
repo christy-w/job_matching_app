@@ -45,7 +45,7 @@ export class EmployerApplicantPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = '';
+		Config.ACTIVE_TAB = 'home';
 	}
 	
 	initApplications(job_id) {

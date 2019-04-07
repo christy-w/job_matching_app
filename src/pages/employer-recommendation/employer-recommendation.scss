@@ -146,14 +146,21 @@ page-employer-recommendation {
                         border-radius: 50%;
                     }
                 }
-                .employer {
+                span {
                     font-family: $font-medium;
                     font-size: 0.8em;
                     color: $medium-grey;
                 }
-                span {
+                .detail-btn {
+                    position: relative;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    display: block;
+                    text-align: center;
+                    text-decoration: underline;
+                    background: transparent !important;
                     font-family: $font-medium;
-                    font-size: 0.8em;
                     color: $medium-grey;
                 }
             }

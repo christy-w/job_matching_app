@@ -2,7 +2,7 @@
 
 <ion-content>
     <div class="upper-section" ion-fixed>
-        <div class="page-title">我的個人檔案</div>
+        <div class="page-title">我的檔案</div>
     </div>
     <ion-row class="profile-card" *ngIf="user_profile">
         <ion-col col-4>
@@ -17,7 +17,7 @@
     <div class="list-card my-profile">
         <div class="list-title">我的資料</div>
         <div class="my-profile-wrapper">
-            <button ion-item class="list-item" (click)="openProfileDetailPage()">{{ 'APPLICANT_PROFILE.PERSONAL_DETAILS' | translate }}</button>
+            <button ion-item class="list-item" (click)="openProfileDetailPage()">公司資料</button>
             <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
         </div>
     </div>
