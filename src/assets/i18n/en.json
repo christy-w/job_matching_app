@@ -26,9 +26,9 @@
         "LOGIN": "Login",
         "LOGOUT": "Logout",
         "SIGN_UP": "Applicant Sign Up",
-        "ACTIVATE": "Activate Account",
-        "SEND_CODE": "Activate",
-        "SEND_CODE_AGAIN": "Resend activation code",
+        "ACTIVATE": "Verify Account",
+        "SEND_CODE": "Verify",
+        "SEND_CODE_AGAIN": "Resend verification code",
         "FORGOT_PASSWORD": "Forgot Password",
         "RESET_PASSWORD": "Reset Password",
         "UPDATE_MOBILE": "Update Mobile",
@@ -81,7 +81,7 @@
         "INACTIVATED_USER": "User not activated, activate now?",
         "MISSING_INFO": "Missing information, please try again.",
         "PASSWORD_DIFF": "Please confirm your password again.",
-        "PASSWORD_TOO_SHORT": "The Password field must contain at least 6 digits.",
+        "PASSWORD_TOO_SHORT": "The Password field must contain at least 8 digits.",
         "ACTIVATION": "Your activation code is ",
         "INCORRECT_ACTIVATION": "Incorrect activation code, please try again.",
         "MOBILE_REGISTERED": "Mobile registered, please try again.",
@@ -107,7 +107,7 @@
         "REJECT_SUCCESS": "Offer rejected.",
         "REJECT_FAILED": "Offer reject failed, Please try again.",
         "ASK_RESET_PW": "Your password is a default password. Please reset your password.",
-        "CREATE_NOT_ENOUGH": "Items with * must be filled.",
+        "CREATE_NOT_ENOUGH": "Items marked * are required.",
         "CREATE_SUCCESS": "Position created successfully.",
         "CREATE_FAILED": "Position created failed. Please try again.",
         "OFFER_CONFIRM": "Confirm to offer this position to this candidate? This action is irreversible.",
@@ -152,9 +152,9 @@
     },
 
     "CANDIDATE_POPUP": {
-        "TITLE": "{{applicant_num}} candidate(s) have applied for this job.",
+        "TITLE": "5 candidate(s) have applied for this job.",
         "ALL": "All Applicants",
-        "PREFERENCED": "Applicants matched with preferences"
+        "PREFERENCED": "Applicants Match"
     },
 
     "PROFILE_MODAL": {
@@ -182,7 +182,7 @@
 
     "RECORD": {
         "APPLICANT": "Application Record",
-        "EMPLOYER": "Application Record",
+        "EMPLOYER": "Processing Record",
         "PROGRESS": "Application Progress",
         "OFFER_ACCEPT": "Accept Offer",
         "OFFER_REJECT": "Reject Offer",
@@ -231,20 +231,20 @@
     },
 
     "RECOMMEND": {
-        "APPLICANT_TITLE": "Jobs Matched",
+        "APPLICANT_TITLE": "Your Job Match",
         "EMPLOYER_TITLE": "Applicants Matched",
         "REMINDER": "You have no preferences yet. Please go to My Profile, and click 'Preferences' to fill in your preferences.",
         "GO_SETTING": "Set Preferences",
         "THIS_JOB": "This job",
-        "YOUR_PREF": "your preferences",
+        "YOUR_PREF": "with your preferences",
         "PREF_NUM": "preferences",
         "THIS_CANDIDATE": "This candidate",
-        "YOUR_REQ": "your requirements",
+        "YOUR_REQ": "with your preferences",
         "REQ_NUM": "requirements"
     },
 
     "EMPLOYER": {
-        "HOME": "Posted Jobs",
+        "HOME": "My Jobs",
         "CREATE_JOB": "Create"
     },
 

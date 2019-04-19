@@ -17,6 +17,7 @@ export class EmployerJobCreatePage extends BasePage {
 	name: string = 'EmployerJobCreatePage';
 	job_fields: any;
 	districts: any;
+	language: string = '';
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -25,6 +26,7 @@ export class EmployerJobCreatePage extends BasePage {
 		private api: Api
 	) {
 		super(platform, view, nav, utils);
+		this.language = this.utils.currentLang();
 		Config.DEBUG_VERBOSE && console.log('EmployerJobCreatePage constructor');
 
 		this.api.startQueue([

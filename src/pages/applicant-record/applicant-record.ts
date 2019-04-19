@@ -16,6 +16,7 @@ export class ApplicantRecordPage extends BasePage {
 
 	name: string = 'ApplicantRecordPage';
 	records: any;
+	language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -30,6 +31,7 @@ export class ApplicantRecordPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'record';
+		this.language = this.utils.currentLang();
 
 		this.api.startQueue([
 			this.api.getApplicationsByUser()

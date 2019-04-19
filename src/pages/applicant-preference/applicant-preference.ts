@@ -18,6 +18,7 @@ export class ApplicantPreferencePage extends BasePage {
 	preference_options: any = {};
 	edit_mode: boolean = false;
 	show_msg: boolean = false;
+	language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -32,6 +33,7 @@ export class ApplicantPreferencePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'profile';
+		this.language = this.utils.currentLang();
 		this.initPreferenceArrays();
 		this.checkUserPreference();
 	}

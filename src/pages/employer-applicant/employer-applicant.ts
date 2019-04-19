@@ -26,7 +26,8 @@ export class EmployerApplicantPage extends BasePage {
 
 	must_applicants: any = [];
 	preferred_applicants: any = [];
-	other_jobs: any = [];
+  other_jobs: any = [];
+  language: string = '';
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -45,7 +46,8 @@ export class EmployerApplicantPage extends BasePage {
 	}
 
 	ionViewWillEnter() {
-		Config.ACTIVE_TAB = 'home';
+    Config.ACTIVE_TAB = 'home';
+    this.language = this.utils.currentLang();
 	}
 	
 	initApplications(job_id) {
@@ -140,7 +142,7 @@ export class EmployerApplicantPage extends BasePage {
             break;
           case '3_year_above':
             this.applications[i].applicant.experience_zh = '3年以上';
-            this.applications[i].applicant.experience_en = '3 years of more';
+            this.applications[i].applicant.experience_en = '3 years or more';
             break;
         }
 

@@ -17,13 +17,9 @@
     <div class="list-card my-profile">
         <div class="list-title">{{ 'PROFILE_MODAL.MY_INFO' | translate }}</div>
         <div class="my-profile-wrapper">
-            <button ion-item class="list-item" (click)="openProfileDetailPage()">公司資料</button>
-            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">要求及喜好</button>
+            <button ion-item class="list-item" (click)="openProfileDetailPage()">{{ 'PROFILE_MODAL.COMPANY_PROFILE' | translate}}</button>
+            <button ion-item class="list-item" (click)="openApplicantPreferencePage()">{{'PREFERENCE.TITLE' | translate}}</button>
         </div>
-    </div>
-    <div class="list-card my-record">
-        <div class="list-title">{{ 'PROFILE_MODAL.MY_RECORD' | translate }}</div>
-        <button ion-item class="list-item" (click)="openApplicantRecordPage()">僱員紀錄</button>
     </div>
     <div class="list-card my-settings">
         <div class="list-title">{{ 'PROFILE_MODAL.MY_SETTING' | translate }}</div>

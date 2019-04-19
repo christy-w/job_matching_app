@@ -18,6 +18,7 @@ export class EmployerRecordPage extends BasePage {
 	name: string = 'EmployerRecordPage';
 	records: any;
 	job: any;
+	language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -29,6 +30,7 @@ export class EmployerRecordPage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('EmployerRecordPage constructor');
+		this.language = this.utils.currentLang();
 		
 		let job_id = this.params.get('job_id');
 		this.api.startQueue([

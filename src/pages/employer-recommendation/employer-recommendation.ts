@@ -27,6 +27,7 @@ export class EmployerRecommendationPage extends BasePage {
 	must_applicants: any = [];
 	preferred_applicants: any = [];
 	other_jobs: any = [];
+	language: string = '';
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -45,6 +46,7 @@ export class EmployerRecommendationPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'home';
+		this.language = this.utils.currentLang();
 	}
 
 	initRecommendations() {
@@ -125,10 +127,10 @@ export class EmployerRecommendationPage extends BasePage {
 			let level = re['match_num'] / saved_preference_num;
 			if (level > 0.5) {
 				re['match_level_zh'] = '極符合',
-				re['match_level_en'] = 'Highly Matched'
+				re['match_level_en'] = 'Highly Matches'
 			} else {
 				re['match_level_zh'] = '符合',
-				re['match_level_en'] = 'Matched'
+				re['match_level_en'] = 'Matches'
 			}
 
 			_.each(re['match_item'], (match_item) => {

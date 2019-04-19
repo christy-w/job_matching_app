@@ -16,6 +16,7 @@ export class CandidateProfilePage extends BasePage {
 
 	name: string = 'CandidateProfilePage';
   candidate: any;
+  language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -27,6 +28,7 @@ export class CandidateProfilePage extends BasePage {
 	) {
 		super(platform, view, nav, utils);
     Config.DEBUG_VERBOSE && console.log('CandidateProfilePage constructor');
+    this.language = this.utils.currentLang();
     // let applicant_id = '3';
     let applicant_id = this.params.get('applicant_id');
     this.api.startQueue([
@@ -117,7 +119,7 @@ export class CandidateProfilePage extends BasePage {
           break;
         case '3_year_above':
           candidate.experience_zh = '3年以上';
-          candidate.experience_en = '3 years of more';
+          candidate.experience_en = '3 years or more';
           break;
       }
 
@@ -129,11 +131,13 @@ export class CandidateProfilePage extends BasePage {
       });
 
       candidate.computer_texts = [];
-      candidate.computer_skills.forEach(skill_id => {
-        this.api.getSystemInfoItem('computer_skill', skill_id).then(skill => {
-          candidate.computer_texts.push(skill);
-        })
-      });
+      if (candidate.computer_skills) {
+        candidate.computer_skills.forEach(skill_id => {
+          this.api.getSystemInfoItem('computer_skill', skill_id).then(skill => {
+            candidate.computer_texts.push(skill);
+          })
+        });
+      }
 
       candidate.related_texts = [];
       candidate.related_certs.forEach(cert_id => {

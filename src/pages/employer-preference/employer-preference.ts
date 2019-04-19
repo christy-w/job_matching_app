@@ -18,6 +18,7 @@ export class EmployerPreferencePage extends BasePage {
 	preference_options: any = {};
 	edit_mode: boolean = false;
 	show_msg: boolean = false;
+	language: string = '';
 
 	constructor(
 		protected platform: Platform,
@@ -32,6 +33,7 @@ export class EmployerPreferencePage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'profile';
+		this.language = this.utils.currentLang();
 		this.initPreferenceArrays();
 		this.checkUserPreference();
 	}
@@ -153,7 +155,7 @@ export class EmployerPreferencePage extends BasePage {
 					{
 						id: 4,
 						option_zh: '3年以上',
-						option_en: '3 years of more',
+						option_en: '3 years or more',
 						value: '3_year_above'
 					}
 				]

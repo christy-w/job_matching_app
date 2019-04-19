@@ -217,7 +217,7 @@ export class ProfileModal {
 							},
 							{
 								name_zh: '3年以上',
-								name_en: '3 years of more',
+								name_en: '3 years or more',
 								value: '3_year_above'
 							}
 						]

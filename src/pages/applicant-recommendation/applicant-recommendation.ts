@@ -25,6 +25,7 @@ export class ApplicantRecommendationPage extends BasePage {
 	must_jobs: any = [];
 	preferred_jobs: any = [];
 	other_jobs: any = [];
+	language: string = '';
 	constructor(
 		protected platform: Platform,
 		protected view: ViewController,
@@ -39,6 +40,7 @@ export class ApplicantRecommendationPage extends BasePage {
 
 	ionViewWillEnter() {
 		Config.ACTIVE_TAB = 'recommendation';
+		this.language = this.utils.currentLang();
 		this.getUserPreference();
 		this.getFavourited();
 	}
@@ -51,7 +53,7 @@ export class ApplicantRecommendationPage extends BasePage {
 				console.log('User saved preference', this.user_preference);
 			} else {
 				this.user_preference = null;
-				console.log('No preference');
+				console.log('No preferences yet');
 			}
 		})
 	}
@@ -61,13 +63,15 @@ export class ApplicantRecommendationPage extends BasePage {
 		let must_pref = _.filter(this.user_preference, {'importance':2})
 		console.log('must_pref', must_pref);
 
+		// Pick PREFERRED fulfilled preferences
 		let preferred_pref = _.filter(this.user_preference, {'importance':1});
 		console.log('preferred_pref', preferred_pref);
 
-		// Get jobs fulfilled MUST condition
 		if (must_pref && must_pref.length > 0) {
+			// Get jobs fulfilled MUST condition
 			this.getMustJobs(must_pref);
 		} else if (preferred_pref && preferred_pref.length > 0){
+			// Get jobs fulfilled PREFERRED condition
 			this.must_jobs = this.all_jobs;
 			this.getPreferredJobs(preferred_pref)
 		} else {
@@ -82,11 +86,15 @@ export class ApplicantRecommendationPage extends BasePage {
 		let must_input_pref = _.filter(must_pref, {'field_type': 'input'});
 
 		if (must_selects_pref && must_selects_pref.length > 0) {
+			// If both "select" and "input" preferences are set.
+			// Get results by "select" type preference first
 			this.getMustSelects(must_selects_pref);
 			if (must_input_pref && must_input_pref.length > 0) {
+				// Then the results by "input" type preference
 				this.getMustInput(must_input_pref);
 			}
 		} else if (must_input_pref && must_input_pref.length > 0){
+			// If only "input" preferences are set.
 			this.getMustInput(must_input_pref);
 		}
 
@@ -145,10 +153,10 @@ export class ApplicantRecommendationPage extends BasePage {
 			let level = re['match_num'] / saved_preference_num;
 			if (level > 0.5) {
 				re['match_level_zh'] = '極符合',
-				re['match_level_en'] = 'Highly Matched'
+				re['match_level_en'] = 'Highly Matches'
 			} else {
 				re['match_level_zh'] = '符合',
-				re['match_level_en'] = 'Matched'
+				re['match_level_en'] = 'Matches'
 			}
 
 			_.each(re['match_item'], (match_item) => {
@@ -235,32 +243,33 @@ export class ApplicantRecommendationPage extends BasePage {
 
 	getMustSelects(must_selects_pref) {
 		_.each(must_selects_pref, (pref) => {
-			// Key to match with job key
+			// Preference Key e.g. employment_type
 			let match_key = this.match.translatePrefKey(pref.value);
-			// User preferences that are selected
+			// Preferred value e.g. 'fulltime'
 			let match_value = this.match.translatePrefValue(pref.value, pref.selection);
 
-			// Check if preference match with job, if not, filter from list
+			// Look through all jobs and search for job matches with this preference. If not, filter from list
 			let must_jobs_per_pref = [];
 			_.each(match_value, (value) => {
-
+				// Get Preferred value with details
+				// e.g. { name_zh: '全職', name_en: 'Fulltime', value: 'fulltime' }
 				let field_content = this.match.translatePrefContent(pref.value, value);
-				// console.log('value', value);
 				let matched_jobs_per_pref = _.filter(this.all_jobs, function(job) {
 					if (!job.match_item) {
 						job.match_item = [];
 					}
+					// Record the matching items to the resulting object
 					if (job[match_key] == value) {
 						job.match_item.push({ 'name': match_key, 'content': field_content, 'importance': 2 });
 					}
 					return job[match_key] == value;
 				});
-				// console.log('matched', matched_jobs_per_pref);
+				// Merge the results together
 				must_jobs_per_pref = _.concat(must_jobs_per_pref, matched_jobs_per_pref)
 			})
 			this.must_jobs = must_jobs_per_pref;
 		});
-		console.log('multi-select must_jobs', this.must_jobs);
+		console.log('Jobs resulting from MUST preference(multi-select)', this.must_jobs);
 	}
 
 	getMustInput(must_input_pref) {
@@ -337,7 +346,6 @@ export class ApplicantRecommendationPage extends BasePage {
 			temp = this.preferred_jobs;
 		}
 		_.each(preferred_input_pref, (pref) => {
-			// Key to match with job key
 			let match_key = this.match.translatePrefKey(pref.value);
 			let match_value = pref.selection;
 			reformatted_ft_jobs = _.partition(temp, {'type': 'fulltime'})[0];
@@ -355,7 +363,6 @@ export class ApplicantRecommendationPage extends BasePage {
 				}
 			})
 		})
-
 		this.preferred_jobs = _.concat(reformatted_ft_jobs, reformatted_non_ft_jobs);
 		console.log('input preferred_jobs', this.preferred_jobs);
 	}
