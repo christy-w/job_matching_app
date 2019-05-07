@@ -9,7 +9,7 @@ export class Api extends BaseService {
 	
 	// override API URL prefix and anonymous API key
 	//protected api_prefix: string = 'https://dev.juicyapphk.com/juicycore/api';
-	protected api_prefix: string = 'http://localhost/fyp_web/api';
+	protected api_prefix: string = 'http://192.168.1.91/fyp_web/api';
 	protected api_key_anonymous: string = 'anonymous';
 	protected user_api_key: string = '';
 	protected user_id: string = '';
