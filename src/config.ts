@@ -34,8 +34,8 @@ export class Config {
     static GA_DEBUG_MODE: boolean = true;
 
     // Push Notifications (set ONESIGNAL_APP_ID as empty to disable)
-    static ONESIGNAL_APP_ID: string = ''; // JuicyLauncher: d284b536-47d9-11e5-a647-478fe54bb917
-    static ONESIGNAL_GOOGLE_PROJECT_NUMBER: string = ''; // JuicyLauncher: 606380984953
+    static ONESIGNAL_APP_ID: string = 'c244446e-9012-47cf-b225-279879011f78'; // JuicyLauncher: d284b536-47d9-11e5-a647-478fe54bb917
+    static ONESIGNAL_GOOGLE_PROJECT_NUMBER: string = '102920536574'; // JuicyLauncher: 606380984953
 
     // In-App Browser
     static BROWSER_STATUSBAR_COLOR: string = '#ffffffff';

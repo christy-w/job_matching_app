@@ -205,6 +205,7 @@
     "APPLICANT_PROFILE": {
         "PERSONAL_DETAILS": "個人資料",
         "WORK_EXPERIENCES": "工作經驗",
+        "SKILLS_CERTIFICATES": "能力及資格",
         "NAME": "姓名",
         "GENDER": "性別",
         "DOB": "出生日期",

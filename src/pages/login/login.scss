@@ -30,7 +30,7 @@ page-login {
         }
     }
     .content-wrapper {
-        position: relative;
+        position: absolute;
         top: 120px;
         left: 0;
         right: 0;
@@ -90,9 +90,10 @@ page-login {
     .operation-buttons {
         position: absolute;
         width: 77vw;
-        top: 55vh;
+        top: 350px;
         left: 0;
         right: 0;
+        padding-top: 20px;
         margin: 0 auto;
         display: block;
         z-index: 1;
