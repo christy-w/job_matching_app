@@ -29,6 +29,8 @@ page-applicant-profile-detail {
         .item-wrapper {
             .item-inner {
                 border-bottom: 1px solid $light-grey;
+                border-bottom-color: $light-grey !important;
+                box-shadow: none !important;
             }
             &:last-child {
                 .item-inner {

@@ -249,6 +249,7 @@ page-applicant-recommendation {
                     }
                     .tags {
                         position: relative;
+                        height: 23px;
                         overflow: hidden;
                         .tag {
                             display: inline-block;
@@ -286,7 +287,7 @@ page-applicant-recommendation {
                 position: relative;
                 text-align: left;
                 .match-status {
-                    padding-top: 40px;
+                    padding: 20px 60px 20px 0px;
                     color: $medium-grey;
                     font-family: $font-bold;
                     font-size: 1em;

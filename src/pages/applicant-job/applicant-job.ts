@@ -7,6 +7,7 @@ import { Utils } from '../../core/providers/utils';
 import { Api } from '../../providers';
 import _ from 'lodash';
 import * as moment from 'moment';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @IonicPage()
 @Component({
@@ -26,7 +27,8 @@ export class ApplicantJobPage extends BasePage {
 		protected nav: NavController,
 		protected utils: Utils,
 		private params: NavParams,
-		private api: Api
+		private api: Api,
+		private oneSignal: OneSignal
 	) {
 		super(platform, view, nav, utils);
 		Config.DEBUG_VERBOSE && console.log('ApplicantJobPage constructor');
