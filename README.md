@@ -1,3 +1,4 @@
+![alt text](https://github.com/christy0218/job_matching_app/master/scene.jpg)
 
 This is a student project which aims to provide a job matching service with preferences setting for fast searching and filtering. 
 
