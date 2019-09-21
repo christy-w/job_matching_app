@@ -3,7 +3,7 @@
 This is a student project which aims to provide a job matching service with preferences setting for fast searching and filtering with the backend repo job_matching_web (https://github.com/christy0218/job_matching_web)
 
 Based on JuicyLauncher by Michael Chan and Ionic 3.
-**Any unauthorized use or reproduction of this repo is forbidden.**
+***Any unauthorized use or reproduction of this repo is forbidden.***
 
 ### Objectives
 
